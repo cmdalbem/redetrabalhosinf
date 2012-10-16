@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inf</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>  
+</head>
+<body>
+
+<header class="navbar navbar-fixed-top navbar-inverse ">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "INF", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><a href=<%=root_path%>> <i class="icon-home"></i> Home </a></li>
+          <li><a href=<%=projects_path%>> <i class="icon-list"></i> Projects </a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<div class="container">
+	<%= yield %>
+</div>
+
+<br />
+<br />
+
+<footer class="footer">
+	<div class="container">
+		<p class="pull-right"><img src="/assets/inf.png"></p>
+	</div>
+</footer>
+
+</body>
+</html>

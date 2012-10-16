@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: postgres
+  pool: 5
+  username: postgres
+  password: redy01
+  host: localhost
