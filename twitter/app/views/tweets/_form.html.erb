@@ -1,0 +1,14 @@
+<%= form_for(@tweet) do |f| %>
+  <div class="field">
+    <%= f.label :person %><br />
+    <%= f.select :person, Person.all.collect {|p| p.name } %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :text %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
