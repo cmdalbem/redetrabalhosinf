@@ -21,6 +21,14 @@ body {
 	padding-top: 60px;
 }
 
+footer {
+ /*position:absolute;
+  bottom: 0;*/
+  width: 100%;
+  border-top:1px solid #e5e5e5;
+  background-color:#f5f5f5;
+}
+
 p {
 	padding-left: 30px;
 }
@@ -37,12 +45,18 @@ form {
   width: 70%;
 }
 
-#logo {
+a#logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  letter-spacing: -1px;
   padding-top: 9px;
+  font-size: 1.7em;
+  letter-spacing: -2px;
   font-weight: bold;
   line-height: 1;
+  color: rgba(0,0,0,0.6);
+}
+
+a#logo:hover {
+  text-decoration: none;
+  color: rgba(0,0,0,0.8);
+  background: none;
 }
