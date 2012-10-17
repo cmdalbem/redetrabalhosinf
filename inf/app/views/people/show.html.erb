@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @person.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @person.getEmail %>
+</p>
+
+
+<%= link_to 'Edit', edit_person_path(@person), class: "btn btn-mini" %> |
+<%= link_to 'Back', people_path, class: "btn btn-mini" %>

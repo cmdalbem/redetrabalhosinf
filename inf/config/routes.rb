@@ -1,5 +1,5 @@
 Inf::Application.routes.draw do
-  resources :projects
+  resources :projects, :people
 
   root :to => "home#show"
 

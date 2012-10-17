@@ -11,13 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016035100) do
+ActiveRecord::Schema.define(:version => 20121016210858) do
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "person_id"
+    t.integer  "course_id",   :default => 1
+    t.date     "date"
   end
+
+  add_index "projects", ["person_id"], :name => "index_projects_on_person_id"
 
 end

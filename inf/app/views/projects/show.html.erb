@@ -6,10 +6,24 @@
 </p>
 
 <p>
+  <b>Owner:</b>
+  <%= link_to @project.person.name, @project.person %>
+</p>
+
+<p>
+  <b>Course:</b>
+  <%= @project.course.name %>
+</p>
+
+<p>
   <b>Description:</b>
   <%= @project.description %>
 </p>
 
+<p>
+  <b>Date:</b>
+  <%= @project.date %>
+</p>
 
 <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-mini" %> |
 <%= link_to 'Back', projects_path, class: "btn btn-mini" %>
