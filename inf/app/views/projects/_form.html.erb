@@ -1,4 +1,5 @@
 <%= form_for(@project) do |f| %>
+
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -22,7 +23,7 @@
   </div>
 
   <div class="field">
-    <%= f.label "When was developed?" %><br />
+    <%= f.label "When was it developed?" %><br />
     <%= f.date_select :date %>
   </div>
 
@@ -37,7 +38,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn"%>
   </div>
   
 <% end %>
