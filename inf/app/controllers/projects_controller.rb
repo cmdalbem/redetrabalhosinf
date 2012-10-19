@@ -20,12 +20,18 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+
+    if(user_signed_in?)
+      render action: "edit"
+    else
+      redirect_to projects_url, notice: 'Not allowed!'
+    end
   end
 
   # POST /projects
   def create
     p = params["project"]
-    owner = Person.where(:name => p["person"]).first
+    owner = current_user.person
     c = Course.where(:name => p["course"]).first
     d = Date.new(p["date(1i)"].to_i, p["date(2i)"].to_i, p["date(3i)"].to_i)
 
@@ -44,7 +50,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   def update
     p = params[:project]
-    owner = Person.where(:name => p["person"]).first
+    owner = current_user.person
     c = Course.where(:name => p["course"]).first
     d = Date.new(p["date(1i)"].to_i, p["date(2i)"].to_i, p["date(3i)"].to_i)
     @project = Project.find(params["id"])

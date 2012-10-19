@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<h1>Details</h1>
 
 <p>
   <b>Name:</b>
@@ -10,6 +10,25 @@
   <%= @person.getEmail %>
 </p>
 
+<p>
+  <b>Signed up date:</b>
+  <%= @person.user.created_at %>
+</p>
+
+<p>
+  <b>Sign in count:</b>
+  <%= @person.user.sign_in_count %>
+</p>
+
+<p>
+  <b>Logged since:</b>
+  <%= @person.user.current_sign_in_at %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @person.user.current_sign_in_ip %>
+</p>
 
 <%= link_to 'Edit', edit_person_path(@person), class: "btn btn-mini" %> |
 <%= link_to 'Back', people_path, class: "btn btn-mini" %>

@@ -18,12 +18,42 @@
           <li><a href=<%=root_path%>> <i class="icon-home"></i> Home </a></li>
           <li><a href=<%=projects_path%>> <i class="icon-list"></i> Projects </a></li>
           <li><a href=<%=people_path%>> <i class="icon-user"></i> People </a></li>
+          <li class="divider-vertical"></li>
+          <li>
+            <% if user_signed_in? %>  
+              <div class="btn-group"> %>
+                <%= link_to current_user.person.name, current_user.person, class: "btn"%>
+                  <button class="btn dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- List of user options -->
+                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+                </ul>
+              </div>              
+            <% else %>  
+              <%= link_to "Sign in", new_user_session_path %>  
+            <% end %> 
+          </li>
         </ul>
       </nav>
     </div>
   </div>
 </header>
 
+<!-- Maps the type of flash message with the correct CSS class name -->
+
+<p id="notice"><%= notice %></p>
+
+<% {:notice => 'success', :error => 'error'}.each {|type| %>
+  <% if flash[type] %>
+    <div class="alert alert-<% type[1] %>">
+      <%= flash[type] %>
+    </div>
+  <% end %>
+<% } %>
+
+<!-- Page content goes here -->
 <div class="container">
 	<%= yield %>
 </div>

@@ -13,11 +13,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Owner' %><br />
-    <%= f.select :person, Person.all.collect {|p| p.name } %>
-  </div>
-
-  <div class="field">
     <%= f.label :course %><br />
     <%= f.select :course, Course.all.collect {|p| p.name } %>
   </div>

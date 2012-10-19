@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
+    <th>Projects</th>
     <th colspan="3"></th>
   </tr>
 
@@ -11,11 +12,14 @@
   <tr>
     <td><%= person.name %></td>
     <td><%= person.getEmail %></td>
+    <td><%= person.projects.size %></td>
     <td>
       <div class="btn-group">
         <%= link_to 'Details', person, class: "btn btn-mini" %>
-        <%= link_to 'Edit', edit_person_path(person), class: "btn btn-mini" %>
-        <%= link_to 'Delete', person, confirm: 'Are you sure?', method: :delete, class: "btn btn-mini" %>
+        <% if user_signed_in? and current_user.person==person %>
+          <%= link_to 'Edit', edit_person_path(person), class: "btn btn-mini" %>
+          <%= link_to 'Delete', person, confirm: 'Are you sure?', method: :delete, class: "btn btn-mini" %>
+        <% end %>
       </div>
     </td>
   </tr>
@@ -23,7 +27,3 @@
 </table>
 
 <br />
-
-<a href=<%=new_person_path%> class="btn">
-  <i class="icon-plus"></i> Add Person
-</a>
