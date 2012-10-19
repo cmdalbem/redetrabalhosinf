@@ -8,5 +8,13 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  has_one :person
+  # If we delete the user, the person will be deleted too
+  has_one :person, :dependent => :destroy
+
+  # Automatically creates a person after this user is created
+  after_create :create_person
+  def create_person
+    self.person = Person.new(name: :email, email: :email)
+  end
+
 end
