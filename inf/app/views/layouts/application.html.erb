@@ -41,10 +41,9 @@
   </div>
 </header>
 
-<!-- Maps the type of flash message with the correct CSS class name -->
-
 <p id="notice"><%= notice %></p>
 
+<!-- Maps the type of flash message with the correct CSS class name -->
 <% {:notice => 'success', :error => 'error'}.each {|type| %>
   <% if flash[type] %>
     <div class="alert alert-<% type[1] %>">
