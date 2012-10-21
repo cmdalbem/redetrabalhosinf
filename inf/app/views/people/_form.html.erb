@@ -22,8 +22,10 @@
     <%= f.text_field :email %><span class="add-on">@inf.ufrgs.br</span>
   </div>
 
-  <br>
-  <br>
+  <%= f.fields_for :user do |builder| %>
+    <div><%= builder.label "Email for confirmation" %><br />
+    <%= builder.email_field :email %></div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit class: "btn"%>

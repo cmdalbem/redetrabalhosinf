@@ -2,10 +2,11 @@ class UsersController < Devise::RegistrationsController
 
 	def new 
 		super
+		@user.build_person
 	end
 
 	def create
-		self.user.person = Person.new(name: "nome", email: "email")
+		super
 
 	end
 end

@@ -6,19 +6,16 @@ class User < ActiveRecord::Base
 	     :recoverable, :rememberable, :trackable, :validatable
 
 	# Setup accessible (or protected) attributes for your model
-	attr_accessible :email, :password, :password_confirmation, :remember_me
+	attr_accessible :email, :password, :password_confirmation, :remember_me, :person_attributes
 
 	# If we delete the user, the person will be deleted too
 	has_one :person, :dependent => :destroy
 
+	accepts_nested_attributes_for :person
   
-	 # Automatically creates a person after this user is created
-	after_create :create_person
-	def create_person
-		# A quick fix for having a automated creation of a Person (profile) associated with this User.
-		#  TODO: Join the forms for creating a Person and a User.
-		nick = self.email.split('@')[0]
-		self.person = Person.new(name: nick, email: nick)
+	def with_person
+		self.build_person unless self.person
+		self
 	end
 
 end

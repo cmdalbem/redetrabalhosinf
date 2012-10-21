@@ -1,43 +1,42 @@
-<h1>User Details</h1>
+<h2>Profile Details</h2>
+<p>
+  <b>Name:</b>
+  <%= @person.name %>
+</p>
+<p>
+  <b>Email:</b>
+  <%= @person.getEmail %>
+</p>
+<p>
+  <b>Number of projects:</b>
+  <%= @person.projects.size %>
+</p>
 
+<br>
+
+<h1>User Details</h1>
 <p>
   <b>Registered user email:</b>
   <%= @person.user.email %>
 </p>
-
 <p>
   <b>Signed up date:</b>
   <%= @person.user.created_at %>
 </p>
-
 <p>
   <b>Sign in count:</b>
   <%= @person.user.sign_in_count %>
 </p>
-
 <p>
   <b>Logged since:</b>
   <%= @person.user.current_sign_in_at %>
 </p>
-
 <p>
   <b>Location:</b>
   <%= @person.user.current_sign_in_ip %>
 </p>
 
-<h2>Profile Details</h2>
-
-<p>
-  <b>Name:</b>
-  <%= @person.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @person.getEmail %>
-</p>
-
 <br>
 
-<%= link_to 'Edit', edit_person_path(@person), class: "btn btn-mini" %>
 <a href=<%=people_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Back</a>
+<a href=<%=edit_person_path(@person)%> class="btn btn-mini"> <i class="icon-edit"></i> Edit</a>

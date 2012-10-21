@@ -1,9 +1,22 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+
+<%= form_for([resource, resource.with_person], :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
+  <%= f.fields_for :person do |person_builder| %>
+    <div class="field">
+      <%= person_builder.label :name %><br />
+      <%= person_builder.text_field :name %>
+    </div>
+
+    <div class="input-append">
+      <%= person_builder.label "Email da INF" %><br />
+      <%= person_builder.text_field :email %><span class="add-on">@inf.ufrgs.br</span>
+    </div>
+  <% end %>
+
+  <div><%= f.label "Confirmation email" %><br />
   <%= f.email_field :email %></div>
 
   <div><%= f.label :password %><br />
@@ -11,10 +24,6 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
-
-	<% f.fields_for :person do |f| %>
-
-	<% end %>
 
 
   <div><%= f.submit "Sign up" %></div>
