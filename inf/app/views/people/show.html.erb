@@ -1,13 +1,8 @@
-<h1>Details</h1>
+<h1>User Details</h1>
 
 <p>
-  <b>Name:</b>
-  <%= @person.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @person.getEmail %>
+  <b>Registered user email:</b>
+  <%= @person.user.email %>
 </p>
 
 <p>
@@ -30,5 +25,19 @@
   <%= @person.user.current_sign_in_ip %>
 </p>
 
-<%= link_to 'Edit', edit_person_path(@person), class: "btn btn-mini" %> |
-<%= link_to 'Back', people_path, class: "btn btn-mini" %>
+<h2>Profile Details</h2>
+
+<p>
+  <b>Name:</b>
+  <%= @person.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @person.getEmail %>
+</p>
+
+<br>
+
+<%= link_to 'Edit', edit_person_path(@person), class: "btn btn-mini" %>
+<a href=<%=people_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Back</a>

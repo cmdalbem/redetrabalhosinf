@@ -1,9 +1,10 @@
 Inf::Application.routes.draw do
-  devise_for :users
-
   resources :projects, :people
 
   root :to => "home#show"
+
+  devise_for :users#, :controllers => { :registrations  => "users" }
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
