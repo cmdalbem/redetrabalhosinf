@@ -6,7 +6,18 @@ class PeopleController < ApplicationController
 
   # GET /people/1
   def show
-    @person = Person.find(params[:id])
+    if params[:name]
+      search = Person.where(nick: params[:name])
+
+      if(search.empty?)
+        redirect_to root_path, alert: "Couldn't find profile for #{params[:name]}"
+      else
+        @person = search.first
+      end
+
+    else
+      @person = Person.find(params[:id])
+    end
   end
 
   # GET /people/new

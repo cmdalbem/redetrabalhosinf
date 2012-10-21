@@ -2,11 +2,18 @@ class User < ActiveRecord::Base
 	# Include default devise modules. Others available are:
 	# :token_authenticatable, :confirmable,
 	# :lockable, :timeoutable and :omniauthable
-	devise :database_authenticatable, :registerable,
-	     :recoverable, :rememberable, :trackable, :validatable
+	devise :database_authenticatable, :registerable, :trackable, :rememberable
+	#devise :recoverable, :recoverable: # needs SMTP server
 
 	# Setup accessible (or protected) attributes for your model
-	attr_accessible :email, :password, :password_confirmation, :remember_me, :person_attributes
+	attr_accessible :email, :password, :password_confirmation, :remember_me
+
+	# For using nested forms
+	attr_accessible :person_attributes
+
+	# regex source: http://stackoverflow.com/questions/1156601/whats-the-state-of-the-art-in-email-validation-for-rails
+	validates :email, presence: true, uniqueness: true, format: { with: /\A[A-Za-z0-9._%+-]+@inf.ufrgs.br\z/i }
+	validates :password, length: { minimum: 4 }
 
 	# If we delete the user, the person will be deleted too
 	has_one :person, :dependent => :destroy

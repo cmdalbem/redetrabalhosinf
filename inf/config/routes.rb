@@ -1,9 +1,10 @@
 Inf::Application.routes.draw do
   resources :projects, :people
+  devise_for :users#, :controllers => { :registrations  => "users" }
 
   root :to => "home#show"
 
-  devise_for :users#, :controllers => { :registrations  => "users" }
+  match ':name' => 'People#show', :as => 'profile'
 
 
   # The priority is based upon order of creation:

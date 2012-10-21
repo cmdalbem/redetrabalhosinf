@@ -4,9 +4,23 @@
   <%= @person.name %>
 </p>
 <p>
-  <b>Email:</b>
-  <%= @person.getEmail %>
+  <b>Nick:</b>
+  <%= @person.nick %>
 </p>
+<p>
+  <b>About me:</b>
+  <%= @person.about %>
+</p>
+<p>
+  <b>Barra:</b>
+  <%= @person.barra %>
+</p>
+<p>
+  <b>Personal link:</b>
+  <%= @person.personal_link %>
+</p>
+
+<h3>Statistics</h3>
 <p>
   <b>Number of projects:</b>
   <%= @person.projects.size %>
@@ -39,4 +53,7 @@
 <br>
 
 <a href=<%=people_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Back</a>
-<a href=<%=edit_person_path(@person)%> class="btn btn-mini"> <i class="icon-edit"></i> Edit</a>
+
+<% if user_signed_in? and current_user.person==@person %>
+  <a href=<%=edit_person_path(@person)%> class="btn btn-mini"> <i class="icon-edit"></i> Edit</a>
+<% end %>

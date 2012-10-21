@@ -11,11 +11,11 @@
 <% @people.each do |person| %>
   <tr>
     <td><%= person.name %></td>
-    <td><%= person.getEmail %></td>
+    <td><%= person.user.email %></td>
     <td><%= person.projects.size %></td>
     <td>
       <div class="btn-group">
-        <%= link_to 'Details', person, class: "btn btn-mini" %>
+        <%= link_to 'Details', profile_path(person.nick), class: "btn btn-mini" %>
         <% if user_signed_in? and current_user.person==person %>
           <%= link_to 'Edit', edit_person_path(person), class: "btn btn-mini" %>
           <%= link_to 'Delete', user_registration_path, confirm: 'Are you sure?', method: :delete, class: "btn btn-mini" %>

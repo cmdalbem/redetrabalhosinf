@@ -12,20 +12,18 @@
     </div>
   <% end %>
 
+  <!-- Person Form -->
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div><%= f.label "About" %><br />
+  <%= f.text_area :about %></div>
+  <div><%= f.label "Personal Link" %><br />
+  <%= f.text_field :personal_link %></div>
+  <div><%= f.label "Barra" %><br />
+  <%= f.text_field :personal_link %></div>
 
-  <div class="input-append">
-    <%= f.label "Email da INF" %><br />
-    <%= f.text_field :email %><span class="add-on">@inf.ufrgs.br</span>
-  </div>
-
-  <%= f.fields_for :user do |builder| %>
-    <div><%= builder.label "Email for confirmation" %><br />
-    <%= builder.email_field :email %></div>
-  <% end %>
 
   <div class="actions">
     <%= f.submit class: "btn"%>

@@ -29,6 +29,9 @@
 
 <br />
 
-<a href=<%=new_project_path%> >
-  <button class="btn"><i class="icon-plus"></i> Add Project</button>
-</a>
+<% if user_signed_in? %>
+  <a href=<%=new_project_path%> >
+    <button class="btn btn-success"><i class="icon-plus"></i> Add Project</button>
+  </a>
+<% end %>
+

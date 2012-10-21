@@ -8,15 +8,15 @@
     <div class="field">
       <%= person_builder.label :name %><br />
       <%= person_builder.text_field :name %>
-    </div>
 
-    <div class="input-append">
-      <%= person_builder.label "Email da INF" %><br />
-      <%= person_builder.text_field :email %><span class="add-on">@inf.ufrgs.br</span>
+      <div class="input-prepend">
+        <span class="add-on">redesocialdainf/</span><%= person_builder.text_field :nick %>
+      </div>
+
     </div>
   <% end %>
 
-  <div><%= f.label "Confirmation email" %><br />
+  <div><%= f.label "Email da INF" %><br />
   <%= f.email_field :email %></div>
 
   <div><%= f.label :password %><br />
@@ -25,8 +25,9 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <br>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

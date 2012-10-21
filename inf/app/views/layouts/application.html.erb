@@ -22,7 +22,7 @@
           <li>
             <% if user_signed_in? %>  
               <div class="btn-group"> %>
-                <%= link_to current_user.person.name, current_user.person, class: "btn"%>
+                <%= link_to current_user.person.name, profile_path(current_user.person.nick), class: "btn"%>
                   <button class="btn dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
@@ -41,16 +41,13 @@
   </div>
 </header>
 
-<p id="notice"><%= notice %></p>
-
-<!-- Maps the type of flash message with the correct CSS class name -->
-<% {:notice => 'success', :error => 'error'}.each {|type| %>
-  <% if flash[type] %>
-    <div class="alert alert-<% type[1] %>">
-      <%= flash[type] %>
-    </div>
-  <% end %>
-<% } %>
+<!-- Flash messages -->
+<% if notice %>
+  <div class="alert alert-success"><%= notice %></div> 
+<% end %>
+<% if alert %>
+  <div class="alert alert-error"><%= alert %></div> 
+<% end %>
 
 <!-- Page content goes here -->
 <div class="container">
