@@ -49,6 +49,23 @@
   <b>Location:</b>
   <%= @person.user.current_sign_in_ip %>
 </p>
+<br>
+
+<h1>Projects</h1>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Course</th>
+  </tr>
+  
+  <% @person.projects.all.sort! {|x,y| x.course.name <=> y.course.name } %>
+  <% @person.projects.each do |project| %>
+    <tr>
+      <td><%= project.title %></td>
+      <td><%= project.course.name %></td>
+    </tr>
+  <% end %>
+</table>
 
 <br>
 
