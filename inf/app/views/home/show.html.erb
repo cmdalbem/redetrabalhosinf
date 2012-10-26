@@ -2,6 +2,6 @@
 	<h1>Home</h1>
 	<p>Welcome aboard :)</p>
 	<p>
-		<a  href=<%=projects_path%>> <button class="btn btn-info btn-large">Start now!</button> </a>
+		<a href=<%=user_signed_in? ? projects_path : new_user_session_path%>> <button class="btn btn-info btn-large">Start now!</button> </a>
 	</p>
 </div>
