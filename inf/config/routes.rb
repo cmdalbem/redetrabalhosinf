@@ -6,7 +6,7 @@ Inf::Application.routes.draw do
 
   match 'about' => 'Home#about', :as => 'about'
 
-  match ':name' => 'People#show', :as => 'profile'
+  match 'people/:name' => 'People#show', :as => 'profile'
 
 
   # The priority is based upon order of creation:

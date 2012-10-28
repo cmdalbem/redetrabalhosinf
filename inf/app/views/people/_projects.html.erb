@@ -25,12 +25,23 @@
 
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseNum%>">
-          Title: <%= project.title %>
+          Título: <%= project.title %>
         </a>
       </div>
-      <div id="collapse<%=collapseNum%>" class="accordion-body collapse in">
+      <div id="collapse<%=collapseNum%>" class="accordion-body collapse">
         <div class="accordion-inner">
-          Description: <%= project.description %>
+          <p>
+            <b>Disciplina:</b>
+            <%= project.course.name %>
+          </p>
+          <p>
+            <b>Descrição:</b>
+            <%= project.description %>
+          </p>
+          <p>
+            <b>Data:</b>
+            <%= project.date %>
+          </p>
         </div>
       </div>
 

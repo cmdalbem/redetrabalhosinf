@@ -66,6 +66,9 @@ body {
     padding-right: $pad;
   }
 
+  article.about p:first-letter {
+    font-size: 22px;
+  }
   article.about {
     p:first-letter {
       margin-left: 20px;

@@ -6,17 +6,15 @@ class PeopleController < ApplicationController
 
   # GET /people/1
   def show
-    if params[:name]
-      search = Person.where(nick: params[:name])
+    # It's called ID because of the default routing, but we use this parameter with the user's NICK. See routes.rb for more info.
+    if params[:id]
+      search = Person.where(nick: params[:id])
 
       if(search.empty?)
-        redirect_to root_path, alert: "Couldn't find profile for #{params[:name]}"
+        redirect_to root_path, alert: "Couldn't find profile for #{params[:id]}"
       else
         @person = search.first
       end
-
-    else
-      @person = Person.find(params[:id])
     end
   end
 

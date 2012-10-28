@@ -44,17 +44,18 @@
 		  </div>
 		</header>
 
-		<!-- Flash messages -->
-		<% if notice %>
-		  <div class="alert alert-success"><%= notice %></div> 
-		<% end %>
-		<% if alert %>
-		  <div class="alert alert-error"><%= alert %></div> 
-		<% end %>
-
 		<!-- Page content goes here -->
 		<div class="container">
+			<!-- Flash messages -->
+			<% if notice %>
+			  <div class="alert alert-success"><%= notice %></div> 
+			<% end %>
+			<% if alert %>
+			  <div class="alert alert-error"><%= alert %></div> 
+			<% end %>
+
 			<%= yield %>
+			
 			<br>
 			<br>
 			<br>
@@ -68,7 +69,7 @@
   <section class="container">
 
     <div class="row pull-left muted">
-        <div class="span4">
+        <div class="span3">
           <header>Galeria da INF</header>
           <br>
           Desenvolvido por:
