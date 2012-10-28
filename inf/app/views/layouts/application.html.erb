@@ -9,60 +9,66 @@
   <%= csrf_meta_tags %>  
 </head>
 
-<header class="navbar navbar-fixed-top ">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Galeria da INF", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><a href=<%=root_path%>> <i class="icon-home"></i> Home </a></li>
-          <li><a href=<%=projects_path%>> <i class="icon-list"></i> Projects </a></li>
-          <li><a href=<%=people_path%>> <i class="icon-user"></i> People </a></li>
-          <li class="divider-vertical"></li>
-          <li>
-            <% if user_signed_in? %>  
-              <div class="btn-group"> %>
-                <%= link_to current_user.person.name, profile_path(current_user.person.nick), class: "btn"%>
-                  <button class="btn dropdown-toggle" data-toggle="dropdown">
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <!-- List of user options -->
-                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-                </ul>
-              </div>              
-            <% else %>  
-              <%= link_to "Sign in", new_user_session_path %>  
-            <% end %> 
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+<div id="wrap">
+	<div id="main">
+  
+		<header class="navbar navbar-fixed-top ">
+		  <div class="navbar-inner">
+		    <div class="container">
+		      <nav>
+		        <%= link_to "Galeria da INF", root_path, class: "brand"%>
+		        <ul class="nav pull-right">
+		          <li><a href=<%=root_path%>> <i class="icon-home"></i> Home </a></li>
+		          <li><a href=<%=projects_path%>> <i class="icon-list"></i> Projetos </a></li>
+		          <li><a href=<%=people_path%>> <i class="icon-user"></i> Pessoas </a></li>
+		          <li class="divider-vertical"></li>
+		          <li>
+		            <% if user_signed_in? %>  
+		              <div class="btn-group"> %>
+		                <%= link_to current_user.person.name, profile_path(current_user.person.nick), class: "btn"%>
+		                  <button class="btn dropdown-toggle" data-toggle="dropdown">
+		                  <span class="caret"></span>
+		                </button>
+		                <ul class="dropdown-menu">
+		                  <!-- List of user options -->
+		                  <%= link_to "Deslogar", destroy_user_session_path, :method => :delete %>
+		                </ul>
+		              </div>              
+		            <% else %>  
+		              <%= link_to "Logar", new_user_session_path %>  
+		            <% end %> 
+		          </li>
+		        </ul>
+		      </nav>
+		    </div>
+		  </div>
+		</header>
 
-<!-- Flash messages -->
-<% if notice %>
-  <div class="alert alert-success"><%= notice %></div> 
-<% end %>
-<% if alert %>
-  <div class="alert alert-error"><%= alert %></div> 
-<% end %>
+		<!-- Flash messages -->
+		<% if notice %>
+		  <div class="alert alert-success"><%= notice %></div> 
+		<% end %>
+		<% if alert %>
+		  <div class="alert alert-error"><%= alert %></div> 
+		<% end %>
 
-<!-- Page content goes here -->
-<div class="container">
-	<%= yield %>
+		<!-- Page content goes here -->
+		<div class="container">
+			<%= yield %>
+			<br>
+			<br>
+			<br>
+		</div>
+
+	</div>
 </div>
-
-<br />
-<br />
 
 <!-- Footer -->
 <footer>
   <section class="container">
 
     <div class="row pull-left muted">
-        <div class="span2">
+        <div class="span4">
           <header>Galeria da INF</header>
           <br>
           Desenvolvido por:

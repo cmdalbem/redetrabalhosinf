@@ -14,21 +14,23 @@
 
   <!-- Person Form -->
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label "Nome" %><br />
     <%= f.text_field :name %>
   </div>
   
-  <div><%= f.label "About Me" %><br />
+  <div><%= f.label "Sobre Mim" %><br />
   <%= f.text_area :about %></div>
   
-  <div><%= f.label "Personal Link" %><br />
+  <div><%= f.label "Link pessoal" %><br />
   <%= f.url_field :personal_link %></div>
   
   <div><%= f.label "Barra" %><br />
-  <input type="number" name="barra1" maxlength="4" value="<%=@barra[0]%>" class="input-small"> / <input type="number" name="barra2" maxlength="1" value="<%=@barra[1]%>" class="input-small">
-  <span class="help-block">Tua barra é formada pelo ano em que tu entrou na UFRGS "barra" ('/') o semestre em que tu começou a cursar.</span>
+    <input type="number" name="barra1" maxlength="4" value="<%=@barra[0]%>" class="input-small"> / <input type="number" name="barra2" maxlength="1" value="<%=@barra[1]%>" class="input-small">
+    <span class="help-block">Tua barra é formada pelo ano em que tu entrou na UFRGS "barra" ('/') o semestre em que tu começou a cursar.</span>
+  </div>
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>
   </div>
+  
 <% end %>

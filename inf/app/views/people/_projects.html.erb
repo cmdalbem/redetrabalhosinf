@@ -1,0 +1,42 @@
+<h1>Projetos</h1>
+
+<!--
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Course</th>
+  </tr>
+  
+  <% @person.projects.all.sort! {|x,y| x.course.name <=> y.course.name } %>
+  <% @person.projects.each do |project| %>
+    <tr>
+      <td><%= project.title %></td>
+      <td><%= project.course.name %></td>
+    </tr>
+  <% end %>
+</table>
+!-->
+
+<div class="accordion" id="accordion">
+  
+  <div class="accordion-group">
+    <% collapseNum=0 %>
+    <% @person.projects.each do |project| %>
+
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseNum%>">
+          Title: <%= project.title %>
+        </a>
+      </div>
+      <div id="collapse<%=collapseNum%>" class="accordion-body collapse in">
+        <div class="accordion-inner">
+          Description: <%= project.description %>
+        </div>
+      </div>
+
+      <% collapseNum+=1 %>
+    <% end %>
+
+  </div>
+
+</div>
