@@ -24,19 +24,10 @@
 $page_width: 70%;
 
 
-
 html {
   width: $page_width; 
   margin: auto;
   background-image: url('patterns/light_toast.png');
-}
-
-.navbar {
-  border-bottom: 2px solid rgb(200,100,100);
-
-  li, li:hover {
-    border-bottom: 3px solid transparent;
-  }
 }
 
 body {
@@ -44,11 +35,13 @@ body {
   font-size: 14px;
   line-height: 20px;
 
-	
+  background: none;
 }
 
 #wrap {
   padding-top: 60px;
+
+  /*background-image: linear-gradient(to bottom, rgba(255,255,255, 0.100), rgba(230,230,230, 1));*/
 
   background-image: linear-gradient(to bottom, rgb(255,255,255), rgb(230,230,230));
 
@@ -75,6 +68,18 @@ body {
       font-weight: bold;
     }
   }
+}
+
+.navbar {
+  border-bottom: 2px solid rgb(200,100,100);
+
+  li, li:hover {
+    border-bottom: 3px solid transparent;
+  }
+}
+
+.hero-unit {
+  /*background-color: rgba(255,150,0,0.1);*/
 }
 
 footer {

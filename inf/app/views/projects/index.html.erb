@@ -14,7 +14,7 @@
   <tr>
     <td><%= project.title %></td>
     <td><%= project.course.name %></td>
-    <td><%= link_to project.person.name, project.person %></td>
+    <td><%= link_to project.person.name, profile_path(project.person.nick) %></td>
     <td>
       <div class="btn-group">
         <%= link_to 'Detalhes', project, class: "btn btn-mini" %>
