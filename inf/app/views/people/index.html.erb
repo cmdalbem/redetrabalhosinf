@@ -12,7 +12,7 @@
 
 <% @people.each do |person| %>
   <tr>
-    <td><%= person.name %></td>
+    <td><%= link_to person.name, profile_path(person.nick) %></td>
     <td><%= person.user.email %></td>
     <td><%= person.projects.size %></td>
     <td>

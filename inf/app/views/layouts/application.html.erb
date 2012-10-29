@@ -35,7 +35,7 @@
 		                </ul>
 		              </div>              
 		            <% else %>  
-		              <%= link_to "Logar", new_user_session_path %>  
+		              <%= link_to "Log in", new_user_session_path %>  
 		            <% end %> 
 		          </li>
 		        </ul>
@@ -66,10 +66,10 @@
 
 <!-- Footer -->
 <footer>
-  <section class="container">
+  <section class="container-fluid">
 
-    <div class="row pull-left muted">
-        <div class="span3">
+    <div class="row-fluid muted">
+        <div class="span2">
           <header>Galeria da INF</header>
           <br>
           Desenvolvido por:
@@ -79,15 +79,18 @@
             <li>João Gilberto Gaiewski</li>
           </ul>
         </div>
-        <div class="span4">
+
+        <div class="offset1 span5">
           Uma rede social de trabalhos da INF.
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, est accumsan viverra laoreet, neque tortor aliquam lacus, vitae rutrum orci lectus non dui. Vestibulum. 
           <br>
           <%= link_to "Leia mais...", about_path %>
         </div>
-    </div>
 
-    <p class="row pull-right"><img src="/assets/inf.png"></p>
+        <div class="offset2 span2">
+        	<img src="/assets/inf.png">
+        </div>
+    </div>
 
   </div>
 </footer>
