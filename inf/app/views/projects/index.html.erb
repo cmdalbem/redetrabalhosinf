@@ -20,7 +20,9 @@
           <%= link_to 'Edit', edit_project_path(project), class: "btn btn-mini" %>
           <%= link_to 'Delete', project, confirm: 'Are you sure?', method: :delete, class: "btn btn-mini" %>
         <% end %>
-        <%= link_to 'Like', project, class: "btn btn-mini" %>
+        <%= link_to 'Like', :controller => "projects", :action => "like" %>
+              #:update => { :success => "project", :failure => "error" },
+              #class: "btn btn-mini" %>
       </div>
     </td>
 
@@ -35,4 +37,3 @@
     <button class="btn btn-success"><i class="icon-plus"></i> Add Project</button>
   </a>
 <% end %>
-
