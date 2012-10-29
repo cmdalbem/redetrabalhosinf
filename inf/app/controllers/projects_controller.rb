@@ -75,4 +75,8 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def like
+
+  end
+
 end
