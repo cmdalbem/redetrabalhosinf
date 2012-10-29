@@ -19,13 +19,13 @@
 </p>
 
 <p>
-  <b>Data:</b>
-  <%= @project.date %>
+  <b>Semestre:</b>
+  <%= @project.barra %>
 </p>
 
 
 <a href=<%=projects_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Voltar</a>
 
 <% if user_signed_in? and current_user.person==@project.person %>
-  <a href=<%=edit_person_path(@person)%> class="btn btn-mini"> <i class="icon-edit"></i> Editar</a>
+  <a href=<%=edit_project_path(@project)%> class="btn btn-mini"> <i class="icon-edit"></i> Editar</a>
 <% end %>
