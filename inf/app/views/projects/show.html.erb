@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Title:</b>
+  <b>Título:</b>
   <%= @project.title %>
 </p>
 
 <p>
-  <b>Owner:</b>
+  <b>Dono:</b>
   <%= link_to @project.person.name, @project.person %>
 </p>
 
 <p>
-  <b>Course:</b>
+  <b>Disciplina:</b>
   <%= @project.course.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>Descrição:</b>
   <%= @project.description %>
 </p>
 
 <p>
-  <b>Date:</b>
+  <b>Data:</b>
   <%= @project.date %>
 </p>
 
-<a href=<%=projects_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Back</a>
-<a href=<%=edit_project_path(@project)%> class="btn btn-mini"> <i class="icon-edit"></i> Edit</a>
+
+<a href=<%=projects_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Voltar</a>
+
+<% if user_signed_in? and current_user.person==@project.person %>
+  <a href=<%=edit_person_path(@person)%> class="btn btn-mini"> <i class="icon-edit"></i> Editar</a>
+<% end %>
