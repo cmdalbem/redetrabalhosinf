@@ -76,7 +76,10 @@ class ProjectsController < ApplicationController
   end
 
   def like
-
+    respond_to do |format|
+      format.html { redirect_to Project }
+      format.js
+    end
   end
 
 end

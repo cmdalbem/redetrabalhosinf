@@ -8,6 +8,8 @@ Inf::Application.routes.draw do
 
   match 'people/:name' => 'People#show', :as => 'profile'
 
+  match 'project/like/:id' => 'Projects#like', :as => 'like_project'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

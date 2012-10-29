@@ -22,9 +22,7 @@
           <%= link_to 'Editar', edit_project_path(project), class: "btn btn-mini" %>
           <%= link_to 'Deletar', project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
         <% end %>
-        <%= link_to 'Like', :controller => "projects", :action => "like" %>
-              #:update => { :success => "project", :failure => "error" },
-              #class: "btn btn-mini" %>
+        <%= link_to 'Like', like_project_path(project), remote: true, class: "btn btn-mini" %>
       </div>
     </td>
 
