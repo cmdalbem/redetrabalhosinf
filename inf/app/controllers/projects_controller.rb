@@ -76,6 +76,13 @@ class ProjectsController < ApplicationController
   end
 
   def like
+    @project = Project.find(params[:id])
+    @person = current_user.person
+
+    if not @project.likes.include?(@person)
+      @project.likes.push(@person)
+    end
+
     respond_to do |format|
       format.html { redirect_to Project }
       format.js
