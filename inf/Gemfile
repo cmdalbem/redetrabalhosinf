@@ -28,6 +28,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 
 platforms :ruby do
+  gem 'execjs'
   gem 'therubyracer'
 end
 
