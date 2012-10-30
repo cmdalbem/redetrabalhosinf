@@ -13,22 +13,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :course %><br />
+    <%= f.label "Disciplina" %><br />
     <%= f.select :course, Course.all.collect {|p| p.name } %>
   </div>
 
   <div class="field">
-    <%= f.label "When was it developed?" %><br />
-    <%= f.date_select :date %>
+    <%= f.label "Semestre" %><br />
+    <input type="number" name="barra1" maxlength="4" value="<%=@barra[0]%>" class="input-small"> / 
+    <select name="barra2" class="input-small">
+      <option <%="selected" if (@barra[1]=="1")%>>1</option>
+      <option <%="selected" if (@barra[1]=="2")%>>2</option>
+    </select>
+    <span class="help-block">Tua barra é formada pelo ano em que tu entrou na UFRGS "barra" ('/') o semestre em que tu começou a cursar.</span>
   </div>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label "Título" %><br />
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label "Descrição" %><br />
     <%= f.text_area :description %>
   </div>
 

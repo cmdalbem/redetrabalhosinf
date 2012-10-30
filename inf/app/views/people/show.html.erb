@@ -1,60 +1,75 @@
-<h2>Detalhes de Perfil</h2>
-<p>
-  <b>Nome:</b>
-  <%= @person.name %>
-</p>
-<p>
-  <b>Nick:</b>
-  <%= @person.nick %>
-</p>
-<p>
-  <b>Sobre Mim:</b>
-  <%= @person.about %>
-</p>
-<p>
-  <b>Barra:</b>
-  <%= @person.barra %>
-</p>
-<p>
-  <b>Link pessoal:</b>
-  <%= link_to @person.personal_link, @person.personal_link %>
-</p>
+<legend>Detalhes de Perfil</legend>
 
-<h3>Estatísticas</h3>
-<p>
-  <b>Número de projetos:</b>
-  <%= @person.projects.size %>
-</p>
+<div class="block container-fluid center">
 
-<br>
+  <div class="row-fluid">
+    <div class="span4">
+      <img src="/assets/user.gif">
+    </div>
 
-<h2>User Details</h2>
-<p>
-  <b>Registered user email:</b>
-  <%= @person.user.email %>
-</p>
-<p>
-  <b>Signed up date:</b>
-  <%= @person.user.created_at %>
-</p>
-<p>
-  <b>Sign in count:</b>
-  <%= @person.user.sign_in_count %>
-</p>
-<p>
-  <b>Logged since:</b>
-  <%= @person.user.current_sign_in_at %>
-</p>
-<p>
-  <b>Location:</b>
-  <%= @person.user.current_sign_in_ip %>
-</p>
-<br>
+    <div class="span8">
+      <p>
+        <h2><%= @person.name %></h2>
+      </p>
+      <p>
+        <strong>Nick:</strong>
+        <%= @person.nick %>
+      </p>
+      <p>
+        <strong>Sobre Mim:</strong>
+        <%= @person.about %>
+      </p>
+      <p>
+        <strong>Barra:</strong>
+        <%= @person.barra %>
+      </p>
+      <p>
+        <strong>Link pessoal:</strong>
+        <%= link_to @person.personal_link, @person.personal_link %>
+      </p>
+    </div>
 
-<!-- Special partial for displaying projects -->
-<%= render 'projects' %>
+  </div>
+</div>
 
-<br>
+<div class="container-fluid row-fluid">
+  <div class="block span6">
+    <h3>Estatísticas</h3>
+    <p>
+      <b>Número de projetos:</b>
+      <%= @person.projects.size %>
+    </p>
+  </div>
+
+  <div class="block span6">
+    <h2>User Details</h2>
+    <p>
+      <b>Registered user email:</b>
+      <%= @person.user.email %>
+    </p>
+    <p>
+      <b>Signed up date:</b>
+      <%= @person.user.created_at %>
+    </p>
+    <p>
+      <b>Sign in count:</b>
+      <%= @person.user.sign_in_count %>
+    </p>
+    <p>
+      <b>Logged since:</b>
+      <%= @person.user.current_sign_in_at %>
+    </p>
+    <p>
+      <b>Location:</b>
+      <%= @person.user.current_sign_in_ip %>
+    </p>
+  </div>
+</div>
+
+<div class="block container-fluid">
+  <%= render 'projects' %>
+</div>
+
 
 <a href=<%=people_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Voltar</a>
 

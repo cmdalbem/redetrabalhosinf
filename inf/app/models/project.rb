@@ -8,5 +8,5 @@ class Project < ActiveRecord::Base
 	validates :person, presence: true
 	validates :title, presence: true
 	validates :course, presence: true
-	validates :date, presence: true
+	validates :barra, presence: true
 end

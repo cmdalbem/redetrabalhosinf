@@ -1,4 +1,14 @@
 class ProjectsController < ApplicationController
+
+  def fill_barra
+    if not @project.barra.nil?
+      @barra = @project.barra.split("/")
+    else
+      @barra = ["",""]
+    end
+  end
+
+
   # GET /projects
   def index
     @projects = Project.all
@@ -15,11 +25,15 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
 
+    fill_barra()
+
   end
 
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+
+    fill_barra()
 
     if(user_signed_in?)
       render action: "edit"
@@ -33,13 +47,13 @@ class ProjectsController < ApplicationController
     p = params["project"]
     owner = current_user.person
     c = Course.where(:name => p["course"]).first
-    d = Date.new(p["date(1i)"].to_i, p["date(2i)"].to_i, p["date(3i)"].to_i)
+    barra = params["barra1"] + "/" + params["barra2"]
 
-    @project = Project.new(title: p["title"], course: c, person: owner, description: p["description"], date: d)
+    @project = Project.new(title: p["title"], course: c, person: owner, description: p["description"], barra: barra)
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: 'Projeto criado com sucesso.' }
       else
         format.html { render action: "new" }
       end
@@ -52,12 +66,12 @@ class ProjectsController < ApplicationController
     p = params[:project]
     owner = current_user.person
     c = Course.where(:name => p["course"]).first
-    d = Date.new(p["date(1i)"].to_i, p["date(2i)"].to_i, p["date(3i)"].to_i)
     @project = Project.find(params["id"])
+    barra = params["barra1"] + "/" + params["barra2"]
 
     respond_to do |format|
-      if @project.update_attributes(person: owner, title: p["title"], description: p["description"], course: c, date: d)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+      if @project.update_attributes(person: owner, title: p["title"], description: p["description"], course: c, barra: barra)
+        format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
       else
         format.html { render action: "edit" }
       end

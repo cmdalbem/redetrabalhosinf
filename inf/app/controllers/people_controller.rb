@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
       search = Person.where(nick: params[:id])
 
       if(search.empty?)
-        redirect_to root_path, alert: "Couldn't find profile for #{params[:id]}"
+        redirect_to root_path, alert: "Nao consegui encontrar #{params[:id]}."
       else
         @person = search.first
       end
@@ -42,7 +42,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        format.html { redirect_to @person, notice: 'Perfil criado com sucesso.' }
       else
         format.html { render action: "new" }
       end
@@ -57,7 +57,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.update_attributes(name: p["name"], about: p["about"], personal_link: p["personal_link"], barra: barra )
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+        format.html { redirect_to profile_path(@person.nick), notice: 'Perfil atualizado com sucesso.' }
       else
         format.html { render action: "edit" }
       end
