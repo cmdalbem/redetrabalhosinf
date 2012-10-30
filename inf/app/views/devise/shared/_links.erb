@@ -1,17 +1,17 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Sign in", new_session_path(resource_name), class: "btn" %><br />
+  <%= link_to "Entrar", new_session_path(resource_name), class: "btn" %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  Not registered? <a href=<%=new_registration_path(resource_name)%>> <button class="btn btn-small btn-success">Sign up</button> </a>
+  Não está cadastrado? <a href=<%=new_registration_path(resource_name)%>> <button class="btn btn-small btn-success">Cadastre-se</button> </a>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn" %><br />
+  <%= link_to "Esqueceu sua senha?", new_password_path(resource_name), class: "btn" %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <%= link_to "Não recebou instruções de confirmação?", new_confirmation_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>

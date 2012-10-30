@@ -1,4 +1,4 @@
-<h2>Sign in</h2>
+<h2>Entrar</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal" }) do |f| %>
   
@@ -20,11 +20,11 @@
 		<div class="control-group">
 			<div class="controls">
 				<label class="checkbox">
-					<%= f.check_box :remember_me %> Remember me
+					<%= f.check_box :remember_me %> Manter logado
 				</label>
 				<br>
 				<br>
-				<%= f.submit "Sign in", class: "btn btn-primary"%>
+				<%= f.submit "Entrar", class: "btn btn-primary"%>
 			</div>
 		</div>
 	<% end %>

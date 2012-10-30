@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Cadastro</h2>
 
 
 <%= form_for([resource, resource.with_person], :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -6,11 +6,11 @@
 
   <%= f.fields_for :person do |person_builder| %>
     <div class="field">
-      <%= person_builder.label :name %><br />
+      <%= person_builder.label "Nome" %><br />
       <%= person_builder.text_field :name %>
 
       <div class="input-prepend">
-        <span class="add-on">redesocialdainf/</span><%= person_builder.text_field :nick %>
+        <span class="add-on">redesocialdainf/</span><%= person_builder.text_field :nick, placeholder: "nick" %>
       </div>
 
     </div>
@@ -19,15 +19,15 @@
   <div><%= f.label "Email da INF" %><br />
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label "Senha" %><br />
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label "Confirmação da senha" %><br />
   <%= f.password_field :password_confirmation %></div>
 
   <br>
 
-  <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
+  <div><%= f.submit "Registrar", class: "btn btn-primary" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
