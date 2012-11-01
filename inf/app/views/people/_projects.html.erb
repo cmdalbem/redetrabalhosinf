@@ -25,8 +25,16 @@
 
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseNum%>">
-          Título: <%= project.title %>
+          Título: <%= project.title %> 
         </a>
+
+        <p>Likes: 
+          <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
+        </p>
+
+        <% if user_signed_in? %>
+          <%= link_to 'Like', like_project_path(project), remote: true, class: "btn btn-mini" %>
+        <% end %>
       </div>
       <div id="collapse<%=collapseNum%>" class="accordion-body collapse">
         <div class="accordion-inner">

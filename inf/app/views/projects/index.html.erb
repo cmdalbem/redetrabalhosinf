@@ -4,6 +4,7 @@
 
 <table class="table table-striped table-hover">
   <tr>
+    <th>Likes</th>
     <th>Título</th>
     <th>Curso</th>
     <th>Dono</th>
@@ -12,7 +13,8 @@
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.title %> (Likes <%= project.likes.count %>)</td>
+    <td><span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span></td>
+    <td><%= project.title %></td>
     <td><%= project.course.name %></td>
     <td><%= link_to project.person.name, profile_path(project.person.nick) %></td>
     <td>

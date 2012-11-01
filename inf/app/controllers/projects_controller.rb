@@ -92,9 +92,10 @@ class ProjectsController < ApplicationController
   def like
     @project = Project.find(params[:id])
     @person = current_user.person
-
-    if not @project.likes.include?(@person)
-      @project.likes.push(@person)
+    if @project
+      if not @project.likes.include?(@person)
+        @project.likes.push(@person)
+      end
     end
 
     respond_to do |format|

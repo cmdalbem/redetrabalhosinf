@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029212823) do
+ActiveRecord::Schema.define(:version => 20121029223203) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20121029212823) do
     t.datetime "updated_at",                 :null => false
     t.integer  "person_id"
     t.integer  "course_id",   :default => 1
-    t.date     "date"
+    t.string   "barra"
   end
 
   add_index "projects", ["person_id"], :name => "index_projects_on_person_id"
