@@ -1,5 +1,8 @@
 class ProjectsController < ApplicationController
 
+  helper_method :sort_by_column
+
+
   def fill_barra
     if not @project.barra.nil?
       @barra = @project.barra.split("/")
@@ -8,22 +11,21 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def sort_column
-    case params[:sort]
+  def sort_projects_by_column(projectsList, column="title", direction="asc")
+    case column
         when "title"
-          @projects.sort_by! {|x| x.title}
+          projectsList.sort_by! {|x| x.title}
         when "course"
-          @projects.sort_by! {|x| x.course.name}
+          projectsList.sort_by! {|x| x.course.name}
         when "person"
-          @projects.sort_by! {|x| x.person.name}
+          projectsList.sort_by! {|x| x.person.name}
         when "likes"
-          @projects.sort_by! {|x| x.likes.size }
+          projectsList.sort_by! {|x| x.likes.size }
     end
 
-    if params[:direction] == "desc"
-      @projects.reverse!
+    if direction == "desc"
+      projectsList.reverse!
     end
-
   end
 
 
@@ -35,11 +37,7 @@ class ProjectsController < ApplicationController
       @projects = Project.all
     end
 
-    params[:direction] = "asc" if not params[:direction]
-    params[:sort] = "title" if not params[:sort]
-
-    sort_column
-
+    sort_projects_by_column @projects, params[:sort], params[:direction]
   end
 
   # GET /projects/1

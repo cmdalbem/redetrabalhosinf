@@ -15,7 +15,16 @@
     </div>
 <% end %>
 
+
 <!-- Projects listing -->
+<div class="pull-right btn-toolbar">
+  <div class="btn-group">
+    <%= link_to raw("<i class=\"icon-align-justify\"></i>"), "#", class: "btn active" %>
+    <%= link_to raw("<i class=\"icon-th-list\"></i>"), "#", class: "btn disabled" %>
+    <%= link_to raw("<i class=\"icon-th-large\"></i>"), "#", class: "btn disabled" %>
+  </div>
+</div>
+
 <table class="table table-striped table-hover">
   <tr>
     <th><%= sortable "Título", "title" %></th>

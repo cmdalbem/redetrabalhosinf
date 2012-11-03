@@ -88,10 +88,19 @@ body {
 }
 
 .navbar {
-  border-bottom: 2px solid rgb(200,100,100);
-
-  li, li:hover {
+  $myred: rgb(200,100,100);
+  border-bottom: 2px solid $myred;
+  
+  li a{
     border-bottom: 3px solid transparent;
+
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+  }
+  li a:hover {
+    border-bottom: 3px solid $myred;
   }
 }
 
@@ -180,7 +189,7 @@ a#logo {
 
 a#logo:hover {
   text-decoration: none;
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,1);
   background: none;
 }
 
@@ -191,11 +200,11 @@ a#logo:hover {
 }
 
 .current.asc {
-  background-image: url(icons/up_arrow.gif);
+  background-image: url(icons/down_arrow.gif);
 }
 
 .current.desc {
-  background-image: url(icons/down_arrow.gif);
+  background-image: url(icons/up_arrow.gif);
 }
 
 
