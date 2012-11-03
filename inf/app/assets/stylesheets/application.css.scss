@@ -184,6 +184,21 @@ a#logo:hover {
   background: none;
 }
 
+.current {
+  padding-right: 15px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.current.asc {
+  background-image: url(icons/up_arrow.gif);
+}
+
+.current.desc {
+  background-image: url(icons/down_arrow.gif);
+}
+
+
 label {
   display: inline
 }

@@ -14,6 +14,7 @@ class Project < ActiveRecord::Base
 	def self.search(search)
 		search.downcase!
 		if search
+			#http://www.definenull.com/content/rails-find-conditions
 			find(:all, :conditions => ["lower(title) LIKE ? OR lower(description) LIKE ?", "%#{search}%", "%#{search}%"])
 		else
 			find(:all)

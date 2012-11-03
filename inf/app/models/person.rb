@@ -13,6 +13,7 @@ class Person < ActiveRecord::Base
 	def self.search(search)
 		search.downcase!
 		if search
+			#http://www.definenull.com/content/rails-find-conditions
 			find(:all, :conditions => ["lower(name) LIKE ? OR lower(nick) LIKE ?", "%#{search}%", "%#{search}%"])
 		else
 			find(:all)

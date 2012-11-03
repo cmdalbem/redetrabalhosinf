@@ -8,6 +8,24 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def sort_column
+    case params[:sort]
+        when "title"
+          @projects.sort_by! {|x| x.title}
+        when "course"
+          @projects.sort_by! {|x| x.course.name}
+        when "person"
+          @projects.sort_by! {|x| x.person.name}
+        when "likes"
+          @projects.sort_by! {|x| x.likes.size }
+    end
+
+    if params[:direction] == "desc"
+      @projects.reverse!
+    end
+
+  end
+
 
   # GET /projects
   def index
@@ -16,6 +34,12 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.all
     end
+
+    params[:direction] = "asc" if not params[:direction]
+    params[:sort] = "title" if not params[:sort]
+
+    sort_column
+
   end
 
   # GET /projects/1
