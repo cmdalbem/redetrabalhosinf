@@ -5,7 +5,7 @@
 
 <p>
   <b>Dono:</b>
-  <%= link_to @project.person.name, @project.person %>
+  <%= link_to @project.person.name, profile_path(@project.person.nick) %>
 </p>
 
 <p>
