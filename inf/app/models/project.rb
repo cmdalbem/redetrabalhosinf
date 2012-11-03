@@ -6,7 +6,8 @@ class Project < ActiveRecord::Base
 	has_and_belongs_to_many :likes, :foreign_key => 'project_id', :class_name => "Person", :join_table => 'people_projects'
 
 	validates :person, presence: true
-	validates :title, presence: true
+	validates :title, presence: true, length: {maximum: 50}
+	validates :description, length: {maximum: 1000}
 	validates :course, presence: true
 	validates :barra, presence: true
 end

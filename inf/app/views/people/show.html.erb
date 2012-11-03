@@ -1,19 +1,16 @@
 <legend>Detalhes de Perfil</legend>
 
-<div class="block container-fluid center">
+<div class="content">
 
-  <div class="row-fluid">
+<div class="container-fluid center">
+
+  <div class="block row-fluid">
     <div class="span4">
-      <img src="/assets/user.gif">
+      <center><img src="/assets/user.gif"></center>
     </div>
-
-    <div class="span8">
+    <div class="block span8">
       <p>
         <h2><%= @person.name %></h2>
-      </p>
-      <p>
-        <strong>Nick:</strong>
-        <%= @person.nick %>
       </p>
       <p>
         <strong>Sobre Mim:</strong>
@@ -28,51 +25,59 @@
         <%= link_to @person.personal_link, @person.personal_link %>
       </p>
     </div>
-
-  </div>
-</div>
-
-<div class="container-fluid row-fluid">
-  <div class="block span6">
-    <h3>Estatísticas</h3>
-    <p>
-      <b>Número de projetos:</b>
-      <%= @person.projects.size %>
-    </p>
   </div>
 
-  <div class="block span6">
-    <h2>User Details</h2>
-    <p>
-      <b>Registered user email:</b>
-      <%= @person.user.email %>
-    </p>
-    <p>
-      <b>Signed up date:</b>
-      <%= @person.user.created_at %>
-    </p>
-    <p>
-      <b>Sign in count:</b>
-      <%= @person.user.sign_in_count %>
-    </p>
-    <p>
-      <b>Logged since:</b>
-      <%= @person.user.current_sign_in_at %>
-    </p>
-    <p>
-      <b>Location:</b>
-      <%= @person.user.current_sign_in_ip %>
-    </p>
+  <br>
+
+  <div class="row-fluid">
+    <div class="block span6">
+      <h3>Estatísticas</h3>
+      <p>
+        <b>Número de projetos:</b>
+        <%= @person.projects.size %>
+      </p>
+    </div>
+
+    <div class="block span6">
+      <h2>User Details</h2>
+      <p>
+        <b>Registered user email:</b>
+        <%= @person.user.email %>
+      </p>
+      <p>
+        <b>Signed up date:</b>
+        <%= @person.user.created_at %>
+      </p>
+      <p>
+        <b>Sign in count:</b>
+        <%= @person.user.sign_in_count %>
+      </p>
+      <p>
+        <b>Logged since:</b>
+        <%= @person.user.current_sign_in_at %>
+      </p>
+      <p>
+        <b>Location:</b>
+        <%= @person.user.current_sign_in_ip %>
+      </p>
+    </div>
   </div>
+
+  <br>
+
+  <div class="row-fluid">
+    <div class="block span12">
+      <%= render 'projects' %>
+    </div>
+  </div>
+
 </div>
 
-<div class="block container-fluid">
-  <%= render 'projects' %>
 </div>
 
 
-<a href=<%=people_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Voltar</a>
+<%= link_to raw("<i class=\"icon-arrow-left\"></i> Voltar"), people_path, class: "btn" %>
 
 <% if user_signed_in? and current_user.person==@person %>
-  <a href=<%=edit_person_path(@person)%> class="btn btn-mini"> <i class="icon-edit"></i> Editar</a>
+  <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_person_path(@person), class: "btn btn-primary" %>
 <% end %>

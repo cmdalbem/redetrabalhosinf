@@ -20,7 +20,7 @@
   <div class="field">
     <%= f.label "Semestre" %><br />
     <input type="number" name="barra1" maxlength="4" value="<%=@barra[0]%>" class="input-small" placeholder="ano"> / 
-    <select name="barra2" class="input-small">
+    <select name="barra2">
       <option <%="selected" if (@barra[1]=="")%>></option>
       <option <%="selected" if (@barra[1]=="1")%>>1</option>
       <option <%="selected" if (@barra[1]=="2")%>>2</option>

@@ -1,9 +1,10 @@
 <div class="center hero-unit">
 	<h1>Home</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt odio ac nulla pulvinar volutpat ut vel lectus. Suspendisse potenti. Fusce at purus diam, vel rhoncus leo. Etiam faucibus suscipit lectus nec tincidunt. Maecenas vehicula nunc et dui egestas aliquam. </p>
+	<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.</p>
 
-	<p>Duis id sem sed elit porttitor laoreet. Nam eget ipsum ligula, nec auctor nulla. Etiam nec facilisis quam. :)</p>
+	<p>Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
 	<p>
-		<a href=<%=user_signed_in? ? projects_path : new_user_session_path%>> <button class="btn btn-info btn-large">Comece já!</button> </a>
+		<%= link_to raw("Comece já!"), (user_signed_in? ? projects_path : new_user_session_path), class: "btn btn-info btn-large" %>
+
 	</p>
 </div>

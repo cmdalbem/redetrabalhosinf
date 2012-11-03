@@ -2,4 +2,4 @@
 
 <%= render 'form' %>
 
-<a href=<%=people_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Voltar </a>
+<%= link_to raw("<i class=\"icon-arrow-left\"></i> Voltar"), people_path, class: "btn btn-mini" %>

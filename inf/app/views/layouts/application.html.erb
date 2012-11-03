@@ -18,9 +18,9 @@
 		      <nav>
 		        <%= link_to "Galeria da INF", root_path, class: "brand"%>
 		        <ul class="nav pull-right">
-		          <li><a href=<%=root_path%>> <i class="icon-home"></i> Home </a></li>
-		          <li><a href=<%=projects_path%>> <i class="icon-list"></i> Projetos </a></li>
-		          <li><a href=<%=people_path%>> <i class="icon-user"></i> Pessoas </a></li>
+		          <li><%= link_to raw("<i class=\"icon-home\"></i> Início"), root_path %></li>
+		          <li><%= link_to raw("<i class=\"icon-list\"></i> Projetos"), projects_path %></li>
+		          <li><%= link_to raw("<i class=\"icon-user\"></i> Pessoas"), people_path %></li>
 		          <li class="divider-vertical"></li>
 		          <li>
 		            <% if user_signed_in? %>  
@@ -82,7 +82,7 @@
 
         <div class="offset1 span5">
           Uma rede social de trabalhos da INF.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, est accumsan viverra laoreet, neque tortor aliquam lacus, vitae rutrum orci lectus non dui. Vestibulum. 
+          Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. 
           <br>
           <%= link_to "Leia mais...", about_path %>
         </div>

@@ -27,7 +27,7 @@ $page_width: 70%;
 html {
   width: $page_width; 
   margin: auto;
-  background-image: url('patterns/light_toast.png');
+  background-image: url('patterns/grey.png');
 }
 
 body {
@@ -49,9 +49,9 @@ body {
   background-image: -webkit-linear-gradient(top, rgb(255,255,255), rgb(230,230,230));
   background-image: -ms-linear-gradient(top, rgb(255,255,255), rgb(230,230,230));
 
-  -moz-box-shadow: 0 0 35px rgba(0,0,0,0.1);
-  -webkit-box-shadow: 0 0 35px rgba(0,0,0,0.1);
-  box-shadow: 0 0 35px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  box-shadow: 0 0 30px rgba(0,0,0,0.2);
 }
 
 .container {
@@ -75,15 +75,16 @@ body {
 }
 
 .block {
-  $margin: 0px;
-  $padding: 10px;
-  margin: $margin $margin $margin $margin;
-  padding: $padding $padding $padding $padding;
   background-color: rgba(0,0,0,0.03);
 
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+
+  img {
+    height: 200px;
+    width: auto;
+  }
 }
 
 .navbar {
@@ -100,11 +101,11 @@ body {
 
 footer {
   /*font-size: 12px;*/
-  width: 100%;
-  height: 100%;
   border-top: 1px solid rgba(0,0,0,0.1);
   background-color: rgba(0,0,0,0.1);
   padding-top: 10px;
+
+  background-image: url('patterns/grid.png');
 
   header {
     font-weight: bold;
@@ -123,7 +124,7 @@ footer {
 form {
   width: auto;
   position: center;
-  background-color: rgba(0,0,0,0.05);
+  background-color: rgba(0,0,0,0.03);
 
   padding: 20px 50px 20px 20px;
   margin-left: 50px;
@@ -133,9 +134,6 @@ form {
   -moz-border-radius: 20px;
   border-radius: 20px;
 
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 
   select {
     width: auto;
@@ -152,8 +150,8 @@ form {
   }
 }
 
-p, h1, h2, h3, h4 {
-	margin-left: 10px;	
+.content {
+  padding-bottom: 50px;
 }
 
 p#authors {

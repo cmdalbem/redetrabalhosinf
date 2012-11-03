@@ -20,11 +20,11 @@
 <div class="accordion" id="accordion">
   
   <div class="accordion-group">
-    <% collapseNum=0 %>
+    <% collapseId = 0 %>
     <% @person.projects.each do |project| %>
 
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseNum%>">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
           Título: <%= project.title %> 
         </a>
 
@@ -36,7 +36,7 @@
           <%= link_to 'Like', like_project_path(project), remote: true, class: "btn btn-mini" %>
         <% end %>
       </div>
-      <div id="collapse<%=collapseNum%>" class="accordion-body collapse">
+      <div id="collapse<%=collapseId%>" class="accordion-body collapse">
         <div class="accordion-inner">
           <p>
             <b>Disciplina:</b>
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <% collapseNum+=1 %>
+      <% collapseId+=1 %>
     <% end %>
 
   </div>

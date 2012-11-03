@@ -24,8 +24,8 @@
 </p>
 
 
-<a href=<%=projects_path%> class="btn btn-mini"> <i class="icon-arrow-left"></i> Voltar</a>
+<%= link_to raw("<i class=\"icon-arrow-left\"></i> Voltar"), projects_path, class: "btn btn-mini" %>
 
 <% if user_signed_in? and current_user.person==@project.person %>
-  <a href=<%=edit_project_path(@project)%> class="btn btn-mini"> <i class="icon-edit"></i> Editar</a>
+  <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(@project), class: "btn btn-mini" %>
 <% end %>
