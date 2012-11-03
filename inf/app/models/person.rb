@@ -10,4 +10,12 @@ class Person < ActiveRecord::Base
 	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 50}
 	validates :about, length: {maximum: 1000}
 
+	def self.search(search)
+		search.downcase!
+		if search
+			find(:all, :conditions => ["lower(name) LIKE ? OR lower(nick) LIKE ?", "%#{search}%", "%#{search}%"])
+		else
+			find(:all)
+		end
+	end
 end

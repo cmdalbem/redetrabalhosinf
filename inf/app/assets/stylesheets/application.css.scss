@@ -134,7 +134,6 @@ form {
   -moz-border-radius: 20px;
   border-radius: 20px;
 
-
   select {
     width: auto;
   }
@@ -152,6 +151,10 @@ form {
 
 .content {
   padding-bottom: 50px;
+}
+
+#search.search-query {
+  height: auto;
 }
 
 p#authors {

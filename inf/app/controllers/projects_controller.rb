@@ -11,8 +11,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.all
-
+    if params[:search]
+      @projects = Project.search(params[:search])
+    else
+      @projects = Project.all
+    end
   end
 
   # GET /projects/1

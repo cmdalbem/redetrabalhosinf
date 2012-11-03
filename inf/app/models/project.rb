@@ -10,4 +10,14 @@ class Project < ActiveRecord::Base
 	validates :description, length: {maximum: 1000}
 	validates :course, presence: true
 	validates :barra, presence: true
+
+	def self.search(search)
+		search.downcase!
+		if search
+			find(:all, :conditions => ["lower(title) LIKE ? OR lower(description) LIKE ?", "%#{search}%", "%#{search}%"])
+		else
+			find(:all)
+		end
+	end
+
 end

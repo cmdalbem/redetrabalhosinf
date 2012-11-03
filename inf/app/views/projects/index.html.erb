@@ -2,30 +2,45 @@
 
 <br>
 
+<div class="content">
+
+<!-- Search Form -->
+<%= form_tag projects_path, :method => 'get', class: "form-search" do %>
+    <div class="field">
+      <div class="input-append row-fluid">
+        <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "trabalho foda" %>
+        <%= submit_tag "Pesquisar", class: "btn", name: nil %>
+      </div>
+    </div>
+<% end %>
+
+<!-- Projects listing -->
 <table class="table table-striped table-hover">
   <tr>
-    <th>Likes</th>
     <th>Título</th>
-    <th>Curso</th>
-    <th>Dono</th>
+    <th>Disciplina</th>
+    <th>Autor</th>
+    <th>Likes</th>
     <th colspan="3"></th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
-    <td><span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span></td>
-    <td><%= project.title %></td>
+    <td><%= link_to project.title, project %></td>
     <td><%= project.course.name %></td>
     <td><%= link_to project.person.name, profile_path(project.person.nick) %></td>
     <td>
+      <span id="project-like-count-<%= project.id  %>"><%= project.likes.count %></span>
+      <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini" %>
+    </td>
+    <td>
       <div class="btn-group">
-        <%= link_to raw("<i class=\"icon-zoom-in\"></i> Detalhes"), project, class: "btn btn-mini" %>
+        <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn btn-mini" %>
         <% if user_signed_in? %>
           <% if current_user.person==project.person %>
-            <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(project), class: "btn btn-mini" %>
-            <%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
+            <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn btn-mini" %>
+            <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
           <% end %>
-          <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini" %>
         <% end %>
       </div>
     </td>
@@ -34,7 +49,7 @@
 <% end %>
 </table>
 
-<br />
+</div>
 
 <% if user_signed_in? %>
   <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success" %>

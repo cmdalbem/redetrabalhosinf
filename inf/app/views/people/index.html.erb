@@ -2,6 +2,19 @@
 
 <br>
 
+<div class="content">
+
+<!-- Search Form -->
+<%= form_tag people_path, :method => 'get', class: "form-search" do %>
+    <div class="field">
+      <div class="input-append row-fluid">
+        <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "badanha" %>
+        <%= submit_tag "Pesquisar", class: "btn", name: nil %>
+      </div>
+    </div>
+<% end %>
+
+<!-- People listing -->
 <table class="table table-striped table-hover">
   <tr>
     <th>Nome</th>
@@ -17,13 +30,15 @@
     <td><%= person.projects.size %></td>
     <td>
       <div class="btn-group">
-        <%= link_to 'Detalhes', profile_path(person.nick), class: "btn btn-mini" %>
+        <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), profile_path(person.nick), class: "btn btn-mini" %>
         <% if user_signed_in? and current_user.person==person %>
-          <%= link_to 'Editar', edit_person_path(person), class: "btn btn-mini" %>
-          <%= link_to 'Deletar', user_registration_path, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
+          <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_person_path(person), class: "btn btn-mini" %>
+          <%= link_to raw("<i class=\"icon-remove\"></i>"), user_registration_path, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
         <% end %>
       </div>
     </td>
   </tr>
 <% end %>
 </table>
+
+</div>
