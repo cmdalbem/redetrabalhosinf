@@ -17,22 +17,23 @@ group :assets do
   # See http://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
-  
-  gem 'font-awesome-sass-rails'
+  gem 'uglifier', '>= 1.0.3'  
 end
 
-#custom commands
+# Our custom gems! :)
 gem 'jquery-rails'
 
 gem 'bootstrap-sass'
+gem 'font-awesome-sass-rails'
 
 gem 'devise'
 
+# Gems to be added only when running on Linux
 platforms :ruby do
   gem 'execjs'
   gem 'therubyracer'
 end
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
