@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
 	validates :title, presence: true, length: {maximum: 50}
 	validates :description, length: {maximum: 1000}
 	validates :course, presence: true
-	validates :barra, presence: true
+	validates :barra, presence: true, :format => { :with => /\A[0-9][0-9][0-9][0-9]\/[0-9]\z/ }
 
 	def self.search(search)
 		search.downcase!

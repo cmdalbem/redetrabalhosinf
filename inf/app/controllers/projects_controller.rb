@@ -1,26 +1,31 @@
 class ProjectsController < ApplicationController
 
   helper_method :sort_by_column
+  helper_method :get_formated_barra
 
 
-  def fill_barra
+  def get_formated_barra
     if not @project.barra.nil?
-      @barra = @project.barra.split("/")
+      barra = @project.barra.split("/")
     else
-      @barra = ["",""]
+      barra = ["",""]
     end
+
+    return barra
   end
 
   def sort_projects_by_column(projectsList, column="title", direction="asc")
     case column
         when "title"
           projectsList.sort_by! {|x| x.title}
+        when "barra"
+          projectsList.sort_by! {|x| x.barra }
         when "course"
           projectsList.sort_by! {|x| x.course.name}
         when "person"
           projectsList.sort_by! {|x| x.person.name}
         when "likes"
-          projectsList.sort_by! {|x| x.likes.size }
+          projectsList.sort_by! {|x| x.likes.size }        
     end
 
     if direction == "desc"
@@ -50,15 +55,11 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
 
-    fill_barra()
-
   end
 
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-
-    fill_barra()
 
     if(user_signed_in?)
       render action: "edit"

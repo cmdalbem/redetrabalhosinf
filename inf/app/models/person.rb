@@ -6,7 +6,7 @@ class Person < ActiveRecord::Base
 	has_and_belongs_to_many :likes, :foreign_key => 'person_id', :class_name => "Project"
 
 	validates :name, presence: true, length: {minimum:4, maximum: 100}
-	validates :barra, presence: true
+	validates :barra, presence: true, :format => { :with => /\A[1-2][0-9][0-9][0-9]\/[0-9]\z/ }
 	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 50}
 	validates :about, length: {maximum: 1000}
 

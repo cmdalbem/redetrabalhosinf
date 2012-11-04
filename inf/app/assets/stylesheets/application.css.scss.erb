@@ -14,10 +14,25 @@
 
 @import "bootstrap";
 @import "bootstrap-responsive";
+@import 'font-awesome';
 
 
 /* Import font from Google Fonts API */
-@import url('http://fonts.googleapis.com/css?family=Inder&subset=latin,latin-ext');
+@import url("http://fonts.googleapis.com/css?family=Inder&subset=latin,latin-ext");
+
+@font-face {
+    font-family: 'OpenSansLight';
+    src: url(' <%= asset_path('OpenSans-Light-webfont.woff') %>') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url(' <%= asset_path('OpenSans-Regular-webfont.woff') %>') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 /* Important globals */
@@ -31,7 +46,7 @@ html {
 }
 
 body {
-  font-family: 'Inder', sans-serif;
+  font-family: 'Inder', 'OpenSansRegular', sans-serif;
   font-size: 14px;
   line-height: 20px;
 
@@ -87,20 +102,28 @@ body {
   }
 }
 
+.nav > .active > a > [class^="icon-"],
+.nav > .active > a > [class*=" icon-"], {
+  background-image: none;
+}
+
 .navbar {
   $myred: rgb(200,100,100);
   border-bottom: 2px solid $myred;
   
-  li a{
-    border-bottom: 3px solid transparent;
+  li.nav_link {
+    a {
+      border-bottom: 3px solid transparent;
 
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-  }
-  li a:hover {
-    border-bottom: 3px solid $myred;
+      -webkit-transition: all .2s ease-in-out;
+      -moz-transition: all .2s ease-in-out;
+      -o-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+    }
+
+    a:hover {
+      border-bottom: 3px solid $myred;
+    }
   }
 }
 
@@ -111,14 +134,19 @@ body {
 footer {
   /*font-size: 12px;*/
   border-top: 1px solid rgba(0,0,0,0.1);
-  background-color: rgba(0,0,0,0.1);
-  padding-top: 10px;
+  background-color: rgba(0,0,0,0.05);
+  padding-top: 20px;
 
   background-image: url('patterns/grid.png');
 
   header {
     font-weight: bold;
     text-shadow: 1px 1px 1px #fff;
+    font-size: 16px;
+
+    a, a:hover{
+      text-decoration: none;
+    }
   }
 
   img {
@@ -198,13 +226,11 @@ a#logo:hover {
   background-repeat: no-repeat;
   background-position: right center;
 }
-
 .current.asc {
-  background-image: url(icons/down_arrow.gif);
+  background-image: url(/assets/glyphicons-caret-down.png);
 }
-
 .current.desc {
-  background-image: url(icons/up_arrow.gif);
+  background-image: url(/assets/glyphicons-caret-up.png);
 }
 
 
