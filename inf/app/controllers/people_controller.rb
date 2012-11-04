@@ -46,8 +46,9 @@ class PeopleController < ApplicationController
   # POST /people
   def create
     p = params[:person];
+    barra = p["barra1"] + "/" + p["barra2"]
 
-    @person = Person.new(name: p["name"], email: p["email"])
+    @person = Person.new(name: p["name"], email: p["email"], barra: barra)
 
     respond_to do |format|
       if @person.save
@@ -62,7 +63,7 @@ class PeopleController < ApplicationController
   def update
     @person = Person.find(params[:id])
     p = params[:person]
-    barra = params["barra1"] + "/" + params["barra2"]
+    barra = p["barra1"] + "/" + p["barra2"]
 
     respond_to do |format|
       if @person.update_attributes(name: p["name"], about: p["about"], personal_link: p["personal_link"], barra: barra )

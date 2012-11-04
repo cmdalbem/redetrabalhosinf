@@ -1,5 +1,5 @@
 Inf::Application.routes.draw do
-  resources :projects, :people, :home
+  resources :projects, :people, :home, :tags
   devise_for :users#, :controllers => { :registrations  => "users" }
 
   root :to => "home#show"

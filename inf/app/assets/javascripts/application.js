@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+
+$(function() {
+	$("#project_tag_tokens").tokenInput( "/tags.json", {
+		crossDomain: false,
+		prePopulate: $(this).data('pre'),
+		theme: "facebook",
+		preventDuplicates: true
+	});
+});

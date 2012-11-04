@@ -2,6 +2,9 @@ class Project < ActiveRecord::Base
 	belongs_to :person
 	belongs_to :course
 
+	has_many :taggings
+	has_many :tags, through: :taggings
+
 	#Like relationship
 	has_and_belongs_to_many :likes, :foreign_key => 'project_id', :class_name => "Person", :join_table => 'people_projects'
 
@@ -10,6 +13,13 @@ class Project < ActiveRecord::Base
 	validates :description, length: {maximum: 1000}
 	validates :course, presence: true
 	validates :barra, presence: true, :format => { :with => /\A[0-9][0-9][0-9][0-9]\/[0-9]\z/ }
+
+	attr_reader :tag_tokens
+	
+	def tag_tokens=(ids)
+		self.tag_ids = ids.split(",")
+	end
+
 
 	def self.search(search)
 		search.downcase!

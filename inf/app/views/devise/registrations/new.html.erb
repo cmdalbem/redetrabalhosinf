@@ -8,12 +8,18 @@
     <div class="field">
       <%= person_builder.label "Nome" %><br />
       <%= person_builder.text_field :name %>
-
-      <div class="input-prepend">
-        <span class="add-on">redesocialdainf/</span><%= person_builder.text_field :nick, placeholder: "nick" %>
-      </div>
-
     </div>
+
+    <div class="field">
+      <%= person_builder.label "Semestre" %><br />
+      <%= person_builder.text_field :barra1 %><br />
+      <%= person_builder.text_field :barra2 %><br />
+      <span class="help-block">Tua barra é formada pelo ano em que tu entrou na UFRGS "barra" ('/') o semestre em que tu começou a cursar.</span>
+    </div>  
+
+    <div class="input-prepend">
+      <span class="add-on">redesocialdainf/</span><%= person_builder.text_field :nick, placeholder: "nick" %>
+    </div>    
   <% end %>
 
   <div><%= f.label "Email da INF" %><br />

@@ -79,8 +79,9 @@ class ProjectsController < ApplicationController
     owner = current_user.person
     c = Course.where(:name => p["course"]).first
     barra = params["barra1"] + "/" + params["barra2"]
+    tags = p["tag_tokens"].split(",")
 
-    @project = Project.new(title: p["title"], course: c, person: owner, description: p["description"], barra: barra)
+    @project = Project.new(title: p["title"], course: c, person: owner, description: p["description"], barra: barra, tag_ids: tags)
 
     respond_to do |format|
       if @project.save
@@ -99,9 +100,10 @@ class ProjectsController < ApplicationController
     c = Course.where(:name => p["course"]).first
     @project = Project.find(params["id"])
     barra = params["barra1"] + "/" + params["barra2"]
+    tags = p["tag_tokens"].split(",")
 
     respond_to do |format|
-      if @project.update_attributes(person: owner, title: p["title"], description: p["description"], course: c, barra: barra)
+      if @project.update_attributes(person: owner, title: p["title"], description: p["description"], course: c, barra: barra, tag_ids: tags)
         format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
       else
         format.html { render action: "edit" }

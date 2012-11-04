@@ -23,6 +23,12 @@
   <%= @project.barra %>
 </p>
 
+<p>
+  <b>Tags:</b>
+  <% @project.tags.each do |tag| %>
+    <%= tag.tag_text %> 
+  <% end %>
+</p>
 
 <%= link_to raw("<i class=\"icon-arrow-left\"></i> Voltar"), projects_path, class: "btn btn-mini" %>
 

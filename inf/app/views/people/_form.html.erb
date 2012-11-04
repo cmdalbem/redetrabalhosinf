@@ -26,11 +26,8 @@
 
   <div class="field">
     <%= f.label "Semestre" %><br />
-    <input type="number" name="barra1" maxlength="4" value="<%=@barra[0]%>" class="input-small"> / 
-    <select name="barra2" class="input-small">
-      <option <%="selected" if (@barra[1]=="1")%>>1</option>
-      <option <%="selected" if (@barra[1]=="2")%>>2</option>
-    </select>
+    <%= f.text_field :barra1 %><br />
+    <%= f.text_field :barra2 %><br />
     <span class="help-block">Tua barra é formada pelo ano em que tu entrou na UFRGS "barra" ('/') o semestre em que tu começou a cursar.</span>
   </div>  
 

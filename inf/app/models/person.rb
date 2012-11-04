@@ -10,6 +10,8 @@ class Person < ActiveRecord::Base
 	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 50}
 	validates :about, length: {maximum: 1000}
 
+	attr_accessor :barra1, :barra2
+
 	def self.search(search)
 		search.downcase!
 		if search
