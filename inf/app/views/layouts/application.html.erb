@@ -18,20 +18,22 @@
 		      <nav>
 		        <%= link_to "Galeria da INF", root_path, class: "brand"%>
 		        <ul class="nav pull-right">
-		          <%= nav_link raw("<i class=\"icon-home\"></i> Início"), root_path %>
-		          <%= nav_link raw("<i class=\"icon-list\"></i> Projetos"), projects_path %>
-		          <%= nav_link raw("<i class=\"icon-user\"></i> Pessoas"), people_path %>
+		          <%= nav_link raw("<i class=\"icon-home icon-large\"></i> Início"), root_path %>
+		          <%= nav_link raw("<i class=\"icon-list icon-large\"></i> Projetos"), projects_path %>
+		          <%= nav_link raw("<i class=\"icon-user icon-large\"></i> Pessoas"), people_path %>
 		          <li class="divider-vertical"></li>
 		          <li>
 		            <% if user_signed_in? %>  
 		              <div class="btn-group"> %>
-		                <%= link_to current_user.person.name, profile_path(current_user.person.nick), class: "btn"%>
+		                <%= link_to (raw("<img src=\"/assets/user.gif\"> ")+current_user.person.name), profile_path(current_user.person.nick), class: "btn"%>
 		                  <button class="btn dropdown-toggle" data-toggle="dropdown">
 		                  <span class="caret"></span>
 		                </button>
 		                <ul class="dropdown-menu">
-		                  <!-- List of user options -->
-		                  <%= link_to "Deslogar", destroy_user_session_path, :method => :delete %>
+							<!-- List of user options -->
+							<li><%= link_to raw("Novo Projeto"), new_project_path %></li>
+							<li class="divider"></li>
+							<li><%= link_to raw("Deslogar"), destroy_user_session_path, :method => :delete %></li>
 		                </ul>
 		              </div>              
 		            <% else %>  
