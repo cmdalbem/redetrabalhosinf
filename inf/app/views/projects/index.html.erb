@@ -5,7 +5,7 @@
 <div class="content">
 
 <!-- Search Form -->
-<%= form_tag projects_path, :method => 'get', class: "form-search" do %>
+<%= form_tag projects_path, method: 'get', remote: true, class: "form-search" do %>
     <div class="field">
       <div class="input-append row-fluid">
         <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "trabalho foda" %>
@@ -28,43 +28,10 @@
 </div>
 
 <!-- The listing itself -->
-<table class="table table-striped table-hover">
-  <tr>
-    <th><%= sortable "Título", "title" %></th>
-    <th><%= sortable "Disciplina", "course" %></th>
-    <th><%= sortable "Semestre", "barra" %></th>
-    <th><%= sortable "Autor", "person" %></th>
-    <th><%= sortable "Curtir", "likes" %></th>
-    <th colspan="1"></th>
-  </tr>
+<div id="projects-list" class="clearfix"> 
+  <%= render 'projects_list' %>
+</div>
 
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= link_to project.title, project %></td>
-    <td><%= project.course.name %></td>
-    <td><%= project.barra %></td>
-    <td><%= link_to project.person.name, profile_path(project.person.nick) %></td>
-    <td>
-      <span id="project-like-count-<%= project.id  %>"><%= project.likes.count %></span>
-      <% if user_signed_in? %>
-        <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini" %>
-      <% end %>
-    </td>
-    <td>
-      <div class="btn-group">
-        <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn btn-mini" %>
-        <% if user_signed_in? %>
-          <% if current_user.person==project.person %>
-            <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn btn-mini" %>
-            <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
-          <% end %>
-        <% end %>
-      </div>
-    </td>
-
-  </tr>
-<% end %>
-</table>
 
 </div>
 

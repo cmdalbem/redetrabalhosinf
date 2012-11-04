@@ -5,7 +5,7 @@
 <div class="content">
 
 <!-- Search Form -->
-<%= form_tag people_path, :method => 'get', class: "form-search" do %>
+<%= form_tag people_path, :method => 'get', remote: true, class: "form-search" do %>
     <div class="field">
       <div class="input-append row-fluid">
         <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "badanha" %>
@@ -17,6 +17,8 @@
 
 
 <!-- People listing -->
+
+<!-- Button group for choosing view (list, thumbnail list or thumbnail) -->
 <div class="pull-right btn-toolbar">
   <div class="btn-group">
     <%= link_to raw("<i class=\"icon-align-justify\"></i>"), "#", class: "btn active" %>
@@ -25,30 +27,10 @@
   </div>
 </div>
 
-<table class="table table-striped table-hover">
-  <tr>
-    <th>Nome</th>
-    <th>Email</th>
-    <th>Projetos</th>
-    <th colspan="3"></th>
-  </tr>
+<!-- The listing itself -->
+<div id="people-list" class="clearfix"> 
+  <%= render 'people_list' %>
+</div>
 
-<% @people.each do |person| %>
-  <tr>
-    <td><%= link_to person.name, profile_path(person.nick) %></td>
-    <td><%= person.user.email %></td>
-    <td><%= person.projects.size %></td>
-    <td>
-      <div class="btn-group">
-        <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), profile_path(person.nick), class: "btn btn-mini" %>
-        <% if user_signed_in? and current_user.person==person %>
-          <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_person_path(person), class: "btn btn-mini" %>
-          <%= link_to raw("<i class=\"icon-remove\"></i>"), user_registration_path, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
-        <% end %>
-      </div>
-    </td>
-  </tr>
-<% end %>
-</table>
 
 </div>

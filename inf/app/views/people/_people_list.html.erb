@@ -1,0 +1,25 @@
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Projetos</th>
+    <th colspan="1"></th>
+  </tr>
+
+<% @people.each do |person| %>
+  <tr>
+    <td><%= link_to person.name, profile_path(person.nick) %></td>
+    <td><%= person.user.email %></td>
+    <td><%= person.projects.size %></td>
+    <td>
+      <div class="btn-group">
+        <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), profile_path(person.nick), class: "btn btn-mini" %>
+        <% if user_signed_in? and current_user.person==person %>
+          <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_person_path(person), class: "btn btn-mini" %>
+          <%= link_to raw("<i class=\"icon-remove\"></i>"), user_registration_path, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+<% end %>
+</table>

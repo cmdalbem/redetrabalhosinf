@@ -1,6 +1,7 @@
 module ApplicationHelper
 	
-	# A li link item which appears activated when the user is actually on it's url.
+	# A list item link (li a) which appears activated when the user is actually on it's url.
+	# Most commonly used on navbars.
 	def nav_link(link_text, link_path)
 	  class_name = "nav_link"
 	  class_name += " active" if current_page?(link_path)
@@ -11,6 +12,7 @@ module ApplicationHelper
 	end
 
 	# A table header which is a link for sorting the table by it's column.
+	# Make sure you program the logics on the table's controller (see example on Projects Controller)
 	def sortable(title, column)
 		if column == params[:sort]
 			direction = params[:direction] == "asc" ? "desc" : "asc"

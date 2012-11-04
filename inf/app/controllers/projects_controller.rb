@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
 
-  helper_method :sort_by_column
   helper_method :get_formated_barra
 
 
@@ -15,17 +14,18 @@ class ProjectsController < ApplicationController
   end
 
   def sort_projects_by_column(projectsList, column="title", direction="asc")
+    # yeah, code below is kinda ugly.
     case column
-        when "title"
-          projectsList.sort_by! {|x| x.title}
-        when "barra"
-          projectsList.sort_by! {|x| x.barra }
-        when "course"
-          projectsList.sort_by! {|x| x.course.name}
-        when "person"
-          projectsList.sort_by! {|x| x.person.name}
-        when "likes"
-          projectsList.sort_by! {|x| x.likes.size }        
+      when "title"
+        projectsList.sort_by! {|x| x.title }
+      when "barra"
+        projectsList.sort_by! {|x| x.barra }
+      when "course"
+        projectsList.sort_by! {|x| x.course.name }
+      when "person"
+        projectsList.sort_by! {|x| x.person.name }
+      when "likes"
+        projectsList.sort_by! {|x| x.likes.size }        
     end
 
     if direction == "desc"
@@ -43,6 +43,11 @@ class ProjectsController < ApplicationController
     end
 
     sort_projects_by_column @projects, params[:sort], params[:direction]
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /projects/1
