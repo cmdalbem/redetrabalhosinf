@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104211136) do
+ActiveRecord::Schema.define(:version => 20121105144402) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
@@ -26,10 +26,11 @@ ActiveRecord::Schema.define(:version => 20121104211136) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.integer  "user_id"
-    t.string   "barra"
     t.string   "about"
     t.string   "personal_link"
     t.string   "nick",          :default => "nick"
+    t.integer  "semester_year"
+    t.integer  "semester_sem"
   end
 
   create_table "people_projects", :id => false, :force => true do |t|
@@ -40,11 +41,12 @@ ActiveRecord::Schema.define(:version => 20121104211136) do
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "person_id"
-    t.integer  "course_id",   :default => 1
-    t.string   "barra"
+    t.integer  "course_id",     :default => 1
+    t.integer  "semester_year"
+    t.integer  "semester_sem"
   end
 
   add_index "projects", ["person_id"], :name => "index_projects_on_person_id"

@@ -35,20 +35,14 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   def edit
     @person = Person.find(params[:id])
-    if not @person.barra.nil?
-      @barra = @person.barra.split("/")
-    else
-      @barra = ["",""]
-    end
 
   end
 
   # POST /people
   def create
-    p = params[:person];
-    barra = p["barra1"] + "/" + p["barra2"]
+    pp = params[:person];
 
-    @person = Person.new(name: p["name"], email: p["email"], barra: barra)
+    @person = Person.new(name: pp["name"], email: pp["email"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"])
 
     respond_to do |format|
       if @person.save
@@ -62,11 +56,10 @@ class PeopleController < ApplicationController
   # PUT /people/1
   def update
     @person = Person.find(params[:id])
-    p = params[:person]
-    barra = p["barra1"] + "/" + p["barra2"]
+    pp = params[:person]
 
     respond_to do |format|
-      if @person.update_attributes(name: p["name"], about: p["about"], personal_link: p["personal_link"], barra: barra )
+      if @person.update_attributes(name: pp["name"], about: pp["about"], personal_link: pp["personal_link"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"] )
         format.html { redirect_to profile_path(@person.nick), notice: 'Perfil atualizado com sucesso.' }
       else
         format.html { render action: "edit" }

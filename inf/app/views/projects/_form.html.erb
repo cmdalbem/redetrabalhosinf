@@ -3,7 +3,6 @@
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
       <% @project.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -14,17 +13,13 @@
 
   <div class="field">
     <%= f.label "Disciplina" %><br />
-    <%= f.select :course, Course.all.collect {|p| p.name } %>
+    <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {:include_blank => "-"} %>
   </div>
 
   <div class="field">
     <%= f.label "Semestre" %><br />
-    <input type="number" name="barra1" maxlength="4" value="<%=get_formated_barra[0]%>" class="input-small" placeholder="ano"> / 
-    <select name="barra2">
-      <option <%="selected" if (get_formated_barra[1]=="")%>></option>
-      <option <%="selected" if (get_formated_barra[1]=="1")%>>1</option>
-      <option <%="selected" if (get_formated_barra[1]=="2")%>>2</option>
-    </select>
+    <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "ano"%>/
+    <%= f.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
   </div>
 
   <div class="field">

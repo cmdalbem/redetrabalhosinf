@@ -6,11 +6,15 @@ class Person < ActiveRecord::Base
 	has_and_belongs_to_many :likes, :foreign_key => 'person_id', :class_name => "Project"
 
 	validates :name, presence: true, length: {minimum:4, maximum: 100}
-	validates :barra, presence: true, :format => { :with => /\A[1-2][0-9][0-9][0-9]\/[0-9]\z/ }
 	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 50}
 	validates :about, length: {maximum: 1000}
+	validates :semester_year, presence: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
+	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than => 2 }
 
-	attr_accessor :barra1, :barra2
+	attr_reader :semester
+	def semester
+		semester_year.to_s + "/" + semester_sem.to_s
+	end
 
 	def self.search(search)
 		search.downcase!

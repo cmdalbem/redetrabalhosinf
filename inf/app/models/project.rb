@@ -12,12 +12,20 @@ class Project < ActiveRecord::Base
 	validates :title, presence: true, length: {maximum: 50}
 	validates :description, length: {maximum: 1000}
 	validates :course, presence: true
-	validates :barra, presence: true, :format => { :with => /\A[0-9][0-9][0-9][0-9]\/[0-9]\z/ }
+	validates :semester_year, presence: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
+	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than => 2 }
 
 	attr_reader :tag_tokens
+	attr_writer :tag_tokens
 	
 	def tag_tokens=(ids)
 		self.tag_ids = ids.split(",")
+	end
+
+	attr_reader :semester
+
+	def semester
+		semester_year.to_s + "/" + semester_sem.to_s
 	end
 
 

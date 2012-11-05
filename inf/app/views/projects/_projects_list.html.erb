@@ -14,7 +14,7 @@
     <tr>
       <td><%= link_to project.title, project %></td>
       <td><%= project.course.name %></td>
-      <td><%= project.barra %></td>
+      <td><%= project.semester %></td>
       <td><%= link_to project.person.name, profile_path(project.person.nick) %></td>
       <td>
         <span id="project-like-count-<%= project.id  %>"><%= project.likes.count %></span>

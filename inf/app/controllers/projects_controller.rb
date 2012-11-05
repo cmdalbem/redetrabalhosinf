@@ -1,25 +1,12 @@
 class ProjectsController < ApplicationController
 
-  helper_method :get_formated_barra
-
-
-  def get_formated_barra
-    if not @project.barra.nil?
-      barra = @project.barra.split("/")
-    else
-      barra = ["",""]
-    end
-
-    return barra
-  end
-
   def sort_projects_by_column(projectsList, column="title", direction="asc")
     # yeah, code below is kinda ugly.
     case column
       when "title"
         projectsList.sort_by! {|x| x.title }
       when "barra"
-        projectsList.sort_by! {|x| x.barra }
+        projectsList.sort_by! {|x| x.semester }
       when "course"
         projectsList.sort_by! {|x| x.course.name }
       when "person"
@@ -75,13 +62,18 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    p = params["project"]
+    pp = params["project"]
     owner = current_user.person
-    c = Course.where(:name => p["course"]).first
-    barra = params["barra1"] + "/" + params["barra2"]
-    tags = p["tag_tokens"].split(",")
+    tags = pp["tag_tokens"].split(",")
 
-    @project = Project.new(title: p["title"], course: c, person: owner, description: p["description"], barra: barra, tag_ids: tags)
+    @project = Project.new(title: pp["title"],
+      course_id: pp["course_id"],
+      person: owner,
+      description: pp["description"],
+      semester_year: pp["semester_year"],
+      semester_sem: pp["semester_sem"],
+      tag_ids: tags
+    )
 
     respond_to do |format|
       if @project.save
@@ -95,15 +87,20 @@ class ProjectsController < ApplicationController
 
   # PUT /projects/1
   def update
-    p = params[:project]
-    owner = current_user.person
-    c = Course.where(:name => p["course"]).first
     @project = Project.find(params["id"])
-    barra = params["barra1"] + "/" + params["barra2"]
-    tags = p["tag_tokens"].split(",")
+
+    pp = params[:project]
+    owner = current_user.person
+    tags = pp["tag_tokens"].split(",")
 
     respond_to do |format|
-      if @project.update_attributes(person: owner, title: p["title"], description: p["description"], course: c, barra: barra, tag_ids: tags)
+      if @project.update_attributes(person: owner,
+          title: pp["title"],
+          description: pp["description"],
+          course_id: pp["course_id"],
+          semester_year: pp["semester_year"],
+          semester_sem: pp["semester_sem"],
+          tag_ids: tags)
         format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
       else
         format.html { render action: "edit" }
