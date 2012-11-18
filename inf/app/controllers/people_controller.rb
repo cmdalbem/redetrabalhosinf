@@ -60,7 +60,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.update_attributes(name: pp["name"], about: pp["about"], personal_link: pp["personal_link"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"] )
-        format.html { redirect_to profile_path(@person.nick), notice: 'Perfil atualizado com sucesso.' }
+        format.html { redirect_to root_path, notice: 'Perfil atualizado com sucesso.' }
       else
         format.html { render action: "edit" }
       end
