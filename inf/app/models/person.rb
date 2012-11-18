@@ -9,7 +9,7 @@ class Person < ActiveRecord::Base
 	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 50}
 	validates :about, length: {maximum: 1000}
 	validates :semester_year, presence: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
-	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than => 2 }
+	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
 
 	has_attached_file :avatar, styles: {
 	    thumb: '100x100>',
