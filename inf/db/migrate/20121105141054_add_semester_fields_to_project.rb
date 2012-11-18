@@ -6,7 +6,7 @@ class AddSemesterFieldsToProject < ActiveRecord::Migration
 
     Project.all.each do |p|
     	sem = p.barra.split('/')
-    	p.update_attributes!(semester_year: sem[0], semester_sem: sem[1] )
+    	p.update_attributes!(semester_year: sem[0].to_i, semester_sem: sem[1].to_i )
     end
 
     remove_column :projects, :barra

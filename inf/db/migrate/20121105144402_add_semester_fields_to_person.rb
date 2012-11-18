@@ -5,7 +5,7 @@ class AddSemesterFieldsToPerson < ActiveRecord::Migration
     add_column :people, :semester_sem, :integer
 
     Person.all.each do |p|
-    	sem = p.barra.split('/')
+    	sem = [2012,1]
     	p.update_attributes!(semester_year: sem[0], semester_sem: sem[1] )
     end
 

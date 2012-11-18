@@ -5,6 +5,7 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# for PostGreSQL databases
 gem 'pg'
 
 
@@ -20,13 +21,25 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'  
 end
 
-# Our custom gems! :)
+
+##########################
+## Our custom gems! :) ###
+##########################
+
 gem 'jquery-rails'
 
+# Twitter Bootstrap gem + SASS (CSS extension)
 gem 'bootstrap-sass'
+
+# Extension of Twitter Bootstrap icons
 gem 'font-awesome-sass-rails'
 
+# Module for User's sessions and registrations
 gem 'devise'
+
+# Amazong S3 File Uploading
+gem 'paperclip'
+gem 'aws-sdk'
 
 # Gems to be added only when running on Linux
 platforms :ruby do
@@ -34,6 +47,10 @@ platforms :ruby do
   gem 'therubyracer'
 end
 
+
+##########################
+##### default stuff ######
+##########################
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
