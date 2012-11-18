@@ -3,7 +3,7 @@
 <body>
 
 <head>
-  <title>Galeria da INF</title>
+  <title>inf.HUB</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>  
@@ -16,7 +16,7 @@
 		  <div class="navbar-inner">
 		    <div class="container">
 		      <nav>
-		        <%= link_to "Galeria da INF", root_path, class: "brand"%>
+		        <%= link_to raw("inf<strong>HUB</strong>"), root_path, class: "brand"%>
 		        <ul class="nav pull-right">
 		          <%= nav_link raw("<i class=\"icon-home icon-large\"></i> Início"), root_path %>
 		          <%= nav_link raw("<i class=\"icon-list icon-large\"></i> Projetos"), projects_path %>
@@ -74,7 +74,7 @@
         <div class="span2">
 			<header>
 				<%= link_to raw("<i class=\"icon-github\"></i>"), "https://github.com/cmdalbem/redetrabalhosinf" %> <br>
-				Galeria da INF
+				inf<strong>HUB</strong>
 			</header>
 			<br>
 			Desenvolvido por:

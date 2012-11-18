@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
 	validates :title, presence: true, length: {maximum: 50}
 	validates :description, length: {maximum: 1000}
 	validates :course, presence: true
-	validates :semester_year, presence: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
+	validates :semester_year, presence: true, :numericality => { :greater_than_or_equal_to => 1989, :less_than_or_equal_to => Time.now.year }
 	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
 
 	attr_reader :tag_tokens
