@@ -1,1 +1,2 @@
-$('#project-like-count-3').html('liked');
+$('#project-like-count-<%= @project.id %>').html('<%= @project.likes.count %>');
+$('#project-like-button-<%= @project.id %>').attr('disabled', 'disabled');

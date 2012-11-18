@@ -17,9 +17,13 @@
       <td><%= project.semester %></td>
       <td><%= link_to project.person.name, profile_path(project.person.nick) %></td>
       <td>
-        <span id="project-like-count-<%= project.id  %>"><%= project.likes.count %></span>
+        <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
         <% if user_signed_in? %>
-          <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini" %>
+          <% if current_user.person.likes.include?(project) %>
+            <span class="btn btn-mini" disabled="disabled"> <i class="icon-thumbs-up"></i> Curtir </span>
+          <% else %>
+            <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini", id: "project-like-button-"+project.id.to_s %>
+          <% end %>
         <% end %>
       </td>
       <td>
