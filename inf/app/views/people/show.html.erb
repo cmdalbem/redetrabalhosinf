@@ -7,10 +7,10 @@
   <div class="block row-fluid">
     <div class="span4">
       <center>
-        <%= image_tag @person.getAvatarUrl, class: "img-polaroid" %>
+        <%= image_tag @person.avatar, class: "img-polaroid" %>
       </center>
     </div>
-    <div class="block span8">
+    <div class="block span7">
       <p>
         <h2><%= @person.name %></h2>
       </p>
@@ -62,6 +62,7 @@
         <b>Location:</b>
         <%= @person.user.current_sign_in_ip %>
       </p>
+      <p>
     </div>
   </div>
 

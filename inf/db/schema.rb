@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122224919) do
+ActiveRecord::Schema.define(:version => 20121123041828) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20121122224919) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "avatarPath"
   end
 
   create_table "people_projects", :id => false, :force => true do |t|
@@ -46,12 +45,20 @@ ActiveRecord::Schema.define(:version => 20121122224919) do
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "person_id"
-    t.integer  "course_id",     :default => 1
+    t.integer  "course_id",          :default => 1
     t.integer  "semester_year"
     t.integer  "semester_sem"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   add_index "projects", ["person_id"], :name => "index_projects_on_person_id"

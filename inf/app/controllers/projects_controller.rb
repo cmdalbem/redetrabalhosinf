@@ -100,6 +100,8 @@ class ProjectsController < ApplicationController
           course_id: pp["course_id"],
           semester_year: pp["semester_year"],
           semester_sem: pp["semester_sem"],
+          image: pp["image"],
+          file: pp["file"],
           tag_ids: tags)
         format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
       else

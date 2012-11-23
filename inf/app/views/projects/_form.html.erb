@@ -37,6 +37,16 @@
     <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
   </div>
 
+  <div class="field">
+    <%= f.label "Imagem para exibição" %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Arquivo (por enquanto só um :-)" %><br />
+    <%= f.file_field :file %>
+  </div>
+
   <br>
 
   <div class="actions">

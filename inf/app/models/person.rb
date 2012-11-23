@@ -11,8 +11,7 @@ class Person < ActiveRecord::Base
 	validates :semester_year, presence: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
 	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
 
-	has_attached_file :avatar,
-			:path => ":attachment/:id/:style.:extension"
+	has_attached_file :avatar, :path => ":attachment/:id/:style.:extension", :default_url => "https://s3.amazonaws.com/redesocialinf/user.gif"
 
 	attr_reader :semester
 	def semester
@@ -27,14 +26,6 @@ class Person < ActiveRecord::Base
 			find(:all, :conditions => ["lower(name) LIKE ? OR lower(nick) LIKE ?", "%#{search}%", "%#{search}%"])
 		else
 			find(:all)
-		end
-	end
-
-	def getAvatarUrl
-		if avatar?
-			return avatar.url
-		else
-			return "https://s3.amazonaws.com/redesocialinf/user.gif"
 		end
 	end
 

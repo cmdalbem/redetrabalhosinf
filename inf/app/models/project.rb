@@ -8,6 +8,11 @@ class Project < ActiveRecord::Base
 	#Like relationship
 	has_and_belongs_to_many :likes, :foreign_key => 'project_id', :class_name => "Person", :join_table => 'people_projects'
 
+	# Later use:
+	# 	"projects/:id/:basename.:extension"
+	has_attached_file :image, :path => "projects/:id/:attachment.:extension"
+	has_attached_file :file, :path => "projects/:id/:attachment.:extension"
+
 	validates :person, presence: true
 	validates :title, presence: true, length: {maximum: 50}
 	validates :description, length: {maximum: 1000}

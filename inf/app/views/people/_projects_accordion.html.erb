@@ -18,44 +18,75 @@
 !-->
 
 <div class="accordion" id="accordion">
-  
-  <div class="accordion-group">
-    <% collapseId = 0 %>
-    <% @person.projects.each do |project| %>
 
-      <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
-          Título: <%= project.title %> 
-        </a>
+	<div class="accordion-group">
+		<% collapseId = 0 %>
+		<% @person.projects.each do |project| %>
 
-        <p>Likes: 
-          <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
-        </p>
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
+				Título: <%= project.title %> 
+			</a>
 
-        <% if user_signed_in? %>
-          <%= link_to 'Like', like_project_path(project), remote: true, class: "btn btn-mini" %>
-        <% end %>
-      </div>
-      <div id="collapse<%=collapseId%>" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <p>
-            <b>Disciplina:</b>
-            <%= project.course.name %>
-          </p>
-          <p>
-            <b>Descrição:</b>
-            <%= project.description %>
-          </p>
-          <p>
-            <b>Semestre:</b>
-            <%= project.semester %>
-          </p>
-        </div>
-      </div>
+		</div>
+		<div id="collapse<%=collapseId%>" class="accordion-body collapse">
+			<div class="accordion-inner">
+				
+				<div class="row-fluid">
+					<div class="block span10">
+						<p>
+							<b>Descrição:</b>
+							<%= project.description %>
+						</p>
+					</div>
 
-      <% collapseId+=1 %>
-    <% end %>
+					<div class="block span2">
+						<p> 
+							<span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
+							<% if user_signed_in? %>
+								<%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini" %>
+							<% end %>
+						</p>
+					</div>
+				</div>
 
-  </div>
+				<br>
+
+				<div class="row-fluid">
+					<div class="block span6">
+						<p>
+							<b>Disciplina:</b>
+							<%= project.course.name %>
+						</p>
+						
+						<p>
+							<b>Semestre:</b>
+							<%= project.semester %>
+						</p>
+					</div>
+
+					<div class="block span6">
+						<p>
+							<b>Tags:</b>
+							<% project.tags.each do |tag| %>
+							<%= tag.tag_text %> 
+							<% end %>
+						</p>
+						<p>
+							<b>Arquivos:</b>
+							<% if project.file? %>
+							<%= link_to "#{project.file.original_filename} (#{project.file.size/1024} Kb)", project.file.url %>
+							<% end %>
+						</p>				
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<% collapseId+=1 %>
+		<% end %>
+
+	</div>
 
 </div>

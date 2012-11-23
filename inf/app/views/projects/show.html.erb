@@ -1,34 +1,72 @@
-<p>
-  <b>Título:</b>
-  <%= @project.title %>
-</p>
+<div class="content">
 
-<p>
-  <b>Dono:</b>
-  <%= link_to @project.person.name, profile_path(@project.person.nick) %>
-</p>
+<div class="container-fluid center">
 
-<p>
-  <b>Disciplina:</b>
-  <%= @project.course.name %>
-</p>
+<h2><%= @project.title %></h2>
 
+<% if @project.image? %>
 <p>
-  <b>Descrição:</b>
-  <%= @project.description %>
+  <%= image_tag @project.image.url %>
 </p>
+<% end %>
 
-<p>
-  <b>Semestre:</b>
-  <%= @project.semester %>
-</p>
+<div class="row-fluid">
+  <div class="block span10">
+    <p>
+      <b>Descrição:</b>
+      <%= @project.description %>
+    </p>
+  </div>
 
-<p>
-  <b>Tags:</b>
-  <% @project.tags.each do |tag| %>
-    <%= tag.tag_text %> 
-  <% end %>
-</p>
+  <div class="block span2">
+    <p> 
+      <span id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
+      <% if user_signed_in? %>
+        <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: "btn btn-mini" %>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<br>
+
+<div class="row-fluid">
+  <div class="block span6">
+    <p>
+      <b>Disciplina:</b>
+      <%= @project.course.name %>
+    </p>
+
+    <p>
+      <b>Dono:</b>
+      <%= link_to @project.person.name, profile_path(@project.person.nick) %>
+    </p>
+    
+    <p>
+      <b>Semestre:</b>
+      <%= @project.semester %>
+    </p>
+  </div>
+
+  <div class="block span6">
+    <p>
+      <b>Tags:</b>
+      <% @project.tags.each do |tag| %>
+      <%= tag.tag_text %> 
+      <% end %>
+    </p>
+    <p>
+      <b>Arquivos:</b>
+      <% if @project.file? %>
+      <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %>
+      <% end %>
+    </p>        
+  </div>
+</div>
+
+
+</div>
+</div>
 
 <%= link_to raw("<i class=\"icon-arrow-left\"></i> Voltar"), projects_path, class: "btn btn-mini" %>
 
