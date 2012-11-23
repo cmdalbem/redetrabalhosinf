@@ -40,6 +40,7 @@ gem 'devise'
 # Amazong S3 File Uploading
 gem 'paperclip'
 gem 'aws-sdk'
+gem 's3_swf_upload'
 
 # Gems to be added only when running on Linux
 platforms :ruby do

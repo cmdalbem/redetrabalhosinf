@@ -1,4 +1,14 @@
 class PeopleController < ApplicationController
+  
+  before_filter :checkLogin, :only => [:edit, :update, :destroy]
+
+  def checkLogin
+    if not user_signed_in?
+      redirect_to root_path, alert: 'Safado!'
+    end
+  end
+
+
   # GET /people
   def index
     if params[:search]
@@ -35,7 +45,6 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   def edit
     @person = Person.find(params[:id])
-
   end
 
   # POST /people
@@ -59,7 +68,7 @@ class PeopleController < ApplicationController
     pp = params[:person]
 
     respond_to do |format|
-      if @person.update_attributes(name: pp["name"], about: pp["about"], personal_link: pp["personal_link"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"] )
+      if @person.update_attributes(name: pp["name"], about: pp["about"], personal_link: pp["personal_link"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"], avatar: pp["avatar"] )
         format.html { redirect_to root_path, notice: 'Perfil atualizado com sucesso.' }
       else
         format.html { render action: "edit" }

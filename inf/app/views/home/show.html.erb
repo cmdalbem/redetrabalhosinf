@@ -1,8 +1,19 @@
 <div class="center hero-unit">
 	<h1>Início</h1>
-	<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.</p>
+	<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
 
-	<p>Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+	<br>
+	<br>
+
+	<!-- <center>
+		<%= form_tag projects_path, method: 'get', class: "form-search" do %>
+		      <div class="input-append row-fluid">
+		        <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "título ou descrição" %>
+		        <%= submit_tag "Pesquisar", class: "btn", name: nil %>
+		    </div>
+		<% end %>
+	</center> -->
+
 	<p>
 		<%= link_to raw("Comece já!"), (user_signed_in? ? projects_path : new_user_session_path), class: "btn btn-info btn-large" %>
 

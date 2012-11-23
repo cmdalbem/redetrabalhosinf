@@ -1,0 +1,19 @@
+div#file_lists {border-top:1px solid #ccc;border-bottom:1px solid #ccc;height:300px;margin-bottom:10px;overflow-y:scroll;}
+ul.file_list {font-size:130%;}
+ul.file_list li {border-bottom:1px solid #ccc;height:35px;line-height:35px;position:relative;}
+ul.file_list li span.progress {display:block;position:absolute;background:#BFFFC8;text-align:right;}
+ul.file_list li span.progress span.amount {padding-right:10px;color:#DFFFE3;font-weight:bold;}
+ul.file_list li span.file_name {display:block;position:absolute;left:15px;}
+ul.file_list li span.file_size {display:block;position:absolute;left:600px;}
+ul.file_list li span.delete {display:block;position:absolute;left:700px;font-size:80%;color:#aaa;cursor:pointer;}
+
+ul#file_done_list li span.progress {width:100%;border-right:0;}
+ul#file_todo_list li span.progress {display:none;}
+
+div#overall {border:1px solid #ccc;height:35px;line-height:35px;position:relative;font-size:130%;margin-bottom:10px;}
+div#overall span.progress {display:block;position:absolute;background:#FFBFF8;text-align:right;}
+div#overall span.progress span.amount {padding-right:10px;color:#FFDFFB;font-weight:bold;}
+
+div#overall span#status {text-align:center;display:block;width:100%;font-weight:bold;color:#aaa;position:absolute;}
+
+div#overall span.progress {display:none;}

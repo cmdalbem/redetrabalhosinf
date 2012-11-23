@@ -1,4 +1,4 @@
-<%= form_for(@person) do |f| %>
+<%= form_for @person, :html => { :multipart => true } do |f| %>
 
   <% if @person.errors.any? %>
     <div id="error_explanation">
@@ -12,32 +12,46 @@
     </div>
   <% end %>
 
-  <!-- Person Form -->
-  <div class="field">
-    <%= f.label "Nome" %><br />
-    <%= f.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
-  </div>
-  
-  <div><%= f.label "Sobre Mim" %><br />
-  <%= f.text_area :about %></div>
-  
-  <div><%= f.label "Link pessoal" %><br />
-  <%= f.url_field :personal_link %></div>
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Perfil</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        
+        <!-- Person Form -->
+        <div class="field">
+          <%= f.label "Nome" %><br />
+          <%= f.text_field :name %>
+        </div>
 
-  <div class="field">
-    <%= f.label "Semestre" %><br />
-    <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "ano"%>/
-    <%= f.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
-    <span class="help-block">Tua barra é formada pelo ano em que tu entrou na UFRGS "barra" ('/') o semestre em que tu começou a cursar.</span>
+        <div class="field">
+          <%= f.label :avatar %><br />
+          <%= f.file_field :avatar %>
+        </div>
+        
+        <div><%= f.label "Sobre Mim" %><br />
+        <%= f.text_area :about %></div>
+        
+        <div><%= f.label "Link pessoal" %><br />
+        <%= f.url_field :personal_link %></div>
+
+        <div class="field">
+          <%= f.label "Semestre" %><br />
+          <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "ano"%>/
+          <%= f.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
+        </div>  
+
+        <div class="actions">
+          <%= f.submit class: "btn btn-primary"%>
+        </div>
+
+      </div>
+
+    </div>
   </div>  
 
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary"%>
-  </div>
+  
   
 <% end %>

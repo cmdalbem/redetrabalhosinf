@@ -1,0 +1,6 @@
+development:
+  bucket: redesocialinf
+  access_key_id: AKIAJ42DOIO5MX3FF4SQ
+  secret_access_key: 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
+  max_file_size: 10485760
+  acl: public-read

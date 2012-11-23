@@ -7,9 +7,8 @@
 <!-- Search Form -->
 <%= form_tag projects_path, method: 'get', remote: true, class: "form-search" do %>
     <div class="field">
-      <span class="help-block">Procure um projeto pelo seu título ou descrição.</span>
       <div class="input-append row-fluid">
-        <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "trabalho foda" %>
+        <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "título ou descrição" %>
         <%= submit_tag "Pesquisar", class: "btn", name: nil %>
       </div>
     </div>
