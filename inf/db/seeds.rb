@@ -8,6 +8,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+tags = [
+	"cpp",
+	"linux",
+	"windows",
+	"java",
+	"python",
+	"gtk",
+	"cg"
+]
+
+tags.size.times do |i|
+	Tag.create(tag_text: tags[i])
+end
+
 names = [
 	"ADMINISTRAÇÃO E FINANÇAS",
 	"ÁLGEBRA LINEAR I - A",

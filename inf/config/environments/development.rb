@@ -39,6 +39,6 @@ Inf::Application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
-    :s3_credentials => "#{Rails.root}/../s3.yml"
+    :s3_credentials => "#{Rails.root}/../../s3.yml"
   }
 end
