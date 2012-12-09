@@ -35,36 +35,24 @@
 				<div class="pull-right">
 					<%= link_to raw("<i class=\"icon-eye-open\"></i> Mais detalhes"), project_path(project), class: "btn" %>
 				</div>
-
-				<div class="row-fluid">
-					<div class="block span12">
-						<p>
-							<b>Descrição:</b>
-							<%= project.description %>
-						</p>
-					</div>
-				</div>
-
-				<div class="row-fluid">
-					<div class="block span6">
-						<p>
-							<b>Disciplina:</b>
-							<%= project.course.name %> (<%= project.semester %>)
-						</p>
-					</div>
-
-					<div class="block span6">
-						<p>
-							<b>Tags:</b>
-							<ul class="tags clearfix">
-								<% project.tags.each do |tag| %>
-									<li> <%= tag.tag_text %> </li>
-								<% end %>
-							</ul>
-						</p>				
-					</div>
-				</div>
-
+					<p>
+						<b>Descrição:</b>
+						<%= project.description %>
+					</p>
+					
+					<p>
+						<b>Disciplina:</b>
+						<%= project.course.name %> (<%= project.semester %>)
+					</p>
+					
+					<p>
+						<b>Tags:</b>
+						<ul class="tags clearfix">
+							<% project.tags.each do |tag| %>
+								<li> <%= tag.tag_text %> </li>
+							<% end %>
+						</ul>
+					</p>
 			</div>
 		</div>
 
