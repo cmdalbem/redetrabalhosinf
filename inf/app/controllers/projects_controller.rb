@@ -23,9 +23,21 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
+    # if params[:person]
+    #   personSearch = Person.where(nick: params[:person])
+    #   if(personSearch.empty?)
+    #     redirect_to root_path, alert: "Nao consegui encontrar #{params[:id]}."
+    #     return
+    #   else
+    #     @projects = personSearch.first.projects
+    #   end
+    # end
+
     if params[:search]
-      @projects = Project.search(params[:search])
-    else
+      @projects = Project.search(params[:search])     
+    end
+
+    if !params[:search]
       @projects = Project.all
     end
 
@@ -93,16 +105,23 @@ class ProjectsController < ApplicationController
     owner = current_user.person
     tags = pp["tag_tokens"].split(",")
 
-    respond_to do |format|
-      if @project.update_attributes(person: owner,
+    success = true
+    if pp["image"]
+      success = @project.update_attributes(image: pp["image"])
+    end
+    if pp["file"]
+      success &&= @project.update_attributes(file: pp["file"])
+    end
+    success &&= @project.update_attributes(person: owner,
           title: pp["title"],
           description: pp["description"],
           course_id: pp["course_id"],
           semester_year: pp["semester_year"],
           semester_sem: pp["semester_sem"],
-          image: pp["image"],
-          file: pp["file"],
-          tag_ids: tags)
+          tag_ids: tags)    
+
+    respond_to do |format|
+      if success
         format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
       else
         format.html { render action: "edit" }

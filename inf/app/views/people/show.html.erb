@@ -1,4 +1,10 @@
-<legend>Detalhes de Perfil</legend>
+<legend>Detalhes de Perfil
+  <div class="pull-right">
+  <% if user_signed_in? and current_user.person==@person %>
+    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_person_path(@person)%>
+  <% end %>
+</div>
+</legend>
 
 <div class="content">
 
@@ -77,10 +83,3 @@
 </div>
 
 </div>
-
-
-<%= link_to raw("<i class=\"icon-arrow-left\"></i> Voltar"), people_path, class: "btn" %>
-
-<% if user_signed_in? and current_user.person==@person %>
-  <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_person_path(@person), class: "btn btn-primary" %>
-<% end %>

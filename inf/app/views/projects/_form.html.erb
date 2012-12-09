@@ -11,46 +11,91 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Disciplina" %><br />
-    <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {:include_blank => "-"} %>
-  </div>
 
-  <div class="field">
-    <%= f.label "Semestre" %><br />
-    <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "ano"%>/
-    <%= f.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
-  </div>
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Detalhes</a></li>
+        <!-- <li><a href="#tab2" data-toggle="tab">Arquivos</a></li> -->
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        
+        <div class="field">
+          <%= f.label "Disciplina" %><br />
+          <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {:include_blank => "-"} %>
+        </div>
 
-  <div class="field">
-    <%= f.label "Título" %><br />
-    <%= f.text_field :title %>
-  </div>
+        <div class="field">
+          <%= f.label "Semestre" %><br />
+          <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "ano"%>/
+          <%= f.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
+        </div>
 
-  <div class="field">
-    <%= f.label "Descrição" %><br />
-    <%= f.text_area :description %>
-  </div>
+        <div class="field">
+          <%= f.label "Título" %><br />
+          <%= f.text_field :title %>
+        </div>
 
-  <div class="field">
-    <%= f.label "Tags" %><br />
-    <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
-  </div>
+        <div class="field">
+          <%= f.label "Descrição" %><br />
+          <%= f.text_area :description %>
+        </div>
 
-  <div class="field">
-    <%= f.label "Imagem para exibição" %><br />
-    <%= f.file_field :image %>
-  </div>
+        <div class="field">
+          <%= f.label "Tags" %><br />
+          <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
+        </div>
 
-  <div class="field">
-    <%= f.label "Arquivo (por enquanto só um :-)" %><br />
-    <%= f.file_field :file %>
-  </div>
+        <br>
 
+        <div class="field">
+            <%= f.label "Imagem de exibição" %><br />
+            <% if @project.image? %>
+              <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
+              <div id="keepImageField">
+                <%= image_tag @project.image.url, :height => '100px', :width => '100px' %>
+                <%= link_to "#{@project.image.original_filename}", @project.image.url %>
+                <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); ", class: "btn btn-mini btn-warning" %>
+              </div>
+              <!-- Field for uploading a replacing file. -->
+              <div id="updateImageField" style="display: none;">
+                <%= f.file_field :image, id: "avatarInputField" %>
+                <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+                <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
+              </div>              
+              <br>
+            <% else %>
+                <%= f.file_field :image %>
+            <% end %>
+            <br>
+          </div>
+
+          <%= f.label "Arquivo" %><br />
+          <% if @project.file? %>
+            <div id="keepFileField">
+              <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %>
+              <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); ", class: "btn btn-mini btn-warning" %>
+            </div>
+            <div id="updateFileField" style="display: none;">
+              <%= f.file_field :file, id: "fileInputField" %>
+              <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+              <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); $('#fileInputField').val('');", class: "btn btn-mini btn-warning" %>
+            </div>
+          <% else %>
+            <div class="field">
+              <%= f.file_field :file %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+
+  </div>  
+
+  <br>
   <br>
 
   <div class="actions">
-    <%= f.submit class: "btn btn-primary"%>
+    <%= f.submit "Atualizar projeto", class: "btn btn-primary"%>
   </div>
   
 <% end %>

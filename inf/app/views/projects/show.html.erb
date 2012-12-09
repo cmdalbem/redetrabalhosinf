@@ -2,7 +2,16 @@
 
 <div class="container-fluid center">
 
-<h2><%= @project.title %></h2>
+<legend>
+Detalhes de projeto
+<div class="pull-right">
+  <% if user_signed_in? and current_user.person==@project.person %>
+    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(@project) %>
+  <% end %>
+</div>
+</legend>
+
+<h2> <%= @project.title %> </h2>
 
 <% if @project.image? %>
 <p>
@@ -22,7 +31,7 @@
     <p> 
       <span id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
       <% if user_signed_in? %>
-        <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: "btn btn-mini" %>
+        <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: "btn" %>
       <% end %>
     </p>
   </div>
@@ -51,15 +60,19 @@
   <div class="block span6">
     <p>
       <b>Tags:</b>
+      <ul class="tags clearfix">
       <% @project.tags.each do |tag| %>
-      <%= tag.tag_text %> 
+        <li> <%= tag.tag_text %> </li>
       <% end %>
+      </ul>
     </p>
     <p>
       <b>Arquivos:</b>
-      <% if @project.file? %>
-      <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %>
-      <% end %>
+      <ul>
+        <% if @project.file? %>
+          <li> <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %> </li>
+        <% end %>
+      </ul>
     </p>        
   </div>
 </div>
@@ -67,9 +80,3 @@
 
 </div>
 </div>
-
-<%= link_to raw("<i class=\"icon-arrow-left\"></i> Voltar"), projects_path, class: "btn btn-mini" %>
-
-<% if user_signed_in? and current_user.person==@project.person %>
-  <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(@project), class: "btn btn-mini" %>
-<% end %>

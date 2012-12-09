@@ -67,9 +67,20 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     pp = params[:person]
 
+    success = true
+    if pp["delete_avatar"] or pp["avatar"]
+      success &&= @person.update_attributes(avatar: pp["avatar"])
+    end
+    success &&= @person.update_attributes(
+                  name: pp["name"],
+                  about: pp["about"],
+                  personal_link: pp["personal_link"],
+                  semester_year: pp["semester_year"],
+                  semester_sem: pp["semester_sem"])
+
     respond_to do |format|
-      if @person.update_attributes(name: pp["name"], about: pp["about"], personal_link: pp["personal_link"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"], avatar: pp["avatar"] )
-        format.html { redirect_to root_path, notice: 'Perfil atualizado com sucesso.' }
+      if success
+        format.html { redirect_to profile_path(@person.nick), notice: 'Perfil atualizado com sucesso.' }
       else
         format.html { render action: "edit" }
       end
@@ -81,4 +92,9 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     @person.destroy
   end
+
+  def deleteAvatar
+
+  end
+
 end

@@ -9,6 +9,7 @@ Inf::Application.routes.draw do
   match 'about' => 'Home#about', :as => 'about'
 
   match 'people/:name' => 'People#show', :as => 'profile'
+  # match 'people/:name/deleteAvatar' => 'People#deleteAvatar', :as => 'deleteAvatar'
 
   match 'project/like/:id' => 'Projects#like', :as => 'like_project'
 

@@ -31,11 +31,11 @@
 		                </button>
 		                <ul class="dropdown-menu">
 							<!-- List of user options -->
-							<li><%= link_to raw("Editar Perfil"), edit_person_path(current_user.person) %></li>
+							<li><%= link_to raw("<i class=\"icon-pencil\"></i> Editar Perfil"), edit_person_path(current_user.person) %></li>
 							<li class="divider"></li>
-							<li><%= link_to raw("Novo Projeto"), new_project_path %></li>
+							<li><%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path %></li>
 							<li class="divider"></li>
-							<li><%= link_to raw("Deslogar"), destroy_user_session_path, :method => :delete %></li>
+							<li><%= link_to raw("<i class=\"icon-off\"></i> Deslogar"), destroy_user_session_path, :method => :delete %></li>
 		                </ul>
 		              </div>              
 		            <% else %>  
@@ -73,29 +73,21 @@
   <section class="container-fluid">
 
     <div class="row-fluid muted">
-        <div class="span2">
+        <div class="offset1 span3">
 			<header>
-				<%= link_to raw("<i class=\"icon-github\"></i>"), "https://github.com/cmdalbem/redetrabalhosinf" %> <br>
 				inf<strong>HUB</strong>
+				<br>
+				<%= link_to raw("<i class=\"icon-github\"></i>"), "https://github.com/cmdalbem/redetrabalhosinf" %>
 			</header>
-			<br>
+        </div>
+
+        <div class="span5">
 			Desenvolvido por:
 			<ul>
 				<li>César Daudt</li>
 				<li>Cristiano Dalbem</li>
 				<li>João Gaiewski</li>
 			</ul>
-        </div>
-
-        <div class="offset1 span5">
-          Uma rede social de trabalhos da INF.
-          Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. 
-          <br>
-          <%= link_to "Leia mais...", about_path %>
-        </div>
-
-        <div class="offset2 span2">
-        	<img src="/assets/inf.png">
         </div>
     </div>
 

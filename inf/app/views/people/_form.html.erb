@@ -16,6 +16,7 @@
   <div class="tabbable">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">Perfil</a></li>
+        <!-- <li><a href="#tab2" data-toggle="tab">Avatar</a></li> -->
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="tab1">
@@ -24,11 +25,6 @@
         <div class="field">
           <%= f.label "Nome" %><br />
           <%= f.text_field :name %>
-        </div>
-
-        <div class="field">
-          <%= f.label :avatar %><br />
-          <%= f.file_field :avatar %>
         </div>
         
         <div><%= f.label "Sobre Mim" %><br />
@@ -43,13 +39,35 @@
           <%= f.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
         </div>  
 
+        <div class="field">
+          <%= f.label :avatar %><br />
+          <% if @person.avatar? %>
+          <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
+            <div id="keepAvatarField">
+              <%= image_tag @person.avatar.url, :height => '100px', :width => '100px' %>
+              <%= link_to "#{@person.avatar.original_filename}", @person.avatar.url %>
+              <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); ", class: "btn btn-mini btn-warning" %>
+            </div>
+            <!-- Field for uploading a replacing file. -->
+            <div id="updateAvatarField" style="display: none;">
+              <%= f.file_field :avatar, id: "avatarInputField" %>
+              <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+              <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
+            </div>
+            <br>
+          <% else %>
+            <%= f.file_field :avatar %>
+          <% end %>          
+        </div>
+
+        <br>
+
         <div class="actions">
           <%= f.submit class: "btn btn-primary"%>
         </div>
-
       </div>
-
     </div>
+
   </div>  
 
   

@@ -27,8 +27,6 @@ class Person < ActiveRecord::Base
 		else
 			find(:all)
 		end
-	end
-
-	
+	end	
 
 end
