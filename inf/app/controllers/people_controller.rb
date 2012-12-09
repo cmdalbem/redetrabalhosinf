@@ -71,7 +71,9 @@ class PeopleController < ApplicationController
     pp = params[:person]
 
     success = true
-    if pp["delete_avatar"] or pp["avatar"]
+    if pp["deleteAvatar"]=="true"
+      success &&= @person.update_attributes(avatar: nil)
+    elsif pp["avatar"]
       success &&= @person.update_attributes(avatar: pp["avatar"])
     end
     success &&= @person.update_attributes(

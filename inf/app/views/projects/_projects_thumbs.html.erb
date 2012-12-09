@@ -8,9 +8,11 @@
 <% @projects.each do |project| %>
   <li class="span2">
     <div class="thumbnail">
-      <a href=<%= project %> class="thumbnail">
-        <%= image_tag project.image %>
-      </a>
+      <% if project.image? %>
+        <a href=<%= project %> class="thumbnail">
+          <%= image_tag project.image %>
+        </a>
+      <% end %>
       <h5><%= link_to project.title, project %></h5>
       <p><%= project.course.name %></p>
       <center>

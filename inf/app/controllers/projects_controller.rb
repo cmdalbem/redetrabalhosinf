@@ -111,12 +111,18 @@ class ProjectsController < ApplicationController
     tags = pp["tag_tokens"].split(",")
 
     success = true
-    if pp["image"]
+    if pp["deleteImage"] == "true"
+      success = @project.update_attributes(image: nil)
+    elsif pp["image"]
       success = @project.update_attributes(image: pp["image"])
     end
-    if pp["file"]
+
+    if pp["deleteFile"] == "true"
+      success &&= @project.update_attributes(file: nil)
+    elsif pp["file"]
       success &&= @project.update_attributes(file: pp["file"])
     end
+    
     success &&= @project.update_attributes(person: owner,
           title: pp["title"],
           description: pp["description"],

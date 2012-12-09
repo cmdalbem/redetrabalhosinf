@@ -40,15 +40,20 @@
         </div>  
 
         <div class="field">
-          <%= f.label :avatar %><br />
+          <%= f.label :avatar %>
           <% if @person.avatar? %>
-          <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
+            <!-- Delete option. Unlike the Replace button, this option is a link which submits the form with a special sign for deleting this file. -->
+            <%= f.hidden_field :deleteAvatar, :value => false, id: "deleteAvatarField" %>
+            <%= link_to_function raw("(<i class=\"icon-trash\"></i> Deletar)"), "$('#deleteAvatarField').val('true'); $('form').submit();
+    return false;" %>
+            
+            <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
             <div id="keepAvatarField">
               <%= image_tag @person.avatar.url, :height => '100px', :width => '100px' %>
               <%= link_to "#{@person.avatar.original_filename}", @person.avatar.url %>
               <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); ", class: "btn btn-mini btn-warning" %>
             </div>
-            <!-- Field for uploading a replacing file. -->
+            <!-- Field for uploading a replacing file. (it's initially hidden) -->
             <div id="updateAvatarField" style="display: none;">
               <%= f.file_field :avatar, id: "avatarInputField" %>
               <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
