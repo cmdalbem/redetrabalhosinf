@@ -25,58 +25,42 @@
 
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
-				Título: <%= project.title %> 
+				<%= project.title %> 
 			</a>
 
 		</div>
 		<div id="collapse<%=collapseId%>" class="accordion-body collapse">
 			<div class="accordion-inner">
 				
+				<div class="pull-right">
+					<%= link_to raw("<i class=\"icon-eye-open\"></i> Mais detalhes"), project_path(project), class: "btn" %>
+				</div>
+
 				<div class="row-fluid">
-					<div class="block span10">
+					<div class="block span12">
 						<p>
 							<b>Descrição:</b>
 							<%= project.description %>
 						</p>
 					</div>
-
-					<div class="block span2">
-						<p> 
-							<span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
-							<% if user_signed_in? %>
-								<%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini" %>
-							<% end %>
-						</p>
-					</div>
 				</div>
-
-				<br>
 
 				<div class="row-fluid">
 					<div class="block span6">
 						<p>
 							<b>Disciplina:</b>
-							<%= project.course.name %>
-						</p>
-						
-						<p>
-							<b>Semestre:</b>
-							<%= project.semester %>
+							<%= project.course.name %> (<%= project.semester %>)
 						</p>
 					</div>
 
 					<div class="block span6">
 						<p>
 							<b>Tags:</b>
-							<% project.tags.each do |tag| %>
-							<%= tag.tag_text %> 
-							<% end %>
-						</p>
-						<p>
-							<b>Arquivos:</b>
-							<% if project.file? %>
-							<%= link_to "#{project.file.original_filename} (#{project.file.size/1024} Kb)", project.file.url %>
-							<% end %>
+							<ul class="tags clearfix">
+								<% project.tags.each do |tag| %>
+									<li> <%= tag.tag_text %> </li>
+								<% end %>
+							</ul>
 						</p>				
 					</div>
 				</div>

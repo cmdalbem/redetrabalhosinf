@@ -51,7 +51,7 @@ class PeopleController < ApplicationController
   def create
     pp = params[:person];
 
-    @person = Person.new(name: pp["name"], email: pp["email"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"])
+    @person = Person.new(name: pp["name"], email: pp["email"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"], avatar: pp["avatar"])
 
     respond_to do |format|
       if @person.save

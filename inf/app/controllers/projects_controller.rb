@@ -84,7 +84,9 @@ class ProjectsController < ApplicationController
       description: pp["description"],
       semester_year: pp["semester_year"],
       semester_sem: pp["semester_sem"],
-      tag_ids: tags
+      tag_ids: tags,
+      image: pp["image"],
+      file: pp["file"]
     )
 
     respond_to do |format|
