@@ -1,0 +1,41 @@
+<div class="muted">
+  <%if params[:search] and not params[:search].empty?%>
+      Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), class: "close nopull" %>
+  <% end %>
+</div>
+
+<ul class="thumbnails"> 
+<% @projects.each do |project| %>
+  <li class="span2">
+    <div class="thumbnail">
+      <a href=<%= project %> class="thumbnail">
+        <%= image_tag project.image %>
+      </a>
+      <h5><%= link_to project.title, project %></h5>
+      <p><%= project.course.name %></p>
+      <center>
+        <p>
+          <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
+          <% if user_signed_in? %>
+            <% if current_user.person.likes.include?(project) %>
+              <span class="btn btn-mini" disabled="disabled"> <i class="icon-thumbs-up"></i> Curtir </span>
+            <% else %>
+              <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini", id: "project-like-button-"+project.id.to_s %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          <div class="btn-group">
+            <% if user_signed_in? %>
+              <% if current_user.person==project.person %>
+                <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn" %>
+                <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn" %>
+              <% end %>
+            <% end %>
+          </div>
+        </p>
+      </center>
+    </div>
+  </li>
+<% end %>
+</ul>

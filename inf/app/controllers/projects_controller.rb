@@ -43,6 +43,9 @@ class ProjectsController < ApplicationController
 
     sort_projects_by_column @projects, params[:sort], params[:direction]
 
+    # Default view is LIST
+    @viewMode = (!params[:view] or params[:view]=="list") ? :list : :thumbs
+
     respond_to do |format|
       format.html
       format.js

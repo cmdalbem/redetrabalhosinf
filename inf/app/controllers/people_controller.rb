@@ -17,6 +17,9 @@ class PeopleController < ApplicationController
       @people = Person.all
     end
 
+    # Default view is THUMBS
+    @viewMode = (!params[:view] or params[:view]=="thumbs") ? :thumbs : :list
+
     respond_to do |format|
       format.html
       format.js

@@ -1,0 +1,19 @@
+<div class="muted">
+  <%if params[:search] and not params[:search].empty?%>
+      Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), class: "close nopull" %>
+  <% end %>
+</div>
+
+<ul class="thumbnails"> 
+<% @people.each do |person| %>
+  <li class="span2">
+    <div class="thumbnail">
+      <a href=<%= profile_path(person.nick) %> class="thumbnail">
+        <%= image_tag person.avatar %>
+      </a>
+      <h3><%= link_to person.name, profile_path(person.nick) %></h3>
+      <p>Projetos: <%= person.projects.size %></p>
+    </div>
+  </li>
+<% end %>
+</ul>

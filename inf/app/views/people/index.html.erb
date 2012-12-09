@@ -17,18 +17,30 @@
 
 <!-- People listing -->
 
-<!-- Button group for choosing view (list, thumbnail list or thumbnail) -->
+<!-- Button group for choosing view (list or thumbnail) -->
 <div class="pull-right btn-toolbar">
   <div class="btn-group">
-    <%= link_to raw("<i class=\"icon-align-justify\"></i>"), "#", class: "btn active" %>
-    <%= link_to raw("<i class=\"icon-th-list\"></i>"), "#", class: "btn disabled" %>
-    <%= link_to raw("<i class=\"icon-th-large\"></i>"), "#", class: "btn disabled" %>
+    <% thisClass = "btn" %>
+    <% if @viewMode == :list %>
+      <% thisClass += " active" %>
+    <% end %>
+    <%= link_to raw("<i class=\"icon-list-alt\"></i>"), {:view => "list"}, class: thisClass %>
+    
+    <% thisClass = "btn" %>
+    <% if @viewMode == :thumbs %>
+      <% thisClass += " active" %>
+    <% end %>
+    <%= link_to raw("<i class=\"icon-th\"></i>"), {:view => "thumbs"}, class: thisClass %>
   </div>
 </div>
 
 <!-- The listing itself -->
 <div id="people-list" class="clearfix"> 
-  <%= render 'people_list' %>
+  <% if @viewMode == :thumbs %>
+    <%= render 'people_thumbs' %>
+  <% else %>
+    <%= render 'people_list' %>
+  <% end %>
 </div>
 
 

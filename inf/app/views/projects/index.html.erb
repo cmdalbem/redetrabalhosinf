@@ -16,20 +16,31 @@
 
 <!-- Projects list -->
 
-<!-- Button group for choosing view (list, thumbnail list or thumbnail) -->
+<!-- Button group for choosing view (list or thumbnail) -->
 <div class="pull-right btn-toolbar">
   <div class="btn-group">
-    <%= link_to raw("<i class=\"icon-list-alt\"></i>"), "#", class: "btn active" %>
-    <%= link_to raw("<i class=\"icon-list\"></i>"), "#", class: "btn disabled" %>
-    <%= link_to raw("<i class=\"icon-th\"></i>"), "#", class: "btn disabled" %>
+    <% thisClass = "btn" %>
+    <% if @viewMode == :list %>
+      <% thisClass += " active" %>
+    <% end %>
+    <%= link_to raw("<i class=\"icon-list-alt\"></i>"), {:view => "list"}, class: thisClass %>
+    
+    <% thisClass = "btn" %>
+    <% if @viewMode == :thumbs %>
+      <% thisClass += " active" %>
+    <% end %>
+    <%= link_to raw("<i class=\"icon-th\"></i>"), {:view => "thumbs"}, class: thisClass %>
   </div>
 </div>
 
 <!-- The listing itself -->
 <div id="projects-list" class="clearfix"> 
-  <%= render 'projects_list' %>
+  <% if @viewMode == :thumbs %>
+    <%= render 'projects_thumbs' %>
+  <% else %>
+    <%= render 'projects_list' %>
+  <% end %>
 </div>
-
 
 </div>
 
