@@ -26,5 +26,4 @@ module ApplicationHelper
 
 		link_to title, {:sort => column, :direction => direction, :search => params[:search]}
 	end
-
 end

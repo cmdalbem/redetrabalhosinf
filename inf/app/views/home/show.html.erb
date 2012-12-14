@@ -13,18 +13,24 @@
 
 	<br>
 	<br>
+	<br>
 
-	<!-- <center>
+	<!-- Search Form -->
+	<center>
 		<%= form_tag projects_path, method: 'get', class: "form-search" do %>
+		    <div class="field">
 		      <div class="input-append row-fluid">
-		        <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "título ou descrição" %>
+		        <%= text_field_tag :search, params[:search], class: "search-query input-xxlarge", placeholder: "Buscar projeto por título ou descrição" %>
 		        <%= submit_tag "Pesquisar", class: "btn", name: nil %>
+		      </div>
 		    </div>
 		<% end %>
-	</center> -->
 
-	<p>
-		<%= link_to raw("Comece já!"), (user_signed_in? ? projects_path : new_user_session_path), class: "btn btn-info btn-large" %>
+		<br>
 
-	</p>
+		<h4>...ou selecione uma disciplina:</h4>
+
+		<!-- <%= link_to raw("Comece já!"), (user_signed_in? ? projects_path : new_user_session_path), class: "btn btn-info btn-large" %> -->
+
+	</center>
 </div>

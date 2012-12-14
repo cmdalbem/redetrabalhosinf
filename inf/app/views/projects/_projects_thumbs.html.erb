@@ -4,40 +4,46 @@
   <% end %>
 </div>
 
-<ul class="thumbnails"> 
-<% @projects.each do |project| %>
-  <li class="span2">
-    <div class="thumbnail">
-      <% if project.image? %>
-        <a href=<%= project %> class="thumbnail">
-          <%= image_tag project.image %>
-        </a>
-      <% end %>
-      <h5><%= link_to project.title, project %></h5>
-      <p><%= project.course.name %></p>
-      <center>
-        <p>
-          <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
-          <% if user_signed_in? %>
-            <% if current_user.person.likes.include?(project) %>
-              <span class="btn btn-mini" disabled="disabled"> <i class="icon-thumbs-up"></i> Curtir </span>
-            <% else %>
-              <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini", id: "project-like-button-"+project.id.to_s %>
-            <% end %>
-          <% end %>
-        </p>
-        <p>
-          <div class="btn-group">
-            <% if user_signed_in? %>
-              <% if current_user.person==project.person %>
-                <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn" %>
-                <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn" %>
-              <% end %>
-            <% end %>
+<div class="row">
+  <div class="span9">
+
+  <ul class="thumbnails">
+  <% @projects.each do |project| %>
+    <div class="span3">
+      <li>
+        <div class="project-thumb">
+          
+          <!-- Buttons -->
+          <div class="row">
+            <div class="pull-right">
+              <div class="btn-group">
+                <% if user_signed_in? %>
+                  <% if current_user.person==project.person %>
+                    <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn btn-mini" %>
+                    <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </p>
-      </center>
+
+          <!-- Image, if existing -->
+          <% if project.image? %>
+            <a href=<%= project_path(project) %> class="thumbnail">
+              <%= image_tag project.image %>
+            </a>
+          <% end %>
+
+          <!-- Info -->
+          <h5><%= link_to project.title, project %></h5>
+          <p><%= project.course.name %></p>
+
+        </div>
+      </li>
     </div>
-  </li>
-<% end %>
-</ul>
+  <% end %>
+  </ul>
+
+</div>
+
+</div>

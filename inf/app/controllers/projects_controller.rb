@@ -102,6 +102,10 @@ class ProjectsController < ApplicationController
 
   end
 
+  def is_number?(object)
+    Float(object) != nil rescue false
+  end
+
   # PUT /projects/1
   def update
     @project = Project.find(params["id"])
@@ -109,6 +113,13 @@ class ProjectsController < ApplicationController
     pp = params[:project]
     owner = current_user.person
     tags = pp["tag_tokens"].split(",")
+
+    tags.size.times do |i|
+      if not is_number?(tags[i])
+        newTag = Tag.create(tag_text: tags[i])
+        tags[i] = newTag.id
+      end
+    end
 
     success = true
     if pp["deleteImage"] == "true"

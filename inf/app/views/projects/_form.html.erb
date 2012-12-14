@@ -53,8 +53,7 @@
             <% if @project.image? %>
               <!-- Delete option. Unlike the Replace button, this option is a link which submits the form with a special sign for deleting this file. -->
               <%= f.hidden_field :deleteImage, :value => false, id: "deleteImageField" %>
-              <%= link_to_function raw("(<i class=\"icon-trash\"></i> Deletar)"), "$('#deleteImageField').val('true'); $('form').submit();
-        return false;" %>
+              <%= link_to_function raw("(<i class=\"icon-trash\"></i> Deletar)"), "deleteUploadedField('deleteImageField')" %>
 
               <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
               <div id="keepImageField">
@@ -69,7 +68,9 @@
                 <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
               </div>
             <% else %>
+                <br>
                 <%= f.file_field :image %>
+                <br>
             <% end %>
             <br>
           </div>
@@ -78,8 +79,7 @@
           <% if @project.file? %>
             <!-- Delete option. Unlike the Replace button, this option is a link which submits the form with a special sign for deleting this file. -->
             <%= f.hidden_field :deleteFile, :value => false, id: "deleteFileField" %>
-            <%= link_to_function raw("(<i class=\"icon-trash\"></i> Deletar)"), "$('#deleteFileField').val('true'); $('form').submit();
-    return false;"%>
+            <%= link_to_function raw("(<i class=\"icon-trash\"></i> Deletar)"), "deleteUploadedField('deleteFileField')" %>
 
             <!-- Shows the uploaded file, with an option for replacing it with a new one. -->
             <div id="keepFileField">

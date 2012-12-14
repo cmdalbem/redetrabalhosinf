@@ -17,9 +17,23 @@
 
 $(function() {
 	$("#project_tag_tokens").tokenInput( "/tags.json", {
-		crossDomain: false,
-		prePopulate: $(this).data('pre'),
-		theme: "facebook",
-		preventDuplicates: true
+		theme: "facebook"
+		,preventDuplicates: true
+		,hintText: "Digite tags para adicionar..."
+		,noResultsText: "Sem resultados - pressione ENTER para adicionar"
+		,searchingText: "Procurando por tags semelhantes..."
+		,animateDropdown: false
+		,allowFreeTagging: true
 	});
+
+	
 });
+
+function deleteUploadedField(fieldName)
+{
+	if(confirm('Tem certeza?')) {
+		$("#" + fieldName).val('true');
+		$('form').submit();
+		return false;			
+	}
+}
