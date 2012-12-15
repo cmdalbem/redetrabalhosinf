@@ -292,13 +292,48 @@ label {
   color: rgb(0,0,0);
 }
 
-.project-thumb {
-  
-  img {
-    height: 100px;
-    width: auto;
-  }
+/* Reference for overlaping text over image: http://css-tricks.com/text-blocks-over-image */
+li.thumbnail.project-thumb {
+    position: relative; 
+    height: 150px;
+    padding: 0;
+    overflow: hidden;
+    margin-top: 20px;
+
+    .thumb-buttons {
+      position: absolute; 
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+    }
+
+    img {
+      width: 100%;
+      opacity: 0.3;
+      width: auto;
+    }
+
+    .thumb-content {
+      width: 100%;
+      position: absolute; 
+      top: 0;
+
+      header {
+        font-size: 18px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.05);
+
+      }
+
+      .text {
+        padding: 10px; 
+        font-size: 85%;
+      }
+    }
 }
+
 
 .accordion-heading a{
   text-decoration: none;

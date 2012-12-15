@@ -4,8 +4,8 @@
 
 <div class="content">
 
+<!-- Search Form --> 
 <center>
-  <!-- Search Form -->
   <%= form_tag projects_path, method: 'get', remote: true, class: "form-search" do %>
       <div class="field">
         <div class="input-append row-fluid">
@@ -25,13 +25,13 @@
     <% if @viewMode == :list %>
       <% thisClass += " active" %>
     <% end %>
-    <%= link_to raw("<i class=\"icon-list\"></i>"), {:view => "list"}, class: thisClass %>
+    <%= link_to raw("<i class=\"icon-list\"></i> Lista"), {:view => "list"}, class: thisClass, id: "list-view",remote: true %>
     
     <% thisClass = "btn" %>
     <% if @viewMode == :thumbs %>
       <% thisClass += " active" %>
     <% end %>
-    <%= link_to raw("<i class=\"icon-th\"></i>"), {:view => "thumbs"}, class: thisClass %>
+    <%= link_to raw("<i class=\"icon-th\"></i> Miniaturas"), {:view => "thumbs"}, class: thisClass, id: "thumbs-view", remote: true %>
   </div>
 </div>
 

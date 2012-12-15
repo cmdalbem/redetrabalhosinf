@@ -1,31 +1,37 @@
-<div class="muted">
-  <%if params[:search] and not params[:search].empty?%>
-      Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), class: "close nopull" %>
-  <% end %>
-</div>
+<center>
+  <div class="muted">
+    <%if params[:search] and not params[:search].empty?%>
+        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>") %>
+    <% end %>
+  </div>
+</center>
 
 <table class="table table-striped">
-  <tr>
-    <th>Nome</th>
-    <th>Email</th>
-    <th>Projetos</th>
-    <th colspan="1"></th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Projetos</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
 
-<% @people.each do |person| %>
-  <tr>
-    <td><%= link_to person.name, profile_path(person.nick) %></td>
-    <td><%= person.user.email %></td>
-    <td><%= person.projects.size %></td>
-    <td>
-      <div class="btn-group">
-        <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), profile_path(person.nick), class: "btn" %>
-        <% if user_signed_in? and current_user.person==person %>
-          <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_person_path(person), class: "btn" %>
-          <%= link_to raw("<i class=\"icon-remove\"></i>"), user_registration_path, confirm: 'Tem certeza?', method: :delete, class: "btn" %>
-        <% end %>
-      </div>
-    </td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= link_to person.name, profile_path(person.nick) %></td>
+        <td><%= person.user.email %></td>
+        <td><%= person.projects.size %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), profile_path(person.nick), class: "btn" %>
+            <% if user_signed_in? and current_user.person==person %>
+              <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_person_path(person), class: "btn" %>
+              <%= link_to raw("<i class=\"icon-remove\"></i>"), user_registration_path, confirm: 'Tem certeza?', method: :delete, class: "btn" %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

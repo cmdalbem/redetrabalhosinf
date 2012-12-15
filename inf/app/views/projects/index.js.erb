@@ -1,1 +1,8 @@
-$("div#projects-list").html("<%= escape_javascript(render 'projects_list')%>");
+$("div#projects-list").html("<%= escape_javascript(render (@viewMode == :thumbs ? 'projects_thumbs' : 'projects_list'))%>");
+<% if @viewMode == :thumbs %>
+	$("#thumbs-view").addClass('active');
+	$("#list-view").removeClass('active');
+<% else %>
+	$("#thumbs-view").removeClass('active');
+	$("#list-view").addClass('active');
+<% end %>

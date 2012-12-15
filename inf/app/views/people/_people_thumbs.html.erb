@@ -4,28 +4,37 @@
   <% end %>
 </div>
 
-<div class="row">
-  <div class="span9">
-    
-    <ul class="thumbnails"> 
+<div class="row-fluid">
+
+  <% columns = 6 %>
+  <ul class="thumbnails"> 
+    <% i=0 %>
     <% @people.each do |person| %>
-      <div class="span2">
-        <li>
-          <div class="thumbnail">
-            <a href=<%= profile_path(person.nick) %> class="thumbnail">
-              <%= image_tag person.avatar %>
-            </a>
-            <h5 class="username-text"><%= link_to person.name, profile_path(person.nick) %> <small>(<%=person.nick%>)</small></h5>
-            <!-- <p>Projetos: <%= person.projects.size %></p> -->
-              
-            <small>
-              <i class="icon-folder-close"></i><%=person.projects.size %>
-            </small>
+      <% if i%columns == 0 %>
+        <% if i!=0 %>
           </div>
+        <% end %>
+        <div class="row-fluid">
+      <% end %>
+
+      <div class="span2">
+        <li class="thumbnail">
+          <a href=<%= profile_path(person.nick) %> class="thumbnail">
+            <%= image_tag person.avatar %>
+          </a>
+          
+          <center>
+            <h5 class="username-text"><%= link_to person.name, profile_path(person.nick) %> <small>(<%=person.nick%>)</small></h5>
+            <small>
+              <i class="icon-folder-close"></i>Projetos: <%=person.projects.size %>
+            </small>
+          </center>
         </li>
       </div>
-    <% end %>
-    </ul>
 
-  </div>
+      <% i = i+1 %>
+
+    <% end %>
+  </ul>
+
 </div>

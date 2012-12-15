@@ -34,15 +34,14 @@
 		<ul class="unstyled">
 			<% i=0 %>
 			<% Course.all.each do |c| %>
-				<% if i!=0 and i%columns == 0 %>
-					</div>
-				<% end %>
-
 				<% if i%columns == 0 %>
+					<% if i!=0 %>
+						</div>
+					<% end %>
 					<div class="row-fluid">
 				<% end %>
 				
-				<li class=<%="span#{12/columns}"%>><%=link_to c.name, "#"%></li>
+				<li class=<%="span#{12/columns}"%> > <%=link_to c.name, "#"%> </li>
 
 				<% i = i+1 %>
 			<% end %>

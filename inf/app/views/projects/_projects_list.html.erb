@@ -1,59 +1,64 @@
-<div class="muted">
-  <%if params[:search] and not params[:search].empty?%>
-      Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), class: "close nopull" %>
-  <% end %>
-</div>
+<center>
+  <div class="muted">
+    <%if params[:search] and not params[:search].empty?%>
+        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>") %>
+    <% end %>
+  </div>
+</center>
 
 <table class="table table-striped">
-  <tr>
-    <th><%= sortable "Título", "title" %></th>
-    <th><%= sortable "Disciplina", "course" %></th>
-    <th><%= sortable "Semestre", "barra" %></th>
-    <th><%= sortable "Autor", "person" %></th>
-    <th><%= sortable "Curtir", "likes" %></th>
-    <th><%= sortable "Downloads", "downloads" %></th>
-    <th colspan="1"></th>
-  </tr>
-
-
-  <% @projects.each do |project| %>
-    
+  <thead>
     <tr>
-      <td style="width: 20%">
-        <%= link_to project.title, project %>
-        <% if project.file? %>
-          <i class="icon-file muted"></i>
-        <% end %>
-        <% if project.image? %>
-          <i class="icon-picture muted"></i>
-        <% end %>        
-      </td>
-      <td style="width: 25%"><small><%= project.course.name %></small></td>
-      <td style="width: 5%"><%= project.semester %></td>
-      <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
-      <td style="width: 3%">
-        <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
-        <!-- <% if user_signed_in? %>
-          <% if current_user.person.likes.include?(project) %>
-            <span class="btn btn-mini" disabled="disabled"> <i class="icon-thumbs-up"></i> Curtir </span>
-          <% else %>
-            <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini", id: "project-like-button-"+project.id.to_s %>
-          <% end %>
-        <% end %> -->
-      </td>
-      <td style="width: 3%"><%= project.downloadCount %></td>
-      <td style="width: 10%">
-        <div class="btn-group">
-          <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %>
-          <% if user_signed_in? %>
-            <% if current_user.person==project.person %>
-              <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn" %>
-              <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn" %>
-            <% end %>
-          <% end %>
-        </div>
-      </td>
+      <th><%= sortable "Título", "title" %></th>
+      <th><%= sortable "Disciplina", "course" %></th>
+      <th><%= sortable "Semestre", "barra" %></th>
+      <th><%= sortable "Autor", "person" %></th>
+      <th><%= sortable "Curtir", "likes" %></th>
+      <th><%= sortable "Downloads", "downloads" %></th>
+      <th colspan="1"></th>
     </tr>
-  <% end %>
+  </thead>
+
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td style="width: 20%">
+          <%= link_to project.title, project %>
+          <% if project.file? %>
+            <i class="icon-file muted"></i>
+          <% end %>
+          <% if project.image? %>
+            <i class="icon-picture muted"></i>
+          <% end %>        
+        </td>
+        <td style="width: 25%"><small><%= project.course.name %></small></td>
+        <td style="width: 5%"><%= project.semester %></td>
+        <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
+        <td style="width: 3%">
+          <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
+          <!-- <% if user_signed_in? %>
+            <% if current_user.person.likes.include?(project) %>
+              <span class="btn btn-mini" disabled="disabled"> <i class="icon-thumbs-up"></i> Curtir </span>
+            <% else %>
+              <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini", id: "project-like-button-"+project.id.to_s %>
+            <% end %>
+          <% end %> -->
+        </td>
+        <td style="width: 3%"><%= project.downloadCount %></td>
+        <td style="width: 10%">
+          <div class="btn-group">
+            <!-- <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %> -->
+            <% if user_signed_in? %>
+              <% if current_user.person==project.person %>
+                <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn" %>
+                <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn" %>
+              <% end %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
   
 </table>

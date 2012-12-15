@@ -2,11 +2,11 @@
 
   <% if @project.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <h2><%= pluralize(@project.errors.count, "erro") %> impediram deste projeto ser salvo:</h2>
       <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -22,18 +22,18 @@
         
         <div class="field">
           <%= f.label "Disciplina" %><br />
-          <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {:include_blank => "-"} %>
+          <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, include_blank: "" %>
         </div>
 
         <div class="field">
           <%= f.label "Semestre" %><br />
-          <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "ano"%>/
-          <%= f.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
+          <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "Ano"%>/
+          <%= f.select :semester_sem, ["1","2"], include_blank: "" %><br />
         </div>
 
         <div class="field">
           <%= f.label "Título" %><br />
-          <%= f.text_field :title, class: "input-xlarge" %>
+        <%= f.text_field :title, class: "input-xlarge" %>
         </div>
 
         <div class="field">
@@ -47,6 +47,9 @@
         <div class="field">
           <%= f.label "Tags" %><br />
           <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
+          <span class="help-block">
+            Por exemplo: c++, linux, grafos, gtk
+          </span>
         </div>
 
         <br>

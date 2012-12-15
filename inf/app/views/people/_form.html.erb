@@ -2,12 +2,12 @@
 
   <% if @person.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+      <h2><%= pluralize(@person.errors.count, "erro") %> impediram este perfil de ser salvo:</h2>
 
       <ul>
-      <% @person.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @person.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -26,6 +26,12 @@
           <%= f.label "Nome" %><br />
           <%= f.text_field :name %>
         </div>
+
+        <div class="field">
+          <%= f.label "Semestre em que entrou na UFRGS" %><br />
+          <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "Ano"%><b>/</b>
+          <%= f.select :semester_sem, ["1","2"], include_blank: "" %><br />
+        </div>
         
         <div class="field">
           <div><%= f.label "Sobre Mim" %><br />
@@ -37,12 +43,6 @@
         
         <div><%= f.label "Link pessoal" %><br />
         <%= f.url_field :personal_link %></div>
-
-        <div class="field">
-          <%= f.label "Semestre em que entrou na UFRGS" %><br />
-          <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "ano"%>/
-          <%= f.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
-        </div>  
 
         <div class="field">
           <%= f.label :avatar %>

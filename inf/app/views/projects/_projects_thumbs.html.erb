@@ -4,17 +4,24 @@
   <% end %>
 </div>
 
-<div class="row">
-  <div class="span12">
+<div class="row-fluid">
 
+  <% columns = 5 %>
   <ul class="thumbnails">
-  <% @projects.each do |project| %>
-    <div class="span3">
-      <li>
-        <div class="thumbnail">
-          
+    <% i=0 %>
+    <% @projects.each do |project| %>
+      <% if i%columns == 0 %>
+        <% if i!=0 %>
+          </div>
+        <% end %>
+        <div class="row-fluid">
+      <% end %>
+
+      <div class=<%="span#{12/columns}"%> >
+        <li class="thumbnail project-thumb">
+            
           <!-- Buttons -->
-          <div class="pull-right">
+          <div class="thumb-buttons">
             <div class="btn-group">
               <% if user_signed_in? %>
                 <% if current_user.person==project.person %>
@@ -27,33 +34,34 @@
 
           <!-- Image, if existing -->
           <% if project.image? %>
-            <a href=<%= project_path(project) %>>
-              <div class="crop">
-                <%= image_tag project.image %>
-              </div>
-            </a>
+            <%= image_tag project.image %>
           <% end %>
 
-          <!-- Info -->
-          <h5>
-            <%= link_to project.title, project %>
-            <% if project.file? %>
-              <i class="icon-file muted"></i>
-            <% end %>
-            <% if project.image? %>
-              <i class="icon-picture muted"></i>
-            <% end %> 
-          </h5>
-          <small><%=project.course.name%> (<%=project.semester%>)</small>
-          <br>
-          <i class="icon-thumbs-up"></i> <%= project.likes.count %> pessoas curtiram
+          <div class="thumb-content">
+            <header>
+              <center>
+                <%= link_to project.title, project %>
+                <% if project.file? %>
+                  <i class="icon-file muted"></i>
+                <% end %>
+                <% if project.image? %>
+                  <i class="icon-picture muted"></i>
+                <% end %> 
+              </center>
+            </header>
+            <div class="text">
+              <%=project.course.name%> (<%=project.semester%>)
+              <br>
+              <i class="icon-thumbs-up"></i> <%= project.likes.count %>
+            </div>
+          </div>
 
-        </div>
-      </li>
-    </div>
-  <% end %>
+        </li>
+      </div>
+
+      <% i = i+1 %>
+
+    <% end %>
   </ul>
-
-</div>
 
 </div>
