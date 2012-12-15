@@ -7,7 +7,7 @@ class Person < ActiveRecord::Base
 
 	validates :name, presence: true, length: {minimum:4, maximum: 100}
 	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 50}
-	validates :about, length: {maximum: 1000}
+	validates :about, length: {maximum: PERSON_ABOUT_MAX_LENGTH}
 	validates :semester_year, presence: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
 	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
 
@@ -28,5 +28,17 @@ class Person < ActiveRecord::Base
 			find(:all)
 		end
 	end	
+
+	def getTotalLikes()
+		sum=0
+		projects.each { |p| sum += p.likes.count }
+		sum
+	end
+
+	def getTotalDownloads()
+		sum=0
+		projects.each { |p| sum += p.downloadCount }
+		sum
+	end
 
 end

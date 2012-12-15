@@ -19,7 +19,7 @@
   <% @projects.each do |project| %>
     
     <tr>
-      <td>
+      <td style="width: 20%">
         <%= link_to project.title, project %>
         <% if project.file? %>
           <i class="icon-file muted"></i>
@@ -28,10 +28,10 @@
           <i class="icon-picture muted"></i>
         <% end %>        
       </td>
-      <td><%= project.course.name %></td>
-      <td><%= project.semester %></td>
-      <td><%= link_to project.person.name, profile_path(project.person.nick) %></td>
-      <td>
+      <td style="width: 25%"><%= project.course.name %></td>
+      <td style="width: 5%"><%= project.semester %></td>
+      <td style="width: 10%"><%= link_to project.person.name, profile_path(project.person.nick) %></td>
+      <td style="width: 3%">
         <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
         <!-- <% if user_signed_in? %>
           <% if current_user.person.likes.include?(project) %>
@@ -41,8 +41,8 @@
           <% end %>
         <% end %> -->
       </td>
-      <td><%= project.downloadCount %></td>
-      <td>
+      <td style="width: 3%"><%= project.downloadCount %></td>
+      <td style="width: 10%">
         <div class="btn-group">
           <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %>
           <% if user_signed_in? %>

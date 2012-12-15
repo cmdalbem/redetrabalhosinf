@@ -27,8 +27,13 @@
           <%= f.text_field :name %>
         </div>
         
-        <div><%= f.label "Sobre Mim" %><br />
-        <%= f.text_area :about %></div>
+        <div class="field">
+          <div><%= f.label "Sobre Mim" %><br />
+          <%= f.text_area :about %></div>
+          <span class="help-block">
+              Caracteres sobrando: <span id="char-count"><%=PERSON_ABOUT_MAX_LENGTH-@person.about.length%></span>
+          </span>
+        </div>
         
         <div><%= f.label "Link pessoal" %><br />
         <%= f.url_field :personal_link %></div>
@@ -68,7 +73,7 @@
         <br>
 
         <div class="actions">
-          <%= f.submit class: "btn btn-primary"%>
+          <%= f.submit "Salvar", class: "btn btn-primary"%>
         </div>
       </div>
     </div>

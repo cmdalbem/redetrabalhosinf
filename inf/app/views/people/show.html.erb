@@ -14,7 +14,7 @@
     <div class="span4">
 
       <div class="row-fluid">
-        <div class="profile-block">
+        <div class="profile-picture">
           <center>
             <%= image_tag @person.avatar, class: "img-polaroid" %>
           </center>
@@ -26,18 +26,23 @@
         </div>
       </div>
 
+      <hr>
+
       <div class="row-fluid">
-        <div class="profile-block">
+        <div class="">
           <h4>Estatísticas</h4>
-          <p>
-            <b>Número de projetos:</b>
-            <%= @person.projects.size %>
-          </p>
+          <b>Projetos:</b> <%= @person.projects.size %>
+          <br>
+          <b>Total de likes:</b> <%= @person.getTotalLikes %>
+          <br>
+          <b>Total de downloads:</b> <%= @person.getTotalDownloads %>
         </div>
       </div>
 
+      <hr>
+
       <div class="row-fluid">
-        <div class="profile-block">
+        <div class="">
           <b>Email:</b>
           <%= @person.user.email %>
           <br>

@@ -33,12 +33,15 @@
 
         <div class="field">
           <%= f.label "Título" %><br />
-          <%= f.text_field :title %>
+          <%= f.text_field :title, class: "input-xlarge" %>
         </div>
 
         <div class="field">
           <%= f.label "Descrição" %><br />
           <%= f.text_area :description %>
+          <span class="help-block">
+            Caracteres sobrando: <span id="char-count"><%=PROJECT_DESCRIPTION_MAX_LENGTH - (@project.description? ? @project.description.length : 0)%></span>
+          </span>
         </div>
 
         <div class="field">
@@ -94,6 +97,7 @@
                 <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); $('#fileInputField').val('');", class: "btn btn-mini btn-warning" %>
               </div>
             <% else %>
+              <br>
               <%= f.file_field :file %>
             <% end %>
           </div>
@@ -106,7 +110,7 @@
   <br>
 
   <div class="actions">
-    <%= f.submit "Atualizar projeto", class: "btn btn-primary"%>
+    <%= f.submit "Salvar", class: "btn btn-primary"%>
   </div>
   
 <% end %>

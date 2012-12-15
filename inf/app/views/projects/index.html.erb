@@ -45,5 +45,7 @@
 </div>
 
 <% if user_signed_in? %>
-  <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success" %>
+  <center>
+    <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success btn-large" %>
+  </center>
 <% end %>

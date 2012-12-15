@@ -15,6 +15,8 @@
 //= require_tree .
 //= require bootstrap
 
+// TokenInput Settings
+// Thanks to http://loopj.com/jquery-tokeninput/
 $(function() {
 	$("#project_tag_tokens").tokenInput( "/tags.json", {
 		theme: "facebook"
@@ -23,12 +25,14 @@ $(function() {
 		,noResultsText: "Sem resultados - pressione ENTER para adicionar"
 		,searchingText: "Procurando por tags semelhantes..."
 		,animateDropdown: false
-		,allowFreeTagging: true
-	});
-
-	
+		,allowFreeTagging: true // Enables the user to insert tags that weren't found. Later validation is done on the Controller for creating the tags within the BD.
+	});	
 });
 
+// Function used within forms for deleting uploaded files.
+// Remember to: (1) create a hidden field holding a boolean value
+// 				(2) pass into this function the ID of the field of the previous step
+//				(3) handle this hidden field value on Update call of your controller
 function deleteUploadedField(fieldName)
 {
 	if(confirm('Tem certeza?')) {
@@ -37,3 +41,16 @@ function deleteUploadedField(fieldName)
 		return false;			
 	}
 }
+
+// Character counters.
+// Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/
+$('#project_description').live('keyup keydown', function(e) {
+  var maxLen = 1500;
+  var left = maxLen - $(this).val().length;
+  $('#char-count').html(left);
+});
+$('#person_about').live('keyup keydown', function(e) {
+  var maxLen = 1000;
+  var left = maxLen - $(this).val().length;
+  $('#char-count').html(left);
+});

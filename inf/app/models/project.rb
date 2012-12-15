@@ -14,21 +14,19 @@ class Project < ActiveRecord::Base
 	has_attached_file :file, :path => "projects/:id/:attachment.:extension"
 
 	validates :person, presence: true
-	validates :title, presence: true, length: {maximum: 128}
-	validates :description, length: {maximum: 1024}
+	validates :title, presence: true, length: {maximum: 255}
+	validates :description, length: {maximum: PROJECT_DESCRIPTION_MAX_LENGTH}
 	validates :course, presence: true
-	validates :semester_year, presence: true, :numericality => { :greater_than_or_equal_to => 1989, :less_than_or_equal_to => Time.now.year }
+	validates :semester_year, presence: true, :numericality => { :greater_than_or_equal_to => MINIMUM_YEAR_ACCEPTABLE, :less_than_or_equal_to => Time.now.year }
 	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
 
 	attr_reader :tag_tokens
 	attr_writer :tag_tokens
-	
 	def tag_tokens=(ids)
 		self.tag_ids = ids.split(",")
 	end
 
 	attr_reader :semester
-
 	def semester
 		semester_year.to_s + "/" + semester_sem.to_s
 	end
