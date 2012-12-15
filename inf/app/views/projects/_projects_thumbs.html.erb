@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-  <div class="">
+  <div class="span12">
 
   <ul class="thumbnails">
   <% @projects.each do |project| %>
@@ -14,29 +14,39 @@
         <div class="thumbnail">
           
           <!-- Buttons -->
-          <div class="row">
-            <div class="pull-right">
-              <div class="btn-group">
-                <% if user_signed_in? %>
-                  <% if current_user.person==project.person %>
-                    <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn btn-mini" %>
-                    <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
-                  <% end %>
+          <div class="pull-right">
+            <div class="btn-group">
+              <% if user_signed_in? %>
+                <% if current_user.person==project.person %>
+                  <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn btn-mini" %>
+                  <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
                 <% end %>
-              </div>
+              <% end %>
             </div>
           </div>
 
           <!-- Image, if existing -->
           <% if project.image? %>
-            <a href=<%= project_path(project) %> class="thumbnail">
-              <%= image_tag project.image %>
+            <a href=<%= project_path(project) %>>
+              <div class="crop">
+                <%= image_tag project.image %>
+              </div>
             </a>
           <% end %>
 
           <!-- Info -->
-          <h5><%= link_to project.title, project %></h5>
-          <p><%= project.course.name %></p>
+          <h5>
+            <%= link_to project.title, project %>
+            <% if project.file? %>
+              <i class="icon-file muted"></i>
+            <% end %>
+            <% if project.image? %>
+              <i class="icon-picture muted"></i>
+            <% end %> 
+          </h5>
+          <small><%=project.course.name%> (<%=project.semester%>)</small>
+          <br>
+          <i class="icon-thumbs-up"></i> <%= project.likes.count %> pessoas curtiram
 
         </div>
       </li>

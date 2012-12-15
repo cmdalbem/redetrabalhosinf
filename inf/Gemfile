@@ -45,7 +45,7 @@ gem 's3_swf_upload'
 # Gems to be added only when running on Linux
 platforms :ruby do
   gem 'execjs'
-  
+  gem 'therubyracer'
 end
 
 

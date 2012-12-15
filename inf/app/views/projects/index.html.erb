@@ -23,7 +23,7 @@
     <% if @viewMode == :list %>
       <% thisClass += " active" %>
     <% end %>
-    <%= link_to raw("<i class=\"icon-list-alt\"></i>"), {:view => "list"}, class: thisClass %>
+    <%= link_to raw("<i class=\"icon-list\"></i>"), {:view => "list"}, class: thisClass %>
     
     <% thisClass = "btn" %>
     <% if @viewMode == :thumbs %>

@@ -5,8 +5,8 @@ class Person < ActiveRecord::Base
 	#Like relationship
 	has_and_belongs_to_many :likes, :foreign_key => 'person_id', :class_name => "Project"
 
-	validates :name, presence: true, length: {minimum:4, maximum: 100}
-	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 50}
+	validates :name, presence: true, length: {minimum:4, maximum: 50}
+	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 30}
 	validates :about, length: {maximum: PERSON_ABOUT_MAX_LENGTH}
 	validates :semester_year, presence: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
 	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
@@ -16,6 +16,10 @@ class Person < ActiveRecord::Base
 	attr_reader :semester
 	def semester
 		semester_year.to_s + "/" + semester_sem.to_s
+	end
+
+	def getFirstName()
+		name.split(' ').first
 	end
 
 	def self.search(search)

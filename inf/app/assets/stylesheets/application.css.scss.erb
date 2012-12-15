@@ -24,20 +24,8 @@ $foot_height: 100px;
 
 /* Import font from Google Fonts API */
 @import url("http://fonts.googleapis.com/css?family=Inder&subset=latin,latin-ext");
-
-@font-face {
-    font-family: 'OpenSansLight';
-    src: url(' <%= asset_path('OpenSans-Light-webfont.woff') %>') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'OpenSansRegular';
-    src: url(' <%= asset_path('OpenSans-Regular-webfont.woff') %>') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 
 /* Styles */
@@ -49,7 +37,7 @@ html {
 }
 
 body {
-  font-family: 'Inder', 'OpenSansRegular', sans-serif;
+  font-family: 'Inder', 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 20px;
 
@@ -129,6 +117,14 @@ body {
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"] {
     background-image: none;
+}
+
+.username-text {
+  font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif;
+}
+
+.projectname-text {
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -292,25 +288,16 @@ label {
   float: none;
 }
 
-.project-thumb {
-  display: block;
-  /*padding: 4px;*/
-  line-height: 20px;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+.blacktext {
+  color: rgb(0,0,0);
 }
 
-.project-thumbs {
-  list-style: none;
+.project-thumb {
+  
+  img {
+    height: 100px;
+    width: auto;
+  }
 }
 
 .accordion-heading a{

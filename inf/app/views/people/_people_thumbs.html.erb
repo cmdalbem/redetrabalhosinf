@@ -15,8 +15,12 @@
             <a href=<%= profile_path(person.nick) %> class="thumbnail">
               <%= image_tag person.avatar %>
             </a>
-            <h3><%= link_to person.name, profile_path(person.nick) %></h3>
+            <h5 class="username-text"><%= link_to person.name, profile_path(person.nick) %> <small>(<%=person.nick%>)</small></h5>
             <!-- <p>Projetos: <%= person.projects.size %></p> -->
+              
+            <small>
+              <i class="icon-folder-close"></i><%=person.projects.size %>
+            </small>
           </div>
         </li>
       </div>

@@ -25,6 +25,9 @@
 
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
+				<div class="pull-right blacktext">
+					<i class="icon-thumbs-up"></i> <%= project.likes.count %>
+		        </div>
 				<div class="title">
 					<%= project.title %> 
 			        <% if project.file? %>
@@ -47,7 +50,6 @@
 					<%= link_to raw("<i class=\"icon-zoom-in\"></i> Mais detalhes"), project_path(project) %>
 				</div>
 					<p>
-						<b>Descrição:</b>
 						<%= project.description %>
 					</p>
 					

@@ -1,7 +1,7 @@
 <legend>Detalhes de Perfil
   <div class="pull-right">
   <% if user_signed_in? and current_user.person==@person %>
-    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_person_path(@person)%>
+    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar Perfil"), edit_person_path(@person), class: "btn btn-info" %>
   <% end %>
 </div>
 </legend>
@@ -19,10 +19,12 @@
             <%= image_tag @person.avatar, class: "img-polaroid" %>
           </center>
         
-          <h2><%= @person.name %></h2>
-          <strong>Sobre Mim:</strong> <%= @person.about %> <br>
-          <strong>Semestre:</strong> <%= @person.semester %> <br>
-          <strong>Link pessoal:</strong> <%= link_to @person.personal_link, @person.personal_link %><br>
+          <h2 class="username-text"><%= @person.name %> <small>(<%=@person.nick%>)</small></h2>
+          <%= @person.about %>
+          <br>
+          <strong>Semestre:</strong> <%= @person.semester %>
+          <br>
+          <strong>Link pessoal:</strong> <%= link_to @person.personal_link, @person.personal_link %>
         </div>
       </div>
 

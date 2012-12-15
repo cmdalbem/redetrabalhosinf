@@ -4,7 +4,7 @@
   <% end %>
 </div>
 
-<table class="table table-striped table-hover">
+<table class="table table-striped">
   <tr>
     <th><%= sortable "Título", "title" %></th>
     <th><%= sortable "Disciplina", "course" %></th>
@@ -28,9 +28,9 @@
           <i class="icon-picture muted"></i>
         <% end %>        
       </td>
-      <td style="width: 25%"><%= project.course.name %></td>
+      <td style="width: 25%"><small><%= project.course.name %></small></td>
       <td style="width: 5%"><%= project.semester %></td>
-      <td style="width: 10%"><%= link_to project.person.name, profile_path(project.person.nick) %></td>
+      <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
       <td style="width: 3%">
         <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
         <!-- <% if user_signed_in? %>
