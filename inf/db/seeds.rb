@@ -9,13 +9,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 tags = [
-	"cpp",
-	"linux",
-	"windows",
-	"java",
-	"python",
-	"gtk",
-	"cg"
+	"cpp", "linux", "windows", "java", "python", "ruby", "gtk", "qt", "cg", "mac", "ihc", "graph", "trees", 
+	"estrutura de dados", "algorithm", "algoritmo", "otimizacao", "relatorio", "trabalho final",
+	"svn", "git", "versionamento", "tcp", "engenharia de software", "uml", "eclipse", "visual studio", "microsoft",
+	"banco de dados", "database", "image processing", "sql"
 ]
 
 tags.size.times do |i|
