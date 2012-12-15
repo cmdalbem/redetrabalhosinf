@@ -4,15 +4,17 @@
 
 <div class="content">
 
-<!-- Search Form -->
-<%= form_tag projects_path, method: 'get', remote: true, class: "form-search" do %>
-    <div class="field">
-      <div class="input-append row-fluid">
-        <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Busca por título ou descrição" %>
-        <%= submit_tag "Pesquisar", class: "btn", name: nil %>
+<center>
+  <!-- Search Form -->
+  <%= form_tag projects_path, method: 'get', remote: true, class: "form-search" do %>
+      <div class="field">
+        <div class="input-append row-fluid">
+          <%= text_field_tag :search, params[:search], class: "search-query input-xlarge", placeholder: "Busca por título ou descrição" %>
+          <%= submit_tag "Pesquisar", class: "btn", name: nil %>
+        </div>
       </div>
-    </div>
-<% end %>
+  <% end %>
+</center>
 
 <!-- Projects list -->
 

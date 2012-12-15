@@ -12,7 +12,9 @@ class ProjectsController < ApplicationController
       when "person"
         projectsList.sort_by! {|x| x.person.name }
       when "likes"
-        projectsList.sort_by! {|x| x.likes.size }        
+        projectsList.sort_by! {|x| x.likes.size }
+      when "downloads"
+        projectsList.sort_by! {|x| x.downloadCount }
     end
 
     if direction == "desc"

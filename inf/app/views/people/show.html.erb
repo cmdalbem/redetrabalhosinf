@@ -1,9 +1,9 @@
 <legend>Detalhes de Perfil
-  <div class="pull-right">
-  <% if user_signed_in? and current_user.person==@person %>
-    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar Perfil"), edit_person_path(@person), class: "btn btn-info" %>
-  <% end %>
-</div>
+  <!-- <div class="pull-right"> -->
+    <% if user_signed_in? and current_user.person==@person %>
+      <%= link_to raw("<i class=\"icon-pencil\"></i> Editar Perfil"), edit_person_path(@person), class: "btn btn-info" %>
+    <% end %>
+  <!-- </div> -->
 </legend>
 
 <div class="content">
@@ -54,11 +54,9 @@
           <b>Número de logins:</b>
           <%= @person.user.sign_in_count %>
           <br>
-          <b>Logado desde:</b>
-          <%= @person.user.current_sign_in_at %>
+          <!--<b>Logado desde:</b> <%= @person.user.current_sign_in_at %>
           <br>
-          <b>IP:</b>
-          <%= @person.user.current_sign_in_ip %>
+          <b>IP:</b> <%= @person.user.current_sign_in_ip %> -->
         </div>
       </div>
 

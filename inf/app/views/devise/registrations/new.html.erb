@@ -10,19 +10,13 @@
       <%= person_builder.text_field :name %>
     </div>
 
-    <div class="field">
-      <%= person_builder.label "Semestre" %><br />
-      <%= person_builder.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "ano"%>/
-      <%= person_builder.select :semester_sem, ["1","2"], {:include_blank => "-"} %><br />
-    </div>  
+    <div><%= f.label "Email da INF" %><br />
+    <%= f.email_field :email %></div>
 
     <div class="input-prepend">
       <span class="add-on">redesocialdainf/</span><%= person_builder.text_field :nick, placeholder: "nick" %>
-    </div>    
+    </div>
   <% end %>
-
-  <div><%= f.label "Email da INF" %><br />
-  <%= f.email_field :email %></div>
 
   <div><%= f.label "Senha" %><br />
   <%= f.password_field :password %></div>

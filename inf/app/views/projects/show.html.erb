@@ -40,7 +40,7 @@ Detalhes de projeto
       <p> 
         <span id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
         <% if user_signed_in? %>
-          <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: "btn" %>
+          <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true %>
         <% end %>
       </p>
     </div>
@@ -52,13 +52,13 @@ Detalhes de projeto
 <div class="row-fluid">
   <div class="block span6">
     <p>
-      <b>Disciplina:</b>
-      <%= @project.course.name %>
+      <b>Autor:</b>
+      <%= link_to @project.person.nick, profile_path(@project.person.nick) %>
     </p>
 
     <p>
-      <b>Autor:</b>
-      <%= link_to @project.person.name, profile_path(@project.person.nick) %>
+      <b>Disciplina:</b>
+      <%= @project.course.name %>
     </p>
     
     <p>

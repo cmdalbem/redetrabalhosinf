@@ -54,7 +54,11 @@ class PeopleController < ApplicationController
   def create
     pp = params[:person];
 
-    @person = Person.new(name: pp["name"], email: pp["email"], semester_year: pp["semester_year"], semester_sem: pp["semester_sem"], avatar: pp["avatar"])
+    @person = Person.new(name: pp["name"],
+              email: pp["email"],
+              semester_year: pp["semester_year"],
+              semester_sem: pp["semester_sem"],
+              avatar: pp["avatar"])
 
     respond_to do |format|
       if @person.save
@@ -76,6 +80,7 @@ class PeopleController < ApplicationController
     elsif pp["avatar"]
       success &&= @person.update_attributes(avatar: pp["avatar"])
     end
+    
     success &&= @person.update_attributes(
                   name: pp["name"],
                   about: pp["about"],

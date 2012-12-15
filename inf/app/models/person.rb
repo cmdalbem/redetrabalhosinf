@@ -8,13 +8,14 @@ class Person < ActiveRecord::Base
 	validates :name, presence: true, length: {minimum:4, maximum: 50}
 	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: 30}
 	validates :about, length: {maximum: PERSON_ABOUT_MAX_LENGTH}
-	validates :semester_year, presence: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
-	validates :semester_sem, presence: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
+	validates :semester_year, allow_blank: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
+	validates :semester_sem, allow_blank: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
 
 	has_attached_file :avatar, :path => ":attachment/:id/:style.:extension", :default_url => "https://s3.amazonaws.com/redesocialinf/user.gif"
 
 	attr_reader :semester
 	def semester
+		
 		semester_year.to_s + "/" + semester_sem.to_s
 	end
 
