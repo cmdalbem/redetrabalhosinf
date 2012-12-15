@@ -114,6 +114,7 @@ class ProjectsController < ApplicationController
     owner = current_user.person
     tags = pp["tag_tokens"].split(",")
 
+    # Check if one of the entered Tags doesn't exist on the Database.
     tags.size.times do |i|
       if not is_number?(tags[i])
         newTag = Tag.create(tag_text: tags[i])
@@ -129,9 +130,9 @@ class ProjectsController < ApplicationController
     end
 
     if pp["deleteFile"] == "true"
-      success &&= @project.update_attributes(file: nil)
+      success &&= @project.update_attributes(file: nil, downloadCount: 0)
     elsif pp["file"]
-      success &&= @project.update_attributes(file: pp["file"])
+      success &&= @project.update_attributes(file: pp["file"], downloadCount: 0)
     end
     
     success &&= @project.update_attributes(person: owner,
@@ -174,6 +175,16 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to Project }
       format.js
+    end
+  end
+
+  def downloadFile
+    @project = Project.find(params[:id])
+
+    @project.update_attributes(downloadCount: @project.downloadCount+1)
+
+    respond_to do |format|
+      format.html { redirect_to @project.file.url }
     end
   end
 

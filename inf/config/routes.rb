@@ -12,6 +12,7 @@ Inf::Application.routes.draw do
   # match 'people/:name/deleteAvatar' => 'People#deleteAvatar', :as => 'deleteAvatar'
 
   match 'project/like/:id' => 'Projects#like', :as => 'like_project'
+  match 'project/download/:id' => 'Projects#downloadFile', :as => 'project_download'
 
 
   # The priority is based upon order of creation:

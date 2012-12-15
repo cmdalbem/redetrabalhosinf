@@ -3,9 +3,9 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal" }) do |f| %>
   
 	<div class="control-group">
-		<div><%= f.label :email, class: "control-label" %>
+		<%= f.label :email, class: "control-label" %>
 		<div class="controls">
-			<%= f.email_field :email %></div>
+			<%= f.email_field :email %>
 		</div>
 	</div>
 
@@ -19,11 +19,10 @@
 	<% if devise_mapping.rememberable? -%>
 		<div class="control-group">
 			<div class="controls">
-				<label class="checkbox">
-					<%= f.check_box :remember_me %> Manter logado
-				</label>
-				<br>
-				<br>
+				<%= f.check_box :remember_me %> Manter logado
+			</div>
+			<br>
+			<div class="controls">
 				<%= f.submit "Entrar", class: "btn btn-primary"%>
 			</div>
 		</div>

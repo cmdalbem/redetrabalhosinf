@@ -14,31 +14,20 @@
     <div class="span4">
 
       <div class="row-fluid">
-        <div class="block">
+        <div class="profile-block">
           <center>
             <%= image_tag @person.avatar, class: "img-polaroid" %>
           </center>
         
-          <p>
-            <h2><%= @person.name %></h2>
-          </p>
-          <p>
-            <strong>Sobre Mim:</strong>
-            <%= @person.about %>
-          </p>
-          <p>
-            <strong>Semestre:</strong>
-            <%= @person.semester %>
-          </p>
-          <p>
-            <strong>Link pessoal:</strong>
-            <%= link_to @person.personal_link, @person.personal_link %>
-          </p>
+          <h2><%= @person.name %></h2>
+          <strong>Sobre Mim:</strong> <%= @person.about %> <br>
+          <strong>Semestre:</strong> <%= @person.semester %> <br>
+          <strong>Link pessoal:</strong> <%= link_to @person.personal_link, @person.personal_link %><br>
         </div>
       </div>
 
       <div class="row-fluid">
-        <div class="block">
+        <div class="profile-block">
           <h4>Estatísticas</h4>
           <p>
             <b>Número de projetos:</b>
@@ -48,35 +37,27 @@
       </div>
 
       <div class="row-fluid">
-        <div class="block">
-          <h4>User Details</h4>
-          <p>
-            <b>Registered user email:</b>
-            <%= @person.user.email %>
-          </p>
-          <p>
-            <b>Signed up date:</b>
-            <%= @person.user.created_at %>
-          </p>
-          <p>
-            <b>Sign in count:</b>
-            <%= @person.user.sign_in_count %>
-          </p>
-          <p>
-            <b>Logged since:</b>
-            <%= @person.user.current_sign_in_at %>
-          </p>
-          <p>
-            <b>Location:</b>
-            <%= @person.user.current_sign_in_ip %>
-          </p>
-          <p>
+        <div class="profile-block">
+          <b>Email:</b>
+          <%= @person.user.email %>
+          <br>
+          <b>Conta criada em:</b>
+          <%= @person.user.created_at %>
+          <br>
+          <b>Número de logins:</b>
+          <%= @person.user.sign_in_count %>
+          <br>
+          <b>Logado desde:</b>
+          <%= @person.user.current_sign_in_at %>
+          <br>
+          <b>IP:</b>
+          <%= @person.user.current_sign_in_ip %>
         </div>
       </div>
 
     </div>
 
-    <div class="block span8">
+    <div class="span8">
        <%= render 'projects_accordion' %>
     </div>
     

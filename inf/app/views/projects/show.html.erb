@@ -14,26 +14,36 @@ Detalhes de projeto
 <h2> <%= @project.title %> </h2>
 
 <% if @project.image? %>
-<p>
-  <%= image_tag @project.image.url %>
-</p>
+  <p>
+    <center>
+      <%= image_tag @project.image.url %>
+    </center>
+  </p>
 <% end %>
 
 <div class="row-fluid">
-  <div class="block span10">
-    <p>
+  <div class="block span12">
+    <div class="span9">
       <b>Descrição:</b>
       <%= @project.description %>
-    </p>
-  </div>
 
-  <div class="block span2">
-    <p> 
-      <span id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
-      <% if user_signed_in? %>
-        <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: "btn" %>
-      <% end %>
-    </p>
+      <p>
+        <ul class="tags clearfix">
+        <% @project.tags.each do |tag| %>
+          <li> <%= link_to tag.tag_text, "#" %> </li>
+        <% end %>
+        </ul>
+      </p>
+    </div>
+
+    <div class="span3">
+      <p> 
+        <span id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
+        <% if user_signed_in? %>
+          <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: "btn" %>
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>
 
@@ -59,18 +69,10 @@ Detalhes de projeto
 
   <div class="block span6">
     <p>
-      <b>Tags:</b>
-      <ul class="tags clearfix">
-      <% @project.tags.each do |tag| %>
-        <li> <%= tag.tag_text %> </li>
-      <% end %>
-      </ul>
-    </p>
-    <p>
       <b>Arquivos:</b>
       <ul>
         <% if @project.file? %>
-          <li> <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %> </li>
+          <li> <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", project_download_path(@project) %> <span class="badge"><%=@project.downloadCount%> hits</span> </li>
         <% end %>
       </ul>
     </p>        

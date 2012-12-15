@@ -25,7 +25,18 @@
 
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
-				<%= project.title %> 
+				<div class="title">
+					<%= project.title %> 
+			        <% if project.file? %>
+			          <i class="icon-file muted"></i>
+			        <% end %>
+			        <% if project.image? %>
+			          <i class="icon-picture muted"></i>
+			        <% end %> 
+			    </div>
+		        <div class="caption">
+		        	<%= project.course.name %> (<%= project.semester %>)
+		        </div>
 			</a>
 
 		</div>
@@ -33,7 +44,7 @@
 			<div class="accordion-inner">
 				
 				<div class="pull-right">
-					<%= link_to raw("<i class=\"icon-eye-open\"></i> Mais detalhes"), project_path(project), class: "btn" %>
+					<%= link_to raw("<i class=\"icon-zoom-in\"></i> Mais detalhes"), project_path(project) %>
 				</div>
 					<p>
 						<b>Descrição:</b>
@@ -41,15 +52,9 @@
 					</p>
 					
 					<p>
-						<b>Disciplina:</b>
-						<%= project.course.name %> (<%= project.semester %>)
-					</p>
-					
-					<p>
-						<b>Tags:</b>
 						<ul class="tags clearfix">
 							<% project.tags.each do |tag| %>
-								<li> <%= tag.tag_text %> </li>
+								<li> <%= link_to tag.tag_text, "#" %> </li>
 							<% end %>
 						</ul>
 					</p>

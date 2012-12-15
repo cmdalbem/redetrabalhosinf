@@ -49,7 +49,7 @@
         <br>
 
         <div class="field">
-            <%= f.label "Imagem de exibição" %>          
+            <%= f.label raw("Imagem de exibição") %>
             <% if @project.image? %>
               <!-- Delete option. Unlike the Replace button, this option is a link which submits the form with a special sign for deleting this file. -->
               <%= f.hidden_field :deleteImage, :value => false, id: "deleteImageField" %>
@@ -75,28 +75,28 @@
             <br>
           </div>
 
-          <%= f.label "Arquivo" %>
-          <% if @project.file? %>
-            <!-- Delete option. Unlike the Replace button, this option is a link which submits the form with a special sign for deleting this file. -->
-            <%= f.hidden_field :deleteFile, :value => false, id: "deleteFileField" %>
-            <%= link_to_function raw("(<i class=\"icon-trash\"></i> Deletar)"), "deleteUploadedField('deleteFileField')" %>
+          <div class="field">
+            <%= f.label raw("Arquivo") %>
+            <% if @project.file? %>
+              <!-- Delete option. Unlike the Replace button, this option is a link which submits the form with a special sign for deleting this file. -->
+              <%= f.hidden_field :deleteFile, :value => false, id: "deleteFileField" %>
+              <%= link_to_function raw("(<i class=\"icon-trash\"></i> Deletar)"), "deleteUploadedField('deleteFileField')" %>
 
-            <!-- Shows the uploaded file, with an option for replacing it with a new one. -->
-            <div id="keepFileField">
-              <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %>
-              <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); ", class: "btn btn-mini btn-warning" %>
-            </div>
-            <!-- Field for uploading a replacing file. (it's initially hidden) -->
-            <div id="updateFileField" style="display: none;">
-              <%= f.file_field :file, id: "fileInputField" %>
-              <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
-              <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); $('#fileInputField').val('');", class: "btn btn-mini btn-warning" %>
-            </div>
-          <% else %>
-            <div class="field">
+              <!-- Shows the uploaded file, with an option for replacing it with a new one. -->
+              <div id="keepFileField">
+                <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %>
+                <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); ", class: "btn btn-mini btn-warning" %>
+              </div>
+              <!-- Field for uploading a replacing file. (it's initially hidden) -->
+              <div id="updateFileField" style="display: none;">
+                <%= f.file_field :file, id: "fileInputField" %>
+                <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+                <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); $('#fileInputField').val('');", class: "btn btn-mini btn-warning" %>
+              </div>
+            <% else %>
               <%= f.file_field :file %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
       </div>
     </div>
 

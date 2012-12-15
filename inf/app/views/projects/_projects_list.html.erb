@@ -11,6 +11,7 @@
     <th><%= sortable "Semestre", "barra" %></th>
     <th><%= sortable "Autor", "person" %></th>
     <th><%= sortable "Curtir", "likes" %></th>
+    <th><%= sortable "Downloads", "downloads" %></th>
     <th colspan="1"></th>
   </tr>
 
@@ -18,23 +19,32 @@
   <% @projects.each do |project| %>
     
     <tr>
-      <td><%= link_to project.title, project %></td>
+      <td>
+        <%= link_to project.title, project %>
+        <% if project.file? %>
+          <i class="icon-file muted"></i>
+        <% end %>
+        <% if project.image? %>
+          <i class="icon-picture muted"></i>
+        <% end %>        
+      </td>
       <td><%= project.course.name %></td>
       <td><%= project.semester %></td>
       <td><%= link_to project.person.name, profile_path(project.person.nick) %></td>
       <td>
         <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
-        <% if user_signed_in? %>
+        <!-- <% if user_signed_in? %>
           <% if current_user.person.likes.include?(project) %>
             <span class="btn btn-mini" disabled="disabled"> <i class="icon-thumbs-up"></i> Curtir </span>
           <% else %>
             <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini", id: "project-like-button-"+project.id.to_s %>
           <% end %>
-        <% end %>
+        <% end %> -->
       </td>
+      <td><%= project.downloadCount %></td>
       <td>
         <div class="btn-group">
-          <%= link_to raw("<i class=\"icon-eye-open\"></i>"), project, class: "btn" %>
+          <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %>
           <% if user_signed_in? %>
             <% if current_user.person==project.person %>
               <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn" %>

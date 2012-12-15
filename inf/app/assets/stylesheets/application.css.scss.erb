@@ -93,7 +93,23 @@ body {
 }
 
 .block {
-  /*background-color: rgba(0,0,0,0.03);*/
+  background-color: rgba(0,0,0,0.02);
+
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+
+  padding: 5px 15px 5px 15px;
+
+  height: 100%;
+}
+
+.profile-block {
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 
   padding: 5px 15px 5px 15px;
 
@@ -297,11 +313,26 @@ label {
   list-style: none;
 }
 
+.accordion-heading a{
+  text-decoration: none;
+
+  .title {
+    font-size: 18px;
+  }
+
+  .caption {
+    font-size: 12px;
+    color: rgb(153, 153, 153);
+  }
+}
+
 /* Neat list of tags! Thanks to: http://cssglobe.com/pure-css3-post-tags */
 .tags{
   list-style:none;
 }
 .tags li, .tags a{
+  text-decoration: none;
+  color:#fff;
   float:left;
   height:24px;
   line-height:24px;
