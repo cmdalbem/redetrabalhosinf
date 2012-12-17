@@ -39,8 +39,16 @@ Detalhes de projeto
     <div class="span3">
       <p> 
         <span id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
+        
         <% if user_signed_in? %>
-          <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true %>
+        <%  likeClass = unlikeClass = ""
+            if (current_user.person.likes.include?(@project))
+              likeClass = "hidden"
+            else
+              unlikeClass = "hidden"
+            end %>
+            <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
+            <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
         <% end %>
       </p>
     </div>
