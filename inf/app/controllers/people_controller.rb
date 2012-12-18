@@ -36,6 +36,15 @@ class PeopleController < ApplicationController
         redirect_to root_path, alert: "Nao consegui encontrar #{params[:id]}."
       else
         @person = search.first
+        @projects = @person.projects
+        
+        # Default view is LIST
+        @viewMode = (!params[:view] or params[:view]=="list") ? :list : :thumbs
+
+        respond_to do |format|
+          format.html
+          format.js
+        end
       end
     end
   end

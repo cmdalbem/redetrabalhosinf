@@ -16,28 +16,13 @@
   <% end %>
 </center>
 
-
-<!-- People listing -->
-
 <!-- Button group for choosing view (list or thumbnail) -->
-<div class="pull-right btn-toolbar">
-  <div class="btn-group">
-    <% thisClass = "btn" %>
-    <% if @viewMode == :list %>
-      <% thisClass += " active" %>
-    <% end %>
-    <%= link_to raw("<i class=\"icon-list\"></i> Lista"), {:view => "list"}, class: thisClass, remote: true, id: "list-view-button" %>
-    
-    <% thisClass = "btn" %>
-    <% if @viewMode == :thumbs %>
-      <% thisClass += " active" %>
-    <% end %>
-    <%= link_to raw("<i class=\"icon-th\"></i> Miniaturas"), {:view => "thumbs"}, class: thisClass, remote: true, id: "thumbs-view-button" %>
-  </div>
+<div class="row"> 
+  <%= render 'projects/viewmodes_buttons' %>
 </div>
 
 <!-- The listing itself -->
-<div id="people-list" class="clearfix"> 
+<div id="people-table" class="clearfix"> 
   <% if @viewMode == :thumbs %>
     <%= render 'people_thumbs' %>
   <% else %>

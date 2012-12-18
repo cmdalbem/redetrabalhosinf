@@ -1,0 +1,15 @@
+<div class="pull-right btn-toolbar">
+  <div class="btn-group">
+    <% thisClass = "btn" %>
+    <% if @viewMode == :list %>
+      <% thisClass += " active" %>
+    <% end %>
+    <%= link_to raw("<i class=\"icon-list\"></i> Lista"), {:view => "list"}, class: thisClass, id: "list-view",remote: true %>
+    
+    <% thisClass = "btn" %>
+    <% if @viewMode == :thumbs %>
+      <% thisClass += " active" %>
+    <% end %>
+    <%= link_to raw("<i class=\"icon-th\"></i> Miniaturas"), {:view => "thumbs"}, class: thisClass, id: "thumbs-view", remote: true %>
+  </div>
+</div>

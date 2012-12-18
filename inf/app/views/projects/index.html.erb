@@ -1,4 +1,4 @@
-<h1>Projetos</h1>
+<h1>Explorar</h1>
 
 <br>
 
@@ -18,24 +18,12 @@
 
 
 <!-- Button group for choosing view (list or thumbnail) -->
-<div class="pull-right btn-toolbar">
-  <div class="btn-group">
-    <% thisClass = "btn" %>
-    <% if @viewMode == :list %>
-      <% thisClass += " active" %>
-    <% end %>
-    <%= link_to raw("<i class=\"icon-list\"></i> Lista"), {:view => "list"}, class: thisClass, id: "list-view",remote: true %>
-    
-    <% thisClass = "btn" %>
-    <% if @viewMode == :thumbs %>
-      <% thisClass += " active" %>
-    <% end %>
-    <%= link_to raw("<i class=\"icon-th\"></i> Miniaturas"), {:view => "thumbs"}, class: thisClass, id: "thumbs-view", remote: true %>
-  </div>
+<div class="row">
+  <%= render 'viewmodes_buttons' %>
 </div>
 
 <!-- The listing itself -->
-<div id="projects-list" class="clearfix"> 
+<div id="projects-table" class="clearfix"> 
   <% if @viewMode == :thumbs %>
     <%= render 'projects_thumbs' %>
   <% else %>

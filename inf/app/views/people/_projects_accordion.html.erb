@@ -50,11 +50,11 @@
 					<%= link_to raw("<i class=\"icon-zoom-in\"></i> Mais detalhes"), project_path(project) %>
 					<% if user_signed_in? %>
 						<% if current_user.person==project.person %>
-							<div>
+							<small><div>
 								<%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(project) %>
 								| 
 								<%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), project, confirm: 'Tem certeza?', method: :delete %>
-							</div>
+							</div></small>
 						<% end %>
 					<% end %>
 				</div>

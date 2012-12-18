@@ -1,8 +1,8 @@
-$("div#people-list").html("<%= escape_javascript(render (@viewMode == :thumbs ? 'people_thumbs' : 'people_list'))%>");
+$("div#people-table").html("<%= escape_javascript(render (@viewMode == :thumbs ? 'people_thumbs' : 'people_list'))%>");
 <% if @viewMode == :thumbs %>
-	$("#thumbs-view-button").addClass('active');
-	$("#list-view-button").removeClass('active');
+	$("#thumbs-view").addClass('active');
+	$("#list-view").removeClass('active');
 <% else %>
-	$("#thumbs-view-button").removeClass('active');
-	$("#list-view-button").addClass('active');
+	$("#thumbs-view").removeClass('active');
+	$("#list-view").addClass('active');
 <% end %>
