@@ -89,6 +89,12 @@ class PeopleController < ApplicationController
     elsif pp["avatar"]
       success &&= @person.update_attributes(avatar: pp["avatar"])
     end
+
+    # if success
+    #   image = MiniMagick::Image.open(@person.avatar.url)
+    #   image.resize "x200"
+    #   AWS::S3::S3Object.store('thumb.png',  image.to_blob)
+    # end
     
     success &&= @person.update_attributes(
                   name: pp["name"],

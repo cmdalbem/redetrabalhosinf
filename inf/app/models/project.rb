@@ -11,8 +11,11 @@ class Project < ActiveRecord::Base
 
 	# Later use:
 	# 	"projects/:id/:basename.:extension"
-	has_attached_file :image, :path => "projects/:id/:attachment.:extension"
+	has_attached_file :image, :path => "projects/:id/:attachment.:extension", :styles => { :original => "500x500>" }
+		validates_attachment_size :image, :less_than => MAX_IMAGE_FILE_SIZE_MB.megabytes
+		validates_attachment_content_type :image, :content_type=>['image/jpeg', 'image/png', 'image/gif', 'image/bmp'] 
 	has_attached_file :file, :path => "projects/:id/:attachment.:extension"
+		validates_attachment_size :file, :less_than => MAX_FILE_SIZE_MB.megabytes
 
 	validates :person, presence: true
 	validates :title, presence: true, length: {maximum: 255}

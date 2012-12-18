@@ -151,5 +151,4 @@ DEPENDENCIES
   rails (= 3.2.1)
   s3_swf_upload
   sass-rails (~> 3.2.3)
-  therubyracer
   uglifier (>= 1.0.3)

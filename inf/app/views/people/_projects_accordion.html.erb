@@ -25,8 +25,9 @@
 
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
-				<div class="pull-right blacktext">
-					<i class="icon-thumbs-up"></i> <%= project.likes.count %>
+				<div class="pull-right">
+					<i class="icon-thumbs-up"></i> <%=project.likes.count %> 
+					<i class="icon-download"></i> <%=project.downloadCount %>
 		        </div>
 				<div class="title">
 					<%= project.title %> 

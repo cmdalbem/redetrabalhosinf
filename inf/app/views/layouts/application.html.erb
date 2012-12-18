@@ -26,7 +26,7 @@
 		          <li>
 		            <% if user_signed_in? %>  
 		              <div class="btn-group"> %>
-		              	<%= link_to (raw("<img src=\"" + current_user.person.avatar.url + "\"> ")+current_user.person.getFirstName), profile_path(current_user.person.nick), class: "btn"%>
+		              	<%= link_to (raw("<img src=\"" + current_user.person.avatar.url(:thumb) + "\"> ")+current_user.person.getFirstName), profile_path(current_user.person.nick), class: "btn"%>
 		                  <button class="btn dropdown-toggle" data-toggle="dropdown">
 		                  <span class="caret"></span>
 		                </button>
