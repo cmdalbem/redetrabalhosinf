@@ -96,7 +96,11 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Projeto criado com sucesso.' }
+        if params[:commit]=="Salvar e adicionar outro"
+          format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
+        else
+          format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
+        end
       else
         format.html { render action: "new" }
       end
@@ -147,7 +151,11 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if success
-        format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
+        if params[:commit]=="Salvar e adicionar outro"
+          format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
+        else
+          format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
+        end
       else
         format.html { render action: "edit" }
       end

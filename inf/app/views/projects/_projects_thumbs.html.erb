@@ -26,7 +26,7 @@
               <% if user_signed_in? %>
                 <% if current_user.person==project.person %>
                   <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn btn-mini" %>
-                  <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
+                  <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
                 <% end %>
               <% end %>
             </div>
@@ -52,7 +52,8 @@
             <div class="text">
               <%=project.course.name%> (<%=project.semester%>)
               <br>
-              <i class="icon-thumbs-up"></i> <%= project.likes.count %>
+              <i class="icon-thumbs-up"></i><%= project.likes.count %> 
+              <i class="icon-download"></i><%= project.downloadCount %>
             </div>
           </div>
 
