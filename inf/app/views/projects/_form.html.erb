@@ -22,7 +22,7 @@
         
         <div class="field">
           <%= f.label "Disciplina" %><br />
-          <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, include_blank: "" %>
+          <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, include_blank: ""  %>
         </div>
 
         <div class="field">
@@ -114,6 +114,8 @@
 
   <div class="actions">
     <%= f.submit "Salvar", class: "btn btn-primary"%>
+    <%= f.submit "Salvar e adicionar outro", class: "btn btn-info" %>
+    <!--<%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>-->
   </div>
   
 <% end %>

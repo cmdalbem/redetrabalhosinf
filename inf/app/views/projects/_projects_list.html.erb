@@ -47,15 +47,16 @@
         </td>
         <td style="width: 3%"><%= project.downloadCount %></td>
         <td style="width: 10%">
-          <div class="btn-group">
-            <!-- <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %> -->
-            <% if user_signed_in? %>
-              <% if current_user.person==project.person %>
-                <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "btn" %>
-                <%= link_to raw("<i class=\"icon-remove\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn" %>
-              <% end %>
+          <!-- <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %> -->
+          <% if user_signed_in? %>
+            <% if current_user.person==project.person %>
+              <small>
+                <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(project) %>
+                 | 
+                <%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), project, confirm: 'Tem certeza?', method: :delete %>
+              </small>
             <% end %>
-          </div>
+          <% end %>
         </td>
       </tr>
     <% end %>

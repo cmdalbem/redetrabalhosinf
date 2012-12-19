@@ -1,25 +1,36 @@
 <div class="center hero-unit">
 	
-    <div class="span3">
-    	<img src="/assets/logo.png">
-    </div>
+    <div class="row-fluid">
+	    
+	    <div class="span5">
+	    	<img src="/assets/logo.png">
+	    </div>
+		
+		<div class="span7">
+			<!--<img src="/assets/inf.png">-->
 
-	<h1>infHUB</h1>
-	<p>
-		A rede de compartilhamento de trabalhos dos alunos do Instituto de Informática da UFRGS. <!--<img src="/assets/inf.png">-->
-		<br>
-		<%= link_to "Leia mais...", about_path %>
-	</p>
+			<p>
+				Teu programa do Neander ficou mais rápido que o do Weber? Tirou a nota mais alta da turma no relatório de Redes? Não deixa mais teus projetos <strong>sumirem na obscuridão</strong> das páginas pessoais da INF!
+			</p>
+
+			<p>
+				No infHUB é fácil <strong>publicar</strong> teus melhores trabalhos, <strong>curtir</strong> os trabalhos dos teus colegas e até <strong>descobrir</strong> rapidamente qual foi o joguinho mais bacana que alguém já fez pra Projeto de Computação Gráfica.
+			</p>
+			
+			<p>
+				<%= link_to "Leia mais...", about_path %>
+			</p>
+		</div>
+    </div>
 
 	<center>
 		<!-- Search Form -->
 		<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-		    <div class="field">
-		      <div class="input-append row-fluid big-input">
-		        <%= text_field_tag :search, params[:search], class: "search-query input-xxlarge", placeholder: "Buscar projeto por título ou descrição" %>
-		        <%= submit_tag "Pesquisar", class: "btn btn-info", name: nil %>
-		      </div>
-		    </div>
+			<div class="my-input">
+				<i class="icon-search"></i>
+				<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Buscar projeto por título ou descrição" %>
+			</div>
+			
 		<% end %>
 	</center>
 </div>

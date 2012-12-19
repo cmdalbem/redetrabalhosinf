@@ -24,6 +24,6 @@ module ApplicationHelper
 			direction = "asc"
 		end
 
-		link_to title, {:sort => column, :direction => direction, :search => params[:search]}
+		link_to title, {sort: column, direction: direction, search: params[:search]}
 	end
 end

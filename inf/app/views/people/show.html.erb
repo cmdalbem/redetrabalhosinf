@@ -1,7 +1,7 @@
 <legend>Detalhes de Perfil
   <!-- <div class="pull-right"> -->
     <% if user_signed_in? and current_user.person==@person %>
-      <%= link_to raw("<i class=\"icon-pencil\"></i> Editar Perfil"), edit_person_path(@person), class: "btn btn-info" %>
+      <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_person_path(@person), class: "btn btn-info" %>
     <% end %>
   <!-- </div> -->
 </legend>
@@ -64,10 +64,20 @@
 
     <div class="span8">
        <%= render 'projects_accordion' %>
-    </div>
-    
+    </div>    
 
   </div>
+
+  <div class="row">
+    <%= render 'projects/viewmodes_buttons' %>
+  </div>
+
+  <div class="row">
+    <div id="projects-table">
+      <%= render 'projects/projects_list' %>
+    </div>
+  </div>
+
 
 </div>
 

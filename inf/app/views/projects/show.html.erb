@@ -4,11 +4,9 @@
 
 <legend>
 Detalhes de projeto
-<div class="pull-right">
-  <% if user_signed_in? and current_user.person==@project.person %>
-    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(@project) %>
-  <% end %>
-</div>
+<% if user_signed_in? and current_user.person==@project.person %>
+  <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(@project), class: "btn btn-info" %>
+<% end %>
 </legend>
 
 <h2 class="projectname-text"> <%= @project.title %> </h2>

@@ -19,7 +19,7 @@
 
 /* Important globals */
 $page_width: 80%;
-$foot_height: 100px;
+$foot_height: 80px;
 
 
 /* Import font from Google Fonts API */
@@ -137,12 +137,17 @@ body {
     width: auto;
   }
 
+  text {
+    line-height: 40px;
+  }
+
   a.brand {
     padding: 5px;
 
     img {
       width: 100%;
       height: 100%;
+      padding-top: 4px;
     }
   }
 
@@ -165,9 +170,30 @@ body {
 
 .hero-unit {
   /*background-color: rgba(255,150,0,0.1);*/
-  input {
+
+  .my-input { 
     font-size: 25px;
+    position: relative;
+    width: 60%;
+
+    input#search {
+      font-size: 25px;
+      padding-left: 40px;
+      width: 100%;
+      /*transition: all 0.5s ease-in-out 0s;*/
+    }
+
+/*    input#search:focus {
+      width: 200%;
+    }*/
+
+    .icon-search {
+      position: absolute;
+      top: 11px;
+      left: 15px;
+    }
   }
+
 }
 
 
@@ -310,7 +336,8 @@ li.thumbnail.project-thumb {
     img {
       width: 100%;
       opacity: 0.3;
-      width: auto;
+      height: auto;
+      vertical-align: middle;
     }
 
     .thumb-content {
@@ -323,7 +350,7 @@ li.thumbnail.project-thumb {
         padding-top: 10px;
         padding-bottom: 5px;
         font-weight: bold;
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(255, 255, 255, 0.5);
 
       }
 
