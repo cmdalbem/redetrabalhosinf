@@ -86,6 +86,22 @@ Detalhes de projeto
     </p>        
   </div>
 </div>
+<br>
+<div class="row-fluid">
+  <div class="block span12">
+    <p>
+      <strong>Comentários ( <%= @project.comments.count %> ):</strong>
+      <% if @project.comments.count > 0 %>
+        <% @project.comments.sort_by! {|x| x.created_at} %>
+        <ul>
+          <% @project.comments.each do |c| %>
+            <li><%= c.person.name + ": " + c.text %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </p>
+  </div>
+</div>
 
 
 </div>

@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
 
 	has_many :taggings
 	has_many :tags, through: :taggings
+	has_many :comments, dependent: :destroy 
 
 	#Like relationship
 	has_and_belongs_to_many :likes, :foreign_key => 'project_id', :class_name => "Person", :join_table => 'people_projects'
