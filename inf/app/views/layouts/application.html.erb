@@ -16,8 +16,8 @@
 		  <div class="navbar-inner">
 		    <div class="container">
 		      <nav>
-		        <%= link_to raw("<img src=\"/assets/logo_mini.png\"> "), root_path, class: "brand"%>
-		        <text class="muted">A rede de compartilhamento de trabalhos do INF</text>
+		        <%= link_to raw("<img src=\"/assets/logo_txt_mini.png\"> "), root_path, class: "brand"%>
+		        <!-- <text class="muted">A rede de compartilhamento de trabalhos do INF</text> -->
 		        <ul class="nav pull-right">
 		          <%= nav_link raw("<i class=\"icon-home icon-large\"></i> Início"), root_path %>
 		          <%= nav_link raw("<i class=\"icon-globe icon-large\"></i> Explorar"), projects_path %>
@@ -71,11 +71,14 @@
   <section class="container-fluid">
 
     <div class="row-fluid muted">
-        <div class="offset10 span2">
+        <div class="offset9 span3">
 			<header>
-				inf<strong>HUB</strong>
-				<br>
-				<%= link_to raw("<i class=\"icon-github\"></i>"), "https://github.com/cmdalbem/redetrabalhosinf" %>
+				<!-- inf<strong>HUB</strong> -->
+		    	<center>
+			    	<%= link_to raw("<img src=\"/assets/logo_small.png\"> "), root_path %>
+					<br>
+					<%= link_to raw("<i class=\"icon-github\"></i> GitHub"), "https://github.com/cmdalbem/redetrabalhosinf" %>
+				</center>
 			</header>
         </div>
     </div>

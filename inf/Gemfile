@@ -42,10 +42,14 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 's3_swf_upload'
 
+# Google Analytics
+gem 'google-analytics-rails'
+
+
 # Gems to be added only when running on Linux
 platforms :ruby do
   gem 'execjs'
-  gem 'therubyracer'
+  # gem 'therubyracer'
 end
 
 
