@@ -67,7 +67,8 @@ class PeopleController < ApplicationController
               email: pp["email"],
               semester_year: pp["semester_year"],
               semester_sem: pp["semester_sem"],
-              avatar: pp["avatar"])
+              avatar: pp["avatar"],
+              personal_link: "")
 
     respond_to do |format|
       if @person.save
