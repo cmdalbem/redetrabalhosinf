@@ -35,7 +35,8 @@ Detalhes de projeto
     </div>
 
     <div class="span3">
-      <p> 
+      <p>
+        <i class="icon-thumbs-up"></i>
         <span id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
         
         <% if user_signed_in? %>
@@ -45,8 +46,8 @@ Detalhes de projeto
             else
               unlikeClass = "hidden"
             end %>
-            <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
-            <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
+            <%= link_to raw(" Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
+            <%= link_to raw(" Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
         <% end %>
       </p>
     </div>
@@ -96,6 +97,18 @@ Detalhes de projeto
             <li><%= c.person.name + ": " + c.text %></li>
           <% end %>
         </ul>
+      <% end %>
+    </p>
+    <p>
+      <% if user_signed_in? %>
+        <%= form_for(Comment.new) do |f| %>
+          <%= f.hidden_field :project_id, value: @project.id %>
+          <%= f.hidden_field :person_id, value: current_user.person.id %>
+          <div class="field">
+            <%= f.text_field :text, placeholder: "Escreva seu comentário..." %>
+            <%= f.submit "Enviar", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       <% end %>
     </p>
   </div>
