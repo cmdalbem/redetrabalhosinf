@@ -15,6 +15,8 @@ class ProjectsController < ApplicationController
         projectsList.sort_by! {|x| x.likes.size }
       when "downloads"
         projectsList.sort_by! {|x| x.downloadCount }
+      when "relevance"
+        projectsList.sort_by! {|x| x.relevance }
     end
 
     if direction == "desc"

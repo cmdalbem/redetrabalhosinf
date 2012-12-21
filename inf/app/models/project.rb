@@ -35,6 +35,11 @@ class Project < ActiveRecord::Base
 		semester_year.to_s + "/" + semester_sem.to_s
 	end
 
+	attr_reader :relevance
+	def relevance
+		# TODO: improve relevance formula
+		self.downloadCount + 2*self.likes.size
+	end
 
 	def self.search(search)
 		search.downcase!

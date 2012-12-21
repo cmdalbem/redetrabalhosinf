@@ -15,6 +15,7 @@
       <th><%= sortable "Autor", "person" %></th>
       <th><%= sortable "Curtir", "likes" %></th>
       <th><%= sortable "Downloads", "downloads" %></th>
+      <th><%= sortable "Relevância", "relevance" %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -32,7 +33,7 @@
             <i class="icon-picture muted"></i>
           <% end %>        
         </td>
-        <td style="width: 25%"><small><%= project.course.name %></small></td>
+        <td style="width: 22%"><small><%= project.course.name %></small></td>
         <td style="width: 5%"><%= project.semester %></td>
         <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
         <td style="width: 3%">
@@ -46,6 +47,7 @@
           <% end %> -->
         </td>
         <td style="width: 3%"><%= project.downloadCount %></td>
+        <td style="width: 3%"><%= project.relevance %></td>
         <td style="width: 10%">
           <!-- <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %> -->
           <% if user_signed_in? %>
