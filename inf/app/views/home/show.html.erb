@@ -23,16 +23,21 @@
 		</div>
     </div>
 
-	<center>
-		<!-- Search Form -->
-		<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-			<div class="my-input">
-				<i class="icon-search"></i>
-				<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Buscar projeto por título ou descrição" %>
-			</div>
-			
-		<% end %>
-	</center>
+    <br>
+
+    <div>
+		<center>
+			<!-- Search Form -->
+			<%= form_tag projects_path, method: 'get', class: "form-search" do %>
+				<div class="my-input">
+					<i class="icon-search"></i>
+					<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Buscar projeto por título ou descrição" %>
+				</div>
+				
+			<% end %>
+		</center>
+    </div>
+
 </div>
 
 <center>

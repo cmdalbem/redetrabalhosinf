@@ -67,7 +67,8 @@ class PeopleController < ApplicationController
               email: pp["email"],
               semester_year: pp["semester_year"],
               semester_sem: pp["semester_sem"],
-              avatar: pp["avatar"])
+              avatar: pp["avatar"],
+              personal_link: "")
 
     respond_to do |format|
       if @person.save
@@ -89,6 +90,12 @@ class PeopleController < ApplicationController
     elsif pp["avatar"]
       success &&= @person.update_attributes(avatar: pp["avatar"])
     end
+
+    # if success
+    #   image = MiniMagick::Image.open(@person.avatar.url)
+    #   image.resize "x200"
+    #   AWS::S3::S3Object.store('thumb.png',  image.to_blob)
+    # end
     
     success &&= @person.update_attributes(
                   name: pp["name"],
