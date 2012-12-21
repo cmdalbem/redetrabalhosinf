@@ -100,6 +100,14 @@ class ProjectsController < ApplicationController
     owner = current_user.person
     tags = pp["tag_tokens"].split(",")
 
+    # Check if one of the entered Tags doesn't exist on the Database.
+    tags.size.times do |i|
+      if not is_number?(tags[i])
+        newTag = Tag.create(tag_text: tags[i])
+        tags[i] = newTag.id
+      end
+    end
+    
     @project = Project.new(title: pp["title"],
       course_id: pp["course_id"],
       person: owner,
@@ -110,6 +118,7 @@ class ProjectsController < ApplicationController
       image: pp["image"],
       file: pp["file"]
     )
+
 
     respond_to do |format|
       if @project.save

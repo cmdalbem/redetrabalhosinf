@@ -98,9 +98,17 @@ Detalhes de projeto
       <strong>Comentários ( <%= @project.comments.count %> ):</strong>
       <% if @project.comments.count > 0 %>
         <% @project.comments.sort_by! {|x| x.created_at} %>
-        <ul>
+        <ul class="comments-list">
           <% @project.comments.each do |c| %>
-            <li><%= c.person.name + ": " + c.text %></li>
+            <li>
+              <header>
+                <%= image_tag c.person.avatar.url(:thumb) %>
+                <%= link_to c.person.name, profile_path(c.person.nick) %>
+              </header>
+              <div class="comment">
+                <%= c.text %>
+              </div>
+            </li>
           <% end %>
         </ul>
       <% end %>
