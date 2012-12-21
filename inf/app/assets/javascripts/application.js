@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+//= require chosen
 
 // TokenInput Settings
 // Thanks to http://loopj.com/jquery-tokeninput/
@@ -41,6 +42,10 @@ function deleteUploadedField(fieldName)
 		return false;			
 	}
 }
+
+$(function() {
+	$(".chzn-select").chosen( {no_results_text: "Necas"} );
+});
 
 // Character counters.
 // Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/

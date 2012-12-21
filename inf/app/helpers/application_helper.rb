@@ -16,9 +16,9 @@ module ApplicationHelper
 	# A table header which is a link for sorting the table by it's column.
 	# Make sure you program the logics on the table's controller (see example on Projects Controller)
 	def sortable(title, column)
-		if column == params[:sort]
-			direction = params[:direction] == "asc" ? "desc" : "asc"
-			icon = params[:direction] == "asc" ? "icon-caret-down" : "icon-caret-up"
+		if column == @column
+			direction = @direction == "asc" ? "desc" : "asc"
+			icon = @direction == "asc" ? "icon-caret-down" : "icon-caret-up"
 			title = raw("#{title} <i class=\"#{icon}\"></i>")
 		else
 			direction = "asc"

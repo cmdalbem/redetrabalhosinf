@@ -3,19 +3,17 @@
     <%if params[:search] and not params[:search].empty?%>
         Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>") %>
     <% end %>
-  </div>
-</center>
+  </div
+></center>
 
-<table class="table table-striped">
+<table class="table table-striped table-condensed">
   <thead>
     <tr>
       <th><%= sortable "Título", "title" %></th>
       <th><%= sortable "Disciplina", "course" %></th>
       <th><%= sortable "Semestre", "barra" %></th>
       <th><%= sortable "Autor", "person" %></th>
-      <th><%= sortable "Curtir", "likes" %></th>
-      <th><%= sortable "Downloads", "downloads" %></th>
-      <th><%= sortable "Relevância", "relevance" %></th>
+      <th><%= sortable "Popularidade", "relevance" %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -24,7 +22,7 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td style="width: 20%">
+        <td style="width: 30%">
           <%= link_to project.title, project %>
           <% if project.file? %>
             <i class="icon-file muted"></i>
@@ -34,21 +32,12 @@
           <% end %>        
         </td>
         <td style="width: 22%"><small><%= project.course.name %></small></td>
-        <td style="width: 5%"><%= project.semester %></td>
+        <td style="width: 10%"><%= project.semester %></td>
         <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
-        <td style="width: 3%">
-          <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>
-          <!-- <% if user_signed_in? %>
-            <% if current_user.person.likes.include?(project) %>
-              <span class="btn btn-mini" disabled="disabled"> <i class="icon-thumbs-up"></i> Curtir </span>
-            <% else %>
-              <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(project), remote: true, class: "btn btn-mini", id: "project-like-button-"+project.id.to_s %>
-            <% end %>
-          <% end %> -->
-        </td>
-        <td style="width: 3%"><%= project.downloadCount %></td>
-        <td style="width: 3%"><%= project.relevance %></td>
-        <td style="width: 10%">
+        <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>  </td> -->
+        <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
+        <td style="width: 10%"><%= project.relevance %></td>
+        <td>
           <!-- <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %> -->
           <% if user_signed_in? %>
             <% if current_user.person==project.person %>

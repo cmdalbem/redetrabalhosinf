@@ -27,6 +27,7 @@ end
 ##########################
 
 gem 'jquery-rails'
+gem 'chosen_rails'
 
 # Twitter Bootstrap gem + SASS (CSS extension)
 gem 'bootstrap-sass'
@@ -49,7 +50,7 @@ gem 'google-analytics-rails'
 # Gems to be added only when running on Linux
 platforms :ruby do
   gem 'execjs'
-  gem 'therubyracer'
+  # gem 'therubyracer'
 end
 
 

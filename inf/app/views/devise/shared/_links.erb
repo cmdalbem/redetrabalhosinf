@@ -3,7 +3,7 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  Não está cadastrado? <a href=<%=new_registration_path(resource_name)%>> <button class="btn btn-small btn-success">Cadastre-se</button> </a>
+  Não está cadastrado? <%= link_to "Cadastre-se", new_registration_path(resource_name), class: "btn btn-mini btn-success" %>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>

@@ -8,16 +8,41 @@ class PeopleController < ApplicationController
     end
   end
 
+  def sort_people_by_column(plist, column, direction)
+    
+    # Default values
+    @column = column ? column : "relevance"
+    @direction = direction ? direction : "desc"
+
+    # What to sort by?
+    case @column
+      when "name"
+        plist.sort_by! {|p| p.name }
+      when "email"
+        plist.sort_by! {|p| p.email }
+      when "projects"
+        plist.sort_by! {|p| p.projects.size }
+    end
+
+    # How is the ordering?
+    if @direction == "desc"
+      plist.reverse!
+    end
+  end
 
   # GET /people
   def index
+    # Handle searchs
     if params[:search]
       @people = Person.search(params[:search])
     else
       @people = Person.all
     end
 
-    # Default view is THUMBS
+    # Handle sortings
+    sort_people_by_column @people, params[:sort], params[:direction]
+
+    # Handle view modes (default is THUMBS)
     @viewMode = (!params[:view] or params[:view]=="thumbs") ? :thumbs : :list
 
     respond_to do |format|

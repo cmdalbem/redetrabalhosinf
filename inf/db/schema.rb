@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121220235106) do
+ActiveRecord::Schema.define(:version => 20121221054837) do
 
   create_table "comments", :force => true do |t|
     t.integer  "person_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20121220235106) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.integer  "person_id"
-    t.integer  "course_id",          :default => 1
+    t.integer  "course_id"
     t.integer  "semester_year"
     t.integer  "semester_sem"
     t.string   "image_file_name"

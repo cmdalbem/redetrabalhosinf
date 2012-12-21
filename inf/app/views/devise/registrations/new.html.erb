@@ -7,11 +7,11 @@
   <%= f.fields_for :person do |person_builder| %>
     <div class="field">
       <%= person_builder.label "Nome" %><br />
-      <%= person_builder.text_field :name %>
+      <%= person_builder.text_field :name, required: true %>
     </div>
 
     <div><%= f.label "Email da INF" %><br />
-    <%= f.email_field :email %></div>
+    <%= f.email_field :email, required: true %></div>
 
     <div class="input-prepend">
       <span class="add-on">redesocialdainf/</span><%= person_builder.text_field :nick, placeholder: "nick" %>
@@ -19,14 +19,12 @@
   <% end %>
 
   <div><%= f.label "Senha" %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, required: true %></div>
 
   <div><%= f.label "Confirmação da senha" %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation, required: true %></div>
 
   <br>
 
   <div><%= f.submit "Registrar", class: "btn btn-primary" %></div>
 <% end %>
-
-<%= render "devise/shared/links" %>

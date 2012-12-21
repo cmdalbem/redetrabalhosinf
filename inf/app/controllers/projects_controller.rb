@@ -1,26 +1,32 @@
 class ProjectsController < ApplicationController
 
-  def sort_projects_by_column(projectsList, column="title", direction="asc")
-    # yeah, code below is kinda ugly.
-    case column
+  def sort_projects_by_column(plist, column, direction)
+    
+    # Default values
+    @column = column ? column : "relevance"
+    @direction = direction ? direction : "desc"
+
+    # What to sort by?
+    case @column
       when "title"
-        projectsList.sort_by! {|x| x.title }
+        plist.sort_by! {|p| p.title }
       when "barra"
-        projectsList.sort_by! {|x| x.semester }
+        plist.sort_by! {|p| p.semester }
       when "course"
-        projectsList.sort_by! {|x| x.course.name }
+        plist.sort_by! {|p| p.course.name }
       when "person"
-        projectsList.sort_by! {|x| x.person.name }
+        plist.sort_by! {|p| p.person.name }
       when "likes"
-        projectsList.sort_by! {|x| x.likes.size }
+        plist.sort_by! {|p| p.likes.size }
       when "downloads"
-        projectsList.sort_by! {|x| x.downloadCount }
+        plist.sort_by! {|p| p.downloadCount }
       when "relevance"
-        projectsList.sort_by! {|x| x.relevance }
+        plist.sort_by! {|p| p.relevance }
     end
 
-    if direction == "desc"
-      projectsList.reverse!
+    # How is the ordering?
+    if @direction == "desc"
+      plist.reverse!
     end
   end
 
@@ -37,17 +43,20 @@ class ProjectsController < ApplicationController
     #   end
     # end
 
+    # Handle searchs
     if params[:search]
-      @projects = Project.search(params[:search])     
-    end
-
-    if !params[:search]
+      @projects = Project.search(params[:search])
+    elsif params[:course]
+      @course = Course.find(params[:course][:id].to_i)
+      @projects = @course.projects
+    else
       @projects = Project.all
     end
 
+    # Handle sortings
     sort_projects_by_column @projects, params[:sort], params[:direction]
 
-    # Default view is LIST
+    # Handle view modes (default is THUMBS)
     @viewMode = (!params[:view] or params[:view]=="list") ? :list : :thumbs
 
     respond_to do |format|

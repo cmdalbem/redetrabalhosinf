@@ -36,8 +36,8 @@ Detalhes de projeto
 
    <div class="span4">
       <p class="curtir-frame"> 
-        <i class="icon-thumbs-up"></i>
         <span class="badge badge-info" id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
+        <i class="icon-thumbs-up"></i>
 
         <% if user_signed_in? %>
         <%  likeClass = unlikeClass = ""

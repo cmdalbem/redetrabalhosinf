@@ -9,7 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
 *= require_self
- *= require_tree .
+*= require_tree .
+*= require chosen
 */
 
 @import "bootstrap";
@@ -50,11 +51,11 @@ body {
 
   /*background-image: linear-gradient(to bottom, rgba(255,255,255, 0.100), rgba(230,230,230, 1));*/
 
-  background-image: linear-gradient(top, rgba(250,250,250,1), rgba(230,230,230,1));
-  background-image: -o-linear-gradient(top, rgba(250,250,250,1), rgba(230,230,230,1));
-  background-image: -moz-linear-gradient(top, rgba(250,250,250,1), rgba(230,230,230,1));
-  background-image: -webkit-linear-gradient(top, rgba(250,250,250,1), rgba(230,230,230,1));
-  background-image: -ms-linear-gradient(top, rgba(250,250,250,1), rgba(230,230,230,1));
+  background-image: linear-gradient(top, rgba(252,252,252,1), rgba(230,230,230,1));
+  background-image: -o-linear-gradient(top, rgba(252,252,252,1), rgba(230,230,230,1));
+  background-image: -moz-linear-gradient(top, rgba(252,252,252,1), rgba(230,230,230,1));
+  background-image: -webkit-linear-gradient(top, rgba(252,252,252,1), rgba(230,230,230,1));
+  background-image: -ms-linear-gradient(top, rgba(252,252,250,1), rgba(230,230,230,1));
 
   -moz-box-shadow: 0 0 30px rgba(0,0,0,0.2);
   -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.2);
@@ -170,8 +171,39 @@ body {
   }
 }
 
+.navbar-inner {
+  border: 0;
+}
+
 .hero-unit {
   /*background-color: rgba(255,150,0,0.1);*/
+
+  p {
+    font-size: 16px;
+    line-height: 20px
+  }
+
+}
+
+.chzn-select {
+  min-width: 500px;
+}
+
+.homepage {
+  overflow: inherit;
+
+  .chzn-select {
+    width: 60%;
+  }
+
+  #course_id_chzn {
+    font-size: 24px;
+    height: 30px;
+
+    ul {
+      font-size: 12px;
+    }
+  }
 
   .my-input { 
     font-size: 25px;
@@ -191,11 +223,12 @@ body {
 
     .icon-search {
       position: absolute;
-      top: 11px;
-      left: 15px;
+      top: 0;
+      left: 0;
+      margin-top: 7px;
+      margin-left: 10px;
     }
   }
-
 }
 
 .curtir-frame {
@@ -240,7 +273,7 @@ footer {
   }
 }
 
-form {
+.myform {
   width: auto;
   position: center;
   background-color: rgba(0,0,0,0.03);
@@ -370,7 +403,7 @@ li.thumbnail.project-thumb {
       top: 0;
 
       header {
-        font-size: 18px;
+        /*font-size: 18px;*/
         padding-top: 10px;
         padding-bottom: 5px;
         font-weight: bold;
@@ -463,7 +496,7 @@ html, body {
   min-height: 100%;
 }
 #main {
-  overflow:auto;
+  overflow: visible;
   padding-bottom:$foot_height; /* this needs to be bigger than footer height*/
 }
 footer {

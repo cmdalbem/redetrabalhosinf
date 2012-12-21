@@ -22,7 +22,7 @@
         
         <div class="field">
           <%= f.label "Disciplina" %><br />
-          <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, include_blank: ""  %>
+          <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {include_blank: true, required: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "chzn-select"} %>
         </div>
 
         <div class="field">
@@ -33,7 +33,7 @@
 
         <div class="field">
           <%= f.label "Título" %><br />
-        <%= f.text_field :title, class: "input-xlarge" %>
+        <%= f.text_field :title, class: "input-xlarge", required: true %>
         </div>
 
         <div class="field">
