@@ -69,6 +69,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(:comments).find(params[:id])
 
+    @project.update_attributes(viewCount: @project.viewCount+1)
+
   end
 
   # GET /projects/new

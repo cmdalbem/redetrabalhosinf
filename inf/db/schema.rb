@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121221054837) do
+ActiveRecord::Schema.define(:version => 20121221070108) do
 
   create_table "comments", :force => true do |t|
     t.integer  "person_id"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20121221054837) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.integer  "downloadCount",      :default => 0
+    t.integer  "viewCount",          :default => 0
   end
 
   add_index "projects", ["person_id"], :name => "index_projects_on_person_id"
