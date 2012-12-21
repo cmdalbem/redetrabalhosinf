@@ -4,17 +4,8 @@
 
 <div class="content">
 
-<!-- Search Form --> 
+<!-- filtering and searching forms -->
 <center>
-  <%= form_tag projects_path, method: 'get', class: "form-search" do %>
-      <div class="field">
-        <div class="input-append row-fluid">
-          <%= text_field_tag :search, params[:search], class: "search-query input-xlarge", placeholder: "Busca por título ou descrição" %>
-          <%= submit_tag "Pesquisar", class: "btn", name: nil %>
-        </div>
-      </div>
-  <% end %>
-
   <%= form_tag projects_path, method: 'get', class: "form-search" do %>
       <div class="field">
         <%= select :course, :id, Course.all.collect {|p| [p.name, p.id] }, { :include_blank => true }, {"data-placeholder" => "Filtrar por disciplina", class: "chzn-select"} %>
@@ -22,6 +13,14 @@
       </div>
   <% end %>
 </center>
+<%= form_tag projects_path, method: 'get', class: "form-search" do %>
+    <div class="field">
+      <div class="input-append row-fluid">
+        <%= text_field_tag :search, params[:search], class: "search-query input-xlarge", placeholder: "Busca por título ou descrição" %>
+        <%= submit_tag "Pesquisar", class: "btn", name: nil %>
+      </div>
+    </div>
+<% end %>
 
 
 <!-- Button group for choosing view (list or thumbnail) -->

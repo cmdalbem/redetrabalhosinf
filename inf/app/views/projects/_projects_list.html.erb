@@ -4,7 +4,13 @@
         Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>") %>
     <% end %>
   </div
-></center>
+
+  <div class="muted">
+    <%if params[:course] %>
+        Mostrando projetos da disciplina: <strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>") %>
+    <% end %>
+  </div>
+</center>
 
 <table class="table table-striped table-condensed">
   <thead>
@@ -22,7 +28,7 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td style="width: 30%">
+        <td tyle="">
           <%= link_to project.title, project %>
           <% if project.file? %>
             <i class="icon-file muted"></i>
@@ -36,8 +42,8 @@
         <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
         <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>  </td> -->
         <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
-        <td style="width: 10%"><%= project.relevance %></td>
-        <td>
+        <td style="width: 112px"><%= project.relevance %></td>
+        <td style="width: 120px">
           <!-- <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %> -->
           <% if user_signed_in? %>
             <% if current_user.person==project.person %>

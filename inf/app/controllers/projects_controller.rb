@@ -43,21 +43,25 @@ class ProjectsController < ApplicationController
     #   end
     # end
 
-    # Handle searchs
-    if params[:search]
-      @projects = Project.search(params[:search])
-    elsif params[:course]
-      @course = Course.find(params[:course][:id].to_i)
-      @projects = @course.projects
-    else
-      @projects = Project.all
-    end
+    # if params[:sort] == @lastSort
+      # Handle searchs
+      if params[:search]
+        @projects = Project.search(params[:search])
+      elsif params[:course]
+        @course = Course.find(params[:course][:id].to_i)
+        @projects = @course.projects
+      else
+        @projects = Project.all
+      end
+    # end
 
     # Handle sortings
     sort_projects_by_column @projects, params[:sort], params[:direction]
 
     # Handle view modes (default is THUMBS)
     @viewMode = (!params[:view] or params[:view]=="list") ? :list : :thumbs
+
+    # @lastSort = params[:sort]
 
     respond_to do |format|
       format.html
