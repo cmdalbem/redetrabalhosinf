@@ -16,8 +16,10 @@ class Person < ActiveRecord::Base
 
 	attr_reader :semester
 	def semester
-		
 		semester_year.to_s + "/" + semester_sem.to_s
+	end
+	def semester?
+		return semester_year?
 	end
 
 	def getFirstName()

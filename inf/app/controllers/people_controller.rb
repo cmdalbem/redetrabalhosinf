@@ -43,7 +43,15 @@ class PeopleController < ApplicationController
     sort_people_by_column @people, params[:sort], params[:direction]
 
     # Handle view modes (default is THUMBS)
-    @viewMode = (!params[:view] or params[:view]=="thumbs") ? :thumbs : :list
+    if !params[:view]
+      @viewMode = :thumbs
+    else
+      if params[:view]=="list"
+        @viewMode = :list
+      else
+        @viewMode = :thumbs
+      end
+    end
 
     respond_to do |format|
       format.html

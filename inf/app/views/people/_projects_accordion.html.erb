@@ -33,17 +33,12 @@
 			        </div>
 			    </small>
 				<div class="title">
-					<%= project.title %> 
-			        <% if project.file? %>
-			          <i class="icon-file muted"></i>
-			        <% end %>
-			        <% if project.image? %>
-			          <i class="icon-picture muted"></i>
-			        <% end %> 
+					<%= project.title %>
+					<%= raw(getContentIcons(project)) %>
 			    </div>
-		        <div class="caption">
-		        	<%= project.course.name %> (<%= project.semester %>)
-		        </div>
+		        <span>
+		        	<i class="icon-book"></i> <%= project.course.name %> (<%= project.semester %>)
+		        </span>
 			</a>
 
 		</div>

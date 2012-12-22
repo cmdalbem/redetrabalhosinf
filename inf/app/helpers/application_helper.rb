@@ -26,4 +26,22 @@ module ApplicationHelper
 
 		link_to title, {sort: column, direction: direction, search: params[:search]}
 	end
+
+	# Helper for retrieving a neat icon list of the contents of a project. It's normally used besides the project list on a table list of accordion.
+	# IMPORTANT: remember to embrace this call with a raw(), so this return will processed as HTML.
+	def getContentIcons(project)
+		ret = "<ul class=\"project-content-icons\">"
+		if project.file?
+			ret +="<li><i class=\"icon-file\"></i></li>"
+		end
+		if project.image?
+			ret +="<li><i class=\"icon-picture\"></i></li>"
+		end
+		if project.link?
+			ret +="<li><i class=\"icon-share-alt\"></i></li>"
+		end
+		ret += "</ul>"
+
+		return ret
+	end	
 end

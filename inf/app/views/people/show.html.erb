@@ -20,44 +20,66 @@
           </center>
         
           <h2 class="username-text"><%= @person.name %> <small>(<%=@person.nick%>)</small></h2>
-          <%= @person.about %>
-          <br>
-          <strong>Semestre:</strong> <%= @person.semester %>
-          <br>
-          <strong>Link pessoal:</strong> <%= link_to @person.personal_link, @person.personal_link %>
+          
+          <p>
+            <%= @person.about %>
+          </p>
+
+          <% if @person.personal_link? %>
+            <p>
+              <i class="icon-share-alt"></i> 
+              <%= link_to @person.personal_link, @person.personal_link %>
+            </p>
+          <% end %>
+          
+          <% if @person.semester? %>
+            <p>
+              <strong>Semestre:</strong> <%= @person.semester %>
+            </p>
+          <% end %>
+
         </div>
       </div>
 
       <hr>
 
       <div class="row-fluid">
-        <div class="">
-          <h4>Estatísticas</h4>
-          <b>Projetos:</b> <%= @person.projects.size %>
-          <br>
-          <b>Total de likes:</b> <%= @person.getTotalLikes %>
-          <br>
-          <b>Total de downloads:</b> <%= @person.getTotalDownloads %>
+        <div class="span12">
+          <div class="person-stats">
+            <div class="span4">
+              <center>
+                <strong><%= @person.projects.size %></strong>
+                <span>Projetos</span>
+              </center>
+            </div>
+            
+            <div class="span4">
+              <center>
+                <strong><%= @person.getTotalLikes %></strong>
+                <span>Projetos curtidos</span>
+              </center>
+            </div>
+
+            <div class="span4">
+              <center>
+                <strong><%= @person.getTotalDownloads %></strong>
+                <span>Downloads</span>
+              </center>
+            </div>
+          </div>
         </div>
       </div>
 
       <hr>
 
       <div class="row-fluid">
-        <div class="">
-          <b>Email:</b>
-          <%= @person.user.email %>
-          <br>
-          <b>Conta criada em:</b>
+        <p>
+          <span class="muted"><i class="icon-envelope"></i></span>
+          <%= mail_to @person.user.email %>
+          <br>  
+          <span class="muted"><i class="icon-time"></i> Usuário desde</span>
           <%= @person.user.created_at %>
-          <br>
-          <b>Número de logins:</b>
-          <%= @person.user.sign_in_count %>
-          <br>
-          <!--<b>Logado desde:</b> <%= @person.user.current_sign_in_at %>
-          <br>
-          <b>IP:</b> <%= @person.user.current_sign_in_ip %> -->
-        </div>
+        </p>
       </div>
 
     </div>

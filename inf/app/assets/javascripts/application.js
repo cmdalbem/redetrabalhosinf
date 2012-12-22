@@ -34,10 +34,11 @@ $(function() {
 // Remember to: (1) create a hidden field holding a boolean value
 // 				(2) pass into this function the ID of the field of the previous step
 //				(3) handle this hidden field value on Update call of your controller
-function deleteUploadedField(fieldName)
+function deleteUploadedField(toDeleteCheckbox,fieldName)
 {
 	if(confirm('Tem certeza?')) {
-		$("#" + fieldName).val('true');
+		$("#" + toDeleteCheckbox).val('true');
+		// $("#" + fieldName).disabled = true;
 		$('form').submit();
 		return false;			
 	}
@@ -50,12 +51,12 @@ $(function() {
 // Character counters.
 // Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/
 $('#project_description').live('keyup keydown', function(e) {
-  var maxLen = 1500;
+  var maxLen = PROJECT_DESCRIPTION_MAX_LENGTH;
   var left = maxLen - $(this).val().length;
   $('#char-count').html(left);
 });
 $('#person_about').live('keyup keydown', function(e) {
-  var maxLen = 1000;
+  var maxLen = PERSON_ABOUT_MAX_LENGTH;
   var left = maxLen - $(this).val().length;
   $('#char-count').html(left);
 });

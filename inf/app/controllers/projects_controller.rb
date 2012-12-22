@@ -58,8 +58,16 @@ class ProjectsController < ApplicationController
     # Handle sortings
     sort_projects_by_column @projects, params[:sort], params[:direction]
 
-    # Handle view modes (default is THUMBS)
-    @viewMode = (!params[:view] or params[:view]=="list") ? :list : :thumbs
+    # Handle view modes (default is LIST)
+    if !params[:view]
+      @viewMode = :list
+    else
+      if params[:view]=="list"
+        @viewMode = :list
+      else
+        @viewMode = :thumbs
+      end
+    end
 
     # @lastSort = params[:sort]
 
@@ -116,7 +124,8 @@ class ProjectsController < ApplicationController
       semester_sem: pp["semester_sem"],
       tag_ids: tags,
       image: pp["image"],
-      file: pp["file"]
+      file: pp["file"],
+      link: pp["link"]
     )
 
     respond_to do |format|
@@ -154,13 +163,13 @@ class ProjectsController < ApplicationController
     end
 
     success = true
-    if pp["deleteImage"] == "true"
+    if params["deleteImage"] == "1"
       success = @project.update_attributes(image: nil)
     elsif pp["image"]
       success = @project.update_attributes(image: pp["image"])
     end
 
-    if pp["deleteFile"] == "true"
+    if params["deleteFile"] == "1"
       success &&= @project.update_attributes(file: nil, downloadCount: 0)
     elsif pp["file"]
       success &&= @project.update_attributes(file: pp["file"], downloadCount: 0)
@@ -172,7 +181,8 @@ class ProjectsController < ApplicationController
           course_id: pp["course_id"],
           semester_year: pp["semester_year"],
           semester_sem: pp["semester_sem"],
-          tag_ids: tags)    
+          link: pp["link"],
+          tag_ids: tags) 
 
     respond_to do |format|
       if success

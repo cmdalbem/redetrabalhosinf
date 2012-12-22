@@ -28,21 +28,23 @@
         </div>
 
         <div class="field">
-          <%= f.label "Semestre em que entrou na UFRGS" %><br />
+          <%= f.label "Ano/Semestre que entrou no curso" %><br />
           <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "Ano"%><b>/</b>
-          <%= f.select :semester_sem, ["1","2"], include_blank: "" %><br />
+          <%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], include_blank: "" %><br />
         </div>
         
         <div class="field">
           <div><%= f.label "Sobre Mim" %><br />
-          <%= f.text_area :about %></div>
+          <%= f.text_area :about, rows: 5, style: "width: 50%; margin-bottom: 0;" %>
           <span class="help-block">
+            <small>
               Caracteres sobrando: <span id="char-count"><%=PERSON_ABOUT_MAX_LENGTH-(@person.about? ? @person.about.length : 0)%></span>
+            </small>
           </span>
         </div>
         
         <div><%= f.label "Link pessoal" %><br />
-        <%= f.url_field :personal_link %></div>
+        <%= f.url_field :personal_link, style: "width: 500px", placeholder: "URL" %></div>
 
         <div class="field">
           <%= f.label :avatar %>

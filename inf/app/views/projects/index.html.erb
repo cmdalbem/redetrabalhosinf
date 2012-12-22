@@ -4,6 +4,19 @@
 
 <div class="content">
 
+<div>
+  <center>
+    <% if user_signed_in?
+      dest = new_project_path;
+    else
+      dest = new_user_session_path
+    end %>
+    <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), dest, class: "btn btn-success btn-large" %>
+  </center>
+</div>
+
+<br>
+
 <!-- filtering and searching forms -->
 <center>
   <%= form_tag projects_path, method: 'get', class: "form-search" do %>
@@ -30,17 +43,20 @@
 
 <!-- The listing itself -->
 <div id="projects-table" class="clearfix"> 
-  <% if @viewMode == :thumbs %>
-    <%= render 'projects_thumbs' %>
-  <% else %>
+  <% if @viewMode == :list %>
     <%= render 'projects_list' %>
+  <% else %>
+    <%= render 'projects_thumbs' %>
   <% end %>
 </div>
 
 </div>
 
-<% if user_signed_in? %>
-  <center>
-    <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success btn-large" %>
-  </center>
-<% end %>
+<center>
+  <% if user_signed_in?
+    dest = new_project_path;
+  else
+    dest = new_user_session_path
+  end %>
+  <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), dest, class: "btn btn-success btn-large" %>
+</center>

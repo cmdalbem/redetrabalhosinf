@@ -3,7 +3,7 @@
     <%if params[:search] and not params[:search].empty?%>
         Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>") %>
     <% end %>
-  </div
+  </div>
 
   <div class="muted">
     <%if params[:course] %>
@@ -30,12 +30,7 @@
       <tr>
         <td tyle="">
           <%= link_to project.title, project %>
-          <% if project.file? %>
-            <i class="icon-file muted"></i>
-          <% end %>
-          <% if project.image? %>
-            <i class="icon-picture muted"></i>
-          <% end %>        
+          <%= raw(getContentIcons(project)) %>
         </td>
         <td style="width: 22%"><small><%= project.course.name %></small></td>
         <td style="width: 10%"><%= project.semester %></td>

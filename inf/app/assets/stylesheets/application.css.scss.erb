@@ -126,9 +126,32 @@ body {
 }
 
 .projectname-text {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Bree Serif', sans-serif;
 }
 
+ul.project-content-icons {
+  margin: 0;
+  list-style-type: none;
+  display: inline;
+  font-size: 12px;
+  /*color: rgb(153, 153, 153);*/
+  
+  li {
+    width: 1.00em;
+    display: inline;
+  }  
+}
+
+.person-stats {
+    strong {
+      display: block;
+      font-size: 28px;
+    }
+
+    span {
+      font-size: 90%;
+    }
+}
 
 .navbar {
   $myred: rgb(200,100,100);
@@ -433,15 +456,24 @@ li.thumbnail.project-thumb {
 
 .accordion-heading a{
   text-decoration: none;
+  text-shadow: 1px 1px 1px #fff;
+  border-bottom: 1px solid rgb(229, 229, 229);
+  background-color: rgba(0,0,200,0.01);
 
   .title {
     font-size: 18px;
   }
 
-  .caption {
+  span {
     font-size: 12px;
     color: rgb(153, 153, 153);
   }
+}
+
+.accordion-inner {
+  background-color: rgba(255,255,255,0.1);
+  padding: 10px 15px;
+  /*box-shadow: inset 0px 3px 10px -5px rgba(0, 0, 0, 0.1); */
 }
 
 /* Neat list of tags! Thanks to: http://cssglobe.com/pure-css3-post-tags */
