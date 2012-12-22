@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222184310) do
+ActiveRecord::Schema.define(:version => 20121222223814) do
 
   create_table "comments", :force => true do |t|
     t.integer  "person_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20121222184310) do
     t.integer  "downloadCount",      :default => 0
     t.integer  "viewCount",          :default => 0
     t.string   "link"
+    t.integer  "linkHitCount",       :default => 0
   end
 
   add_index "projects", ["person_id"], :name => "index_projects_on_person_id"

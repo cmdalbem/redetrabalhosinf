@@ -174,6 +174,10 @@ class ProjectsController < ApplicationController
     elsif pp["file"]
       success &&= @project.update_attributes(file: pp["file"], downloadCount: 0)
     end
+
+    if pp["link"]!=@project.link
+      @project.update_attributes(link: pp["link"], linkHitCount: 0)
+    end
     
     success &&= @project.update_attributes(person: owner,
           title: pp["title"],
@@ -181,7 +185,6 @@ class ProjectsController < ApplicationController
           course_id: pp["course_id"],
           semester_year: pp["semester_year"],
           semester_sem: pp["semester_sem"],
-          link: pp["link"],
           tag_ids: tags) 
 
     respond_to do |format|
@@ -245,6 +248,16 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @project.file.url }
+    end
+  end
+
+  def clickLink
+    @project = Project.find(params[:id])
+
+    @project.update_attributes(linkHitCount: @project.linkHitCount+1)
+
+    respond_to do |format|
+      format.html { redirect_to @project.link }
     end
   end
 

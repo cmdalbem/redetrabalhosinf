@@ -13,7 +13,8 @@ Inf::Application.routes.draw do
 
   match 'project/like/:id' => 'Projects#like', :as => 'like_project'
   match 'project/unlike/:id' => 'Projects#unlike', :as => 'unlike_project'
-  match 'project/download/:id' => 'Projects#downloadFile', :as => 'project_download'
+  match 'project/:id/download' => 'Projects#downloadFile', :as => 'project_download'
+  match 'project/:id/link' => 'Projects#clickLink', :as => 'project_link'
 
 
   # The priority is based upon order of creation:

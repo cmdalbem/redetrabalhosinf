@@ -10,49 +10,58 @@
 </div>
 
 <br>
-
-<% if @project.image? %>
-  <p>
-    <center>
-      <%= image_tag @project.image.url %>
-    </center>
-  </p>
-<% end %>
-
 <br>
 
+<div class="row-fluid">
+
+  <% if @project.image? %>
+    <div class="">
+      <center>
+        <%= image_tag @project.image.url %>
+      </center>
+    </div>
+    <br>
+    <br>
+  <% end %>
+</div>
 
 <div class="row-fluid">
+
   <div class="block span12">
-    <div class="span8">
-      <h4>Descrição</h4>
-      <%= simple_format(@project.description) %>
 
-      <p>
-        <ul class="tags clearfix">
-        <% @project.tags.each do |tag| %>
-          <li> <%= link_to tag.tag_text, "#" %> </li>
-        <% end %>
-        </ul>
-      </p>
-    </div>
+    <h4>Descrição</h4>
+    <%= simple_format(@project.description) %>
 
-   <div class="span4">
-      <p class="curtir-frame"> 
-        <span class="badge badge-info" id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
-        <i class="icon-thumbs-up"></i>
+    <div class="row-fluid">
+      <div class="span8">
+        <p>
+          <ul class="tags clearfix">
+          <% @project.tags.each do |tag| %>
+            <li> <%= link_to tag.tag_text, "#" %> </li>
+          <% end %>
+          </ul>
+        </p>
+      </div>
 
-        <% if user_signed_in? %>
-        <%  likeClass = unlikeClass = ""
-            if (current_user.person.likes.include?(@project))
-              likeClass = "hidden"
-            else
-              unlikeClass = "hidden"
-            end %>
-            <%= link_to raw(" Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
-            <%= link_to raw(" Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
-        <% end %>
-      </p>
+      <div class="span4">
+        <center>
+          <p class="curtir-frame"> 
+            <span class="" id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
+            <i class="icon-thumbs-up"></i>
+
+            <% if user_signed_in? %>
+            <%  likeClass = unlikeClass = ""
+                if (current_user.person.likes.include?(@project))
+                  likeClass = "hidden"
+                else
+                  unlikeClass = "hidden"
+                end %>
+                <%= link_to raw(" Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
+                <%= link_to raw(" Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
+            <% end %>
+          </p>
+        </center>
+      </div>
     </div>
   </div>
 </div>
@@ -88,7 +97,7 @@
       <% if @project.link? %>
         <h4><i class="icon-share-alt"></i></i> Link</h4>
         <p>
-          <%= link_to @project.link, @project.link %>
+          <%= link_to @project.link, project_link_path(@project) %> <span class="badge"><%=@project.linkHitCount%> hits</span>
         </p>
       <% end %>
     </p>
@@ -102,7 +111,9 @@
     </p>        
   </div>
 </div>
+
 <br>
+
 <div class="row-fluid">
   <div class="block span12">
     <p>
