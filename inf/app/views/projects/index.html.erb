@@ -17,28 +17,37 @@
 
 <br>
 
-<!-- filtering and searching forms -->
+<!-- Course Filter Form -->
 <center>
   <%= form_tag projects_path, method: 'get', class: "form-search" do %>
       <div class="field">
         <%= select :course, :id, Course.all.collect {|p| [p.name, p.id] }, { :include_blank => true }, {"data-placeholder" => "Filtrar por disciplina", class: "chzn-select"} %>
-        <%= submit_tag "Filtrar", class: "btn", name: nil %>
+        <%= submit_tag "Filtrar", class: "btn", name: nil, style: "margin-top: -20px;" %>
       </div>
   <% end %>
 </center>
-<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-    <div class="field">
-      <div class="input-append row-fluid">
-        <%= text_field_tag :search, params[:search], class: "search-query input-xlarge", placeholder: "Busca por título ou descrição" %>
-        <%= submit_tag "Pesquisar", class: "btn", name: nil %>
-      </div>
-    </div>
-<% end %>
 
+<br>
+<br>
 
-<!-- Button group for choosing view (list or thumbnail) -->
-<div class="row">
-  <%= render 'viewmodes_buttons' %>
+<div class="row-fluid">
+  <!-- Search Form --> 
+  <div class="pull-left">
+    <%= form_tag projects_path, method: 'get', class: "form-search" do %>
+        <div class="field">
+          <div class="input-append">
+            <%= text_field_tag :search, params[:search], class: "search-query input-xlarge", placeholder: "Busca por título ou descrição" %>
+            <%= submit_tag "Pesquisar", class: "btn", name: nil %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <!-- Button group for choosing view (list or thumbnail) -->
+  <div class="pull-right">
+    <%= render 'viewmodes_buttons' %>
+  </div>
+
 </div>
 
 <!-- The listing itself -->

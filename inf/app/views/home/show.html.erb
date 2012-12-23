@@ -28,29 +28,29 @@
 	    </div>
 	</div>
 
-	<center>
-		<div>
-			<!-- Search Form -->
-			<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-				<div class="my-input">
-					<i class="icon-search"></i>
-					<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Buscar projeto por título ou descrição" %>
-				</div>
-				
-			<% end %>
-		</div>
+	<div class="row-fluid">
+		<center>
+			<div>
+				<!-- Search Form -->
+				<%= form_tag projects_path, method: 'get', class: "form-search" do %>
+					<div class="my-input">
+						<i class="icon-search"></i>
+						<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Buscar projeto por título ou descrição" %>
+					</div>
+					
+				<% end %>
+			</div>
 
-		<br>
+			<div>
+				<h4>...ou selecione uma disciplina:</h4>
 
-			<h4>...ou selecione uma disciplina:</h4>
-
-			<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-				<div class="field">
+				<%= form_tag projects_path, method: 'get', class: "form-search" do %>
 					<%= select :course, :id, Course.all.collect {|p| [p.name, p.id] }, { :include_blank => true }, {"data-placeholder" => "Filtrar por disciplina", class: "chzn-select"} %>
-					<%= submit_tag "Ir", class: "btn", name: nil %>
-				</div>
-			<% end %>
+					<%= submit_tag "Ir", class: "btn", name: nil, style: "margin-top: -20px;" %>
+				<% end %>
+			</div>
 
-	</center>
+		</center>
+	</div>
 
 </div>
