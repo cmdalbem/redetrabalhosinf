@@ -28,6 +28,12 @@ $(function() {
 		,animateDropdown: false
 		,allowFreeTagging: true // Enables the user to insert tags that weren't found. Later validation is done on the Controller for creating the tags within the BD.
 	});	
+
+});
+
+// Initializes Bootstrap's Popovers
+$(function () {
+	$('[rel=popover]').popover({placement:'bottom',html:true});
 });
 
 // Function used within forms for deleting uploaded files.

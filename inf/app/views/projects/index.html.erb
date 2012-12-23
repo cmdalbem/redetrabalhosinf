@@ -21,7 +21,7 @@
 <center>
   <%= form_tag projects_path, method: 'get', class: "form-search" do %>
       <div class="field">
-        <%= select :course, :id, Course.all.collect {|p| [p.name, p.id] }, { :include_blank => true }, {"data-placeholder" => "Filtrar por disciplina", class: "chzn-select"} %>
+        <%= select :course, :id,  Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }, { :include_blank => true }, {"data-placeholder" => "Filtrar por disciplina", class: "chzn-select"} %>
         <%= submit_tag "Filtrar", class: "btn", name: nil, style: "margin-top: -20px;" %>
       </div>
   <% end %>

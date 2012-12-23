@@ -37,8 +37,8 @@ class Project < ActiveRecord::Base
 
 	attr_reader :relevance
 	def relevance
-		# TODO: improve relevance formula
-		3*self.likes.size + 2*self.downloadCount + self.viewCount
+		# IMPORTANT: If you change this equation, remember to change it's textual description at projects/_projects_list.html.erb
+		(20*self.likes.size + 10*self.downloadCount + 10*self.linkHitCount)*100.0 / (1+self.viewCount)
 	end
 
 	def self.search(search)

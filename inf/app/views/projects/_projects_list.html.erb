@@ -19,7 +19,16 @@
       <th><%= sortable "Disciplina", "course" %></th>
       <th><%= sortable "Semestre", "barra" %></th>
       <th><%= sortable "Autor", "person" %></th>
-      <th><%= sortable "Popularidade", "relevance" %></th>
+      <th>
+        <%= sortable "Popularidade
+        <a href=\"#\"
+        rel=\"popover\"
+        data-original-title=\"Popularidade\"
+        data-content=\"Calculada com a seguinte equação:<br><small>(20*likes + 10*downloads + 10*linkHits)*100 / (1+views)</small>\"
+        >
+        <i class=\"icon-question-sign\"></i></a>
+        ", "relevance" %>
+      </th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -37,7 +46,7 @@
         <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
         <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>  </td> -->
         <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
-        <td style="width: 112px"><%= project.relevance %></td>
+        <td style="width: 120px"><%= number_with_precision(project.relevance, :precision => 1) %></td>
         <td style="width: 120px">
           <!-- <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %> -->
           <% if user_signed_in? %>
