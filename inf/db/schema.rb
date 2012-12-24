@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222223814) do
+ActiveRecord::Schema.define(:version => 20121224033352) do
 
   create_table "comments", :force => true do |t|
     t.integer  "person_id"
@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(:version => 20121222223814) do
   create_table "people", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "user_id"
     t.text     "about"
     t.string   "personal_link"
-    t.string   "nick",                :default => "nick"
+    t.string   "nick"
     t.integer  "semester_year"
     t.integer  "semester_sem"
     t.string   "avatar_file_name"

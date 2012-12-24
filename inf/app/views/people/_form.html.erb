@@ -29,8 +29,8 @@
 
         <div class="field">
           <%= f.label "Ano/Semestre que entrou no curso" %><br />
-          <%= f.text_field :semester_year, type: "number", maxlength: "4", class: "input-small", placeholder: "Ano"%><b>/</b>
-          <%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], include_blank: "" %><br />
+          <%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: ""}, {class: "input-small"} %> / 
+          <%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], {include_blank: ""}, {class: "input-medium"} %><br />
         </div>
         
         <div class="field">

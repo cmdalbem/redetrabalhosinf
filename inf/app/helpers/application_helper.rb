@@ -24,7 +24,7 @@ module ApplicationHelper
 			direction = "asc"
 		end
 
-		link_to title, {sort: column, direction: direction, search: params[:search]}
+		link_to raw(title), {sort: column, direction: direction, search: params[:search]}
 	end
 
 	# Helper for retrieving a neat icon list of the contents of a project. It's normally used besides the project list on a table list of accordion.
