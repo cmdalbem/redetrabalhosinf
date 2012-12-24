@@ -3,8 +3,8 @@ class ProjectsController < ApplicationController
   def sort_projects_by_column(plist, column, direction)
     
     # Default values
-    @column = column ? column : "relevance"
-    @direction = direction ? direction : "desc"
+    @column = (column and !column.empty?) ? column : "relevance"
+    @direction = (direction and !direction.empty?) ? direction : "desc"
 
     # What to sort by?
     case @column
@@ -45,31 +45,34 @@ class ProjectsController < ApplicationController
 
     # if params[:sort] == @lastSort
       # Handle searchs
-      if params[:search]
-        @projects = Project.search(params[:search])
-      elsif params[:course]
-        @course = Course.find(params[:course][:id].to_i)
-        @projects = @course.projects
-      else
-        @projects = Project.all
+      @projects = Project.scoped
+
+      if params[:course] and !params[:course].empty?
+        @course = Course.find(params[:course].to_i)
+        @projects = @projects.where(course_id: params[:course].to_i)
+      end
+
+      if params[:search] and !params[:search].empty?
+        @projects = @projects.search(params[:search])
       end
     # end
+
+    # @projects = @projects.paginate(per_page: PROJECTS_PER_PAGE, page: params[:page])
+    @projects = @projects.all
 
     # Handle sortings
     sort_projects_by_column @projects, params[:sort], params[:direction]
 
     # Handle view modes (default is LIST)
-    if !params[:view]
+    @viewMode = :list
+    if params[:view]=="list"
       @viewMode = :list
-    else
-      if params[:view]=="list"
-        @viewMode = :list
-      else
-        @viewMode = :thumbs
-      end
+    elsif params[:view]=="thumbs"
+      @viewMode = :thumbs
     end
 
     # @lastSort = params[:sort]
+
 
     respond_to do |format|
       format.html

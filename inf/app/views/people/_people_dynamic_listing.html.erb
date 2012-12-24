@@ -1,0 +1,20 @@
+<!-- Showing results for... -->
+<center>
+  <div class="muted">
+    <%if params[:search] and !params[:search].empty? %>
+        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil) %>
+    <% end %>
+  </div>
+</center>
+
+<!-- The content view -->
+<% if @viewMode == :thumbs %>
+	<%= render 'people_thumbs' %>
+<% else %>
+	<%= render 'people_list' %>
+<% end %>
+
+<!-- Pagination -->
+<center>
+  <%= will_paginate @projects %>
+</center>

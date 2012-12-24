@@ -11,15 +11,15 @@ class PeopleController < ApplicationController
   def sort_people_by_column(plist, column, direction)
     
     # Default values
-    @column = column ? column : "relevance"
-    @direction = direction ? direction : "desc"
+    @column = (column and !column.empty?) ? column : "name"
+    @direction = (direction and !direction.empty?) ? direction : "asc"
 
     # What to sort by?
     case @column
       when "name"
         plist.sort_by! {|p| p.name }
       when "email"
-        plist.sort_by! {|p| p.email }
+        plist.sort_by! {|p| p.user.email }
       when "projects"
         plist.sort_by! {|p| p.projects.size }
     end
@@ -33,11 +33,13 @@ class PeopleController < ApplicationController
   # GET /people
   def index
     # Handle searchs
-    if params[:search]
+    @people = Person.scoped
+
+    if params[:search] and !params[:search].empty?
       @people = Person.search(params[:search])
-    else
-      @people = Person.all
     end
+
+    @people = @people.paginate(per_page: PEOPLE_PER_PAGE, page: params[:page]).all
 
     # Handle sortings
     sort_people_by_column @people, params[:sort], params[:direction]

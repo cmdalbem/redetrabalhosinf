@@ -31,9 +31,9 @@ class Person < ActiveRecord::Base
 		if search
 			# http://www.definenull.com/content/rails-find-conditions
 			# http://m.onkey.org/active-record-query-interface
-			find(:all, :conditions => ["lower(name) LIKE ? OR lower(nick) LIKE ?", "%#{search}%", "%#{search}%"])
+			where("lower(name) LIKE ? OR lower(nick) LIKE ?", "%#{search}%", "%#{search}%")
 		else
-			find(:all)
+			scoped
 		end
 	end	
 

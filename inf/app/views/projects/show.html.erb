@@ -117,44 +117,51 @@
 <div class="row-fluid">
   <div class="block span12">
     <p>
-      <h3><i class="icon-comment"></i> Comentários (<%= @project.comments.count %>)</h3>
-      <% if @project.comments.count > 0 %>
-        <% @project.comments.sort_by! {|x| x.created_at} %>
-        <ul class="comments-list">
-          <% @project.comments.each do |c| %>
-            <li>
-              <header>
-                <%= image_tag c.person.avatar.url(:thumb) %>
-                <%= link_to c.person.name, profile_path(c.person.nick) %>
-              </header>
-              <div class="muted">
-                <%= c.created_at %>
-              </div>
-              <div class="comment">
-                  <blockquote>
-                  <%= c.text %>
-                  </blockquote>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </p>
-    
-    <br>
+      <h3><i class="icon-comment"></i> Comentários</h3>
+      <% @project.comments.sort_by! {|x| x.created_at} %>
+      <ul class="comments-list">
+        <% @project.comments.each do |c| %>
+          <li id=<%="comment-#{c.id}"%>>
+            <header>
+              <%= image_tag c.person.avatar.url(:thumb) %>
+              <%= link_to c.person.name, profile_path(c.person.nick) %>
+              <% if user_signed_in? and current_user.person==c.person %>
+                <%= link_to raw("<i class=\"icon-remove\"></i>"), c, confirm: 'Tem certeza?', method: :delete %>
+              <% end %>
+            </header>
+            
+            <div class="muted">
+              <%= c.created_at %>
+            </div>
 
-    <p>
-      <% if user_signed_in? %>
-        <%= form_for(Comment.new) do |f| %>
-          <%= f.hidden_field :project_id, value: @project.id %>
-          <%= f.hidden_field :person_id, value: current_user.person.id %>
-          <div class="field">
-            <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 5, style: "width: 50%" %>
-            <br>
-            <%= f.submit "Enviar", class: "btn btn-primary" %>
-          </div>
+
+            <div class="comment">
+                <blockquote>
+                <%= c.text %>
+                </blockquote>
+            </div>
+          </li>
         <% end %>
-      <% end %>
+        <% if user_signed_in? %>
+          <li>
+            <header>
+              <%= image_tag current_user.person.avatar.url(:thumb) %>
+              <%= link_to current_user.person.name, profile_path(current_user.person.nick) %>
+            </header>
+            <div class="comment">
+              <%= form_for(Comment.new) do |f| %>
+                <%= f.hidden_field :project_id, value: @project.id %>
+                <%= f.hidden_field :person_id, value: current_user.person.id %>
+                <div class="field">
+                  <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 5, style: "width: 50%" %>
+                  <br>
+                  <%= f.submit "Enviar", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </p>
   </div>
 </div>

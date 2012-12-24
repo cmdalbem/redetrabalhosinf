@@ -1,17 +1,3 @@
-<center>
-  <div class="muted">
-    <%if params[:search] and not params[:search].empty?%>
-        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>") %>
-    <% end %>
-  </div>
-
-  <div class="muted">
-    <%if params[:course] %>
-        Mostrando projetos da disciplina: <strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>") %>
-    <% end %>
-  </div>
-</center>
-
 <table class="table table-striped table-condensed">
   <thead>
     <tr>

@@ -1,0 +1,25 @@
+<!-- Showing results for... -->
+<center>
+  <div class="muted">
+    <%if params[:course] and !params[:course].empty? %>
+        Mostrando projetos da disciplina: <strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil) %>
+    <% end %>
+  </div>
+  <div class="muted">
+    <%if params[:search] and !params[:search].empty? %>
+        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil) %>
+    <% end %>
+  </div>
+</center>
+
+<!-- The content view -->
+<% if @viewMode == :list %>
+  <%= render 'projects_list' %>
+<% else %>
+  <%= render 'projects_thumbs' %>
+<% end %>
+
+<!-- Pagination -->
+<center>
+
+</center>

@@ -1,4 +1,5 @@
-$("div#projects-table").html("<%= escape_javascript(render (@viewMode == :list ? 'projects_list' : 'projects_thumbs'))%>");
+// Dynamic redrawing for remote methods
+$("div#projects-table").html("<%= escape_javascript(render 'projects_dynamic_listing') %>");
 <% if @viewMode == :thumbs %>
 	$("#thumbs-view").addClass('active');
 	$("#list-view").removeClass('active');

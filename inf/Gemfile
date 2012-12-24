@@ -46,6 +46,8 @@ gem 's3_swf_upload'
 # Google Analytics
 gem 'google-analytics-rails'
 
+# For pagination
+gem 'will_paginate', '~> 3.0'
 
 # Gems to be added only when running on Linux
 platforms :ruby do

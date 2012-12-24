@@ -17,4 +17,12 @@ class CommentsController < ApplicationController
 	      redirect_to projects_url, notice: 'Not allowed!'
 	    end
 	end
+
+	def destroy
+		@comment = Comment.find(params[:id])
+		@project = @comment.project
+	    @comment.destroy
+
+	    redirect_to @project, notice: 'Not allowed!'
+	end
 end

@@ -46,9 +46,9 @@ class Project < ActiveRecord::Base
 		if search
 			# http://www.definenull.com/content/rails-find-conditions
 			# http://m.onkey.org/active-record-query-interface
-			find(:all, :conditions => ["lower(title) LIKE ? OR lower(description) LIKE ?", "%#{search}%", "%#{search}%"])
+			where("lower(title) LIKE ? OR lower(description) LIKE ?", "%#{search}%", "%#{search}%")
 		else
-			find(:all)
+			scoped
 		end
 	end
 
