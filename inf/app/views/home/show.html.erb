@@ -47,7 +47,7 @@
 				<h4>...ou selecione uma disciplina:</h4>
 
 				<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-					<%= select :course, :id, Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }, { :include_blank => true }, {"data-placeholder" => "Filtrar por disciplina", class: "chzn-select"} %>
+					<%= select_tag :course,  options_for_select(Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }), :include_blank => true , "data-placeholder" => "Filtrar por disciplina...", class: "chzn-select" %>
 					<%= submit_tag "Ir", class: "btn", name: nil, style: "margin-top: -20px;" %>
 				<% end %>
 			</div>
