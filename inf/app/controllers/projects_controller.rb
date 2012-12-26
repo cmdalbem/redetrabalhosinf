@@ -16,10 +16,10 @@ class ProjectsController < ApplicationController
         plist.sort_by! {|p| p.course.name }
       when "person"
         plist.sort_by! {|p| p.person.name }
-      when "likes"
-        plist.sort_by! {|p| p.likes.size }
-      when "downloads"
-        plist.sort_by! {|p| p.downloadCount }
+      # when "likes"
+      #   plist.sort_by! {|p| p.likes.size }
+      # when "downloads"
+      #   plist.sort_by! {|p| p.downloadCount }
       when "relevance"
         plist.sort_by! {|p| p.relevance }
     end

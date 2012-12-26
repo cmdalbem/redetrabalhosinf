@@ -1,17 +1,9 @@
 <div class="row-fluid">
 
-  <% columns = 6 %>
   <ul class="thumbnails">
-    <% i=0 %>
     <% @projects.each do |project| %>
-      <% if i%columns == 0 %>
-        <% if i!=0 %>
-          </div>
-        <% end %>
-        <div class="row-fluid">
-      <% end %>
 
-      <div class=<%="span#{12/columns}"%> >
+      <div class="pull-left"%>
         <li class="thumbnail project-thumb">
             
           <!-- Buttons -->
@@ -52,7 +44,6 @@
         </li>
       </div>
 
-      <% i = i+1 %>
 
     <% end %>
   </ul>

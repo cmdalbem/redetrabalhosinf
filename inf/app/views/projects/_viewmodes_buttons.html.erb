@@ -4,7 +4,7 @@
     <% if @viewMode == :list %>
       <% thisClass += " active" %>
     <% end %>
-    <%= link_to raw("<i class=\"icon-list\"></i> Lista"), params.merge(:view => "list"), class: thisClass, id: "list-view",remote: true %>
+    <%= link_to raw("<i class=\"icon-list\"></i> Lista"), params.merge(:view => "list"), class: thisClass, id: "list-view", remote: true %>
     
     <% thisClass = "btn" %>
     <% if @viewMode == :thumbs %>

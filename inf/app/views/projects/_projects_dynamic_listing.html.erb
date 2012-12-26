@@ -1,13 +1,13 @@
 <!-- Showing results for... -->
 <center>
-  <div class="muted">
-    <%if params[:course] and !params[:course].empty? %>
-        Mostrando projetos da disciplina: <strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil) %>
-    <% end %>
-  </div>
+  <%if params[:course] and !params[:course].empty? %>
+    <legend>
+      <strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil) %>
+    </legend>
+  <% end %>
   <div class="muted">
     <%if params[:search] and !params[:search].empty? %>
-        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil) %>
+        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil), class: "muted" %>
     <% end %>
   </div>
 </center>

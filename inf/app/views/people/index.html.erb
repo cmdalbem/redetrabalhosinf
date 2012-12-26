@@ -7,25 +7,41 @@
 <div class="row-fluid">
 
   <!-- Search Form --> 
-  <div class="pull-left">
+  <div class="span4">
+    <div class="pull-left">
+      <center>
+        <div class="mysearch">
+          <%= form_tag people_path, :method => 'get', class: "form-search" do %>
+            <%= hidden_field_tag :direction, params[:direction] %>
+            <%= hidden_field_tag :sort, params[:sort] %>
+            <%= hidden_field_tag :view, params[:view] %>
+            <i class="icon-search"></i>
+            <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Busca por nome ou nick" %>
+          <% end %>
+        </div>
+      </center>
+    </div>
+  </div>
+
+  <!-- Sort By option -->
+  <div class="span4">
     <center>
-      <%= form_tag people_path, :method => 'get', class: "form-search" do %>
+      <%= form_tag projects_path, method: 'get' do %>
         <%= hidden_field_tag :direction, params[:direction] %>
         <%= hidden_field_tag :sort, params[:sort] %>
         <%= hidden_field_tag :view, params[:view] %>
-        <div class="field">
-          <div class="input-append row-fluid">
-            <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Busca por nome ou nick" %>
-            <%= submit_tag "Pesquisar", class: "btn", name: nil %>
-          </div>
-        </div>
+        <%= hidden_field_tag :course, params[:course] %>
+        Ordenar por 
+        <%= select_tag :sort, options_for_select({"Nome"=>"name","Email"=>"email","Projetos"=>"projects"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
       <% end %>
     </center>
   </div>
 
   <!-- Button group for choosing view (list or thumbnail) -->
-  <div class="pull-right"> 
-    <%= render 'projects/viewmodes_buttons' %>
+  <div class="span4">
+    <div class="pull-right"> 
+      <%= render 'projects/viewmodes_buttons' %>
+    </div>
   </div>
 </div>
 

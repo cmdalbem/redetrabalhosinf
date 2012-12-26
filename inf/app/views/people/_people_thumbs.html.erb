@@ -1,17 +1,8 @@
 <div class="row-fluid">
 
-  <% columns = 6 %>
   <ul class="thumbnails"> 
-    <% i=0 %>
     <% @people.each do |person| %>
-      <% if i%columns == 0 %>
-        <% if i!=0 %>
-          </div>
-        <% end %>
-        <div class="row-fluid">
-      <% end %>
-
-      <div class="span2">
+      <div class="pull-left">
         <li class="thumbnail person-thumb">
           <a href=<%= profile_path(person.nick) %> class="thumbnail">
             <%= image_tag person.avatar %>
@@ -25,9 +16,6 @@
           </center>
         </li>
       </div>
-
-      <% i = i+1 %>
-
     <% end %>
   </ul>
 
