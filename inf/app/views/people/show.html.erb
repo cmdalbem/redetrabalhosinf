@@ -1,9 +1,12 @@
 <legend>Detalhes de Perfil
-  <!-- <div class="pull-right"> -->
-    <% if user_signed_in? and @person.user.authorizes?(current_user) %>
-      <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_person_path(@person), class: "btn btn-info" %>
-    <% end %>
-  <!-- </div> -->
+  <% if user_signed_in? and @person.user.authorizes?(current_user) %>
+    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_person_path(@person), class: "btn btn-info" %>
+    <!-- <div class="pull-right">
+      <small>
+        <%= link_to raw("<i class=\"icon-trash\"></i> Deletar conta"), edit_user_registration_path(@person.user), confirm: 'Tem certeza?', method: :delete %>
+      </small>
+    </div>-->
+  <% end %>
 </legend>
 
 <div class="content">
