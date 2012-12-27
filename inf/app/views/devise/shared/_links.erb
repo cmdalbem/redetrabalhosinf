@@ -12,17 +12,17 @@
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
 	<!-- link_to "Não recebou instruções de confirmação?", new_confirmation_path(resource_name) -->
-	<a href="#myModal" role="button" data-toggle="modal">Não recebou instruções de confirmação?</a>
+	<a href="#myModal" role="button" data-toggle="modal">Não recebou email de confirmação?</a>
 
 	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">Email de confirmação</h3>
+			<h3 id="myModalLabel">Reenviar email de confirmação</h3>
 		</div>
 		<div class="modal-body">
 			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
 				<%= devise_error_messages! %>
-				<%= f.email_field :email, required: true, placeholder: "Email" %><br>
+				<%= f.email_field :email, required: true, placeholder: "Email cadastrado" %><br>
 				<%= f.submit "Reenviar", class: "btn btn-primary" %>
 			<% end %>
 		</div>

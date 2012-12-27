@@ -49,6 +49,9 @@ gem 'google-analytics-rails'
 # For pagination
 gem 'will_paginate', '~> 3.0'
 
+# Adds UTF8 encoding to all files
+gem "magic_encoding"
+
 # Gems to be added only when running on Linux
 platforms :ruby do
   gem 'execjs'

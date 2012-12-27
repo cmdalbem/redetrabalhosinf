@@ -3,14 +3,14 @@ class ProjectsController < ApplicationController
   before_filter :checkLogged, :only => [:edit, :update, :destroy, :new, :create]
   def checkLogged
     if not user_signed_in?
-      redirect_to new_user_session_path, alert: 'Tu deves estar logado pra fazer isso.'
+      redirect_to new_user_session_path, alert: 'Deves estar logado pra fazer isso.'
       return
     end
   end
 
   def checkAuthorization(owner)
     if !owner.authorizes?(current_user)
-      redirect_to root_path, alert: 'Desculpe, tu nao tens permissao pra fazer isso.'
+      redirect_to root_path, alert: 'Desculpe, não tens permissão pra fazer isso.'
     end
   end
 
@@ -165,10 +165,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params["id"])
 
-    if current_user != @project.person.user
-      redirect_to root_path, alert: 'Nao esta logado!'
-      return
-    end
+    checkAuthorization(@project.person.user)
 
     pp = params[:project]
     tags = pp["tag_tokens"].split(",")

@@ -2,7 +2,7 @@ Inf::Application.routes.draw do
   resources :s3_uploads
 
   resources :projects, :people, :home, :tags, :comments
-  devise_for :users#, :controllers => { :registrations  => "users" }
+  devise_for :users, :controllers => { :registrations  => "registrations" }
 
   root :to => "home#show"
 

@@ -3,17 +3,16 @@
   <ul class="thumbnails"> 
     <% @people.each do |person| %>
       <div class="pull-left">
-        <li class="thumbnail person-thumb">
+        <li class="person-thumb">
           <a href=<%= profile_path(person.nick) %> class="thumbnail">
             <%= image_tag person.avatar %>
+            <center>
+              <h5 class="username-text"><%=person.name%> <small>(<%=person.nick%>)</small></h5>
+              <small class="blacktext">
+                <i class="icon-folder-close"></i>Projetos: <%=person.projects.size %>
+              </small>
+            </center>
           </a>
-          
-          <center>
-            <h5 class="username-text"><%= link_to person.name, profile_path(person.nick) %> <small>(<%=person.nick%>)</small></h5>
-            <small>
-              <i class="icon-folder-close"></i>Projetos: <%=person.projects.size %>
-            </small>
-          </center>
         </li>
       </div>
     <% end %>

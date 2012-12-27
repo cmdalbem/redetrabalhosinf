@@ -10,7 +10,7 @@ class PeopleController < ApplicationController
 
   def checkAuthorization(owner)
     if !owner.authorizes?(current_user)
-      redirect_to root_path, alert: 'Desculpe, tu nao tens permissao pra fazer isso.'
+      redirect_to root_path, alert: 'Desculpe, não tens permissão pra fazer isso.'
     end
   end
 
@@ -76,7 +76,7 @@ class PeopleController < ApplicationController
       search = Person.where(nick: params[:id])
 
       if(search.empty?)
-        redirect_to root_path, alert: "Nao consegui encontrar #{params[:id]}."
+        redirect_to root_path, alert: "Não consegui encontrar #{params[:id]}."
       else
         @person = search.first
         @projects = @person.projects.sort_by! {|p| -p.relevance }
