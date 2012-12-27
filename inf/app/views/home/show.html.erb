@@ -60,12 +60,12 @@
 	<div class="row-fluid">
 		<div class="offset2 span4">
 			<div class="news">
-				<legend>Últimos Projetos</legend>
+				<legend>Novos Projetos</legend>
 				<ul>
 					<% @lastProjects.each do |p| %>
 						<li>
 							<header><%= link_to p.title, p %></header>
-							<p class="author">por <%= link_to p.person.nick, p.person %></p>
+							<p class="author">por <%= link_to p.person, profile_path(p.person.nick) %></p>
 							<small>
 								<p class="muted"><i class="icon-book"></i><%= p.course.name %></p>
 								<p class="muted"><i class="icon-time"></i>há <%= time_ago_in_words(p.created_at) %></p>
@@ -73,23 +73,30 @@
 						</li>
 					<% end %>
 				</ul>
+				<small>
+					<%= link_to "Ver mais", projects_path(sort: "date", direction: "desc") %>
+				</small>
 			</div>
 
 		</div>
 
 		<div class="span4">
 			<div class="news">
-				<legend>Últimos Cadastros</legend>
+				<legend>Novos Usuários</legend>
 				<ul>
 					<% @lastPeople.each do |p| %>
 						<li>
-							<header><%= link_to p.nick, p %></header>
+							<header><%= link_to p, profile_path(p.nick) %></header>
+							<p class="author"><%= p.name %></p>
 							<small>
 								<p class="muted"><i class="icon-time"></i>há <%= time_ago_in_words(p.created_at) %></p>
 							</small>
 						</li>
 					<% end %>
 				</ul>
+				<small>
+					<%= link_to "Ver mais", people_path(sort: "date", direction: "desc") %>
+				</small>
 			</div>
 		</div>
 	</div>

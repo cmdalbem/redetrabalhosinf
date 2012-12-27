@@ -6,12 +6,7 @@
 
 	<div>
 	  <center>
-		<% if user_signed_in?
-		  dest = new_project_path;
-		else
-		  dest = new_user_session_path
-		end %>
-		<%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), dest, class: "btn btn-success btn-large" %>
+		<%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success btn-large" %>
 	  </center>
 	</div>
 
@@ -50,16 +45,16 @@
 			</div>
 		</div>
 
-		<!-- Sort By option -->
+		<!-- "Sort By" option -->
 		<div class="span4">
 			<center>
 				<%= form_tag projects_path, method: 'get' do %>
-					<%= hidden_field_tag :direction, params[:direction] %>
 					<%= hidden_field_tag :sort, params[:sort] %>
 					<%= hidden_field_tag :view, params[:view] %>
 					<%= hidden_field_tag :course, params[:course] %>
 					Ordenar por 
-					<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+					<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person","Data adicionado" => "date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+					<%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
 				<% end %>
 			</center>
 		</div>
@@ -82,12 +77,7 @@
 	<br>
 
 	<center>
-	  <% if user_signed_in?
-		dest = new_project_path;
-	  else
-		dest = new_user_session_path
-	  end %>
-	  <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), dest, class: "btn btn-success btn-large" %>
+	  <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success btn-large" %>
 	</center>
 
 </div>

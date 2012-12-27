@@ -41,7 +41,7 @@
 
             <div class="field">
               <%= f.label "Descrição" %><br />
-              <%= f.text_area :description, rows: 10, style: "width: 50%; margin-bottom: 0;" %>
+              <%= f.text_area :description, rows: 10, style: "width: 80%; margin-bottom: 0;" %>
               <span class="help-block">
                 <small>
                   Caracteres sobrando: <span id="char-count"><%=PROJECT_DESCRIPTION_MAX_LENGTH - (@project.description? ? @project.description.length : 0)%></span>

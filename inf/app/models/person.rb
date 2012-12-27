@@ -49,4 +49,8 @@ class Person < ActiveRecord::Base
 		sum
 	end
 
+	def to_s
+		nick
+	end
+
 end

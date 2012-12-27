@@ -1,5 +1,19 @@
 class ProjectsController < ApplicationController
 
+  before_filter :checkLogged, :only => [:edit, :update, :destroy, :new, :create]
+  def checkLogged
+    if not user_signed_in?
+      redirect_to new_user_session_path, alert: 'Tu deves estar logado pra fazer isso.'
+      return
+    end
+  end
+
+  def checkAuthorization(owner)
+    if !owner.authorizes?(current_user)
+      redirect_to root_path, alert: 'Desculpe, tu nao tens permissao pra fazer isso.'
+    end
+  end
+
   def sort_projects_by_column(plist, column, direction)
     
     # Default values
@@ -22,6 +36,8 @@ class ProjectsController < ApplicationController
       #   plist.sort_by! {|p| p.downloadCount }
       when "relevance"
         plist.sort_by! {|p| p.relevance }
+      when "date"
+        plist.sort_by! {|p| p.created_at }
     end
 
     # How is the ordering?
@@ -73,7 +89,6 @@ class ProjectsController < ApplicationController
 
     # @lastSort = params[:sort]
 
-
     respond_to do |format|
       format.html
       format.js
@@ -98,11 +113,8 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
 
-    if(user_signed_in?)
-      render action: "edit"
-    else
-      redirect_to projects_url, notice: 'Not allowed!'
-    end
+    checkAuthorization(@project.person.user)
+
   end
 
   # POST /projects
@@ -153,8 +165,12 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params["id"])
 
+    if current_user != @project.person.user
+      redirect_to root_path, alert: 'Nao esta logado!'
+      return
+    end
+
     pp = params[:project]
-    owner = current_user.person
     tags = pp["tag_tokens"].split(",")
 
     # Check if one of the entered Tags doesn't exist on the Database.
@@ -182,7 +198,7 @@ class ProjectsController < ApplicationController
       @project.update_attributes(link: pp["link"], linkHitCount: 0)
     end
     
-    success &&= @project.update_attributes(person: owner,
+    success &&= @project.update_attributes(person: @project.person,
           title: pp["title"],
           description: pp["description"],
           course_id: pp["course_id"],

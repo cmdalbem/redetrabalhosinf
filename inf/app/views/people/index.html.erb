@@ -26,13 +26,13 @@
   <!-- Sort By option -->
   <div class="span4">
     <center>
-      <%= form_tag projects_path, method: 'get' do %>
+      <%= form_tag people_path, method: 'get' do %>
         <%= hidden_field_tag :direction, params[:direction] %>
         <%= hidden_field_tag :sort, params[:sort] %>
         <%= hidden_field_tag :view, params[:view] %>
         <%= hidden_field_tag :course, params[:course] %>
         Ordenar por 
-        <%= select_tag :sort, options_for_select({"Nome"=>"name","Email"=>"email","Projetos"=>"projects"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+        <%= select_tag :sort, options_for_select({"Nome"=>"name","Email"=>"email","Nro. Projetos"=>"projects","Data adicionado"=>"date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
       <% end %>
     </center>
   </div>

@@ -1,10 +1,16 @@
 class PeopleController < ApplicationController
   
-  before_filter :checkLogin, :only => [:edit, :update, :destroy]
-
-  def checkLogin
+  before_filter :checkLogged, :only => [:edit, :update, :destroy]
+  def checkLogged
     if not user_signed_in?
-      redirect_to root_path, alert: 'Safado!'
+      redirect_to new_user_session_path, alert: 'Tu deves estar logado pra fazer isso...'
+      return
+    end
+  end
+
+  def checkAuthorization(owner)
+    if !owner.authorizes?(current_user)
+      redirect_to root_path, alert: 'Desculpe, tu nao tens permissao pra fazer isso.'
     end
   end
 
@@ -22,6 +28,8 @@ class PeopleController < ApplicationController
         plist.sort_by! {|p| p.user.email }
       when "projects"
         plist.sort_by! {|p| p.projects.size }
+      when "date"
+        plist.sort_by! {|p| p.created_at }
     end
 
     # How is the ordering?
@@ -92,6 +100,9 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   def edit
     @person = Person.find(params[:id])
+
+    checkAuthorization(@person.user)
+
   end
 
   # POST /people
@@ -118,6 +129,8 @@ class PeopleController < ApplicationController
   def update
     @person = Person.find(params[:id])
     pp = params[:person]
+
+    checkAuthorization(@person.user)
 
     success = true
     if pp["deleteAvatar"]=="true"
@@ -151,6 +164,9 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   def destroy
     @person = Person.find(params[:id])
+
+    checkAuthorizedUser(@person.user)
+
     @person.destroy
   end
 

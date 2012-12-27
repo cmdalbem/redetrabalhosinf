@@ -43,5 +43,5 @@ module ApplicationHelper
 		ret += "</ul>"
 
 		return ret
-	end	
+	end
 end

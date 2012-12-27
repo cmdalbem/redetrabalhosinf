@@ -205,6 +205,10 @@ ul.project-content-icons {
 
   header {
     font-weight: bold;
+    img {
+      height: 18px;
+      width: auto;
+    }
   }
 
   .comment {
@@ -212,6 +216,7 @@ ul.project-content-icons {
   }
 }
 
+/* Some overriding settings for enhancing Chosen Plugin combobox */
 .chzn-select {
   min-width: 500px;
 }
@@ -221,6 +226,12 @@ ul.project-content-icons {
   width: 100% !important;
 }
 
+.chzn-container-single .chzn-search input {
+    /* Fixes icon-search position */
+    background-position: 99% -30px, 0 0 !important;
+}
+
+/* Styles for the Home */
 .homepage {
   overflow: inherit;
 
@@ -316,23 +327,22 @@ ul.project-content-icons {
   }
 
   .chzn-container {
-    font-size: 26px;
+    font-size: 26px !important;
 
     ul {
-      font-size: 14px;
-      color: rgb(51,51,51);
+      font-size: 14px !important;
+      color: rgb(51,51,51) !important;
     }
   }
 
-  .chzn-container-single .chzn-single {
-    border: 2px solid rgb(235, 235, 235);
+  .chzn-container-single {
+    .chzn-single {
+      border: 2px solid rgb(235, 235, 235);
+      height: 30px;
+      line-height: 30px;
+    }
   }
 
-}
-
-.chzn-container {
-  /*not working!*/
-  font-size: 20px;
 }
 
 .mysearch { 
