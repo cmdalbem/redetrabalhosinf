@@ -30,13 +30,13 @@
 
             <div class="field">
               <%= f.label "Ano/Semestre" %><br />
-              <%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: ""}, {class: "input-small"} %> / 
+              <%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: ""}, {class: "input-small"} %>
               <%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], {include_blank: ""}, {class: "input-medium"} %><br />
             </div>
 
             <div class="field">
               <%= f.label "Título" %><br />
-            <%= f.text_field :title, class: "input-xlarge", required: true %>
+            <%= f.text_field :title, required: true, style: "width: 80%;" %>
             </div>
 
             <div class="field">
@@ -44,10 +44,24 @@
               <%= f.text_area :description, rows: 10, style: "width: 80%; margin-bottom: 0;" %>
               <span class="help-block">
                 <small>
-                  Caracteres sobrando: <span id="char-count"><%=PROJECT_DESCRIPTION_MAX_LENGTH - (@project.description? ? @project.description.length : 0)%></span>
+                  Caracteres sobrando: <span id="char_count"><%=PROJECT_DESCRIPTION_MAX_LENGTH - (@project.description? ? @project.description.length : 0)%></span>
                 </small>
               </span>
             </div>
+
+            <div class="field">
+              <%= f.label "Tags" %>
+              <span class="help-inline">
+                <small>
+                  <i class="icon-info-sign"></i> Adicione tags que ajudarão a encontrarem teu trabalho.
+                </small>
+              </span>
+              <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
+                <span class="help-block">
+                  Por exemplo: c++, linux, grafos, gtk, cg, ...
+                </span>
+            </div>
+
           </div>
 
           <div class="span6">
@@ -61,25 +75,6 @@
 
               <div class="accordion-group">
                 <% collapseId = 0 %>
-
-                <!-- Accordion Item -->
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
-                    <!-- HEADER -->
-                    <h5> <i class="icon-tags icon-large"></i> Tags </h5>
-                  </a>
-                </div>
-                <div id="collapse<%=collapseId%>" class="accordion-body collapse">
-                  <div class="accordion-inner">
-                    <!-- CONTENT -->
-                    <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
-                    <span class="help-block">
-                      Por exemplo: c++, linux, grafos, gtk
-                    </span>
-                  </div>
-                </div>
-
-                <% collapseId+=1 %>
 
                 <!-- Accordion Item -->
                 <div class="accordion-heading">
@@ -101,48 +96,13 @@
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
                     <!-- HEADER -->
-                    <h5> <i class="icon-picture icon-large"></i> Imagem de exibição </h5>
-                  </a>
-                </div>
-                <div id="collapse<%=collapseId%>" class="accordion-body collapse">
-                  <div class="accordion-inner">
-                    <!-- CONTENT -->
-                    <% if @project.image? %>
-                      <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
-                      <div id="keepImageField">
-                        <%= image_tag @project.image.url, :height => '100px', :width => '100px' %>
-                        <%= link_to "#{@project.image.original_filename}", @project.image.url %>
-                        <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); ", class: "btn btn-mini btn-warning" %>
-                      </div>
-                      <!-- Field for uploading a replacing file. (it's initially hidden) -->
-                      <div id="updateImageField" style="display: none;">
-                        <%= f.file_field :image, id: "avatarInputField" %>
-                        <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
-                        <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
-                      </div>
-
-                      <!-- Delete option. -->
-                      <%= check_box_tag :deleteImage %> <i class="icon-trash"></i> Deletar
-
-                    <% else %>
-                        <%= f.file_field :image %>
-                    <% end %>
-                  </div>
-                </div>
-
-                <% collapseId+=1 %>
-
-                <!-- Accordion Item -->
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
-                    <!-- HEADER -->
                     <h5> <i class="icon-file icon-large"></i> Arquivo </h5>
                   </a>
                 </div>
                 <div id="collapse<%=collapseId%>" class="accordion-body collapse">
                   <div class="accordion-inner">
                     <!-- CONTENT -->
-                    <% if @project.file? %>
+                    <% if @project.file.exists? %>
                       <!-- Shows the uploaded file, with an option for replacing it with a new one. -->
                       <div id="keepFileField">
                         <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %>
@@ -163,7 +123,42 @@
                     <% end %>
 
                   </div>
-                </div>            
+                </div> 
+
+                <% collapseId+=1 %>
+
+                <!-- Accordion Item -->
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
+                    <!-- HEADER -->
+                    <h5> <i class="icon-picture icon-large"></i> Imagem de exibição </h5>
+                  </a>
+                </div>
+                <div id="collapse<%=collapseId%>" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <!-- CONTENT -->
+                    <% if @project.image.exists? %>
+                      <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
+                      <div id="keepImageField">
+                        <%= image_tag @project.image.url, :height => '100px', :width => '100px' %>
+                        <%= link_to "#{@project.image.original_filename}", @project.image.url %>
+                        <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); ", class: "btn btn-mini btn-warning" %>
+                      </div>
+                      <!-- Field for uploading a replacing file. (it's initially hidden) -->
+                      <div id="updateImageField" style="display: none;">
+                        <%= f.file_field :image, id: "avatarInputField" %>
+                        <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+                        <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
+                      </div>
+
+                      <!-- Delete option. -->
+                      <%= check_box_tag :deleteImage %> <i class="icon-trash"></i> Deletar
+
+                    <% else %>
+                        <%= f.file_field :image %>
+                    <% end %>
+                  </div>
+                </div>                     
 
               </div>
 

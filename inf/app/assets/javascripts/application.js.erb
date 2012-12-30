@@ -51,18 +51,18 @@ function deleteUploadedField(toDeleteCheckbox,fieldName)
 }
 
 $(function() {
-	$(".chzn-select").chosen( {no_results_text: "Necas"} );
+	$(".chzn-select").chosen();
 });
 
 // Character counters.
 // Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/
 $('#project_description').live('keyup keydown', function(e) {
-  var maxLen = PROJECT_DESCRIPTION_MAX_LENGTH;
+  var maxLen = <%= PROJECT_DESCRIPTION_MAX_LENGTH %>;
   var left = maxLen - $(this).val().length;
-  $('#char-count').html(left);
+  $('#char_count').html(left);
 });
 $('#person_about').live('keyup keydown', function(e) {
-  var maxLen = PERSON_ABOUT_MAX_LENGTH;
+  var maxLen = <%= PERSON_ABOUT_MAX_LENGTH %>;
   var left = maxLen - $(this).val().length;
-  $('#char-count').html(left);
+  $('#char_count').html(left);
 });

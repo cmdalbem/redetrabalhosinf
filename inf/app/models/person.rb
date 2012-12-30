@@ -11,7 +11,9 @@ class Person < ActiveRecord::Base
 	validates :semester_year, allow_blank: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
 	validates :semester_sem, allow_blank: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }
 
-	has_attached_file :avatar, :path => ":attachment/:id/:style.:extension", :default_url => "https://s3.amazonaws.com/redesocialinf/user.gif", :styles => { thumb: "x18", original: "x200" }
+	
+	imagePath = Rails.env.development? ? "dev/:attachment/:id/:style.:extension" : ":attachment/:id/:style.:extension"
+	has_attached_file :avatar, :path => imagePath, :default_url => "https://s3.amazonaws.com/redesocialinf/user.gif", :styles => { thumb: "x18", original: "x200" }
 		validates_attachment_content_type :avatar, :content_type=>['image/jpeg', 'image/png', 'image/gif', 'image/bmp'] 
 
 	attr_reader :semester

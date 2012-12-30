@@ -1,4 +1,4 @@
-![infHUB](https://dl-web.dropbox.com/get/Academico/Trabalhos/2012/02/Laborat%C3%B3rio%20de%20Software/design/logo/logo_mini.png?w=6aa84f38) _A rede de compartilhamento de trabalhos do INF_
+![infHUB](https://dl.dropbox.com/u/14133634/infhub.png) _A rede de compartilhamento de trabalhos do INF_
 
 Developers
 ---------------------

@@ -29,7 +29,7 @@
 
         <div class="field">
           <%= f.label "Ano/Semestre que entrou no curso" %><br />
-          <%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: ""}, {class: "input-small"} %> / 
+          <%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: ""}, {class: "input-small"} %> 
           <%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], {include_blank: ""}, {class: "input-medium"} %><br />
         </div>
         
@@ -38,7 +38,7 @@
           <%= f.text_area :about, rows: 5, style: "width: 50%; margin-bottom: 0;" %>
           <span class="help-block">
             <small>
-              Caracteres sobrando: <span id="char-count"><%=PERSON_ABOUT_MAX_LENGTH-(@person.about? ? @person.about.length : 0)%></span>
+              Caracteres sobrando: <span id="char_count"><%=PERSON_ABOUT_MAX_LENGTH-(@person.about? ? @person.about.length : 0)%></span>
             </small>
           </span>
         </div>
