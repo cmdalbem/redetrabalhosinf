@@ -3,7 +3,7 @@
 <br>
 
 <div class="row-fluid">
-	<div class="offset3 span6">
+	<center>
 		<%= form_for resource, :as => resource_name, :url => session_path(resource_name), html: {class: "form-inline"} do |f| %>
 			<%= f.email_field :email, required: true, class: "input-medium", placeholder: "Email" %>
 			<%= f.password_field :password, required: true, class: "input-medium", placeholder: "Senha" %>
@@ -17,9 +17,7 @@
 		
 		<hr>
 
-		<center>
-			<%= render "devise/shared/links" %>
-		</center>
+		<%= render "devise/shared/links" %>
 
-	</div>
+	</center>
 </div>

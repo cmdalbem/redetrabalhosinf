@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PeopleController < ApplicationController
   
   before_filter :checkLogged, :only => [:edit, :update, :destroy]
