@@ -39,7 +39,7 @@
 						<%= hidden_field_tag :view, params[:view] %>
 						<%= hidden_field_tag :course, params[:course] %>
 						<i class="icon-search"></i>
-						<%= text_field_tag :search, params[:search], class: "search-query input-xlarge", placeholder: "Busca por título ou descrição" %>
+						<%= text_field_tag :search, params[:search], class: "search-query input-xlarge", placeholder: "Título / Descrição / Tags" %>
 					<% end %>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 					<%= hidden_field_tag :view, params[:view] %>
 					<%= hidden_field_tag :course, params[:course] %>
 					Ordenar por 
-					<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person","Data adicionado" => "date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+					<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Data adicionado" => "date","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
 					<%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
 				<% end %>
 			</center>

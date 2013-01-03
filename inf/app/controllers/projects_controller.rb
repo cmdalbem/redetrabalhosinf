@@ -15,6 +15,24 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def createUnexistingTags(tags)
+    # Check if one of the entered Tags doesn't exist on the Database.
+    # This is how freeTagging on TokenInput works: it will give us the a number if the recognizes that the tag entered already exists, otherwise it will give us the string of this new tag.
+    tags.size.times do |i|
+      # Check if it's a "FreeTag"
+      if not is_number?(tags[i])
+        # Make sure this tag doesn't already exist (the user entered a custom tag before TokenInput ended searching)
+        duplicates = Tag.where(tag_text: tags[i])
+        if duplicates.empty?
+          newTag = Tag.create(tag_text: tags[i])
+          tags[i] = newTag.id
+        else
+          tags[i] = duplicates.first.id
+        end
+      end
+    end
+  end
+
   def sort_projects_by_column(plist, column, direction)
     
     # Default values
@@ -124,13 +142,8 @@ class ProjectsController < ApplicationController
     owner = current_user.person
     tags = pp["tag_tokens"].split(",")
 
-    # Check if one of the entered Tags doesn't exist on the Database.
-    tags.size.times do |i|
-      if not is_number?(tags[i])
-        newTag = Tag.create(tag_text: tags[i])
-        tags[i] = newTag.id
-      end
-    end
+    createUnexistingTags(tags)
+    
 
     @project = Project.new(title: pp["title"],
       course_id: pp["course_id"],
@@ -170,14 +183,8 @@ class ProjectsController < ApplicationController
 
     pp = params[:project]
     tags = pp["tag_tokens"].split(",")
-
-    # Check if one of the entered Tags doesn't exist on the Database.
-    tags.size.times do |i|
-      if not is_number?(tags[i])
-        newTag = Tag.create(tag_text: tags[i])
-        tags[i] = newTag.id
-      end
-    end
+ 
+    createUnexistingTags(tags)
 
     success = true
     if params["deleteImage"] == "1"

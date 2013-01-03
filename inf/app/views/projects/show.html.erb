@@ -4,7 +4,7 @@
 
 <h1 class="projectname-text" style="display: inline;"> <%= @project.title %></h1>
 <div class="pull-right">
-  <% if user_signed_in? and current_user.person==@project.person %>
+  <% if user_signed_in? and @project.person.user.authorizes?(current_user) %>
     <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(@project), class: "btn btn-info btn-large" %>
   <% end %>
 </div>

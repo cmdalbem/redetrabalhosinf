@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
 	belongs_to :person
 	belongs_to :course
 
-	has_many :taggings
+	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
 	has_many :comments, dependent: :destroy 
 
@@ -46,9 +46,9 @@ class Project < ActiveRecord::Base
 	def self.search(search)
 		search.downcase!
 		if search
-			# http://www.definenull.com/content/rails-find-conditions
-			# http://m.onkey.org/active-record-query-interface
-			where("lower(title) LIKE ? OR lower(description) LIKE ?", "%#{search}%", "%#{search}%")
+			# Queries: http://m.onkey.org/active-record-query-interface
+			# Joins: http://edgeguides.rubyonrails.org/active_record_querying.html#joining-tables
+			includes(:tags).where("lower(title) LIKE ? OR lower(description) LIKE ? OR tags.tag_text LIKE ? ", "%#{search}%", "%#{search}%", "%#{search}%")
 		else
 			scoped
 		end

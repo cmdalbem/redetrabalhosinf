@@ -31,8 +31,7 @@ class Person < ActiveRecord::Base
 	def self.search(search)
 		search.downcase!
 		if search
-			# http://www.definenull.com/content/rails-find-conditions
-			# http://m.onkey.org/active-record-query-interface
+			# Queries: http://m.onkey.org/active-record-query-interface
 			where("lower(name) LIKE ? OR lower(nick) LIKE ?", "%#{search}%", "%#{search}%")
 		else
 			scoped

@@ -1,5 +1,5 @@
 class Tag < ActiveRecord::Base
-	has_many :taggings
+	has_many :taggings, dependent: :destroy
 	has_many :projects, through: :taggings
 
 	validates :tag_text, presence: true
