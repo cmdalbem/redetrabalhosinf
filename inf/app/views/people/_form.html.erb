@@ -24,7 +24,7 @@
         <!-- Person Form -->
         <div class="field">
           <%= f.label "Nome" %><br />
-          <%= f.text_field :name, required: true, class: "input-xlarge" %>
+          <%= f.text_field :name, required: true, class: "input-xlarge", maxlength: PERSON_NAME_MAX_LENGTH %>
         </div>
 
         <div class="field">

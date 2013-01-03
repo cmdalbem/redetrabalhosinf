@@ -86,8 +86,8 @@
           <span class="muted"><i class="icon-envelope"></i></span>
           <%= mail_to @person.user.email %>
           <br>  
-          <span class="muted"><i class="icon-time"></i> Usuário há </span>
-          <%= time_ago_in_words(@person.created_at) %>
+          <span class="muted"><i class="icon-time"></i> Usuário desde </span>
+          <%= @person.created_at.strftime("%d/%m/%Y") %>
         </p>
       </div>
 

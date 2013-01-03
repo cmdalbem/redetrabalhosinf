@@ -36,7 +36,7 @@
 							<li><%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path %></li>
 							<li><%= link_to raw("<i class=\"icon-edit\"></i> Editar Perfil"), edit_person_path(current_user.person) %></li>
 							<li class="divider"></li>
-							<li><%= link_to raw("<i class=\"icon-signout\"></i> Deslogar"), destroy_user_session_path, :method => :delete %></li>
+							<li><%= link_to raw("<i class=\"icon-signout\"></i> Sair"), destroy_user_session_path, :method => :delete %></li>
 		                </ul>
 		              </div>              
 		            <% else %>  

@@ -53,7 +53,7 @@
 					<%= hidden_field_tag :view, params[:view] %>
 					<%= hidden_field_tag :course, params[:course] %>
 					Ordenar por 
-					<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Data adicionado" => "date","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+					<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Data do upload" => "date","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
 					<%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
 				<% end %>
 			</center>

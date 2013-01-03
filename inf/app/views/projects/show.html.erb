@@ -87,7 +87,7 @@
 
     <p>
       <span class="muted"><i class="icon-time"></i> Adicionado em</span>
-      <%= @project.created_at %>
+      <%= @project.created_at.strftime("%d/%m/%Y") %>
     </p>
 
   </div>

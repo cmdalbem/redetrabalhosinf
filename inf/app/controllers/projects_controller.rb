@@ -80,7 +80,7 @@ class ProjectsController < ApplicationController
 
     # if params[:sort] == @lastSort
       # Handle searchs
-      @projects = Project.scoped
+      @projects = Project.includes(:tags)
 
       if params[:course] and !params[:course].empty?
         @course = Course.find(params[:course].to_i)

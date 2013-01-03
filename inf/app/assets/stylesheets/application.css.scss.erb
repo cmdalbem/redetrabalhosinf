@@ -49,6 +49,14 @@ body {
   background: none;
 }
 
+smaller {
+  font-size: 70%;
+}
+
+.table th, .table td {
+  line-height: 15px;
+}
+
 #wrap {
   padding-top: 60px;
 
@@ -112,6 +120,7 @@ body {
 .profile-picture img{
   height: 200px;
   width: auto;
+  overflow: hidden;
 }
 
 .icon-white,
@@ -125,8 +134,15 @@ body {
 }
 
 .username-text {
-  font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif;
+  font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif;  
+}
+
+h2.username-text {
   line-height: 25px;
+}
+
+h5.username-text {
+  line-height: 15px;
 }
 
 .projectname-text {
@@ -267,6 +283,8 @@ ul.project-content-icons {
   }
 
   .news {
+    overflow: hidden;
+    
     legend {
       margin-bottom: 0;
       font-weight: bold;
@@ -529,6 +547,7 @@ li.person-thumb {
     width: 200px;
     height: 280px;
     margin-left: 10px;
+    overflow: hidden;
 
     a {
       text-decoration: none;

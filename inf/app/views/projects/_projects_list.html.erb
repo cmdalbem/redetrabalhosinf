@@ -25,9 +25,15 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td tyle="">
-          <%= link_to project.title, project %>
-          <%= raw(getContentIcons(project)) %>
+        <td style="">
+          <%= link_to project.title, project %> <%= raw(getContentIcons(project)) %>
+          <% if not project.tags.empty? %>
+            <br>
+            <smaller class="muted">
+              <i class="icon-tag"></i>
+              <%= project.tags.collect{|t| t.tag_text}.join(", ") %>
+            </smaller>
+          <% end %>
         </td>
         <td style="width: 22%"><small><%= link_to project.course.name, {course: project.course.id} %></small></td>
         <td style="width: 10%"><%= project.semester %></td>

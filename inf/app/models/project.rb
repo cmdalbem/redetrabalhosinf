@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
 		validates_attachment_size :file, :less_than => MAX_FILE_SIZE_MB.megabytes
 
 	validates :person, presence: true
-	validates :title, presence: true, length: {maximum: 255}
+	validates :title, presence: true, length: {maximum: PROJECT_TITLE_MAX_LENGTH}
 	validates :description, length: {maximum: PROJECT_DESCRIPTION_MAX_LENGTH}
 	validates :course, presence: true
 	validates :semester_year, allow_blank: true, :numericality => { :greater_than_or_equal_to => MINIMUM_YEAR_ACCEPTABLE, :less_than_or_equal_to => Time.now.year }
@@ -34,7 +34,9 @@ class Project < ActiveRecord::Base
 
 	attr_reader :semester
 	def semester
-		semester_year.to_s + "/" + semester_sem.to_s
+		if semester_year? or semester_sem?
+			[semester_year,semester_sem].join("/")
+		end
 	end
 
 	attr_reader :relevance
@@ -48,7 +50,7 @@ class Project < ActiveRecord::Base
 		if search
 			# Queries: http://m.onkey.org/active-record-query-interface
 			# Joins: http://edgeguides.rubyonrails.org/active_record_querying.html#joining-tables
-			includes(:tags).where("lower(title) LIKE ? OR lower(description) LIKE ? OR tags.tag_text LIKE ? ", "%#{search}%", "%#{search}%", "%#{search}%")
+			where("lower(title) LIKE ? OR lower(description) LIKE ? OR tags.tag_text LIKE ? ", "%#{search}%", "%#{search}%", "%#{search}%")
 		else
 			scoped
 		end
