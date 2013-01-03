@@ -38,7 +38,7 @@ module ApplicationHelper
 			ret +="<li><i class=\"icon-picture\"></i></li>"
 		end
 		if project.link?
-			ret +="<li><i class=\"icon-share-alt\"></i></li>"
+			ret +="<li><i class=\"icon-external-link\"></i></li>"
 		end
 		ret += "</ul>"
 

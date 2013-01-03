@@ -1,6 +1,6 @@
 <legend>Detalhes de Perfil
   <% if user_signed_in? and @person.user.authorizes?(current_user) %>
-    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_person_path(@person), class: "btn btn-info" %>
+    <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_person_path(@person), class: "btn btn-info" %>
     <!-- <div class="pull-right">
       <small>
         <%= link_to raw("<i class=\"icon-trash\"></i> Deletar conta"), edit_user_registration_path(@person.user), confirm: 'Tem certeza?', method: :delete %>
@@ -14,7 +14,7 @@
 <div class="container-fluid center">
 
   <div class="row-fluid">
-    <div class="span4">
+    <div class="span3">
 
       <div class="row-fluid">
         <div class="profile-picture">
@@ -22,15 +22,16 @@
             <%= image_tag @person.avatar, class: "img-polaroid" %>
           </center>
         
-          <h2 class="username-text"><%= @person.name %> <small>(<%=@person.nick%>)</small></h2>
+          <h2 class="username-text"><%= @person.name %> <small><%=@person.nick%></small></h2>
           
           <p>
+            <!-- <i class="icon-quote-left icon-4x pull-left icon-muted"></i> -->
             <%= @person.about %>
           </p>
 
           <% if @person.personal_link? %>
             <p>
-              <i class="icon-share-alt"></i> 
+              <i class="icon-external-link"></i> 
               <%= link_to @person.personal_link, @person.personal_link %>
             </p>
           <% end %>
@@ -77,19 +78,48 @@
 
       <div class="row-fluid">
         <p>
+          <% if @person.user.admin? %>
+            <span class="text-warning"><i class="icon-star"></i></span>
+            <text class="text-warning">Administrador</text>
+            <br>
+          <% end %>
           <span class="muted"><i class="icon-envelope"></i></span>
           <%= mail_to @person.user.email %>
           <br>  
-          <span class="muted"><i class="icon-time"></i> Usuário desde</span>
-          <%= @person.user.created_at %>
+          <span class="muted"><i class="icon-time"></i> Usuário há </span>
+          <%= time_ago_in_words(@person.created_at) %>
         </p>
       </div>
 
     </div>
 
-    <div class="span8">
-       <%= render 'projects_accordion' %>
-    </div>    
+    <div class="span9">
+      <div class="row-fluid">
+        <!-- "Sort By" option -->
+        <div class="span6">
+          <%= form_tag profile_path(@person.nick), method: 'get' do %>
+            <%= hidden_field_tag :sort, params[:sort] %>
+            <%= hidden_field_tag :view, params[:view] %>
+            Ordenar por 
+            <%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Data adicionado" => "date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+            <%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+          <% end %>
+        </div>
+
+        <!-- Button group for choosing view (list or thumbnail) -->
+        <div class="span6">
+          <div class="pull-right">
+            <%= render 'projects/viewmodes_buttons' %>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- The listing itself -->
+      <div id="projects-table" class="clearfix"> 
+        <%= render 'projects/projects_dynamic_listing' %>
+      </div> 
+    </div>  
 
   </div>
 

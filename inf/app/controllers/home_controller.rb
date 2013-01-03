@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class HomeController < ApplicationController
   def show
   	@lastProjects = Project.order("created_at DESC").limit(5).all

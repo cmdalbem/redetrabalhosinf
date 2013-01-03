@@ -57,12 +57,14 @@ $(function() {
 // Character counters.
 // Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/
 $('#project_description').live('keyup keydown', function(e) {
-  var maxLen = <%= PROJECT_DESCRIPTION_MAX_LENGTH %>;
+  // global_constants.rb: PROJECT_DESCRIPTION_MAX_LENGTH = 1500
+  var maxLen = 1500;
   var left = maxLen - $(this).val().length;
   $('#char_count').html(left);
 });
 $('#person_about').live('keyup keydown', function(e) {
-  var maxLen = <%= PERSON_ABOUT_MAX_LENGTH %>;
+	// global_constants.rb: PERSON_ABOUT_MAX_LENGTH = 300
+  var maxLen = 300;
   var left = maxLen - $(this).val().length;
   $('#char_count').html(left);
 });

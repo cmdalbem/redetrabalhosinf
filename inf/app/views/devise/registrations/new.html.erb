@@ -2,29 +2,33 @@
 
 
 <%= form_for([resource, resource.with_person], :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+	<%= devise_error_messages! %>
 
-  <%= f.fields_for :person do |person_builder| %>
-    <div class="field">
-      <%= person_builder.label "Nome" %><br />
-      <%= person_builder.text_field :name, required: true %>
-    </div>
+	<%= f.fields_for :person do |person_builder| %>
+		<div class="field">
+			<%= person_builder.label "Nome" %><br />
+			<%= person_builder.text_field :name, required: true %>
+		</div>
 
-    <div><%= f.label "Email da INF" %><br />
-    <%= f.email_field :email, required: true %></div>
+		<div><%= f.label "Email da INF" %><br />
+		<div class="input-append">
+			<%= f.text_field :email, required: true, class: "input-medium", onchange: "$('#hidden_nick').val(this.value);" %>
+			<span class="add-on">@inf.ufrgs.br</span>
+		</div>
 
-    <div class="input-prepend">
-      <span class="add-on">redesocialdainf/</span><%= person_builder.text_field :nick, placeholder: "apelido", required: true %>
-    </div>
-  <% end %>
+		<div class="input-prepend">
+			<span class="add-on muted"><%= SITE_URL %>/</span>
+			<%= person_builder.text_field :nick, id: "hidden_nick", class: "input-medium uneditable-input", readonly: true %>
+		</div>
+	<% end %>
 
-  <div><%= f.label "Senha" %><br />
-  <%= f.password_field :password, required: true %></div>
+	<div><%= f.label "Senha" %><br />
+	<%= f.password_field :password, required: true %></div>
 
-  <div><%= f.label "Confirmação da senha" %><br />
-  <%= f.password_field :password_confirmation, required: true %></div>
+	<div><%= f.label "Confirmação da senha" %><br />
+	<%= f.password_field :password_confirmation, required: true %></div>
 
-  <br>
+	<br>
 
-  <div><%= f.submit "Registrar", class: "btn btn-primary" %></div>
+	<div><%= f.submit "Registrar", class: "btn btn-primary" %></div>
 <% end %>

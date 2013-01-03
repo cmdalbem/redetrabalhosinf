@@ -22,18 +22,20 @@
 				</p>
 				
 				<p>
-					<%= link_to "Leia mais...", about_path %>
+					<small>
+						<%= link_to "Leia mais...", about_path %>
+					</small>
 				</p>
 			</div>
 	    </div>
-
+	    
 	    <br>
 	
 		<div class="row-fluid">
 			<center>
 				<div>
 					<!-- Search Form -->
-					<!-- PUT A THE QUAL SIGN IN THE LINE BLOW TO "UNCOMMENT" IT -->
+					<!-- PUT A "EQUAL" SIGN IN THE LINE BELOW TO "UNCOMMENT" IT (like this: <%= %>) -->
 					<% form_tag projects_path, method: 'get', class: "form-search" do %>
 						<div class="mysearch">
 							<i class="icon-search"></i>

@@ -4,7 +4,9 @@
       <th><%= sortable "Título", "title" %></th>
       <th><%= sortable "Disciplina", "course" %></th>
       <th><%= sortable "Semestre", "barra" %></th>
-      <th><%= sortable "Autor", "person" %></th>
+      <% if not @hideAuthors %>
+        <th><%= sortable "Autor", "person" %></th>
+      <% end %>
       <!-- <th>
         <%= sortable "Popularidade
         <a href=\"#\"
@@ -27,9 +29,11 @@
           <%= link_to project.title, project %>
           <%= raw(getContentIcons(project)) %>
         </td>
-        <td style="width: 22%"><small><%= project.course.name %></small></td>
+        <td style="width: 22%"><small><%= link_to project.course.name, {course: project.course.id} %></small></td>
         <td style="width: 10%"><%= project.semester %></td>
-        <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
+        <% if not @hideAuthors %>
+          <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
+        <% end %>
         <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>  </td> -->
         <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
         <!-- <td style="width: 120px"><%= number_with_precision(project.relevance, :precision => 1) %></td> -->
@@ -37,8 +41,7 @@
           <!-- <%= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %> -->
           <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
             <small>
-              <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(project) %>
-               | 
+              <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(project) %>  
               <%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), project, confirm: 'Tem certeza?', method: :delete %>
             </small>
           <% end %>

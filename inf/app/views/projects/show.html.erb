@@ -5,7 +5,7 @@
 <h1 class="projectname-text" style="display: inline;"> <%= @project.title %></h1>
 <div class="pull-right">
   <% if user_signed_in? and current_user.person==@project.person %>
-    <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(@project), class: "btn btn-info btn-large" %>
+    <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(@project), class: "btn btn-info btn-large" %>
   <% end %>
 </div>
 
@@ -95,7 +95,7 @@
   <div class="block span6">
     <p>
       <% if @project.link? %>
-        <h4><i class="icon-share-alt"></i></i> Link</h4>
+        <h4><i class="icon-external-link"></i></i> Link</h4>
         <p>
           <%= link_to @project.link, project_link_path(@project) %> <span class="badge"><%=@project.linkHitCount%> hits</span>
         </p>
@@ -117,7 +117,7 @@
 <div class="row-fluid">
   <div class="block span12">
     <p>
-      <h3><i class="icon-comment"></i> Comentários</h3>
+      <h3><i class="icon-comments"></i> Comentários</h3>
       <% @project.comments.sort_by! {|x| x.created_at} %>
       <ul class="comments-list">
         <% @project.comments.each do |c| %>

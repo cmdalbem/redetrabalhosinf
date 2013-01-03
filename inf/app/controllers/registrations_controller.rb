@@ -12,6 +12,8 @@ class RegistrationsController < Devise::RegistrationsController
 		# 	@user.update_attribute(:active,true)
 		# end
 
+		params[:user]["email"] += "@inf.ufrgs.br";
+
 		@user = User.new(params[:user])
 
 		if Rails.env.development?
@@ -20,7 +22,7 @@ class RegistrationsController < Devise::RegistrationsController
 		
 		if @user.save
 			if Rails.env.development?
-				flash[:notice] = "Conta criada com sucesso. Como estás em Development, o email já foi confirmado automaticamente, e já podes logar."
+				flash[:notice] = "Conta criada com sucesso. Como estás em DEVELOPMENT, o email já foi confirmado automaticamente, e já podes logar."
 			else
 				flash[:notice] = "Dentro de minutos, você receberá um e-mail com instruções para a confirmação da tua conta."
 			end

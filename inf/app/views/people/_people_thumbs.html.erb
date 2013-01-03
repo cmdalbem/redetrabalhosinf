@@ -7,7 +7,7 @@
           <a href=<%= profile_path(person.nick) %> class="thumbnail">
             <%= image_tag person.avatar %>
             <center>
-              <h5 class="username-text"><%=person.name%> <small>(<%=person.nick%>)</small></h5>
+              <h5 class="username-text"><%=person.name%> <small><%=person.nick%></small></h5>
               <small class="blacktext">
                 <i class="icon-folder-close"></i>Projetos: <%=person.projects.size %>
               </small>

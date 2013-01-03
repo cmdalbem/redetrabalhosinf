@@ -24,7 +24,7 @@
         <!-- Person Form -->
         <div class="field">
           <%= f.label "Nome" %><br />
-          <%= f.text_field :name, required: true %>
+          <%= f.text_field :name, required: true, class: "input-xlarge" %>
         </div>
 
         <div class="field">
@@ -43,16 +43,14 @@
           </span>
         </div>
         
-        <div><%= f.label "Link pessoal" %><br />
-        <%= f.url_field :personal_link, style: "width: 500px", placeholder: "URL" %></div>
+        <div class="field">
+          <h5> <i class="icon-external-link"></i> Link pessoal </h5>
+          <%= f.url_field :personal_link, style: "width: 500px", placeholder: "URL" %>
+        </div>
 
         <div class="field">
-          <%= f.label :avatar %>
-          <% if @person.avatar? %>
-            <!-- Delete option. Unlike the Replace button, this option is a link which submits the form with a special sign for deleting this file. -->
-            <%= f.hidden_field :deleteAvatar, :value => false, id: "deleteAvatarField" %>
-            <%= link_to_function raw("(<i class=\"icon-trash\"></i> Deletar)"), "deleteUploadedField('deleteAvatarField')" %>
-            
+          <h5> <i class="icon-picture"></i> Avatar </h5>
+          <% if @person.avatar? %>            
             <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
             <div id="keepAvatarField">
               <%= image_tag @person.avatar.url, :height => '100px', :width => '100px' %>
@@ -65,7 +63,10 @@
               <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
               <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
             </div>
-            <br>
+            
+            <!-- Delete option. -->
+            <%= check_box_tag :deleteAvatar %> <i class="icon-trash"></i> Deletar
+
           <% else %>
             <br>
             <%= f.file_field :avatar %>

@@ -39,6 +39,32 @@ class PeopleController < ApplicationController
     end
   end
 
+  def sort_projects_by_column(plist, column, direction)
+    
+    # Default values
+    @column = (column and !column.empty?) ? column : "relevance"
+    @direction = (direction and !direction.empty?) ? direction : "desc"
+
+    # What to sort by?
+    case @column
+      when "title"
+        plist.sort_by! {|p| p.title }
+      when "barra"
+        plist.sort_by! {|p| p.semester }
+      when "course"
+        plist.sort_by! {|p| p.course.name }
+      when "relevance"
+        plist.sort_by! {|p| p.relevance }
+      when "date"
+        plist.sort_by! {|p| p.created_at }
+    end
+
+    # How is the ordering?
+    if @direction == "desc"
+      plist.reverse!
+    end
+  end
+
   # GET /people
   def index
     # Handle searchs
@@ -72,7 +98,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1
   def show
-    # It's called ID because of the default routing, but we use this parameter with the user's NICK. See routes.rb for more info.
+    # It's called ID because of the default routing, but we use this parameter with the user's NICK.
     if params[:id]
       search = Person.where(nick: params[:id])
 
@@ -80,10 +106,23 @@ class PeopleController < ApplicationController
         redirect_to root_path, alert: "Não consegui encontrar #{params[:id]}."
       else
         @person = search.first
-        @projects = @person.projects.sort_by! {|p| -p.relevance }
+        @projects = @person.projects
+
+        # Handle sortings
+        sort_projects_by_column @projects, params[:sort], params[:direction]
+
+        # Handle view modes (default is LIST)
+        @viewMode = :list
+        if params[:view]=="list"
+          @viewMode = :list
+        elsif params[:view]=="thumbs"
+          @viewMode = :thumbs
+        end
         
         # Default view is LIST
-        @viewMode = (!params[:view] or params[:view]=="list") ? :list : :thumbs
+        @viewMode = (!params[:view] or params[:view].empty? or params[:view]=="list") ? :list : :thumbs
+
+        @hideAuthors = true
 
         respond_to do |format|
           format.html
@@ -134,7 +173,7 @@ class PeopleController < ApplicationController
     checkAuthorization(@person.user)
 
     success = true
-    if pp["deleteAvatar"]=="true"
+    if params["deleteAvatar"]=="1"
       success &&= @person.update_attributes(avatar: nil)
     elsif pp["avatar"]
       success &&= @person.update_attributes(avatar: pp["avatar"])

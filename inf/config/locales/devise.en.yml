@@ -4,7 +4,7 @@ en:
   devise:
     confirmations:
       confirmed: 'Tua conta foi confirmada com sucesso. Estás logado.'
-      send_instructions: 'Dentro de minutos, receberás um e-mail com instruções para a confirmação da tua conta.'
+      send_instructions: 'Dentro de minutos receberás um e-mail com instruções para a confirmação da tua conta.'
       send_paranoid_instructions: 'Se o teu endereço de e-mail estiver cadastrado, receberás uma mensagem com instruções para confirmação da tua conta.'
     failure:
       already_authenticated: 'Já estás logado.'
@@ -13,7 +13,7 @@ en:
       invalid_token: 'O token de autenticação não é válido.'
       locked: 'Tua conta está bloqueada.'
       timeout: 'Tua sessão expirou, por favor, efetua login novamente para continuar.'
-      unauthenticated: 'Para continuar, efetue login ou registre-se.'
+      unauthenticated: 'Para continuar, efetue login ou cadastre-se.'
       unconfirmed: 'Teu cadastro ainda nao foi confirmado.'
     mailer:
       confirmation_instructions:
@@ -27,7 +27,7 @@ en:
       success: 'Autenticado com sucesso com uma conta de %{kind}.'
     passwords:
       no_token: "Tu só podes acessar essa página através de um e-mail de troca de senha. Se já estiver acessando por um e-mail, verifique se usou a URL completa fornecida."
-      send_instructions: 'Dentro de minutos, receberás um e-mail com instruções para a troca da tua senha.'
+      send_instructions: 'Dentro de minutos receberás um e-mail com instruções para a troca da tua senha.'
       send_paranoid_instructions: 'Se o teu endereço de e-mail estiver cadastrado, receberás um link de recuperação da senha via e-mail.'
       updated: 'Tua senha foi alterada com sucesso. Estás logado.'
       updated_not_active: 'Tua senha foi alterada com sucesso.'
@@ -43,7 +43,7 @@ en:
       signed_in: 'Login efetuado com sucesso!'
       signed_out: 'Saiu com sucesso.'
     unlocks:
-      send_instructions: 'Dentro de minutos, receberás um email com instruções para o desbloqueio da tua conta.'
+      send_instructions: 'Dentro de minutos receberás um email com instruções para o desbloqueio da tua conta.'
       send_paranoid_instructions: 'Se tua conta existir, receberás um e-mail com instruções para desbloqueá-la em alguns minutos.'
       unlocked: 'Tua conta foi desbloqueada com sucesso. Efetue login para continuar.'
 
