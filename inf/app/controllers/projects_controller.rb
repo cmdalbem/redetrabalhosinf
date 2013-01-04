@@ -116,7 +116,16 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @project = Project.includes(:comments).find(params[:id])
+
+    # Test if we're doing it github style
+    if params[:person] && params[:project]
+      user = Person.find_by_nick(params[:person])
+      @project = user.projects.includes(:comments).find_by_title(params[:project]) if user
+    else
+      @project = Project.includes(:comments).find(params[:id])
+    end
+
+    not_found if @project.nil?
 
     @project.update_attributes(viewCount: @project.viewCount+1)
 
