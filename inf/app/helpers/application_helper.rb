@@ -13,6 +13,10 @@ module ApplicationHelper
 	  end
 	end
 
+	def nav_icon(link_text, icon_class)
+		content_tag(:i, '', :class => icon_class) + " " + link_text
+	end
+
 	# A table header which is a link for sorting the table by it's column.
 	# Make sure you program the logics on the table's controller (see example on Projects Controller)
 	def sortable(title, column)
