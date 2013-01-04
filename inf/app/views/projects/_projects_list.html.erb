@@ -26,7 +26,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td style="">
-          <%= link_to project.title, project %> <%= raw(getContentIcons(project)) %>
+          <%= link_to project.title, person_project_path(project.person.nick, project.title) %> <%= raw(getContentIcons(project)) %>
           <% if not project.tags.empty? %>
             <br>
             <smaller class="muted">
