@@ -5,14 +5,14 @@
 
       <div class="pull-left"%>
         <li class="thumbnail project-thumb">
-            
+
           <!-- Buttons -->
           <div class="thumb-buttons">
             <div class="btn-group">
               <% if user_signed_in? %>
                 <% if current_user.person==project.person %>
-                  <%= link_to raw("<i class=\"icon-edit\"></i>"), edit_project_path(project), class: "btn btn-mini" %>
-                  <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
+                  <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini" %>
+                  <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
                 <% end %>
               <% end %>
             </div>
@@ -26,7 +26,7 @@
           <div class="thumb-content">
             <header>
               <center>
-                <%= link_to project.title, project %>
+                <%= link_to_project project %>
               </center>
             </header>
             <div class="text">

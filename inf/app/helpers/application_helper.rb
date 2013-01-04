@@ -1,5 +1,5 @@
 module ApplicationHelper
-	
+
 	# A list item link (li a) which appears activated when the user is actually on it's url.
 	# Most commonly used on navbars.
 	def nav_link(link_text, link_path)
@@ -47,5 +47,10 @@ module ApplicationHelper
 		ret += "</ul>"
 
 		return ret
+	end
+
+	# Creates the github style links using the Rails Route Helper
+	def link_to_project project
+		link_to project.title, person_project_path(project.person.nick, project.title)
 	end
 end

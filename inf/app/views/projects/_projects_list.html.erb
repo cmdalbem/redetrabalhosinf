@@ -27,7 +27,7 @@
       <tr>
         <td style="">
           <%# The use of raw here is probably bad too, but I dont understand enough to fix it %>
-          <%= link_to project.title, person_project_path(project.person.nick, project.title) %> <%= raw(getContentIcons(project)) %>
+          <%= link_to_project project %> <%= raw(getContentIcons(project)) %>
           <% if not project.tags.empty? %>
             <br>
             <smaller class="muted">

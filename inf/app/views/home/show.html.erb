@@ -65,7 +65,7 @@
 				<ul>
 					<% @lastProjects.each do |p| %>
 						<li>
-							<header><%= link_to p.title, p %></header>
+							<header><%= link_to_project p %></header>
 							<p class="author">por <%= link_to p.person, profile_path(p.person.nick) %></p>
 							<small>
 								<p class="muted"><i class="icon-book"></i><%= p.course.name %></p>
