@@ -14,7 +14,7 @@ Inf::Application.routes.draw do
   # match 'people/:name/deleteAvatar' => 'People#deleteAvatar', :as => 'deleteAvatar'
 
   # Github style project URL
-  match 'p/:person/:project' => 'Projects#show', :as => 'person_project'
+  match 'p/:person/:project' => 'Projects#show', :as => 'person_project', constraints: { :project => /[^\/]+/ }
 
   match 'project/like/:id' => 'Projects#like', :as => 'like_project'
   match 'project/unlike/:id' => 'Projects#unlike', :as => 'unlike_project'

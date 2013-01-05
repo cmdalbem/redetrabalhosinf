@@ -27,7 +27,7 @@
 		          <li>
 		            <% if user_signed_in? %>
 		              <div class="btn-group"> %>
-		                <%= link_to tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName, profile_path(current_user.person.nick), class: "btn"%>
+		                <%= link_to tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName, profile_path(current_user.person.nick), class: "btn", style: "max-width: 200px; overflow: hidden;"%>
 		                  <button class="btn dropdown-toggle" data-toggle="dropdown">
 		                  <span class="caret"></span>
 		                </button>
@@ -77,7 +77,7 @@
 		    	<center>
 			    	<img src="/assets/logo_small.png">
 					<br>
-					<%= link_to nav_icon("Github","icon-github"), "https://github.com/cmdalbem/redetrabalhosinf" %>
+					<%= link_to nav_icon("Github","icon-github-alt"), "https://github.com/cmdalbem/redetrabalhosinf" %>
 				</center>
 			</header>
         </div>

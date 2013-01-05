@@ -171,7 +171,7 @@ class ProjectsController < ApplicationController
         if params[:commit]=="Salvar e adicionar outro"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
         else
-          format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
+          format.html { redirect_to person_project_path(@project.person.nick, @project.title), notice: 'Projeto atualizado com sucesso.' }
         end
       else
         format.html { render action: "new" }
@@ -225,7 +225,7 @@ class ProjectsController < ApplicationController
         if params[:commit]=="Salvar e adicionar outro"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
         else
-          format.html { redirect_to @project, notice: 'Projeto atualizado com sucesso.' }
+          format.html { redirect_to person_project_path(@project.person.nick, @project.title), notice: 'Projeto atualizado com sucesso.' }
         end
       else
         format.html { render action: "edit" }
@@ -269,7 +269,6 @@ class ProjectsController < ApplicationController
     end
     
     respond_to do |format|
-      format.html { redirect_to Project }
       format.js
     end
   end

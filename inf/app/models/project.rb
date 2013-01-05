@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
 		validates_attachment_size :file, :less_than => MAX_FILE_SIZE_MB.megabytes
 
 	validates :person, presence: true
-	validates :title, presence: true, length: {maximum: PROJECT_TITLE_MAX_LENGTH}
+	validates :title, presence: true, length: {maximum: PROJECT_TITLE_MAX_LENGTH}, format: /[^\.]+/
 	validates :description, length: {maximum: PROJECT_DESCRIPTION_MAX_LENGTH}
 	validates :course, presence: true
 	validates :semester_year, allow_blank: true, :numericality => { :greater_than_or_equal_to => MINIMUM_YEAR_ACCEPTABLE, :less_than_or_equal_to => Time.now.year }

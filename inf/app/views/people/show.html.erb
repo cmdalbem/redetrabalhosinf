@@ -25,7 +25,7 @@
           <h2 class="username-text"><%= @person.name %> <small><%=@person.nick%></small></h2>
           
           <p>
-            <!-- <i class="icon-quote-left icon-4x pull-left icon-muted"></i> -->
+            <i class="icon-quote-left icon-2x pull-left muted"></i>
             <%= @person.about %>
           </p>
 
@@ -60,7 +60,7 @@
             <div class="span4">
               <center>
                 <strong><%= @person.getTotalLikes %></strong>
-                <span>Projetos curtidos</span>
+                <span>Curtir recebidos</span>
               </center>
             </div>
 
@@ -77,7 +77,7 @@
       <hr>
 
       <div class="row-fluid">
-        <p>
+        <div class="person-details">
           <% if @person.user.admin? %>
             <span class="text-warning"><i class="icon-star"></i></span>
             <text class="text-warning">Administrador</text>
@@ -88,7 +88,7 @@
           <br>  
           <span class="muted"><i class="icon-time"></i> Usuário desde </span>
           <%= @person.created_at.strftime("%d/%m/%Y") %>
-        </p>
+        </div>
       </div>
 
     </div>

@@ -25,7 +25,7 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td style="">
+        <td style="max-width: 600px">
           <%# The use of raw here is probably bad too, but I dont understand enough to fix it %>
           <%= link_to_project project %> <%= raw(getContentIcons(project)) %>
           <% if not project.tags.empty? %>
@@ -44,15 +44,15 @@
         <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>  </td> -->
         <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
         <!-- <td style="width: 120px"><%= number_with_precision(project.relevance, :precision => 1) %></td> -->
-        <td style="width: 120px">
+        <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
+          <td style="width: 120px">
           <%#= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %>
-          <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
             <small>
               <%= link_to content_tag(:i, "Editar", :class => "icon-edit"), edit_project_path(project) %>
               <%= link_to content_tag(:i, "Deletar", :class => "icon-trash"), project, confirm: 'Tem certeza?', method: :delete %>
             </small>
-          <% end %>
-        </td>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -55,6 +55,7 @@ smaller {
 
 .table th, .table td {
   line-height: 15px;
+  overflow: hidden;
 }
 
 #wrap {
@@ -117,10 +118,13 @@ smaller {
   height: 100%;
 }
 
-.profile-picture img{
-  height: 200px;
-  width: auto;
+.profile-picture {
   overflow: hidden;
+
+  img {
+    height: 200px;
+    width: auto;
+  }
 }
 
 .icon-white,
@@ -173,6 +177,12 @@ ul.project-content-icons {
     }
 }
 
+.person-details {
+  a {
+    color: $defaultBlack;
+  }
+}
+
 .navbar {
   $myred: rgb(200,100,100);
   border-bottom: 2px solid $myred;
@@ -201,6 +211,7 @@ ul.project-content-icons {
   li.nav_link {
     a {
       border-bottom: 4px solid transparent;
+      padding-bottom: 7px;
 
       -webkit-transition: all .2s ease-in-out;
       -moz-transition: all .2s ease-in-out;
