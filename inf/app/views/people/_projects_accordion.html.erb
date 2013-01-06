@@ -24,7 +24,7 @@
 		<% @person.projects.each do |project| %>
 
 		<div class="accordion-heading">
-			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
+			<a class="accordion-toggle no-decoration" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=collapseId%>">
 				<small>
 					<div class="muted pull-right">
 						<i class="icon-thumbs-up"></i> <%=project.likes.count %>  

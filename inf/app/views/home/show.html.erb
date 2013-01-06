@@ -48,7 +48,7 @@
 					<!-- <p>...ou selecione uma disciplina:</p> -->
 
 					<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-						<%= select_tag :course,  options_for_select(Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }), :include_blank => true , "data-placeholder" => "Procure por uma disciplina...", class: "chzn-select", :onchange => 'this.form.submit()' %>
+						<%= select_tag :course,  options_for_select(Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }), :include_blank => true , "data-placeholder" => "Escolha uma disciplina...", class: "chzn-select", :onchange => 'this.form.submit()' %>
 						<!-- <%= submit_tag "Ir", class: "btn", name: nil, style: "margin-bottom: 20px;" %> -->
 					<% end %>
 				</div>

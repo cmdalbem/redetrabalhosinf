@@ -4,25 +4,24 @@
     <% @projects.each do |project| %>
 
       <div class="pull-left"%>
-        <li class="thumbnail project-thumb">
+        <li class="thumbnail project-thumb project-options-trigger">
 
           <!-- Buttons -->
-          <div class="thumb-buttons">
-            <div class="btn-group">
-              <% if user_signed_in? %>
-                <% if current_user.person==project.person %>
-                  <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini" %>
-                  <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini" %>
-                <% end %>
-              <% end %>
+          <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
+            <div class="thumb-buttons">
+              <div class="btn-group project-hidden-options">
+                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini btn-info" %>
+                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini btn-info" %>
+              </div>
             </div>
-          </div>
+          <% end %>
 
           <!-- Image, if existing -->
           <% if project.image? %>
             <%= image_tag project.image %>
           <% end %>
 
+          <!-- The content -->
           <div class="thumb-content">
             <header>
               <center>
@@ -34,12 +33,14 @@
             </div>
           </div>
 
-          <div class="icons">
-            <i class="icon-thumbs-up"></i><%= project.likes.count %> 
-            <i class="icon-download"></i><%= project.downloadCount %> 
-            <i class="icon-eye-open"></i> <%=project.viewCount %>
-            <i class="icon-comment"></i> <%=project.comments.count %> 
-          </div>
+          <center>
+            <div class="icons">
+              <i class="icon-thumbs-up"></i><%= project.likes.count %> 
+              <i class="icon-download"></i><%= project.downloadCount %> 
+              <i class="icon-eye-open"></i> <%=project.viewCount %>
+              <i class="icon-comment"></i> <%=project.comments.count %> 
+            </div>
+          </center>
 
         </li>
       </div>

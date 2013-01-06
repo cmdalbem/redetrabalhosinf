@@ -25,20 +25,19 @@
           <h2 class="username-text"><%= @person.name %> <small><%=@person.nick%></small></h2>
           
           <p>
-            <i class="icon-quote-left icon-2x pull-left muted"></i>
             <%= @person.about %>
           </p>
 
           <% if @person.personal_link? %>
             <p>
-              <i class="icon-external-link"></i> 
+              <i class="icon-external-link"></i>
               <%= link_to @person.personal_link, @person.personal_link %>
             </p>
           <% end %>
           
           <% if @person.semester? %>
             <p>
-              <strong>Semestre:</strong> <%= @person.semester %>
+              Semestre: <%= @person.semester %>
             </p>
           <% end %>
 
@@ -93,21 +92,26 @@
 
     </div>
 
+    <!-- Projects Listing -->
     <div class="span9">
-      <div class="row-fluid">
+      <div class="row-fluid ctrlbar">
         <!-- "Sort By" option -->
-        <div class="span6">
+        <div class="span8">
           <%= form_tag profile_path(@person.nick), method: 'get' do %>
             <%= hidden_field_tag :sort, params[:sort] %>
             <%= hidden_field_tag :view, params[:view] %>
             Ordenar por 
-            <%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Data adicionado" => "date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-            <%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+            <div class="mySelect">
+              <%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Data adicionado" => "date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+            </div>
+            <div class="mySelect">
+              <%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+            </div>
           <% end %>
         </div>
 
         <!-- Button group for choosing view (list or thumbnail) -->
-        <div class="span6">
+        <div class="span4">
           <div class="pull-right">
             <%= render 'projects/viewmodes_buttons' %>
           </div>

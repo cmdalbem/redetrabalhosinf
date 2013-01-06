@@ -1,4 +1,18 @@
-<div class="btn-toolbar">
+<ul class="nav nav-pills">
+  <% thisClass = "" %>
+  <% if @viewMode == :list %>
+    <% thisClass += "active" %>
+  <% end %>
+  <li id="list-view" class=<%=thisClass%>><%= link_to raw("<i class=\"icon-list\"></i> Lista"), params.merge(:view => "list"), remote: true %></li>
+  
+  <% thisClass = "" %>
+  <% if @viewMode == :thumbs %>
+    <% thisClass += "active" %>
+  <% end %>
+  <li id="thumbs-view" class=<%=thisClass%>><%= link_to raw("<i class=\"icon-th\"></i> Miniaturas"), params.merge(:view => "thumbs"), remote: true %></li>
+</ul>
+
+<!-- <div class="btn-toolbar">
   <div class="btn-group">
     <% thisClass = "btn" %>
     <% if @viewMode == :list %>
@@ -12,4 +26,4 @@
     <% end %>
     <%= link_to raw("<i class=\"icon-th\"></i> Miniaturas"), params.merge(:view => "thumbs"), class: thisClass, id: "thumbs-view", remote: true %>
   </div>
-</div>
+</div> -->

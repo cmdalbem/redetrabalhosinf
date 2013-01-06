@@ -1,20 +1,19 @@
-<h1>Explorar</h1>
+<h1>
+	Explorar
+	<% if user_signed_in? %>
+		<div class="pull-right">
+			<%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success" %>
+		</div>
+	<% end %>
+</h1>
 
 <br>
 
 <div class="content">
 
-	<div>
-	  <center>
-		<%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success btn-large" %>
-	  </center>
-	</div>
-
-	<br>
-
 	<!-- Course Filter Form -->
 	<center>
-	  <%= form_tag projects_path, method: 'get' do %>
+		<%= form_tag projects_path, method: 'get' do %>
 		  <%= hidden_field_tag :direction, params[:direction] %>
 		  <%= hidden_field_tag :sort, params[:sort] %>
 		  <%= hidden_field_tag :view, params[:view] %>
@@ -22,13 +21,22 @@
 		  <div class="field">
 			<%= select_tag :course,  options_for_select(Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }), :include_blank => true , "data-placeholder" => "Filtrar por disciplina...", class: "chzn-select", :onchange => 'this.form.submit()' %>
 		  </div>
-	  <% end %>
+		<% end %>
+
+		<!-- Shows actual course filter, if filtered -->
+		<%if params[:course] and !params[:course].empty? %>
+			<legend>
+				<strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "no-decoration" %>
+			</legend>
+		<% else %>
+
+		<% end %>
 	</center>
 
 	<br>
-	<br>
 
-	<div class="row-fluid">
+	<!-- Options at the top of the table -->
+	<div class="row-fluid ctrlbar">
 		<!-- Search Form --> 
 		<div class="span4">
 			<div class="pull-left">
@@ -52,9 +60,14 @@
 					<%= hidden_field_tag :sort, params[:sort] %>
 					<%= hidden_field_tag :view, params[:view] %>
 					<%= hidden_field_tag :course, params[:course] %>
-					Ordenar por 
-					<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Data do upload" => "date","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-					<%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+					<%= hidden_field_tag :search, params[:search] %>
+					<text class="muted">Ordenar por</text>
+					<div class="mySelect">
+						<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Data do upload" => "date","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person"}, selected: @column), class: "input-medium mySelect", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+					</div>
+					<div class="mySelect">
+						<%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+					</div>
 				<% end %>
 			</center>
 		</div>

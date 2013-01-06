@@ -4,7 +4,7 @@
 
 <div class="content">
 
-<div class="row-fluid">
+<div class="row-fluid ctrlbar">
 
   <!-- Search Form --> 
   <div class="span4">
@@ -32,8 +32,12 @@
         <%= hidden_field_tag :view, params[:view] %>
         <%= hidden_field_tag :course, params[:course] %>
         Ordenar por 
-        <%= select_tag :sort, options_for_select({"Nome"=>"name","Email"=>"email","Nro. Projetos"=>"projects","Data adicionado"=>"date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-        <%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+        <div class="mySelect">
+          <%= select_tag :sort, options_for_select({"Nome"=>"name","Email"=>"email","Nro. Projetos"=>"projects","Data adicionado"=>"date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+        </div>
+        <div class="mySelect">
+          <%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+        </div>
       <% end %>
     </center>
   </div>

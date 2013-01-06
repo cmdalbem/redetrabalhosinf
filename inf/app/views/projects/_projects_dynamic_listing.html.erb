@@ -1,13 +1,8 @@
 <!-- Showing results for... -->
 <center>
-  <%if params[:course] and !params[:course].empty? %>
-    <legend>
-      <strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil) %>
-    </legend>
-  <% end %>
   <div class="muted">
     <%if params[:search] and !params[:search].empty? %>
-        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil), class: "muted" %>
+        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil), class: "muted no-decoration" %>
     <% end %>
   </div>
 </center>

@@ -1,3 +1,4 @@
+// Dynamic redrawing for remote methods
 $("div#people-table").html("<%= escape_javascript(render (@viewMode == :thumbs ? 'people_thumbs' : 'people_list'))%>");
 <% if @viewMode == :thumbs %>
 	$("#thumbs-view").addClass('active');

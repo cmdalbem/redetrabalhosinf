@@ -4,7 +4,7 @@
     <% @people.each do |person| %>
       <div class="pull-left">
         <li class="person-thumb">
-          <a href=<%= profile_path(person.nick) %> class="thumbnail">
+          <a href=<%= profile_path(person.nick) %> class="thumbnail no-decoration">
             <%= image_tag person.avatar %>
             <center>
               <h5 class="username-text"><%=person.name%> <small><%=person.nick%></small></h5>

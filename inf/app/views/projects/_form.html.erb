@@ -140,9 +140,15 @@
                     <% if @project.image.exists? %>
                       <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
                       <div id="keepImageField">
-                        <%= image_tag @project.image.url, :height => '100px', :width => '100px' %>
-                        <%= link_to "#{@project.image.original_filename}", @project.image.url %>
-                        <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); ", class: "btn btn-mini btn-warning" %>
+                        <table>
+                            <tr>
+                              <td style="text-align: center;">
+                                <%= image_tag @project.image.url, :height => '100px', :width => '100px' %> <br>
+                                <%= link_to "#{@project.image.original_filename}", @project.image.url %>
+                              </td>
+                              <td><%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); ", class: "btn btn-mini btn-warning" %></td>
+                            </tr>
+                        </table>
                       </div>
                       <!-- Field for uploading a replacing file. (it's initially hidden) -->
                       <div id="updateImageField" style="display: none;">

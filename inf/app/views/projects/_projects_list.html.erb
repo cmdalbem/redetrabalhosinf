@@ -17,17 +17,27 @@
         <i class=\"icon-question-sign\"></i></a>
         ", "relevance" %>
       </th> -->
-      <th colspan="1"></th>
     </tr>
   </thead>
 
 
   <tbody>
     <% @projects.each do |project| %>
-      <tr>
+      <tr class="project-options-trigger">
         <td style="max-width: 600px">
+          <!-- Edit Buttons -->
+          <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
+            <div class="thumb-buttons">
+              <div class="btn-group project-hidden-options">
+                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini btn-info" %>
+                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini btn-info" %>
+              </div>
+            </div>
+          <% end %>
+
           <%# The use of raw here is probably bad too, but I dont understand enough to fix it %>
           <%= link_to_project project %> <%= raw(getContentIcons(project)) %>
+          
           <% if not project.tags.empty? %>
             <br>
             <smaller class="muted">
@@ -36,23 +46,17 @@
             </smaller>
           <% end %>
         </td>
+
         <td style="width: 22%"><small><%= link_to project.course.name, {course: project.course.id} %></small></td>
+        
         <td style="width: 10%"><%= project.semester %></td>
+        
         <% if not @hideAuthors %>
           <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
         <% end %>
         <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>  </td> -->
         <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
         <!-- <td style="width: 120px"><%= number_with_precision(project.relevance, :precision => 1) %></td> -->
-        <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
-          <td style="width: 120px">
-          <%#= link_to raw("<i class=\"icon-zoom-in\"></i>"), project, class: "btn" %>
-            <small>
-              <%= link_to content_tag(:i, "Editar", :class => "icon-edit"), edit_project_path(project) %>
-              <%= link_to content_tag(:i, "Deletar", :class => "icon-trash"), project, confirm: 'Tem certeza?', method: :delete %>
-            </small>
-          </td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
