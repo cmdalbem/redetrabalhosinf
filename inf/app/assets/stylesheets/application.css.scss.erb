@@ -23,6 +23,18 @@ $minWidth: 800px;
 $maxWidth: 1400px;
 $foot_height: 110px;
 $defaultBlack: rgb(51,51,51);
+$myred: rgb(200,100,100);
+
+@mixin transition($duration: 2s) {
+	-webkit-transition: all #{$duration} ease-in-out;
+	-moz-transition: all #{$duration} ease-in-out;
+	-o-transition: all #{$duration} ease-in-out;
+	transition: all #{$duration} ease-in-out;
+}
+
+@mixin carvedText {
+	text-shadow: 1px 1px 1px #fff;
+}
 
 
 /* Import font from Google Fonts API */
@@ -56,6 +68,7 @@ smaller {
 .table th, .table td {
 	line-height: 15px;
 	overflow: hidden;
+	vertical-align: middle;
 }
 
 #wrap {
@@ -78,19 +91,20 @@ smaller {
 	width: 90%;
 
 	article {
+		margin: auto;
+		width: 70%;
 		$pad: 30px;
 		padding-left: $pad;
 		padding-right: $pad;
+		text-align: justify;
 	}
 
-	article.about p:first-letter {
-		font-size: 22px;
-	}
-	article.about {
-		p:first-letter {
-			margin-left: 20px;
+	body {
+		article.about p:first-letter {
+			font-size: 120%;
+			margin-left: 50px;
 			font-weight: bold;
-		}
+		}		
 	}
 }
 
@@ -184,7 +198,6 @@ ul.project-content-icons {
 }
 
 .navbar {
-	$myred: rgb(200,100,100);
 	border-bottom: 2px solid $myred;
 	
 	img {
@@ -197,7 +210,7 @@ ul.project-content-icons {
 		font-size: 12px;
 	}
 
-	a.brand {
+	.brand {
 		padding: 5px;
 
 		img {
@@ -212,10 +225,7 @@ ul.project-content-icons {
 			border-bottom: 4px solid transparent;
 			padding-bottom: 7px;
 
-			-webkit-transition: all .2s ease-in-out;
-			-moz-transition: all .2s ease-in-out;
-			-o-transition: all .2s ease-in-out;
-			transition: all .2s ease-in-out;
+			@include transition(.2s);
 		}
 
 		a:hover {
@@ -257,13 +267,19 @@ ul.project-content-icons {
 	background-position: 99% -30px, 0 0 !important;
 }
 .chzn-container {
-	font-size: 20px !important;
-
 	.chzn-results {
 		font-size: 14px !important;
 		max-height: 300px !important;
 		text-align: left !important;
 	}
+}
+
+h1 {
+	text-shadow: 2px 2px 2px rgb(215, 215, 215);
+}
+
+.big-chosen .chzn-container {
+	font-size: 20px !important;
 }
 
 /* Styles for the Home */
@@ -292,8 +308,13 @@ ul.project-content-icons {
 			text-align: justify;
 
 			a {
-				color: rgb(200,200,200);
-				text-decoration: underline;
+				font-size: 80%;
+				color: rgba(200,200,200,0.6);
+				@include transition(0.3s);
+			}
+
+			a:hover {
+				color: rgb(240,240,240);
 			}
 		}
 
@@ -309,6 +330,7 @@ ul.project-content-icons {
 			text-align: center;
 			border-color: rgb(200,200,200);
 			line-height: 30px;
+			@include carvedText;
 		}
 
 		ul {
@@ -343,44 +365,70 @@ ul.project-content-icons {
 
 	/* Search input personalized for the Homepage */
 	.mysearch { 
-		font-size: 25px;
+		font-size: 22px;
 		position: relative;
-		width: 60%;
+		width: 674px;
+		padding-right: 40px;
+		max-width: 100%;
 
 		input#search {
 			font-size: 25px;
 			padding-left: 40px;
 			width: 100%;
-			/*transition: all 0.5s ease-in-out 0s;*/
+			/*width: 100%;*/
+			box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
+			font: inherit;
 		}
 
-	/*input#search:focus {
-			width: 200%;
-		}*/
+		input#search:focus {
+			width: 100%;
+		}
 
 		.icon-search {
-			position: absolute;
-			top: 0;
-			left: 0;
 			margin-top: 10px;
-			margin-left: 10px;
 		}
 	}
+
+	.hdivisor {
+		margin-top: 15px;
+		margin-bottom: 15px;
+
+		.txt {
+			background-color: rgb(172, 77, 73);
+			width: 50px;
+		}
+
+		.line {
+		    width: 30%;
+		    /*border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+		    box-shadow: 0px 1px 0px rgba(240, 240, 240, 0.3);*/
+		    border-bottom: 1px solid rgba(220, 220, 220, 0.4);
+    		margin-bottom: -20px;
+		}
+
+	}
+
 
 	/* Chosen Plugin personalized for the Homepage */
 	#course_id_chzn {
 		width: 100%;
 	}
-	.chzn-container {
+	.chzn-container-single {
 		/*These properties must be set to "!important" because the are overwritten on a hardcoded styling in the javascript. Yea, that's really shameful.*/
 		font-size: 26px !important;
 		color: $defaultBlack !important;
-	}
-	.chzn-container-single {
+
 		.chzn-single {
+			box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
 			border: 2px solid rgb(235, 235, 235);
 			height: 30px;
 			line-height: 30px;
+
+			/*@include transition(.4s);*/
+		}
+
+		.chzn-single:hover, .chzn-single:active {
+			/*box-shadow: 0 0 20px rgba(200, 200, 200, 0.8);*/
 		}
 	}
 
@@ -391,7 +439,6 @@ ul.project-content-icons {
 	display: inline;
 	visibility: hidden;
 }
-
 .project-options-trigger:hover .project-hidden-options{
 	visibility: visible;
 }
@@ -401,12 +448,12 @@ ul.project-content-icons {
 
 	input#search {
 		padding-left: 25px;
-		width: 200px;
-		transition: all 0.5s ease-in-out 0s;
+		width: 180px;
+		@include transition(.5s);
 	}
 
     input#search:focus {
-		width: 200%;
+		width: 150%;
 	}
 
 	.icon-search {
@@ -415,6 +462,8 @@ ul.project-content-icons {
 		left: 0;
 		margin-top: 5px;
 		margin-left: 10px;
+		/*color: $defaultBlack;*/
+		color: gray;
 	}
 }
 
@@ -436,21 +485,30 @@ footer {
 	background-color: rgba(0,0,0,0.05);
 	padding-top: 20px;
 
-	background-image: url('patterns/grid.png');
+	/*font-weight: bold;*/
+	@include carvedText;
+	font-size: 12px;
+	color: rgb(70,110,130);
 
-	header {
-		font-weight: bold;
-		text-shadow: 1px 1px 1px #fff;
-		font-size: 16px;
-	}
+	background-image: url('patterns/grid.png');
 
 	img {
 		opacity: 0.8;
+		@include transition(.3s);
 	}
 
-	ul {
-		list-style-type: none;
+	img:hover {
+		opacity: 1;
 	}
+
+	a {
+		color: inherit;
+	}
+
+	.pull-left {
+		padding-top: 15px;
+	}
+
 }
 
 .myform {
@@ -481,12 +539,6 @@ footer {
 	}
 }
 
-form.form-search {
-	padding: 0 0 0 0;
-	background-color: transparent;
-	margin: 0 0 0 0;
-}
-
 .content {
 	padding-bottom: 50px;
 }
@@ -508,12 +560,9 @@ a#logo {
 	font-weight: bold;
 	line-height: 1;
 	color: rgba(0,0,0,0.6);
-	text-shadow: 1px 1px 1px #fff;
+	@include carvedText;
 
-	-webkit-transition: all .2s ease-in-out;
-	-moz-transition: all .2s ease-in-out;
-	-o-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;  
+	@include transition(.2s);
 }
 
 a#logo:hover {
@@ -656,12 +705,20 @@ li.thumbnail.project-thumb {
 	/*background-color: rgba(0,0,0,0.01);*/
 	/*border: 1px solid rgb(229, 229, 229);*/
 
-	border-bottom: 1px solid rgb(229, 229, 229);
+	/*border-bottom: 1px solid rgb(229, 229, 229);*/
+	-moz-box-shadow: inset 0 -1px 2px rgba(0,0,0,0.15);
+	-webkit-box-shadow: inset 0 -1px 2px rgba(0,0,0,0.15);
+	box-shadow: inset 0 -1px 2px rgba(0,0,0,0.15);
+	padding: 10px 8px 13px 8px;
+
+	/*-moz-box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);*/
 	background-color: rgba(255,255,255,0.4);
 
 	border-radius: 7px 7px 7px 7px;
 	height: 30px;
-	padding: 7px 5px;
+	/*padding: 10px 8px;*/
 }
 
 a.no-decoration {
@@ -673,7 +730,7 @@ a.no-decoration {
 }
 
 .accordion-heading a{
-	text-shadow: 1px 1px 1px #fff;
+	@include carvedText;
 	border-bottom: 1px solid rgb(229, 229, 229);
 	background-color: rgba(0,0,200,0.01);
 

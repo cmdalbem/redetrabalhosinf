@@ -1,11 +1,5 @@
 <!-- Showing results for... -->
-<center>
-  <div class="muted">
-    <%if params[:search] and !params[:search].empty? %>
-        Mostrando resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil), class: "muted no-decoration" %>
-    <% end %>
-  </div>
-</center>
+<%= render 'shared/search_result_title' %>
 
 <!-- The content view -->
 <% if @viewMode == :list %>

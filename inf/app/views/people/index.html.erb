@@ -7,45 +7,25 @@
 <div class="row-fluid ctrlbar">
 
   <!-- Search Form --> 
-  <div class="span4">
+  <div class="span3">
     <div class="pull-left">
       <center>
-        <div class="mysearch">
-          <%= form_tag people_path, :method => 'get', class: "form-search" do %>
-            <%= hidden_field_tag :direction, params[:direction] %>
-            <%= hidden_field_tag :sort, params[:sort] %>
-            <%= hidden_field_tag :view, params[:view] %>
-            <i class="icon-search"></i>
-            <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Nome / Email" %>
-          <% end %>
-        </div>
+        <%= render 'shared/search_form', destinyPath: people_path, placeholder: "Nome / Email" %>
       </center>
     </div>
   </div>
 
   <!-- Sort By option -->
-  <div class="span4">
+  <div class="span6">
     <center>
-      <%= form_tag people_path, method: 'get' do %>
-        <%= hidden_field_tag :direction, params[:direction] %>
-        <%= hidden_field_tag :sort, params[:sort] %>
-        <%= hidden_field_tag :view, params[:view] %>
-        <%= hidden_field_tag :course, params[:course] %>
-        Ordenar por 
-        <div class="mySelect">
-          <%= select_tag :sort, options_for_select({"Nome"=>"name","Email"=>"email","Nro. Projetos"=>"projects","Data adicionado"=>"date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-        </div>
-        <div class="mySelect">
-          <%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-        </div>
-      <% end %>
+      <%= render 'shared/sort_by_buttons', destinyPath: people_path, sortbyOptions: options_for_select({"Nome"=>"name","Email"=>"email","Nro. Projetos"=>"projects","Data adicionado"=>"date"}, selected: @column) %>
     </center>
   </div>
 
   <!-- Button group for choosing view (list or thumbnail) -->
-  <div class="span4">
+  <div class="span3">
     <div class="pull-right"> 
-      <%= render 'projects/viewmodes_buttons' %>
+      <%= render 'shared/viewmodes_buttons' %>
     </div>
   </div>
 </div>

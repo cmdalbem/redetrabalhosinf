@@ -15,37 +15,45 @@
 
 		<header class="navbar navbar-fixed-top ">
 		  <div class="navbar-inner">
-		    <div class="container">
-		      <nav>
-		        <%= link_to tag(:img, :src => "/assets/logo_txt_mini.png"), root_path, class: "brand"%>
-		        <!-- <text class="muted">A rede de compartilhamento de trabalhos do INF</text> -->
-		        <ul class="nav pull-right">
-		          <%= nav_link nav_icon("Início","icon-home icon-large"), root_path %>
-		          <%= nav_link nav_icon("Explorar","icon-globe icon-large"), projects_path %>
-		          <%= nav_link nav_icon("Pessoas","icon-group icon-large"), people_path %>
-		          <li class="divider-vertical"></li>
-		          <li>
-		            <% if user_signed_in? %>
-		              <div class="btn-group"> %>
-		                <%= link_to tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName, profile_path(current_user.person.nick), class: "btn", style: "max-width: 200px; overflow: hidden;"%>
-		                  <button class="btn dropdown-toggle" data-toggle="dropdown">
-		                  <span class="caret"></span>
-		                </button>
-		                <ul class="dropdown-menu">
+			<div class="container">
+			  <nav>
+				<%= link_to tag(:img, :src => "/assets/logo_txt_mini.png"), root_path, class: "brand"%>
+
+				<!-- <text class="muted">A rede de compartilhamento de trabalhos do INF</text> -->
+				<ul class="nav pull-right">
+					<%= nav_link nav_icon("Início","icon-home icon-large"), root_path %>
+					<%= nav_link nav_icon("Explorar","icon-globe icon-large"), projects_path %>
+					<%= nav_link nav_icon("Pessoas","icon-group icon-large"), people_path %>
+				<!-- </ul> -->
+
+				<!-- <ul class="nav pull-right"> -->
+					<li class="divider-vertical"></li>
+					
+					<% if user_signed_in? %>
+						<li><%= link_to nav_icon("Novo Projeto","icon-plus"), new_project_path %></li>
+					<% end %>
+
+					<li>
+					<% if user_signed_in? %>
+					  <div class="btn-group"> %>
+						<%= link_to tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName, profile_path(current_user.person.nick), class: "btn", style: "max-width: 200px; overflow: hidden;"%>
+						  <button class="btn dropdown-toggle" data-toggle="dropdown">
+						  <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
 							<!-- List of user options -->
-							<li><%= link_to nav_icon("Novo Projeto","icon-plus"), new_project_path %></li>
 							<li><%= link_to nav_icon("Editar Perfil", "icon-edit"), edit_person_path(current_user.person) %></li>
 							<li class="divider"></li>
 							<li><%= link_to nav_icon("Sair","icon-signout"), destroy_user_session_path, :method => :delete %></li>
-		                </ul>
-		              </div>
-		            <% else %>
-		              <%= link_to "Entrar", new_user_session_path %>
-		            <% end %>
-		          </li>
-		        </ul>
-		      </nav>
-		    </div>
+						</ul>
+					  </div>
+					<% else %>
+					  <%= link_to "Entrar", new_user_session_path %>
+					<% end %>
+					</li>
+				</ul>
+			  </nav>
+			</div>
 		  </div>
 		</header>
 
@@ -70,18 +78,15 @@
 <footer>
   <section class="container-fluid">
 
-    <div class="row-fluid muted">
-        <div class="offset9 span3">
-			<header>
-				<!-- inf<strong>HUB</strong> -->
-		    	<center>
-			    	<img src="/assets/logo_small.png">
-					<br>
-					<%= link_to nav_icon("Github","icon-github-alt"), "https://github.com/cmdalbem/redetrabalhosinf", class: "no-decoration" %>
-				</center>
-			</header>
-        </div>
-    </div>
+	<div class="row-fluid">
+		<center>
+			<!-- inf<strong>HUB</strong> -->
+			<img src="/assets/logo_carved.png">
+			<br>
+			<%= link_to nav_icon("Sobre","icon-info-sign"), about_path, class: "no-decoration" %> | 
+			<%= link_to nav_icon("Github","icon-github-alt"), "https://github.com/cmdalbem/redetrabalhosinf", class: "no-decoration" %>
+		</center>
+	</div>
 
   </div>
 </footer>

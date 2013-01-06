@@ -45,10 +45,24 @@
 
       <div class="span4">
         <center>
-          <p class="curtir-frame"> 
-            <span class="" id="project-like-count-<%= @project.id %>"><%= @project.likes.count %></span>
-            <i class="icon-thumbs-up"></i>
+          <!-- Modal window for showing who liked this project -->
+          <div id="likesModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3>Curtidas</h3>
+            </div>
+            <div class="modal-body">
+              <ol>
+                <% @project.likes.each do |l| %>
+                  <li><%=link_to l.name, profile_path(l.nick) %></li>
+                <% end %>
+              </ol>
+            </div>
+          </div>
 
+          <p class="curtir-frame"> 
+            <span id="project-like-count-<%= @project.id %>"><%= link_to @project.likes.count, "#likesModal", "data-toggle" => "modal" %></span>
+            <i class="icon-thumbs-up"></i>
             <% if user_signed_in? %>
             <%  likeClass = unlikeClass = ""
                 if (current_user.person.likes.include?(@project))

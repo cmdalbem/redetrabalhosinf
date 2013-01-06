@@ -18,7 +18,7 @@
 		  <%= hidden_field_tag :sort, params[:sort] %>
 		  <%= hidden_field_tag :view, params[:view] %>
 		  <!-- no hidden field for search, which means that the search will be reseted when changing this filter -->
-		  <div class="field">
+		  <div class="field big-chosen">
 			<%= select_tag :course,  options_for_select(Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }), :include_blank => true , "data-placeholder" => "Filtrar por disciplina...", class: "chzn-select", :onchange => 'this.form.submit()' %>
 		  </div>
 		<% end %>
@@ -26,7 +26,8 @@
 		<!-- Shows actual course filter, if filtered -->
 		<%if params[:course] and !params[:course].empty? %>
 			<legend>
-				<strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "no-decoration" %>
+				<!-- <i class="icon-filter icon-mini"></i> -->
+				<strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove muted\"></i>"), params.merge(course: nil), class: "no-decoration" %>
 			</legend>
 		<% else %>
 
@@ -38,44 +39,31 @@
 	<!-- Options at the top of the table -->
 	<div class="row-fluid ctrlbar">
 		<!-- Search Form --> 
-		<div class="span4">
+		<div class="span3">
 			<div class="pull-left">
-				<div class="mysearch">
-					<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-						<%= hidden_field_tag :direction, params[:direction] %>
-						<%= hidden_field_tag :sort, params[:sort] %>
-						<%= hidden_field_tag :view, params[:view] %>
-						<%= hidden_field_tag :course, params[:course] %>
-						<i class="icon-search"></i>
-						<%= text_field_tag :search, params[:search], class: "search-query input-xlarge", placeholder: "Título / Descrição / Tags" %>
-					<% end %>
-				</div>
+				<%= render 'shared/search_form', destinyPath: projects_path, placeholder: "Título / Descrição / Tag" %>
 			</div>
 		</div>
 
 		<!-- "Sort By" option -->
-		<div class="span4">
+		<div class="span6">
 			<center>
-				<%= form_tag projects_path, method: 'get' do %>
-					<%= hidden_field_tag :sort, params[:sort] %>
-					<%= hidden_field_tag :view, params[:view] %>
-					<%= hidden_field_tag :course, params[:course] %>
-					<%= hidden_field_tag :search, params[:search] %>
-					<text class="muted">Ordenar por</text>
-					<div class="mySelect">
-						<%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Data do upload" => "date","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Autor"=>"person"}, selected: @column), class: "input-medium mySelect", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-					</div>
-					<div class="mySelect">
-						<%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-					</div>
-				<% end %>
+				<%= render 'shared/sort_by_buttons',
+						destinyPath: projects_path,
+						sortbyOptions: options_for_select({"Popularidade"=>"relevance",
+															"Data do upload" => "date",
+															"Título"=>"title",
+															"Semestre"=>"barra",
+															"Disciplina"=>"course",
+															"Autor"=>"person"},
+														selected: @column) %>
 			</center>
 		</div>
 
 		<!-- Button group for choosing view (list or thumbnail) -->
-		<div class="span4">
+		<div class="span3">
 			<div class="pull-right">
-				<%= render 'viewmodes_buttons' %>
+				<%= render 'shared/viewmodes_buttons' %>
 			</div>
 		</div>
 

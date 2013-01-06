@@ -14,17 +14,12 @@
 				<h1>A rede de compartilhamento de trabalhos do INF</h1>
 
 				<p>
-					Teu programa do Neander ficou mais rápido que o do Weber? Tirou a nota mais alta da turma no relatório de Redes? Não deixa mais teus projetos <strong>sumirem na obscuridão</strong> das páginas pessoais da INF!
+					Teu programa do Neander ficou mais rápido que o do Weber? Tirou a nota mais alta da turma no relatório de Redes? Inventou uma classe que finalmente resolve o problema de usar texturas em OpenGL? Não deixa teus projetos sumirem na obscuridão das páginas pessoais da INF!
 				</p>
 
 				<p>
-					No infHUB é fácil <strong>publicar</strong> teus melhores trabalhos, <strong>curtir</strong> os trabalhos dos teus colegas e até <strong>descobrir</strong> rapidamente qual foi o joguinho mais bacana que alguém já fez pra Projeto de Computação Gráfica.
-				</p>
-				
-				<p>
-					<small>
-						<%= link_to "Leia mais...", about_path %>
-					</small>
+					No infHUB é fácil publicar teus melhores trabalhos, curtir os trabalhos dos teus colegas e até descobrir rapidamente qual foi o joguinho mais bacana que alguém já fez pra Projeto de Computação Gráfica.
+					<%= link_to "Leia mais...", about_path, class: "no-decoration" %>
 				</p>
 			</div>
 	    </div>
@@ -33,25 +28,20 @@
 	
 		<div class="row-fluid">
 			<center>
-				<div>
-					<!-- Search Form -->
-					<!-- PUT A "EQUAL" SIGN IN THE LINE BELOW TO "UNCOMMENT" IT (like this: <%= %>) -->
-					<% form_tag projects_path, method: 'get', class: "form-search" do %>
-						<div class="mysearch">
-							<i class="icon-search"></i>
-							<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Buscar projeto por título ou descrição" %>
-						</div>
-					<% end %>
+				<%= form_tag projects_path, method: 'get', class: "form-search" do %>
+					<%= select_tag :course,  options_for_select(Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }), :include_blank => true , "data-placeholder" => "Escolha uma disciplina...", class: "chzn-select", :onchange => 'this.form.submit()' %>
+					<!-- <%= submit_tag "Ir", class: "btn", name: nil, style: "margin-bottom: 20px;" %> -->
+				<% end %>
+
+				<div class="hdivisor">
+					<div class="line"></div>
+					<div class="txt">
+						ou
+					</div>
 				</div>
 
-				<div>
-					<!-- <p>...ou selecione uma disciplina:</p> -->
-
-					<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-						<%= select_tag :course,  options_for_select(Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }), :include_blank => true , "data-placeholder" => "Escolha uma disciplina...", class: "chzn-select", :onchange => 'this.form.submit()' %>
-						<!-- <%= submit_tag "Ir", class: "btn", name: nil, style: "margin-bottom: 20px;" %> -->
-					<% end %>
-				</div>
+				<!-- Search Form -->
+				<%= render 'shared/search_form', destinyPath: projects_path, placeholder: "Procure um projeto por título/descrição/tag" %>
 
 			</center>
 		</div>

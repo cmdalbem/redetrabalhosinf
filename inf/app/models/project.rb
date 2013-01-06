@@ -36,6 +36,8 @@ class Project < ActiveRecord::Base
 	def semester
 		if semester_year? or semester_sem?
 			[semester_year,semester_sem].join("/")
+		else
+			return ""
 		end
 	end
 

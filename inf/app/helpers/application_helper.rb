@@ -5,7 +5,7 @@ module ApplicationHelper
 	def nav_link(link_text, link_path)
 	  class_name = "nav_link"
 	  
-	  #adds an "active" class if the user is currenlty on the page that is pointed by this
+	  # Adds an "active" class if the user is currenlty on the page that is pointed by this
 	  class_name += " active" if current_page?(link_path)
 
 	  content_tag(:li, :class => class_name) do
