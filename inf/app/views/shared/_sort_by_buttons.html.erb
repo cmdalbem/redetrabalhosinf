@@ -9,7 +9,9 @@
   <div class="mySelect">
     <%= select_tag :sort, sortbyOptions, class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
   </div>
-  <div class="mySelect">
-    <%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-  </div>
+  <%= if @direction=="asc"
+    link_to raw("<i class=\"icon-arrow-down\"></i>"), params.merge(direction: "desc", page: nil), class: "blacktext no-decoration"
+  else
+    link_to raw("<i class=\"icon-arrow-up\"></i>"), params.merge(direction: "asc", page: nil), class: "blacktext no-decoration"
+  end %>
 <% end %>

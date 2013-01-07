@@ -12,83 +12,79 @@
 		</div>
 	<% end %>
 
+	<div class="row-fluid">
+		<div class="span6">
+			<!-- Person Form -->
+			<div class="field">
+				<%= f.label "Nome", class: "required" %><br />
+				<%= f.text_field :name, required: true, class: "input-xlarge", maxlength: PERSON_NAME_MAX_LENGTH %>
+			</div>
 
-	<div class="tabbable">
-		<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab1" data-toggle="tab">Perfil</a></li>
-				<!-- <li><a href="#tab2" data-toggle="tab">Avatar</a></li> -->
-		</ul>
-		<div class="tab-content">
-			<div class="tab-pane active" id="tab1">
-				
-				<!-- Person Form -->
-				<div class="field">
-					<%= f.label "Nome" %><br />
-					<%= f.text_field :name, required: true, class: "input-xlarge", maxlength: PERSON_NAME_MAX_LENGTH %>
-				</div>
-
-				<div class="field">
-					<%= f.label "Ano/Semestre que entrou no curso" %><br />
-					<%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: ""}, {class: "input-small"} %> 
-					<%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], {include_blank: ""}, {class: "input-medium"} %><br />
-				</div>
-				
-				<div class="field">
-					<div><%= f.label "Sobre Mim" %><br />
-					<%= f.text_area :about, rows: 5, style: "width: 50%; margin-bottom: 0;" %>
-					<span class="help-block">
-						<small>
-							Caracteres sobrando: <span id="char_count"><%=PERSON_ABOUT_MAX_LENGTH-(@person.about? ? @person.about.length : 0)%></span>
-						</small>
-					</span>
-				</div>
-				
-				<div class="field">
-					<h5> <i class="icon-external-link icon-border"></i> Link pessoal </h5>
-					<%= f.url_field :personal_link, style: "width: 500px", placeholder: "URL" %>
-				</div>
-
-				<div class="field">
-					<h5> <i class="icon-picture icon-border"></i> Avatar </h5>
-					<% if @person.avatar? %>            
-						<!-- Shows the uploaded image, with an option for replacing it with a new one. -->
-						<div id="keepAvatarField">
-							<table>
-									<tr>
-										<td style="text-align: center;">
-											<%= image_tag @person.avatar.url, :height => '100px', :width => '100px', class: "img-polaroid" %> <br>
-											<%= link_to "#{@person.avatar.original_filename}", @person.avatar.url %> 
-										</td>
-										<td><%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); ", class: "btn btn-mini btn-warning" %></td>
-									</tr>
-							</table>
-						</div>
-						
-						<!-- Field for uploading a replacing file. (it's initially hidden) -->
-						<div id="updateAvatarField" style="display: none;">
-							<%= f.file_field :avatar, id: "avatarInputField" %>
-							<!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
-							<%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
-						</div>
-
-						<!-- Delete option. -->
-						<%= check_box_tag :deleteAvatar %> <i class="icon-trash"></i> Deletar
-
-					<% else %>
-						<br>
-						<%= f.file_field :avatar %>
-					<% end %>          
-				</div>
-
-				<br>
-
-				<div class="actions">
-					<%= f.submit "Salvar", class: "btn btn-primary"%>
-				</div>
+			<div class="field">
+				<%= f.label "Ano/Semestre que entrou no curso" %><br />
+				<%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: ""}, {class: "input-small"} %> 
+				<%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], {include_blank: ""}, {class: "input-medium"} %><br />
+			</div>
+			
+			<div class="field">
+				<%= f.label "Sobre Mim" %><br />
+				<%= f.text_area :about, rows: 5, style: "width: 80%; margin-bottom: 0;" %>
+				<span class="help-block">
+					<small>
+						Caracteres sobrando: <span id="char_count"><%=PERSON_ABOUT_MAX_LENGTH-(@person.about? ? @person.about.length : 0)%></span>
+					</small>
+				</span>
 			</div>
 		</div>
 
-	</div>  
+		<div class="span6">				
+			<div class="field">
+				<h5> <i class="icon-external-link icon-border"></i> Link pessoal </h5>
+				<%= f.url_field :personal_link, style: "width: 500px", placeholder: "URL" %>
+			</div>
+
+			<div class="field">
+				<h5> <i class="icon-picture icon-border"></i> Avatar </h5>
+				<% if @person.avatar? %>            
+					<!-- Shows the uploaded image, with an option for replacing it with a new one. -->
+					<div id="keepAvatarField">
+						<table>
+								<tr>
+									<td style="text-align: center;">
+										<%= image_tag @person.avatar.url, :height => '100px', :width => '100px', class: "img-polaroid" %> <br>
+										<%= link_to "#{@person.avatar.original_filename}", @person.avatar.url %> 
+									</td>
+									<td><%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); ", class: "btn btn-mini btn-warning" %></td>
+								</tr>
+						</table>
+					</div>
+					
+					<!-- Field for uploading a replacing file. (it's initially hidden) -->
+					<div id="updateAvatarField" style="display: none;">
+						<%= f.file_field :avatar, id: "avatarInputField" %>
+						<!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+						<%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
+					</div>
+
+					<!-- Delete option. -->
+					<%= check_box_tag :deleteAvatar %> <i class="icon-trash"></i> Deletar
+
+				<% else %>
+					<%= f.file_field :avatar %>
+				<% end %>          
+			</div>
+		</div>
+	</div>
+
+				<br>
+
+				<center>
+					<small class="muted">Apenas campos marcados com <label class="required"></label> são obrigatórios.</small>
+
+					<div class="actions">
+						<%= f.submit "Salvar", class: "btn btn-primary"%>
+					</div>
+				</center>
 
 	
 	

@@ -3,13 +3,13 @@
   <% if @viewMode == :list %>
     <% thisClass += "active" %>
   <% end %>
-  <li id="list-view" class=<%=thisClass%>><%= link_to raw("<i class=\"icon-reorder\"></i>"), params.merge(:view => "list"), remote: true %></li>
+  <li id="list-view" class=<%=thisClass%>><%= link_to raw("<i class=\"icon-reorder\"></i>"), params.merge(view: "list") %></li>
   
   <% thisClass = "" %>
   <% if @viewMode == :thumbs %>
     <% thisClass += "active" %>
   <% end %>
-  <li id="thumbs-view" class=<%=thisClass%>><%= link_to raw("<i class=\"icon-th\"></i>"), params.merge(:view => "thumbs"), remote: true %></li>
+  <li id="thumbs-view" class=<%=thisClass%>><%= link_to raw("<i class=\"icon-th\"></i>"), params.merge(view: "thumbs") %></li>
 </ul>
 
 <!-- <div class="btn-toolbar">

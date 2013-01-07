@@ -97,17 +97,9 @@
       <div class="row-fluid ctrlbar">
         <!-- "Sort By" option -->
         <div class="span8">
-          <%= form_tag profile_path(@person.nick), method: 'get' do %>
-            <%= hidden_field_tag :sort, params[:sort] %>
-            <%= hidden_field_tag :view, params[:view] %>
-            Ordenar por 
-            <div class="mySelect">
-              <%= select_tag :sort, options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Data adicionado" => "date"}, selected: @column), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-            </div>
-            <div class="mySelect">
-              <%= select_tag :direction, options_for_select(["asc","desc"], selected: @direction), class: "input-small", style: "margin: 0;", :onchange => 'this.form.submit()' %>
-            </div>
-          <% end %>
+          <%= render 'shared/sort_by_buttons',
+            destinyPath: profile_path(@person.nick),
+            sortbyOptions: options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Data adicionado" => "date"}, selected: @column) %>
         </div>
 
         <!-- Button group for choosing view (list or thumbnail) -->
@@ -123,6 +115,18 @@
       <div id="projects-table" class="clearfix"> 
         <%= render 'projects/projects_dynamic_listing' %>
       </div> 
+
+      <% if @projects.empty? %>
+        <center>
+          <br>
+          Nenhum projeto ainda... =(
+          <br>
+          <br>
+          <% if user_signed_in? and current_user==@person.user %>
+            <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success btn-mini" %>
+          <% end %>
+        </center>
+      <% end %>
     </div>  
 
   </div>

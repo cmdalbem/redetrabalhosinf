@@ -11,29 +11,27 @@
     </div>
   <% end %>
 
-
   <div class="row-fluid">
     <div class="span6">
-
       <div class="field">
-        <%= f.label "Disciplina" %><br />
-        <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {include_blank: true, required: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "chzn-select"} %>
+        <%= f.label "Disciplina", class: "required" %><br />
+        <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {include_blank: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "chzn-select"} %>
       </div>
 
       <div class="field">
         <%= f.label "Ano/Semestre" %><br />
-        <%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: ""}, {class: "input-small"} %>
-        <%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], {include_blank: ""}, {class: "input-medium"} %><br />
+        <%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: "Ano"}, {class: "input-small"} %>
+        <%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], {include_blank: "Semestre"}, {class: "input-medium"} %><br />
       </div>
 
       <div class="field">
-        <%= f.label "Título" %><br />
-      <%= f.text_field :title, required: true, style: "width: 80%;", maxlength: PROJECT_TITLE_MAX_LENGTH %>
+        <%= f.label "Título", class: "required" %><br />
+      <%= f.text_field :title, required: true, style: "width: 80%;", maxlength: PROJECT_TITLE_MAX_LENGTH, placeholder: "Título" %>
       </div>
 
       <div class="field">
         <%= f.label "Descrição" %><br />
-        <%= f.text_area :description, rows: 10, style: "width: 80%; margin-bottom: 0;" %>
+        <%= f.text_area :description, rows: 10, style: "width: 80%; margin-bottom: 0;", placeholder: "Descrição" %>
         <span class="help-block">
           <small>
             Caracteres sobrando: <span id="char_count"><%=PROJECT_DESCRIPTION_MAX_LENGTH - (@project.description? ? @project.description.length : 0)%></span>
@@ -45,18 +43,19 @@
         <%= f.label "Tags" %>
         <span class="help-inline">
           <small>
-            <i class="icon-info-sign"></i> Adicione tags que ajudarão a encontrarem teu trabalho.
+            <i class="icon-info-sign"></i> Tags ajudam a encontrarem teu trabalho mais facilmente.
           </small>
         </span>
-        <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
+        <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json, placeholder: "URL" %>
           <span class="help-block">
-            Por exemplo: c++, linux, grafos, gtk, cg, ...
+            Por exemplo: c++, opengl, grafos, cg, ...
           </span>
       </div>
 
     </div>
 
     <div class="span6">
+    
     <div class="field">
 
     <!-- Additional Accordion Content -->
@@ -167,13 +166,16 @@
 
   </div>
 
-  <br>
-  <br>
+  <center>    
+    <small class="muted">Apenas campos marcados com <label class="required"></label> são obrigatórios.</small>
 
-  <center>
+    <br>
+
     <div class="actions">
       <%= f.submit "Salvar", class: "btn btn-primary"%>
-      <%= f.submit "Salvar e adicionar outro", class: "btn btn-info" %>
+      <%= button_tag(type: 'submit', class: "btn btn-info") do %>
+        <i class="icon-plus"></i> Salvar e adicionar outro
+      <% end %>
       <!--<%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>-->
     </div>
   </center>

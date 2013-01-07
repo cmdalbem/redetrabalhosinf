@@ -51,7 +51,7 @@ function deleteUploadedField(toDeleteCheckbox,fieldName)
 }
 
 $(function() {
-	$(".chzn-select").chosen();
+	$(".chzn-select").chosen({allow_single_deselect:true});
 });
 
 // Character counters.
