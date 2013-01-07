@@ -16,3 +16,11 @@ Remember to execute the following commands on your command line:
     bundle install
     rake db:migrate
     rake db:seed
+
+#### Ideas
+
+* Notification system
+* Opengraph support
+* File format detection and pretty display
+* Add any number of links and files
+* Playlist style content aggregation
