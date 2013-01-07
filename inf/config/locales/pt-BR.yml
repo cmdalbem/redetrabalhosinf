@@ -1,0 +1,5 @@
+
+pt-BR:
+  user:
+    not_authorized: Desculpe, não tens permissão pra fazer isso.
+    login_required: Deves estar logado pra fazer isso.
