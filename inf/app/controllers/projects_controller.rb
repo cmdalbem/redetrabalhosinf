@@ -2,18 +2,6 @@
 class ProjectsController < ApplicationController
 
   before_filter :checkLogged, :only => [:edit, :update, :destroy, :new, :create]
-  def checkLogged
-    if not user_signed_in?
-      redirect_to new_user_session_path, alert: 'Deves estar logado pra fazer isso.'
-      return
-    end
-  end
-
-  def checkAuthorization(owner)
-    if !owner.authorizes?(current_user)
-      redirect_to root_path, alert: 'Desculpe, não tens permissão pra fazer isso.'
-    end
-  end
 
   def createUnexistingTags(tags)
     # Check if one of the entered Tags doesn't exist on the Database.

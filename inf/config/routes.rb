@@ -1,4 +1,7 @@
 Inf::Application.routes.draw do
+
+  resources :courses
+
   resources :s3_uploads
 
   resources :projects, path: "projetos", :path_names => { new: "novo", edit: "editar" }
