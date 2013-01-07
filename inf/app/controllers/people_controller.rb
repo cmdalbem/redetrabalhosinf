@@ -18,8 +18,8 @@ class PeopleController < ApplicationController
   def sort_people_by_column(plist, column, direction)
     
     # Default values
-    @column = (column and !column.empty?) ? column : "name"
-    @direction = (direction and !direction.empty?) ? direction : "asc"
+    @column = (column and !column.empty?) ? column : "date"
+    @direction = (direction and !direction.empty?) ? direction : "desc"
 
     # What to sort by?
     case @column

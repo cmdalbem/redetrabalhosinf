@@ -1,25 +1,41 @@
-<h1>Listing courses</h1>
+<h1>Disciplinas</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Code</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="content">
 
-<% @courses.each do |course| %>
-  <tr>
-    <td><%= course.name %></td>
-    <td><%= course.code %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<center>
+  <%= link_to raw("<i class=\"icon-plus\"></i> Adicionar Disciplina"), new_course_path, class: "btn" %>
 
-<br />
+  <br>
+  <br>
 
-<%= link_to 'New Course', new_course_path %>
+  <table class="table table-striped table-condensed", style="width: 650px;">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Código</th>
+        <th>Projetos</th>
+        <th></th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.name %></td>
+      <td><%= course.code %></td>
+      <td><%= course.projects.count %></td>
+      <td>
+        <%= link_to 'Editar', edit_course_path(course) %>
+        <%= link_to 'Excluir', course, confirm: 'Tem certeza mano?', method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <%= link_to raw("<i class=\"icon-plus\"></i> Adicionar Disciplina"), new_course_path, class: "btn" %>
+
+</center>
+
+</div>

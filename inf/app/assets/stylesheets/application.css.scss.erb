@@ -36,6 +36,15 @@ $myred: rgb(200,100,100);
 	text-shadow: 1px 1px 1px #fff;
 }
 
+@mixin font_openSans {
+	font-family: 'Open Sans', sans-serif;
+}
+@mixin font_inder {
+	font-family: 'Inder', 'Open Sans', sans-serif;
+}
+@mixin font_breeSerif {
+	font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif;  
+}
 
 /* Import font from Google Fonts API */
 @import url("http://fonts.googleapis.com/css?family=Inder&subset=latin,latin-ext");
@@ -54,7 +63,7 @@ html {
 }
 
 body {
-	font-family: 'Inder', 'Open Sans', sans-serif;
+	@include font_inder;
 	font-size: 14px;
 	line-height: 20px;
 
@@ -147,7 +156,7 @@ smaller {
 }
 
 .username-text {
-	font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif;  
+	@include font_breeSerif;
 }
 
 h2.username-text {
@@ -159,7 +168,7 @@ h5.username-text {
 }
 
 .projectname-text {
-	font-family: 'Bree Serif', sans-serif;
+	@include font_breeSerif;
 }
 
 ul.project-content-icons {
@@ -184,6 +193,21 @@ ul.project-content-icons {
 		span {
 			font-size: 90%;
 		}
+}
+
+.home-stats {
+
+	strong {
+		@include font_breeSerif;
+		display: block;
+		font-size: 52px;
+		margin-bottom: 20px;
+	}
+
+	span {
+		@include font_inder;
+		font-size: 18px;
+	}
 }
 
 .person-details {
@@ -282,7 +306,7 @@ h1 {
 	overflow: inherit;
 
 	.hero-unit {
-		font-family: 'Open Sans', sans-serif;
+		@include font_openSans;
 		/*background-color: rgba(0,0,0,0.02);*/
 		/*background-color: rgb(200,100,100);*/
 		color: rgb(255,255,255);
@@ -293,7 +317,7 @@ h1 {
 		
 		h1 {
 			font-size: 50px;
-			font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif;
+			@include font_breeSerif;
 			text-shadow: 2px 2px 2px rgb(51, 51, 51);
 		}
 
@@ -339,7 +363,7 @@ h1 {
 				border-bottom: 1px solid rgb(221, 221, 221);
 
 				header {
-					font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif;
+					@include font_breeSerif;
 					display: inline;
 					font-size: 18px;
 				}
@@ -360,19 +384,19 @@ h1 {
 
 	/* Search input personalized for the Homepage */
 	.mysearch { 
-		font-size: 22px;
 		position: relative;
 		width: 674px;
 		padding-right: 40px;
 		max-width: 100%;
 
 		input#search {
+			background-image: -moz-linear-gradient(center bottom , rgb(238, 238, 238) 0%, white 50%);
 			font-size: 25px;
+			/*color: rgba(68,68,68,0.5);*/
 			padding-left: 40px;
 			width: 100%;
 			/*width: 100%;*/
 			box-shadow: 0 0 5px rgba(200, 200, 200, 0.8);
-			font: inherit;
 		}
 
 		input#search:focus {
@@ -400,7 +424,6 @@ h1 {
 		    border-bottom: 1px solid rgba(220, 220, 220, 0.4);
     		margin-bottom: -20px;
 		}
-
 	}
 
 
@@ -410,7 +433,7 @@ h1 {
 	}
 	.chzn-container-single {
 		/*These properties must be set to "!important" because the are overwritten on a hardcoded styling in the javascript. Yea, that's really shameful.*/
-		font-size: 26px !important;
+		font-size: 25px !important;
 		color: $defaultBlack !important;
 
 		.chzn-single {
@@ -444,7 +467,7 @@ h1 {
 	input#search {
 		padding-left: 25px;
 		width: 180px;
-		@include transition(.5s);
+		/*@include transition(.5s);*/
 	}
 
     input#search:focus {
@@ -464,7 +487,7 @@ h1 {
 
 .curtir-frame {
 	$curtirSize: 22px;
-	font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif;
+	@include font_breeSerif;
 	font-size: $curtirSize;
 	margin-top: 10px;
 

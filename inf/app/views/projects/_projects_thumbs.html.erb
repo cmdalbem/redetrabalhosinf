@@ -32,13 +32,13 @@
               <%=project.course.name%> (<%=project.semester%>)
             </div>
           </div>
-
+ 
           <center>
             <div class="icons">
               <i class="icon-thumbs-up"></i><%= project.likes.count %> 
               <i class="icon-download"></i><%= project.downloadCount+project.linkHitCount %> 
+              <i class="icon-comments"></i> <%=project.comments.count %>
               <i class="icon-eye-open"></i> <%=project.viewCount %>
-
             </div>
           </center>
 

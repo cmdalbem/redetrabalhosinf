@@ -42,8 +42,13 @@
 						</button>
 						<ul class="dropdown-menu">
 							<!-- List of user options -->
-							<li><%= link_to nav_icon("Editar Perfil", "icon-edit"), edit_person_path(current_user.person) %></li>
+							<% if current_user.admin %>
+								<small>Administração</small>
+								<li><%= link_to nav_icon("Disciplinas", "icon-wrench"), courses_path %></li>
+								<li><%= link_to nav_icon("Tags", "icon-wrench"), tags_path %></li>
+							<% end %>
 							<li class="divider"></li>
+							<li><%= link_to nav_icon("Editar Perfil", "icon-edit"), edit_person_path(current_user.person) %></li>
 							<li><%= link_to nav_icon("Sair","icon-signout"), destroy_user_session_path, :method => :delete %></li>
 						</ul>
 					  </div>

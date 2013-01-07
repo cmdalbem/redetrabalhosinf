@@ -41,4 +41,7 @@ Inf::Application.configure do
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/../../s3.yml"
   }
+
+  config.i18n.default_locale = "pt-BR"
+
 end
