@@ -43,7 +43,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 's3_swf_upload'
 
-# Google Analytics
+# Google Analytics - adds the tracker to all pages
 gem 'google-analytics-rails'
 
 # For pagination
@@ -51,6 +51,9 @@ gem 'will_paginate', '~> 3.0'
 
 # Adds UTF8 encoding to all files
 gem "magic_encoding"
+
+# Messaging system gem - used for the notification system
+gem 'mailboxer'
 
 # Gems to be added only when running on Linux
 platforms :ruby do

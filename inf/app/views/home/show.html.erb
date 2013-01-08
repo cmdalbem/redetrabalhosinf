@@ -1,5 +1,25 @@
 <div class="homepage">
 
+	<% if @conversations %>
+		<h2> Messages </h2>
+		<ul>
+			<% @conversations.each do |c| %>
+				<li>
+					<%= c.is_read?(current_user) ? "(Lida)" : "(Nova!)" %>
+					<% receipt = c.receipts_for current_user %>
+					<ul>
+						<% receipt.each do |rec| %>
+							<li>
+								<% msg = rec.message %>
+								<%= "#{msg.sender.name} - #{msg.subject}: #{msg.body}" %>
+							</li>
+						<% end %>
+					</ul>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+
 	<div class="center hero-unit">
 		
 	    <div class="row-fluid">
@@ -13,7 +33,7 @@
 
 				<h1>A rede de compartilhamento de trabalhos do INF</h1>
 
-				<h2><%= @project_count %> projetos registrados!</h2>
+				<!-- <h2><%= @project_count %> projetos registrados!</h2> -->
 
 				<p>
 					Teu programa do Neander ficou mais rápido que o do Weber? Tirou a nota mais alta da turma no relatório de Redes? Inventou uma classe que finalmente resolve o problema de usar texturas em OpenGL? Não deixa teus projetos sumirem na obscuridão das páginas pessoais da INF!

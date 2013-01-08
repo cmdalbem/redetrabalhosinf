@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 	# Setup accessible (or protected) attributes for your model
 	attr_accessible :email, :password, :password_confirmation, :remember_me
 
+	# User is a Mailboxer agent
+	acts_as_messageable
+
 	# For using nested forms
 	attr_accessible :person_attributes
 
@@ -33,5 +36,21 @@ class User < ActiveRecord::Base
 	def authorizes?(logged_user)
 		return self==logged_user || logged_user.admin?
 	end
+
+	# 
+	# Methods for Mailboxer...
+	# 
+
+	#Returning any kind of identification you want for the model
+	def name
+	  return person.name
+	end
+
+	#Returning the email address of the model if an email should be sent for this object (Message or Notification).
+	#If no mail has to be sent, return nil.
+	def mailboxer_email(object)
+	  return nil
+	end
+
 
 end

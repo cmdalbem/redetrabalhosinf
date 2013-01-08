@@ -5,6 +5,11 @@ class HomeController < ApplicationController
     @lastPeople = Person.order("created_at DESC").limit(5).all
     @project_count = Project.count
 
+    if user_signed_in?
+		#alfa gets the last conversation
+		@conversations = current_user.mailbox.inbox
+	end
+
     render :action => 'show'
   end
 
