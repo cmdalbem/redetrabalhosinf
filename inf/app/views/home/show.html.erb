@@ -58,7 +58,7 @@
 							<header><%= link_to_project p %></header>
 							<p class="author">por <%= link_to p.person, profile_path(p.person.nick) %></p>
 							<small>
-								<p class="muted"><i class="icon-book"></i><%= p.course.name %></p>
+								<p class="muted"><i class="icon-book"></i><%= link_to p.course.name, projects_path(course: p.course.id), class: "muted" %></p>
 								<p class="muted"><i class="icon-time"></i>há <%= time_ago_in_words(p.created_at) %></p>
 							</small>
 						</li>

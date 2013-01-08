@@ -29,8 +29,9 @@
           <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
             <div class="thumb-buttons">
               <div class="btn-group project-hidden-options">
-                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini btn-info" %>
-                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini btn-info" %>
+                <% btnColor = (current_user.admin? and current_user!=project.person.user) ? " btn-danger" : " btn-info" %>
+                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini"+btnColor %>
+                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini"+btnColor %>
               </div>
             </div>
           <% end %>
@@ -42,7 +43,7 @@
             <br>
             <smaller class="muted">
               <i class="icon-tag"></i>
-              <%= project.tags.collect{|t| t.tag_text}.join(", ") %>
+              <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
             </smaller>
           <% end %>
         </td>

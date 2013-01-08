@@ -70,8 +70,11 @@ body {
 	background: none;
 }
 
-smaller {
+.smaller, smaller {
 	font-size: 70%;
+}
+.small {
+	font-size: 80%;
 }
 
 .table th, .table td {
@@ -106,14 +109,13 @@ smaller {
 		padding-left: $pad;
 		padding-right: $pad;
 		text-align: justify;
-	}
 
-	body {
-		article.about p:first-letter {
-			font-size: 120%;
-			margin-left: 50px;
-			font-weight: bold;
-		}		
+		.text {
+			p:first-letter {
+				font-weight: bold;
+				margin-left: 50px;
+			}		
+		}
 	}
 }
 
@@ -452,15 +454,6 @@ h1 {
 
 }
 
-.project-options-trigger .project-hidden-options{
-	float: right;
-	display: inline;
-	visibility: hidden;
-}
-.project-options-trigger:hover .project-hidden-options{
-	visibility: visible;
-}
-
 .mysearch { 
 	position: relative;
 
@@ -490,6 +483,10 @@ h1 {
 	@include font_breeSerif;
 	font-size: $curtirSize;
 	margin-top: 10px;
+
+    span {
+        padding-right: 5px;
+    }
 
 	.badge {
 		font-size: $curtirSize;
@@ -668,16 +665,44 @@ li.person-thumb {
 	}
 }
 
-/* Reference for overlaping text over image: http://css-tricks.com/text-blocks-over-image */
-li.thumbnail.project-thumb {
+.project-options-trigger .project-hidden-options{
+	float: right;
+	display: inline;
+	visibility: hidden;
+
+	/*opacity: 0;
+	@include transition(0.3s);*/
+}
+.project-options-trigger:hover .project-hidden-options{
+	visibility: visible;
+
+	/*opacity: 1;*/
+}
+
+.project-thumb.project-options-trigger:hover img {
+	opacity: 0.2;
+}
+.project-thumb.project-options-trigger:hover .thumb-content #hidable{
+	opacity: 1;
+}
+
+.project-thumb {
+		/*big version*/
+		/*height: 180px;
+		width: 235px;*/
+
+		/*small version*/
 		height: 150px;
 		width: 190px;
+
 		margin-left: 10px;
 		margin-top: 10px;
 		
 		position: relative; 
 		padding: 0;
 		overflow: hidden;
+
+		color: rgb(80,80,80);
 
 		.thumb-buttons {
 			position: absolute; 
@@ -691,15 +716,22 @@ li.thumbnail.project-thumb {
 			bottom: 0;
 			left: 0;
 			font-size: 80%;
-			border-top: 1px solid rgba(0,0,0,0.1);
+			/*border-top: 1px solid rgba(0,0,0,0.1);*/
+			background: rgba(255, 255, 255, 0.5);
 			width: 100%;
-			color: rgb(125,125,125);
 		}
 
+		/* Reference for overlaping text over image: http://css-tricks.com/text-blocks-over-image */
 		img {
-			width: 100%;
-			opacity: 0.3;
+			opacity: 0.8;
+
+			width: auto;
+			max-height: 100%;
 			height: auto;
+			max-width: none;
+			min-width: 100%;
+
+			@include transition(0.3s);
 		}
 
 		.thumb-content {
@@ -707,18 +739,34 @@ li.thumbnail.project-thumb {
 			position: absolute; 
 			top: 0;
 			line-height: 15px;
+			height: 100%;
+
+			#hidable {
+				@include transition(0.3s);
+				opacity: 0;
+			}
 
 			header {
 				/*font-size: 18px;*/
 				padding: 5px;
 				font-weight: bold;
 				background: rgba(255, 255, 255, 0.5);
+				
+				a {
+					text-decoration: none;
+					:hover {
+						text-decoration: none;
+					}
+				}
 
 			}
 
 			.text {
-				padding: 5px; 
-				font-size: 85%;
+				/*height: 100%;
+				display: table-cell;
+				vertical-align: middle;*/
+				padding: 10px; 
+				font-size: 80%;
 			}
 		}
 

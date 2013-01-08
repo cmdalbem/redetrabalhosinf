@@ -10,13 +10,14 @@
           <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
             <div class="thumb-buttons">
               <div class="btn-group project-hidden-options">
-                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini btn-info" %>
-                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini btn-info" %>
+                <% btnColor = (current_user.admin? and current_user!=project.person.user) ? " btn-danger" : " btn-info" %>
+                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini"+btnColor %>
+                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini"+btnColor %>
               </div>
             </div>
           <% end %>
 
-          <!-- Image, if existing -->
+          <!-- Image in the background -->
           <% if project.image? %>
             <%= image_tag project.image %>
           <% end %>
@@ -28,16 +29,22 @@
                 <%= link_to_project project %>
               </center>
             </header>
-            <div class="text">
-              <%=project.course.name%> (<%=project.semester%>)
+            <% aux = project.image? ? "hidable" : "" %>
+            <div class="text" id=<%=aux%> >
+              <i class="icon-user muted"></i> <%= link_to project.person.nick, profile_path(project.person.nick) %>
+              <br>
+              <i class="icon-book muted"></i> <%= "#{project.course.name} (#{project.semester})"%>
             </div>
           </div>
  
           <center>
             <div class="icons">
-              <i class="icon-thumbs-up"></i><%= project.likes.count %> 
+              <i class="icon-thumbs-up"></i><%= project.likes.count %>
+              <span class="muted">·</span>
               <i class="icon-download"></i><%= project.downloadCount+project.linkHitCount %> 
+              <span class="muted">·</span>
               <i class="icon-comments"></i> <%=project.comments.count %>
+              <span class="muted">·</span>
               <i class="icon-eye-open"></i> <%=project.viewCount %>
             </div>
           </center>
