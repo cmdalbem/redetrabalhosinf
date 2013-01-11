@@ -5,15 +5,16 @@ Inf::Application.routes.draw do
   resources :s3_uploads
 
   resources :projects, path: "projetos", :path_names => { new: "novo", edit: "editar" }
-  resources :people, except: [:show], path: "pessoas", :path_names => { new: "novo", edit: "editar" }
+  resources :people, path: "pessoas", :path_names => { new: "novo", edit: "editar" }
   resources :home, :tags, :comments
   devise_for :users, :controllers => { :registrations  => "registrations" }
 
   root :to => "home#show"
 
+  match 'pessoas/:id' => 'People#show', :as => 'profile', constraints: { :id => /[^\/]+/ }
+  
   match 'about' => 'Home#about', :as => 'about'
   
-  match 'pessoas/:id' => 'People#show', :as => 'profile', constraints: { :id => /[^\/]+/ }
   # match 'people/:name/deleteAvatar' => 'People#deleteAvatar', :as => 'deleteAvatar'
 
   # Github style project URL

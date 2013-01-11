@@ -74,7 +74,8 @@ class PeopleController < ApplicationController
       @people = Person.search(params[:search])
     end
 
-    @people = @people.paginate(per_page: PEOPLE_PER_PAGE, page: params[:page]).all
+    # @people = @people.paginate(per_page: PEOPLE_PER_PAGE, page: params[:page]).all
+    @people = @people.all
 
     # Handle sortings
     sort_people_by_column @people, params[:sort], params[:direction]

@@ -77,6 +77,7 @@ body {
 	font-size: 80%;
 }
 
+
 .table th, .table td {
 	line-height: 15px;
 	overflow: hidden;
@@ -109,14 +110,15 @@ body {
 		padding-left: $pad;
 		padding-right: $pad;
 		text-align: justify;
-
-		.text {
-			p:first-letter {
-				font-weight: bold;
-				margin-left: 50px;
-			}		
-		}
 	}
+
+	.text {
+		p:first-letter {
+			font-weight: bold;
+			margin-left: 50px;
+		}		
+	}
+
 }
 
 .block {
@@ -454,6 +456,15 @@ h1 {
 
 }
 
+.project-options-trigger .project-hidden-options{
+	float: right;
+	display: inline;
+	visibility: hidden;
+}
+.project-options-trigger:hover .project-hidden-options{
+	visibility: visible;
+}
+
 .mysearch { 
 	position: relative;
 
@@ -484,9 +495,10 @@ h1 {
 	font-size: $curtirSize;
 	margin-top: 10px;
 
-    span {
+	span {
         padding-right: 5px;
     }
+
 
 	.badge {
 		font-size: $curtirSize;
@@ -679,11 +691,21 @@ li.person-thumb {
 	/*opacity: 1;*/
 }
 
-.project-thumb.project-options-trigger:hover img {
-	opacity: 0.2;
-}
-.project-thumb.project-options-trigger:hover .thumb-content #hidable{
-	opacity: 1;
+.project-thumb.project-options-trigger:hover {
+	img {
+		opacity: 0.2;
+	}
+
+	.icons {
+		/*height: 20px;*/
+	}
+
+	.thumb-content {
+
+		#hidable{
+			opacity: 1;
+		}
+	}
 }
 
 .project-thumb {
@@ -704,6 +726,12 @@ li.person-thumb {
 
 		color: rgb(80,80,80);
 
+		background-image: linear-gradient(top, rgba(252,252,252,1), rgba(230,230,230,1));
+		background-image: -o-linear-gradient(top, rgba(252,252,252,1), rgba(230,230,230,1));
+		background-image: -moz-linear-gradient(top, rgba(252,252,252,1), rgba(230,230,230,1));
+		background-image: -webkit-linear-gradient(top, rgba(252,252,252,1), rgba(230,230,230,1));
+		background-image: -ms-linear-gradient(top, rgba(252,252,250,1), rgba(230,230,230,1));
+
 		.thumb-buttons {
 			position: absolute; 
 			top: 0;
@@ -718,7 +746,7 @@ li.person-thumb {
 			font-size: 80%;
 			/*border-top: 1px solid rgba(0,0,0,0.1);*/
 			background: rgba(255, 255, 255, 0.5);
-			width: 100%;
+ 			width: 100%;
 		}
 
 		/* Reference for overlaping text over image: http://css-tricks.com/text-blocks-over-image */
@@ -750,6 +778,8 @@ li.person-thumb {
 				/*font-size: 18px;*/
 				padding: 5px;
 				font-weight: bold;
+				/*text-shadow: 2px 2px 5px rgb(215, 215, 215);*/
+				@include carvedText;
 				background: rgba(255, 255, 255, 0.5);
 				
 				a {
