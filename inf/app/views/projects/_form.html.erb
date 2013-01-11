@@ -113,6 +113,10 @@
                 <%= f.file_field :file %>
               <% end %>
 
+              <span class="help-block">
+                Máx.: <%=MAX_FILE_SIZE_MB%>Mb.
+              </span>
+
             </div>
           </div> 
 
@@ -154,6 +158,10 @@
               <% else %>
                   <%= f.file_field :image %>
               <% end %>
+
+              <span class="help-block">
+                Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
+              </span>
             </div>
           </div>                     
 

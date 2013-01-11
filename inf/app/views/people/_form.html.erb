@@ -71,7 +71,12 @@
 
 				<% else %>
 					<%= f.file_field :avatar %>
-				<% end %>          
+				<% end %>
+
+				<span class="help-block">
+	                Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
+	              </span>
+	            </div>
 			</div>
 		</div>
 	</div>

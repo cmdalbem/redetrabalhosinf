@@ -1,6 +1,6 @@
 # encoding: UTF-8
 # pt-BR translations for Devise
-en:
+pt-BR:
   devise:
     confirmations:
       confirmed: 'Tua conta foi confirmada com sucesso. Estás logado.'

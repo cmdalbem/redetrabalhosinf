@@ -15,6 +15,7 @@ class Person < ActiveRecord::Base
 	imagePath = Rails.env.development? ? "dev/:attachment/:id/:style.:extension" : ":attachment/:id/:style.:extension"
 	has_attached_file :avatar, :path => imagePath, :default_url => "https://s3.amazonaws.com/redesocialinf/user.gif", :styles => { thumb: "x18", original: "x200" }
 		validates_attachment_content_type :avatar, :content_type=>['image/jpeg', 'image/png', 'image/gif', 'image/bmp'] 
+		validates_attachment_size :avatar, :less_than => MAX_IMAGE_FILE_SIZE_MB.megabytes
 
 	attr_reader :semester
 	def semester
