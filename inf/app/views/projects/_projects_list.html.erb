@@ -1,22 +1,22 @@
 <table class="table table-striped table-condensed">
   <thead>
-    <tr>
+    <tr style="font-style: normal;">
       <th><%= sortable "Título", "title" %></th>
       <th><%= sortable "Disciplina", "course" %></th>
       <th><%= sortable "Semestre", "barra" %></th>
       <% if not @hideAuthors %>
         <th><%= sortable "Autor", "person" %></th>
       <% end %>
-      <!-- <th>
+      <th>
         <%= sortable "Popularidade
         <a href=\"#\"
         rel=\"popover\"
-        data-original-title=\"Popularidade\"
-        data-content=\"Calculada com a seguinte equação:<br><small>(20*likes + 10*downloads + 10*linkHits)*100 / (1+views)</small>\"
+        data-original-title=\"Popularidade?\"
+        data-content=\"É calculada com a seguinte equação:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>\"
         >
         <i class=\"icon-question-sign\"></i></a>
         ", "relevance" %>
-      </th> -->
+      </th>
     </tr>
   </thead>
 
@@ -50,11 +50,19 @@
 
         <td style="width: 22%"><small><%= link_to project.course.name, {course: project.course.id} %></small></td>
         
+
         <td style="width: 10%"><%= project.semester %></td>
         
         <% if not @hideAuthors %>
           <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
         <% end %>
+
+        <td style="width: 130px">
+          <center class="small">
+            <%= raw(printProjectPopularityStats(project,"·")) %>
+          </center>
+        </td>
+        
         <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likes.count %></span>  </td> -->
         <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
         <!-- <td style="width: 120px"><%= number_with_precision(project.relevance, :precision => 1) %></td> -->

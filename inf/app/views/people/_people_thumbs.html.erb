@@ -3,14 +3,22 @@
   <ul class="thumbnails"> 
     <% @people.each do |person| %>
       <div class="pull-left">
-        <li class="person-thumb">
-          <a href=<%= profile_path(person.nick) %> class="thumbnail no-decoration">
+        <li>
+          <a href=<%= profile_path(person.nick) %> class="person-thumb thumbnail no-decoration">
             <%= image_tag person.avatar %>
             <center>
-              <h5 class="username-text"><%=person.name%> <small><%=person.nick%></small></h5>
-              <small class="blacktext">
-                <i class="icon-folder-close-alt"></i>Projetos: <%=person.projects.size %>
-              </small>
+              <div class="thumb-content">
+                <header class="username-text">
+                  <%=person.name%>
+                  <span>
+                    <%=person.nick%>
+                  </span>
+                </header>
+              </div>
+
+              <div class="small blacktext">
+                <i class="icon-file"></i>Projetos: <%=person.projects.size %>
+              </div>
             </center>
           </a>
         </li>

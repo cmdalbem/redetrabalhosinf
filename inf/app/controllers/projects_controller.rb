@@ -1,4 +1,6 @@
 # -*- encoding : utf-8 -*-
+require 'will_paginate/array'
+
 class ProjectsController < ApplicationController
 
   before_filter :checkLogged, :only => [:edit, :update, :destroy, :new, :create]
@@ -30,13 +32,13 @@ class ProjectsController < ApplicationController
     # What to sort by?
     case @column
       when "title"
-        plist.sort_by! {|p| p.title }
+        plist.sort_by! {|p| p.title.downcase }
       when "barra"
         plist.sort_by! {|p| p.semester }
       when "course"
-        plist.sort_by! {|p| p.course.name }
+        plist.sort_by! {|p| p.course.name.downcase }
       when "person"
-        plist.sort_by! {|p| p.person.name }
+        plist.sort_by! {|p| p.person.name.downcase }
       # when "likes"
       #   plist.sort_by! {|p| p.likes.size }
       # when "downloads"
@@ -80,11 +82,13 @@ class ProjectsController < ApplicationController
       end
     # end
 
-    # @projects = @projects.paginate(per_page: PROJECTS_PER_PAGE, page: params[:page])
     @projects = @projects.all
 
     # Handle sortings
     sort_projects_by_column @projects, params[:sort], params[:direction]
+    
+    # Do pagination
+    @projects = @projects.paginate(per_page: PROJECTS_PER_PAGE, page: params[:page])
 
     # Handle view modes (default is LIST)
     @viewMode = :list
@@ -156,7 +160,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        if params[:commit]=="Salvar e adicionar outro"
+        if params[:commit]=="save_and_add_new"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
         else
           format.html { redirect_to person_project_path(@project.person.nick, @project.title), notice: 'Projeto atualizado com sucesso.' }
@@ -210,7 +214,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if success
-        if params[:commit]=="Salvar e adicionar outro"
+        if params[:commit]=="save_and_add_new"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
         else
           format.html { redirect_to person_project_path(@project.person.nick, @project.title), notice: 'Projeto atualizado com sucesso.' }

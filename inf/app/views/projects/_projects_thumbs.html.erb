@@ -20,6 +20,10 @@
           <!-- Image in the background -->
           <% if project.image? %>
             <%= image_tag project.image %>
+          <% else %>
+            <div class="bgtext muted small">
+              <%= project.description %>
+            </div>
           <% end %>
 
           <!-- The content -->
@@ -38,41 +42,7 @@
           </div>
  
           <center>
-            <div class="icons">
-              <% hasAny = false %>
-
-              <% if project.likes.count!=0 %>
-                <i class="icon-thumbs-up"></i><%= project.likes.count %>
-                <% hasAny = true %>
-              <% end %>
-
-              <% if project.downloadCount+project.linkHitCount!=0 %>
-                <% if hasAny %>
-                  <span class="muted">|</span>
-                <% else %>
-                  <% hasAny = true %>
-                <% end %>
-                <i class="icon-download"></i><%= project.downloadCount+project.linkHitCount %>
-              <% end %>
-
-              <% if project.comments.count!=0 %>
-                <% if hasAny %>
-                  <span class="muted">|</span>
-                <% else %>
-                  <% hasAny = true %>
-                <% end %>
-                <i class="icon-comments"></i><%= project.comments.count %>
-              <% end %>
-
-              <% if project.viewCount!=0 %>
-                <% if hasAny %>
-                  <span class="muted">|</span>
-                <% else %>
-                  <% hasAny = true %>
-                <% end %>
-                <i class="icon-eye-open"></i><%= project.viewCount %>
-              <% end %>
-            </div>
+            <%= raw(printProjectPopularityStats(project)) %>
           </center>
 
         </li>

@@ -49,6 +49,52 @@ module ApplicationHelper
 		return ret
 	end
 
+	# Helper for retrieving neat icons for displaying the various popularity stats for a project, i.e. Likes, Downloads, Link Hits, Comments and Views.
+	# IMPORTANT: remember to embrace this call with a raw(), so this return will processed as HTML.
+	def printProjectPopularityStats(project, separator="|")
+		ret = "<div class=\"icons\">"
+	    hasAny = false
+
+	    if project.likes.count!=0
+	    	ret += "<i class=\"icon-thumbs-up\"></i> #{project.likes.count}"
+			hasAny = true
+		end
+
+		if project.downloadCount + project.linkHitCount != 0
+			if hasAny
+				ret += "<span class=\"muted\"> #{separator} </span>"
+			else
+				hasAny = true
+			end
+
+			ret += "<i class=\"icon-download\"></i> #{(project.downloadCount+project.linkHitCount)}"
+		end
+
+		if project.comments.count!=0
+			if hasAny
+				ret += "<span class=\"muted\"> #{separator} </span>"
+			else
+				hasAny = true
+			end
+
+			ret += "<i class=\"icon-comments\"></i> #{project.comments.count}"
+		end
+
+		if project.viewCount!=0
+			if hasAny
+				ret += "<span class=\"muted\"> #{separator} </span>"
+			else
+				hasAny = true
+			end
+
+			ret += "<i class=\"icon-eye-open\"></i> #{project.viewCount}"
+		end
+
+	    ret += "</div>"
+
+	    return ret
+	end
+
 	# Creates the github style links using the Rails Route Helper
 	def link_to_project project
 		link_to project.title, person_project_path(project.person.nick, project.title)

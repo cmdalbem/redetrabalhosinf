@@ -1,4 +1,6 @@
 # -*- encoding : utf-8 -*-
+require 'will_paginate/array'
+
 class PeopleController < ApplicationController
   
   before_filter :checkLogged, :only => [:edit, :update, :destroy]
@@ -24,9 +26,9 @@ class PeopleController < ApplicationController
     # What to sort by?
     case @column
       when "name"
-        plist.sort_by! {|p| p.name }
+        plist.sort_by! {|p| p.name.downcase }
       when "email"
-        plist.sort_by! {|p| p.user.email }
+        plist.sort_by! {|p| p.user.email.downcase }
       when "projects"
         plist.sort_by! {|p| p.projects.size }
       when "date"
@@ -74,11 +76,13 @@ class PeopleController < ApplicationController
       @people = Person.search(params[:search])
     end
 
-    # @people = @people.paginate(per_page: PEOPLE_PER_PAGE, page: params[:page]).all
     @people = @people.all
 
     # Handle sortings
     sort_people_by_column @people, params[:sort], params[:direction]
+    
+    # Do pagination
+    @people = @people.paginate(per_page: PEOPLE_PER_PAGE, page: params[:page])
 
     # Handle view modes (default is THUMBS)
     if !params[:view]
@@ -111,6 +115,9 @@ class PeopleController < ApplicationController
 
         # Handle sortings
         sort_projects_by_column @projects, params[:sort], params[:direction]
+
+        # Do pagination
+        @projects = @projects.paginate(per_page: PROJECTS_PER_PAGE, page: params[:page])
 
         # Handle view modes (default is LIST)
         @viewMode = :list

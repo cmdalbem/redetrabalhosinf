@@ -22,6 +22,7 @@ $(function() {
 	$("#project_tag_tokens").tokenInput( "/tags.json", {
 		theme: "facebook"
 		,preventDuplicates: true
+		,propertyToSearch: "name"
 		,hintText: "Digite tags para adicionar..."
 		,noResultsText: "Sem resultados - pressione ENTER para adicionar"
 		,searchingText: "Procurando por tags semelhantes..."

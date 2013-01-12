@@ -181,7 +181,7 @@
 
     <div class="actions">
       <%= f.submit "Salvar", class: "btn btn-primary"%>
-      <%= button_tag(type: 'submit', class: "btn btn-info") do %>
+      <%= button_tag(type: 'submit', class: "btn btn-info", name: "commit", value: "save_and_add_new") do %>
         <i class="icon-plus"></i> Salvar e adicionar outro
       <% end %>
       <!--<%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>-->
