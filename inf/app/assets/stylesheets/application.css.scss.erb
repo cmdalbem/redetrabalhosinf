@@ -10,7 +10,7 @@
  *
 *= require_self
 *= require_tree .
-*= require chosen
+*= require select2
 */
 
 @import "bootstrap";
@@ -82,6 +82,11 @@ body {
 	line-height: 15px;
 	overflow: hidden;
 	vertical-align: middle;
+
+	a.title {
+		display:block;
+    	width: 90%;
+	}
 }
 
 #wrap {
@@ -278,18 +283,18 @@ ul.project-content-icons {
 }
 
 /* Some overriding settings for enhancing Chosen Plugin combobox */
-.chzn-select {
+.select2-container {
 	min-width: 500px;
 }
 #project_course_id_chzn {
 	max-width: 400px !important;
 	width: 100% !important;
 }
-.chzn-container-single .chzn-search input {
+.select2-container-single .chzn-search input {
 	/* Fixes icon-search position */
 	background-position: 99% -30px, 0 0 !important;
 }
-.chzn-container {
+.select2-container {
 	.chzn-results {
 		font-size: 14px !important;
 		max-height: 300px !important;
@@ -301,7 +306,7 @@ h1 {
 	text-shadow: 2px 2px 2px rgb(215, 215, 215);
 }
 
-.big-chosen .chzn-container {
+.big-chosen .select2-container {
 	font-size: 20px !important;
 }
 
@@ -431,37 +436,35 @@ h1 {
 	}
 
 
-	/* Chosen Plugin personalized for the Homepage */
-	#course_id_chzn {
-		width: 100%;
-	}
-	.chzn-container-single {
+	/* Select2 Plugin personalized for the Homepage */
+	.select2-container {
 		/*These properties must be set to "!important" because the are overwritten on a hardcoded styling in the javascript. Yea, that's really shameful.*/
+		/*width: 100%;*/	
 		font-size: 25px !important;
 		color: $defaultBlack !important;
 
-		.chzn-single {
+		.select2-choice {
 			box-shadow: 0 0 5px rgba(200, 200, 200, 0.8);
-			border: 2px solid rgb(235, 235, 235);
+			/*border: 2px solid rgb(235, 235, 235);*/
 			height: 30px;
 			line-height: 30px;
 
 			/*@include transition(.4s);*/
 		}
 
-		.chzn-single:hover, .chzn-single:active {
-			/*box-shadow: 0 0 20px rgba(200, 200, 200, 0.8);*/
-		}
+		/*.chzn-single:hover, .chzn-single:active {
+			box-shadow: 0 0 20px rgba(200, 200, 200, 0.8);
+		}*/
 	}
 
 }
 
-.project-options-trigger .project-hidden-options{
+.project-options-trigger .project-hidden-options {
 	float: right;
 	display: inline;
 	visibility: hidden;
 }
-.project-options-trigger:hover .project-hidden-options{
+.project-options-trigger:hover .project-hidden-options {
 	visibility: visible;
 }
 
@@ -471,7 +474,7 @@ h1 {
 	input#search {
 		padding-left: 25px;
 		width: 180px;
-		/*@include transition(.5s);*/
+		@include transition(.4s);
 	}
 
     input#search:focus {

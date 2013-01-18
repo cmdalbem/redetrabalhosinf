@@ -15,7 +15,7 @@
     <div class="span6">
       <div class="field">
         <%= f.label "Disciplina", class: "required" %><br />
-        <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {include_blank: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "chzn-select"} %>
+        <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {include_blank: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "select2"} %>
       </div>
 
       <div class="field">
@@ -46,10 +46,11 @@
             <i class="icon-info-sign"></i> Tags ajudam a encontrarem teu trabalho mais facilmente.
           </small>
         </span>
-        <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json, placeholder: "URL" %>
+        <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
           <span class="help-block">
             Por exemplo: c++, opengl, grafos, cg, ...
           </span>
+
       </div>
 
     </div>

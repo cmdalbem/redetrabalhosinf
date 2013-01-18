@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
-//= require chosen
+//= require select2
 
 // TokenInput Settings
 // Thanks to http://loopj.com/jquery-tokeninput/
@@ -52,7 +52,13 @@ function deleteUploadedField(toDeleteCheckbox,fieldName)
 }
 
 $(function() {
-	$(".chzn-select").chosen({allow_single_deselect:true});
+	$(".select2").select2();
+});
+
+$(function() {
+	$(".select2-tagger").select2({
+    		tokenSeparators: [",", " "], placeholder: 'Tags'
+    	});
 });
 
 // Character counters.

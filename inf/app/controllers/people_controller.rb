@@ -113,6 +113,8 @@ class PeopleController < ApplicationController
         @person = search.first
         @projects = @person.projects
 
+        @projects = @projects.all
+
         # Handle sortings
         sort_projects_by_column @projects, params[:sort], params[:direction]
 

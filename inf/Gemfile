@@ -27,7 +27,7 @@ end
 ##########################
 
 gem 'jquery-rails'
-gem "chosen-rails"
+gem "select2-rails"
 
 # Twitter Bootstrap gem + SASS (CSS extension)
 gem 'bootstrap-sass'

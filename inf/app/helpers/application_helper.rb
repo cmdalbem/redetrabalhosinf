@@ -2,11 +2,13 @@ module ApplicationHelper
 
 	# A list item link (li a) which appears activated when the user is actually on it's url.
 	# Most commonly used on navbars.
-	def nav_link(link_text, link_path)
+	def nav_link(link_text, link_path, activable=true)
 	  class_name = "nav_link"
 	  
 	  # Adds an "active" class if the user is currenlty on the page that is pointed by this
-	  class_name += " active" if current_page?(link_path)
+	  if activable
+	  	class_name += " active" if current_page?(link_path)
+	  end
 
 	  content_tag(:li, :class => class_name) do
 	    link_to link_text, link_path
@@ -30,6 +32,16 @@ module ApplicationHelper
 
 		link_to raw(title), params.merge(sort: column, direction: direction, page: nil)
 	end
+
+	def courseSelector(options)
+		select_tag :course,
+					options_for_select(Course.all.collect {|p| [("<div class=\"" + (p.projects.size==0 ? "muted" : "") + "\">#{p.name} <span class=\"pull-right\">#{p.projects.size}</span></div>"), p.id] }),
+					:include_blank => true,
+					"data-placeholder" => options[:placeholder],
+					class: "select2",
+					:onchange => 'this.form.submit()'
+	end
+
 
 	# Helper for retrieving a neat icon list of the contents of a project. It's normally used besides the project list on a table list of accordion.
 	# IMPORTANT: remember to embrace this call with a raw(), so this return will processed as HTML.
@@ -97,6 +109,10 @@ module ApplicationHelper
 
 	# Creates the github style links using the Rails Route Helper
 	def link_to_project project
-		link_to project.title, person_project_path(project.person.nick, project.title)
+		link_to project.title, url_to_project(project)
+	end
+
+	def url_to_project project
+		person_project_path(project.person.nick, project.title)
 	end
 end

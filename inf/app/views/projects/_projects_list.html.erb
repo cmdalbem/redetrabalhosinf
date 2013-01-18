@@ -1,4 +1,4 @@
-<table class="table table-striped table-condensed">
+<table class="table table-striped table-condensed table-hover">
   <thead>
     <tr style="font-style: normal;">
       <th><%= sortable "Título", "title" %></th>
@@ -37,15 +37,18 @@
           <% end %>
 
           <%# The use of raw here is probably bad too, but I dont understand enough to fix it %>
-          <%= link_to_project project %> <%= raw(getContentIcons(project)) %>
+          <a href=<%=url_to_project(project)%> class="title no-decoration">
+            <%=project.title%> <%= raw(getContentIcons(project)) %>
+            <% if not project.tags.empty? %>
+              <br>
+              <smaller class="muted">
+                <i class="icon-tag"></i>
+                <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
+              </smaller>
+            <% end %>
+          </a>
+
           
-          <% if not project.tags.empty? %>
-            <br>
-            <smaller class="muted">
-              <i class="icon-tag"></i>
-              <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
-            </smaller>
-          <% end %>
         </td>
 
         <td style="width: 22%"><small><%= link_to project.course.name, {course: project.course.id} %></small></td>

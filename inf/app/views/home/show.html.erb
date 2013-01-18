@@ -29,7 +29,7 @@
 		<div class="row-fluid">
 			<center>
 				<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-					<%= select_tag :course,  options_for_select(Course.all.collect {|p| ["#{p.name} (#{p.projects.size})", p.id] }), :include_blank => true , "data-placeholder" => "Escolha uma disciplina...", class: "chzn-select", :onchange => 'this.form.submit()' %>
+					<%= courseSelector({placeholder: "Escolha uma disciplina..."}) %>
 					<!-- <%= submit_tag "Ir", class: "btn", name: nil, style: "margin-bottom: 20px;" %> -->
 				<% end %>
 
