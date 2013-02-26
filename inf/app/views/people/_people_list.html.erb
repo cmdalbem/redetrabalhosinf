@@ -2,16 +2,16 @@
   <thead>
     <tr>
       <th><%= sortable "Nome", "name" %></th>
-      <th><%= sortable "Email", "email" %></th>
-      <th><%= sortable "Projetos", "projects" %></th>
+      <th><%= sortable "Usuário", "nick" %></th>
+      <th><%= sortable "Nro. projetos", "projects" %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= link_to person.name, profile_path(person.nick) %></td>
-        <td><%= person.user.email %></td>
+        <td><%= link_to person.name, profile_path(person.nick), class: "fulltitle no-decoration" %></td>
+        <td><%= person.nick %></td>
         <td><%= person.projects.size %></td>
       </tr>
     <% end %>

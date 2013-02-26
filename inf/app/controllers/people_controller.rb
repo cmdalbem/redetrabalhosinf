@@ -29,6 +29,8 @@ class PeopleController < ApplicationController
         plist.sort_by! {|p| p.name.downcase }
       when "email"
         plist.sort_by! {|p| p.user.email.downcase }
+      when "nick"
+        plist.sort_by! {|p| p.nick.downcase }
       when "projects"
         plist.sort_by! {|p| p.projects.size }
       when "date"

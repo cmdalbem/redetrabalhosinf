@@ -18,7 +18,7 @@
   <!-- Sort By option -->
   <div class="span6">
     <center>
-      <%= render 'shared/sort_by_buttons', destinyPath: people_path, sortbyOptions: options_for_select({"Nome"=>"name","Email"=>"email","Nro. Projetos"=>"projects","Data adicionado"=>"date"}, selected: @column) %>
+      <%= render 'shared/sort_by_buttons', destinyPath: people_path, sortbyOptions: options_for_select({"Data adicionado"=>"date","Nome"=>"name","Usuário"=>"nick","Nro. projetos"=>"projects"}, selected: @column) %>
     </center>
   </div>
 

@@ -55,7 +55,7 @@
                 <span>Projetos</span>
               </center>
             </div>
-            
+             
             <div class="span4">
               <center>
                 <strong><%= @person.getTotalLikes %></strong>
@@ -114,19 +114,7 @@
       <!-- The listing itself -->
       <div id="projects-table" class="clearfix"> 
         <%= render 'projects/projects_dynamic_listing' %>
-      </div> 
-
-      <% if @projects.empty? %>
-        <center class="muted">
-          <br>
-          Nenhum projeto ainda... =(
-          <br>
-          <br>
-          <% if user_signed_in? and current_user==@person.user %>
-            <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path, class: "btn btn-success btn-mini" %>
-          <% end %>
-        </center>
-      <% end %>
+      </div>
     </div>  
 
   </div>

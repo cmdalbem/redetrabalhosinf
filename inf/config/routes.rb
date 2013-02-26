@@ -7,7 +7,7 @@ Inf::Application.routes.draw do
   resources :projects, path: "projetos", :path_names => { new: "novo", edit: "editar" }
   resources :people, path: "pessoas", :path_names => { new: "novo", edit: "editar" }, constraints: { :id => /[^\/]+/ }
   resources :home, :tags, :comments
-  devise_for :users, :controllers => { :registrations  => "registrations" }
+  devise_for :users, :controllers => { :registrations  => "registrations" }, path: "", :path_names => { sign_in: 'entrar', sign_out: 'logout', sign_up: "cadastro"}
 
   root :to => "home#show"
 
@@ -18,7 +18,7 @@ Inf::Application.routes.draw do
   # match 'people/:name/deleteAvatar' => 'People#deleteAvatar', :as => 'deleteAvatar'
 
   # Github style project URL
-  match 'p/:person/:project' => 'Projects#show', :as => 'person_project', constraints: { :project => /[^\/]+/ }
+  match 'p/:person/:project' => 'Projects#show', :as => 'person_project', constraints: { :project => /[^\/]+/, :person => /[^\/]+/ }
 
   match 'project/like/:id' => 'Projects#like', :as => 'like_project'
   match 'project/unlike/:id' => 'Projects#unlike', :as => 'unlike_project'

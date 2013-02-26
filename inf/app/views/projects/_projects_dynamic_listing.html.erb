@@ -2,10 +2,19 @@
 <%= render 'shared/search_result_title' %>
 
 <!-- The content view -->
-<% if @viewMode == :list %>
-  <%= render 'projects/projects_list' %>
+<% if @projects.empty? %>
+<center>
+  <br>
+  Sem projetos a exibir.
+  <br>
+  <br>
+</center>
 <% else %>
-  <%= render 'projects/projects_thumbs' %>
+	<% if @viewMode == :list %>
+	  <%= render 'projects/projects_list' %>
+	<% else %>
+	  <%= render 'projects/projects_thumbs' %>
+	<% end %>
 <% end %>
 
 <!-- Pagination -->

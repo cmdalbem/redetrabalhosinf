@@ -87,6 +87,11 @@ body {
 		display:block;
     	width: 90%;
 	}
+
+	a.fulltitle {
+		display:block;
+    	width: 100%;
+	}
 }
 
 #wrap {
@@ -243,7 +248,7 @@ ul.project-content-icons {
 
 		img {
 			width: 100%;
-			height: 100%;
+			height: auto;
 		}
 	}
 
@@ -294,12 +299,9 @@ ul.project-content-icons {
 	/* Fixes icon-search position */
 	background-position: 99% -30px, 0 0 !important;
 }
-.select2-container {
-	.chzn-results {
-		font-size: 14px !important;
-		max-height: 300px !important;
-		text-align: left !important;
-	}
+.select2-results {
+	font-size: 12px !important;
+	max-height: 300px !important;
 }
 
 h1 {
@@ -394,8 +396,8 @@ h1 {
 	/* Search input personalized for the Homepage */
 	.mysearch { 
 		position: relative;
-		width: 674px;
-		padding-right: 40px;
+		width: 580px;
+		padding-right: 55px;
 		max-width: 100%;
 
 		input#search {
@@ -440,6 +442,7 @@ h1 {
 	.select2-container {
 		/*These properties must be set to "!important" because the are overwritten on a hardcoded styling in the javascript. Yea, that's really shameful.*/
 		/*width: 100%;*/	
+		width: 600px;
 		font-size: 25px !important;
 		color: $defaultBlack !important;
 
