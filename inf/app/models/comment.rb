@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
-
+	include PublicActivity::Common
+	
 	belongs_to :person
 	belongs_to :project
 

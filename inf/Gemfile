@@ -53,6 +53,9 @@ gem 'bootstrap-will_paginate'
 # Adds UTF8 encoding to all files
 gem "magic_encoding"
 
+#
+gem "public_activity"
+
 # Gems to be added only when running on Linux
 platforms :ruby do
   gem 'execjs'

@@ -1,0 +1,7 @@
+<i class="icon-plus"></i> <p class="author"> <%= link_to a.owner.person, profile_path(a.owner.person.nick) if a.owner %> </p> criou 
+
+<% if activity.trackable %>
+  <%= link_to activity.trackable.title, activity.trackable %>
+<% else %>
+  which has since been removed
+<% end %>

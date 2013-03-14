@@ -1,8 +1,12 @@
 Inf::Application.routes.draw do
 
+  get "activities/index"
+
   resources :courses
 
   resources :s3_uploads
+
+  resources :activities
 
   resources :projects, path: "projetos", :path_names => { new: "novo", edit: "editar" }
   resources :people, path: "pessoas", :path_names => { new: "novo", edit: "editar" }, constraints: { :id => /[^\/]+/ }

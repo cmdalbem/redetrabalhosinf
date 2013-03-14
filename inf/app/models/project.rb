@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+	include PublicActivity::Common
+
 	belongs_to :person
 	belongs_to :course
 

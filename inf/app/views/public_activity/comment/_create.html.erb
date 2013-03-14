@@ -1,0 +1,7 @@
+<i class="icon-comment"></i> <p class="author"> <%= link_to a.owner.person, profile_path(a.owner.person.nick) if a.owner %> </p> comentou em 
+
+<% if activity.trackable %>
+  <%= link_to activity.trackable.project.title, activity.trackable.project %>
+<% else %>
+  which has since been removed
+<% end %>

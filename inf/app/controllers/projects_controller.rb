@@ -160,6 +160,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        @project.create_activity :create, owner: current_user
+
         if params[:commit]=="save_and_add_new"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
         else
@@ -214,6 +216,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if success
+        @project.create_activity :update, owner: current_user
+
         if params[:commit]=="save_and_add_new"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
         else
@@ -241,6 +245,8 @@ class ProjectsController < ApplicationController
     if @project
       @person = current_user.person
       if not @project.likes.include?(@person)
+        @project.create_activity :like, owner: current_user
+
         @project.likes.push(@person)
       end
     end

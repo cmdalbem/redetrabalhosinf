@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include PublicActivity::StoreController
+
   protect_from_forgery
 
   # Shouldn't we use method_names like this? Camel case is for classes and stuff
