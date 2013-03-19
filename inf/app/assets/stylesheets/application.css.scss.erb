@@ -77,6 +77,25 @@ body {
 	font-size: 80%;
 }
 
+/*
+How do I center the twitter bootstrap tabs on the page?
+http://stackoverflow.com/questions/9421966/how-do-i-center-the-twitter-bootstrap-tabs-on-the-page
+*/
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
+}
+.nav-tabs, .nav-pills {
+    text-align: center;
+}
+
+.tab-content {
+    overflow: visible;
+}
+
+
 
 .table th, .table td {
 	line-height: 15px;
@@ -153,10 +172,6 @@ body {
 	padding: 5px 15px 5px 15px;
 
 	height: 100%;
-}
-
-.profile-picture {
-	overflow: hidden;
 }
 
 .icon-white,
@@ -355,49 +370,6 @@ h1 {
 
 	}
 
-	.news {
-		overflow: hidden;
-		
-		legend {
-			margin-bottom: 0;
-			font-weight: bold;
-			font-size: 18px;
-			text-align: center;
-			border-color: rgb(200,200,200);
-			line-height: 30px;
-			@include carvedText;
-		}
-
-		ul {
-			margin: 0;
-
-			li {
-				position: relative;
-				list-style-type: none;
-				margin: 0px;
-				padding: 5px 0px;
-				border-bottom: 1px solid rgb(221, 221, 221);
-
-				header {
-					@include font_breeSerif;
-					display: inline;
-					font-size: 18px;
-				}
-
-				p.author {
-					font-size: 90%;
-					display: inline;
-					margin: 0;
-				}
-
-				p {
-					margin: 0;
-				}
-			}
-		}
-
-	}
-
 	/* Search input personalized for the Homepage */
 	.mysearch { 
 		position: relative;
@@ -463,6 +435,49 @@ h1 {
 		/*.chzn-single:hover, .chzn-single:active {
 			box-shadow: 0 0 20px rgba(200, 200, 200, 0.8);
 		}*/
+	}
+
+}
+
+.news {
+	overflow: hidden;
+	
+	legend {
+		margin-bottom: 0;
+		font-weight: bold;
+		font-size: 18px;
+		text-align: center;
+		border-color: rgb(200,200,200);
+		line-height: 30px;
+		@include carvedText;
+	}
+
+	ul {
+		margin: 0;
+
+		li {
+			position: relative;
+			list-style-type: none;
+			margin: 0px;
+			padding: 5px 0px;
+			border-bottom: 1px solid rgb(221, 221, 221);
+
+			header {
+				@include font_breeSerif;
+				display: inline;
+				font-size: 18px;
+			}
+
+			p.author {
+				font-size: 90%;
+				display: inline;
+				margin: 0;
+			}
+
+			p {
+				margin: 0;
+			}
+		}
 	}
 
 }

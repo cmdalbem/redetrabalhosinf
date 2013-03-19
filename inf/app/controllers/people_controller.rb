@@ -136,6 +136,8 @@ class PeopleController < ApplicationController
 
         @hideAuthors = true
 
+        @activities = PublicActivity::Activity.where(owner_id: @person.id).order("created_at desc")
+
         respond_to do |format|
           format.html
           format.js

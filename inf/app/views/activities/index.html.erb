@@ -3,8 +3,7 @@
 <ul>
 	<% @activities.each do |a| %>
 	    <li>
-	    	<%= link_to a.owner.person.name, a.owner if a.owner %>
-			<%= render_activity a %>
+			<%= a.inspect %>
 		</li>
 	<% end %>
 </ul>

@@ -92,30 +92,72 @@
 
     </div>
 
-    <!-- Projects Listing -->
     <div class="span9">
-      <div class="row-fluid ctrlbar">
-        <!-- "Sort By" option -->
-        <div class="span8">
-          <%= render 'shared/sort_by_buttons',
-            destinyPath: profile_path(@person.nick),
-            sortbyOptions: options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Data adicionado" => "date"}, selected: @column) %>
-        </div>
+      <div class="tabbable">
 
-        <!-- Button group for choosing view (list or thumbnail) -->
-        <div class="span4">
-          <div class="pull-right">
-            <%= render 'shared/viewmodes_buttons' %>
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab"><i class=" icon-file-alt"></i> Projetos</a></li>
+          <li><a href="#tab2" data-toggle="tab"><i class=" icon-time"></i> Atividade</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+
+            <!-- Projects Listing -->
+            <div class="row-fluid ctrlbar">
+                <!-- "Sort By" option -->
+                <div class="span8">
+                  <%= render 'shared/sort_by_buttons',
+                    destinyPath: profile_path(@person.nick),
+                    sortbyOptions: options_for_select({"Popularidade"=>"relevance","Título"=>"title","Semestre"=>"barra","Disciplina"=>"course","Data adicionado" => "date"}, selected: @column) %>
+                </div>
+
+                <!-- Button group for choosing view (list or thumbnail) -->
+                <div class="span4">
+                  <div class="pull-right">
+                    <%= render 'shared/viewmodes_buttons' %>
+                  </div>
+                </div>
+
+            </div>
+
+            <!-- The listing itself -->
+            <div id="projects-table" class="clearfix"> 
+              <%= render 'projects/projects_dynamic_listing' %>
+            </div>
+          
           </div>
+
+          <div class="tab-pane" id="tab2">
+            
+            <% if @activities.empty? %>
+              <center class="muted">
+                Sem atividade a exibir.
+              </center>
+            <% else %>
+              <ul>
+                <div class="news">
+                  <ul>
+                    <% @activities.each do |a| %>
+                        <li>
+                        <%= render_activity a %>
+                        <small>
+                          <p class="muted pull-right"><i class="icon-time"></i>há <%= time_ago_in_words(a.created_at) %></p>
+                        </small>
+                      </li>
+                    <% end %>
+                  </ul>
+                  <small>
+                    <% # link_to "Ver mais", activities_path %>
+                  </small>
+                </div>
+              </ul>
+            <% end %>
+
+          </div>
+      
         </div>
-
       </div>
-
-      <!-- The listing itself -->
-      <div id="projects-table" class="clearfix"> 
-        <%= render 'projects/projects_dynamic_listing' %>
-      </div>
-    </div>  
 
   </div>
 

@@ -11,20 +11,20 @@ class CommentsController < ApplicationController
 		if user_signed_in?
 			input = params["comment"]
 			c = Comment.new(input)
+			project = Project.find(input[:project_id])
 	      	if c.save
-	      		c.create_activity :create, owner: current_user
+	      		c.create_activity :create, owner: current_user, recipient: project.person.user
 
 	      		notice = "Comentário enviado com sucesso."
 	      	else
 	      		notice = "Erro: seu comentário não foi enviado."
 			end
 		
-	      	project = Project.find(input[:project_id])
 	      	respond_to do |format|
 	      		format.html { redirect_to project, notice: notice }
 	      	end
 	    else
-	      redirect_to projects_url, notice: 'Desculpe, não tens permissão pra fazer isso.!'
+	      redirect_to projects_url, notice: 'Desculpe, não tens permissão pra fazer isso.'
 	    end
 	end
 

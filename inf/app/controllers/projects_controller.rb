@@ -245,8 +245,8 @@ class ProjectsController < ApplicationController
     if @project
       @person = current_user.person
       if not @project.likes.include?(@person)
-        @project.create_activity :like, owner: current_user
-
+        @project.create_activity :like, owner: current_user, recipient: @project.person.user
+ 
         @project.likes.push(@person)
       end
     end
