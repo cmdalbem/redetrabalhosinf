@@ -31,17 +31,7 @@
 				<%= form_tag projects_path, method: 'get', class: "form-search" do %>
 					<%= courseSelector({placeholder: "Escolha uma disciplina..."}) %>
 					<!-- <%= submit_tag "Ir", class: "btn", name: nil, style: "margin-bottom: 20px;" %> -->
-				<% end %>
-
-				<div class="hdivisor">
-					<div class="line"></div>
-					<div class="txt">
-						ou
-					</div>
-				</div>
-
-				<!-- Search Form -->
-				<%= render 'shared/search_form', destinyPath: projects_path, placeholder: "Procure um projeto por título/descrição/tag" %>
+				<% end %>			
 
 			</center>
 		</div>
