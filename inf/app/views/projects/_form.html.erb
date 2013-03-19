@@ -164,7 +164,25 @@
                 Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
               </span>
             </div>
-          </div>                     
+          </div>
+
+          <% collapseId+=1 %>
+
+          <!-- Accordion Item -->
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
+              <!-- HEADER -->
+              <h5> <i class="icon-group  icon-large"></i> Múltiplos autores </h5>
+            </a>
+          </div>
+          <div id="collapse<%=collapseId%>" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <!-- CONTENT -->
+              <div class="field">
+                <%= f.select :people, Person.all.collect {|p| [p.name, p.id] }, {}, {"data-placeholder" => "Clique para adicionar mais autores...", multiple: true, class: "select2"} %>
+              </div>
+            </div>
+          </div>            
 
         </div>
 

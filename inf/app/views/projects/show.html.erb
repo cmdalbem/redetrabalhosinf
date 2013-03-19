@@ -85,8 +85,10 @@
 <div class="row-fluid">
   <div class="block span6">
     <p>
-      <span class="muted"><i class="icon-user"></i> Autor</span>
-      <%= link_to @project.person.nick, profile_path(@project.person.nick) %>
+      <span class="muted"><i class="icon-user"></i> Autores</span>
+      <% @project.people.each do |p| %>
+        <%= link_to p.nick, profile_path(p.nick) %>
+      <% end %>
     </p>
 
     <p>

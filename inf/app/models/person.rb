@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
-	has_many :projects, :dependent => :destroy
+	has_many :ownerships
+	has_many :projects, through: :ownerships, :dependent => :destroy
+	
 	belongs_to :user
 
 	#Like relationship

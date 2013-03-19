@@ -2,6 +2,9 @@ class Project < ActiveRecord::Base
 	belongs_to :person
 	belongs_to :course
 
+	has_many :ownerships
+	has_many :people, through: :ownerships
+	
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
 	has_many :comments, dependent: :destroy 

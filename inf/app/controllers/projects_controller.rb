@@ -184,6 +184,8 @@ class ProjectsController < ApplicationController
 
     pp = params[:project]
     tags = pp["tag_tokens"].split(",")
+    people = pp["people"].split(",")
+    people.delete_at(0) # for some reason, select2 will always give us a blank string in the first position.
  
     createUnexistingTags(tags)
 
@@ -210,7 +212,8 @@ class ProjectsController < ApplicationController
           course_id: pp["course_id"],
           semester_year: pp["semester_year"],
           semester_sem: pp["semester_sem"],
-          tag_ids: tags) 
+          tag_ids: tags,
+          person_ids: people) 
 
     respond_to do |format|
       if success
