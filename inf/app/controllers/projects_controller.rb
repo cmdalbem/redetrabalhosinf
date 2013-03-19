@@ -262,6 +262,7 @@ class ProjectsController < ApplicationController
     if @project
       @person = current_user.person
       if @project.likes.include?(@person)
+        PublicActivity::Activity.where(trackable_id: @project.id, key: "project.like").destroy_all
         @project.likes.delete(@person)
       end
     end

@@ -38,6 +38,38 @@
 
 	</div>
 
+	<% if user_signed_in? %>
+		<div class="row-fluid">
+			<div class="offset2 span8">
+				<div class="news">
+					<legend>
+						<span class="text-error"><i class="icon-bell"></i> Atividade nos Meus Projetos</span>
+					</legend>
+
+					<% if @myActivities.empty? %>
+						<center class="muted">
+						Sem atividade a exibir.
+						</center>
+					<% else %>
+						<ul>
+							<% @myActivities.each do |a| %>
+							    <li>
+									<%= render_activity a %>
+									<small>
+										<p class="muted pull-right"><i class="icon-time"></i>há <%= time_ago_in_words(a.created_at) %></p>
+									</small>
+								</li>
+							<% end %>
+						</ul>
+						<small>
+							<% # link_to "Ver mais", activities_path %>
+						</small>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
 	<div class="row-fluid">
 		<div class="span4">
 			<div class="news">
@@ -83,9 +115,9 @@
 
 		<div class="span4">
 			<div class="news">
-				<legend>Atividades</legend>
+				<legend>Atividade</legend>
 				<ul>
-					<% @activities.each do |a| %>
+					<% @globalActivities.each do |a| %>
 					    <li>
 							<%= render_activity a %>
 							<small>
