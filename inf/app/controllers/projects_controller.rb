@@ -80,6 +80,8 @@ class ProjectsController < ApplicationController
       if params[:search] and !params[:search].empty?
         @projects = @projects.search(params[:search])
       end
+
+      @searchSize = @projects.size
     # end
 
     @projects = @projects.all

@@ -76,6 +76,7 @@ class PeopleController < ApplicationController
 
     if params[:search] and !params[:search].empty?
       @people = Person.search(params[:search])
+      @searchSize = @people.size
     end
 
     @people = @people.all
