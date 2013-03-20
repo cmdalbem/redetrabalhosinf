@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130313171317) do
+=======
+ActiveRecord::Schema.define(:version => 20130319230933) do
+>>>>>>> origin/multiple-authors
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -72,6 +76,19 @@ ActiveRecord::Schema.define(:version => 20130313171317) do
 
   add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
 
+<<<<<<< HEAD
+=======
+  create_table "ownerships", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ownerships", ["person_id"], :name => "index_ownerships_on_person_id"
+  add_index "ownerships", ["project_id"], :name => "index_ownerships_on_project_id"
+
+>>>>>>> origin/multiple-authors
   create_table "people", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"

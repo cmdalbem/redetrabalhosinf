@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
-	has_many :projects, :dependent => :destroy
+	has_many :ownerships
+	has_many :projects, through: :ownerships, :dependent => :destroy
+	
 	belongs_to :user
 
 	#Like relationship
@@ -53,6 +55,11 @@ class Person < ActiveRecord::Base
 
 	def to_s
 		nick
+	end
+
+	# JSON formatting used for feeding the TokenInput Plugin autocomplete feature.
+	def as_json()
+	  { :id => self.id, :text => "#{self.name (self.nick)}" }
 	end
 
 end

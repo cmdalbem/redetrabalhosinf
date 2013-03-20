@@ -85,8 +85,12 @@
 <div class="row-fluid">
   <div class="block span6">
     <p>
-      <span class="muted"><i class="icon-user"></i> Autor</span>
-      <%= link_to @project.person.nick, profile_path(@project.person.nick) %>
+      <% if @project.people.size==1 %>
+        <span class="muted"><i class="icon-user"></i> Autor</span>
+      <% else %>
+        <span class="muted"><i class="icon-group"></i> Autores</span>
+      <% end %>
+      <%= @project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %>
     </p>
 
     <p>

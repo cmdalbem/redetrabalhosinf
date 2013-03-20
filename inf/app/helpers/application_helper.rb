@@ -40,6 +40,7 @@ module ApplicationHelper
 					"data-placeholder" => options[:placeholder],
 					class: "select2",
 					:onchange => 'this.form.submit()'
+
 	end
 
 
@@ -109,10 +110,11 @@ module ApplicationHelper
 
 	# Creates the github style links using the Rails Route Helper
 	def link_to_project project
-		link_to project.title, url_to_project(project)
+		# link_to project.title, url_to_project(project)
+		link_to project.title, project_path(project)
 	end
-
 	def url_to_project project
-		person_project_path(project.person.nick, project.title)
+		# person_project_path(project.person.nick, project.title)
+		project_path(project)
 	end
 end

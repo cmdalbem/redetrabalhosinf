@@ -144,6 +144,9 @@ class ProjectsController < ApplicationController
     pp = params["project"]
     owner = current_user.person
     tags = pp["tag_tokens"].split(",")
+    people = pp["people"]
+    people.delete_at(0) # for some reason, select2 will always give us a blank string in the first position.
+    people.push(current_user.person.id)
 
     createUnexistingTags(tags)
     
@@ -157,7 +160,8 @@ class ProjectsController < ApplicationController
       tag_ids: tags,
       image: pp["image"],
       file: pp["file"],
-      link: pp["link"]
+      link: pp["link"],
+      person_ids: people
     )
 
     respond_to do |format|
@@ -167,7 +171,7 @@ class ProjectsController < ApplicationController
         if params[:commit]=="save_and_add_new"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
         else
-          format.html { redirect_to person_project_path(@project.person.nick, @project.title), notice: 'Projeto atualizado com sucesso.' }
+          format.html { redirect_to project_path(@project), notice: 'Projeto atualizado com sucesso.' }
         end
       else
         format.html { render action: "new" }
@@ -187,9 +191,16 @@ class ProjectsController < ApplicationController
     checkAuthorization(@project.person.user)
 
     pp = params[:project]
-    tags = pp["tag_tokens"].split(",")
- 
+    
+    tags = pp["tag_tokens"]
+    tags.delete_at(0) # for some reason, select2 will always give us a blank string in the first position.
+
+    people = pp["people"]
+    people.delete_at(0) # for some reason, select2 will always give us a blank string in the first position.
+    people.push(current_user.person.id)
+
     createUnexistingTags(tags)
+    
 
     success = true
     if params["deleteImage"] == "1"
@@ -214,7 +225,8 @@ class ProjectsController < ApplicationController
           course_id: pp["course_id"],
           semester_year: pp["semester_year"],
           semester_sem: pp["semester_sem"],
-          tag_ids: tags) 
+          tag_ids: tags,
+          person_ids: people) 
 
     respond_to do |format|
       if success
@@ -223,7 +235,7 @@ class ProjectsController < ApplicationController
         if params[:commit]=="save_and_add_new"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
         else
-          format.html { redirect_to person_project_path(@project.person.nick, @project.title), notice: 'Projeto atualizado com sucesso.' }
+          format.html { redirect_to project_path(@project), notice: 'Projeto atualizado com sucesso.' }
         end
       else
         format.html { render action: "edit" }
