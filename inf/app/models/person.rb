@@ -57,4 +57,9 @@ class Person < ActiveRecord::Base
 		nick
 	end
 
+	# JSON formatting used for feeding the TokenInput Plugin autocomplete feature.
+	def as_json()
+	  { :id => self.id, :text => "#{self.name (self.nick)}" }
+	end
+
 end

@@ -47,6 +47,9 @@
           </small>
         </span>
         <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
+        <% #f.select :tag_tokens, options_for_select(Tag.all.collect{|p| [p.tag_text, p.id]}, selected: @project.tag_ids ), {}, { "data-placeholder" => "Digite tags para adicionar...", multiple: true, class: "select2"} %>
+        <% #f.text_field :tag_tokens, { data: { :tags => Tag.all.collect{|p| [p.tag_text, p.id]}, placeholder: "Digite tags para adicionar..." }, class: "select2" } %>
+
           <span class="help-block">
             Por exemplo: c++, opengl, grafos, cg, ...
           </span>
@@ -172,14 +175,14 @@
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
               <!-- HEADER -->
-              <h5> <i class="icon-group  icon-large"></i> Múltiplos autores </h5>
+              <h5> <i class="icon-group  icon-large"></i> Mais autores </h5>
             </a>
           </div>
           <div id="collapse<%=collapseId%>" class="accordion-body collapse">
             <div class="accordion-inner">
               <!-- CONTENT -->
               <div class="field">
-                <%= f.select :people, Person.all.collect {|p| [p.name, p.id] }, {}, {"data-placeholder" => "Clique para adicionar mais autores...", multiple: true, class: "select2"} %>
+                <%= f.select :people, options_for_select(Person.all.collect{|p| [p.name, p.id] if p!=current_user.person}, selected: @project.person_ids.delete_if{|x| x==current_user.person.id} ), {}, { "data-placeholder" => "Clique para adicionar outros autores...", multiple: true, class: "select2"} %>
               </div>
             </div>
           </div>            
