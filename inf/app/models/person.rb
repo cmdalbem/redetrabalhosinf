@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
-	has_many :ownerships
-	has_many :projects, through: :ownerships, :dependent => :destroy
+	has_many :ownerships, dependent: :destroy
+	has_many :projects, through: :ownerships, dependent: :destroy
 	
 	belongs_to :user
 

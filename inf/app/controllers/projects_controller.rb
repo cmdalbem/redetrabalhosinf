@@ -167,6 +167,11 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         @project.create_activity :create, owner: current_user
+        @project.people.each do |p|
+          if p.user!=current_user
+            @project.create_activity :addOwnership, owner: current_user, recipient: p.user
+          end
+        end
 
         if params[:commit]=="save_and_add_new"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
@@ -192,12 +197,11 @@ class ProjectsController < ApplicationController
 
     pp = params[:project]
     
-    tags = pp["tag_tokens"]
-    tags.delete_at(0) # for some reason, select2 will always give us a blank string in the first position.
-
+    tags = pp["tag_tokens"].split(',')
     people = pp["people"]
     people.delete_at(0) # for some reason, select2 will always give us a blank string in the first position.
     people.push(current_user.person.id)
+    oldAuthors = @project.people.dup
 
     createUnexistingTags(tags)
     
@@ -231,6 +235,18 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if success
         @project.create_activity :update, owner: current_user
+
+        @project.people.each do |p|
+          if not oldAuthors.include?(p)
+            @project.create_activity :addOwnership, owner: current_user, recipient: p.user
+          end
+        end
+
+        oldAuthors.each do |p|
+          if not @project.people.include?(p)
+            @project.create_activity :removeOwnership, owner: current_user, recipient: p.user
+          end
+        end
 
         if params[:commit]=="save_and_add_new"
           format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
@@ -276,7 +292,7 @@ class ProjectsController < ApplicationController
     if @project
       @person = current_user.person
       if @project.likes.include?(@person)
-        PublicActivity::Activity.where(trackable_id: @project.id, key: "project.like").destroy_all
+        PublicActivity::Activity.where(owner_id: current_user, trackable_id: @project.id, key: "project.like").destroy_all
         @project.likes.delete(@person)
       end
     end

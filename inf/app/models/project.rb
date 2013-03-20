@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
 	belongs_to :person
 	belongs_to :course
 
-	has_many :ownerships
+	has_many :ownerships, dependent: :destroy
 	has_many :people, through: :ownerships
 	
 	has_many :taggings, dependent: :destroy

@@ -182,7 +182,7 @@
             <div class="accordion-inner">
               <!-- CONTENT -->
               <div class="field">
-                <%= f.select :people, options_for_select(Person.all.collect{|p| [p.name, p.id] if p!=current_user.person}, selected: @project.person_ids.delete_if{|x| x==current_user.person.id} ), {}, { "data-placeholder" => "Clique para adicionar outros autores...", multiple: true, class: "select2"} %>
+                <%= f.select :people, options_for_select(Person.order("name asc").all.collect{|p| ["#{p.name} (#{p.nick})", p.id]}.delete_if{|x,y| y==current_user.person.id}, selected: @project.person_ids.delete_if{|x| x==current_user.person.id} ), {}, { "data-placeholder" => "Clique para adicionar outros autores...", multiple: true, class: "select2"} %>
               </div>
             </div>
           </div>            

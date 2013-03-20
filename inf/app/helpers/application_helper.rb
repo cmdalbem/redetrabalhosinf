@@ -35,7 +35,7 @@ module ApplicationHelper
 
 	def courseSelector(options)
 		select_tag :course,
-					options_for_select(Course.all.collect {|p| [("<div class=\"" + (p.projects.size==0 ? "muted" : "") + "\">#{p.name} <span class=\"pull-right\">#{p.projects.size}</span></div>"), p.id] }),
+					options_for_select(Course.order("name asc").all.collect {|p| [("<div class=\"" + (p.projects.size==0 ? "muted" : "") + "\">#{p.name} <span class=\"pull-right\">#{p.projects.size}</span></div>"), p.id] }),
 					:include_blank => true,
 					"data-placeholder" => options[:placeholder],
 					class: "select2",
