@@ -63,4 +63,9 @@ class Project < ActiveRecord::Base
 		end
 	end
 
+	# Tests if the user has authorization to edit this project
+	def canBeEditedBy?(user)
+		return people.include?(user.person) || user.admin?
+	end
+
 end

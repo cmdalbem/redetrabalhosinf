@@ -29,9 +29,10 @@ class User < ActiveRecord::Base
 		person.nick
 	end
 
-	# Use it for testing if the logged user can have access to something owned by THIS (self) user
-	def authorizes?(logged_user)
-		return self==logged_user || logged_user.admin?
+	# Use it for testing if the user can have access to something owned by THIS (self) user
+	def authorizes?(user)
+		return self==user || user.admin?
 	end
+
 
 end

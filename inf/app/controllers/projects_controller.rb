@@ -135,7 +135,7 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
 
-    checkAuthorization(@project.person.user)
+    checkAuthorization(@project)
 
   end
 
@@ -193,7 +193,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params["id"])
 
-    checkAuthorization(@project.person.user)
+    checkAuthorization(@project)
 
     pp = params[:project]
     
@@ -223,7 +223,8 @@ class ProjectsController < ApplicationController
       @project.update_attributes(link: pp["link"], linkHitCount: 0)
     end
     
-    success &&= @project.update_attributes(person: @project.person,
+    success &&= @project.update_attributes(
+          # person: @project.person,
           title: pp["title"],
           description: pp["description"],
           course_id: pp["course_id"],
@@ -275,7 +276,12 @@ class ProjectsController < ApplicationController
     if @project
       @person = current_user.person
       if not @project.likes.include?(@person)
-        @project.create_activity :like, owner: current_user, recipient: @project.person.user
+        # @project.people.each do |p|
+        #   @project.create_activity :like, owner: current_user, recipient: p.user
+        # end
+        
+        # FIX ME: sends the notification only for the first author of the list.
+        @project.create_activity :like, owner: current_user, recipient: @project.people.first.user 
  
         @project.likes.push(@person)
       end

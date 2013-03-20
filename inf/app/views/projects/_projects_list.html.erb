@@ -5,7 +5,7 @@
       <th><%= sortable "Disciplina", "course" %></th>
       <th><%= sortable "Semestre", "barra" %></th>
       <% if not @hideAuthors %>
-        <th><%= sortable "Autor", "person" %></th>
+        <th><%= sortable "Autor(es)", "person" %></th>
       <% end %>
       <th>
         <%= sortable "Popularidade
@@ -26,10 +26,10 @@
       <tr class="project-options-trigger">
         <td style="max-width: 600px">
           <!-- Edit Buttons -->
-          <% if user_signed_in? and project.person.user.authorizes?(current_user) %>
+          <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
             <div class="thumb-buttons">
               <div class="btn-group project-hidden-options">
-                <% btnColor = (current_user.admin? and current_user!=project.person.user) ? " btn-danger" : " btn-info" %>
+                <% btnColor = (current_user.admin? and project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
                 <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini"+btnColor %>
                 <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini"+btnColor %>
               </div>
@@ -57,7 +57,7 @@
         <td style="width: 10%"><%= project.semester %></td>
         
         <% if not @hideAuthors %>
-          <td style="width: 10%"><%= link_to project.person.nick, profile_path(project.person.nick) %></td>
+          <td style="width: 10%" class="small"><%= project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %></td>
         <% end %>
 
         <td style="width: 130px">

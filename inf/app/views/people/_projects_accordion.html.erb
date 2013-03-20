@@ -49,7 +49,7 @@
 				<div class="pull-right">
 					<%= link_to raw("<i class=\"icon-zoom-in\"></i> Mais detalhes"), project_path(project) %>
 					<% if user_signed_in? %>
-						<% if current_user.person==project.person %>
+						<% if project.people.include?(current_user.person) %>
 							<small><div>
 								<%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(project) %>
 								| 

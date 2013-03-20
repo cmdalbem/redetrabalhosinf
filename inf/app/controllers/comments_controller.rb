@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 class CommentsController < ApplicationController
 
-	def checkAuthorization(owner)
-		if !owner.authorizes?(current_user)
+	def checkAuthorization
+		if not @project.canBeEditedBy?(current_user)
 	    	redirect_to root_path, alert: 'Desculpe, não tens permissão pra fazer isso.'
 		end
 	end
@@ -13,7 +13,14 @@ class CommentsController < ApplicationController
 			c = Comment.new(input)
 			project = Project.find(input[:project_id])
 	      	if c.save
-	      		c.create_activity :create, owner: current_user, recipient: project.person.user
+	      		# project.people.each do |p|
+	      		# 	if p==current_user.person
+		       #  		c.create_activity :create, owner: current_user, recipient: p.user
+		       #  	end
+		       #  end
+
+		    	# FIX ME: sends the notification only for the first author of the list.
+		    	c.create_activity :create, owner: current_user, recipient: project.people.first.user 
 
 	      		notice = "Comentário enviado com sucesso."
 	      	else
@@ -33,7 +40,7 @@ class CommentsController < ApplicationController
 		@project = @comment.project
 	    @comment.destroy
 
-	    checkAuthorization(@project.person.user)
+	    checkAuthorization
 
 	    redirect_to @project
 	end

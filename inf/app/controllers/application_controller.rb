@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def checkAuthorization(owner)
-    if !owner.authorizes?(current_user)
+  def checkAuthorization(project)
+    if not project.canBeEditedBy?(current_user)
       redirect_to root_path, alert: t('user.not_authorized')
     end
   end
