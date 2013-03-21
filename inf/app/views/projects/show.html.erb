@@ -138,28 +138,32 @@
       <h3><i class="icon-comments"></i> Comentários</h3>
       <% @project.comments.sort_by! {|x| x.created_at} %>
       <ul class="comments-list">
+        
+        <!-- Comments list  -->
         <% @project.comments.each do |c| %>
           <li id=<%="comment-#{c.id}"%>>
+            
             <header>
               <%= image_tag c.person.avatar.url(:thumb) %>
               <%= link_to c.person.name, profile_path(c.person.nick) %>
-              <% if user_signed_in? and current_user.person==c.person %>
-                <%= link_to raw("<i class=\"icon-remove\"></i>"), c, confirm: 'Tem certeza?', method: :delete %>
-              <% end %>
+              <text class="time muted">
+                há <%= time_ago_in_words(c.created_at) %>
+              </text>
+              <div class="pull-right">
+                <% if user_signed_in? and current_user.person==c.person %>
+                  <%= link_to raw("<i class=\"icon-trash\"></i>"), c, confirm: 'Tem certeza?', method: :delete %>
+                <% end %>
+              </div>
             </header>
-            
-            <div class="muted">
-              <%= c.created_at %>
-            </div>
-
 
             <div class="comment">
-                <blockquote>
                 <%= c.text %>
-                </blockquote>
             </div>
+
           </li>
         <% end %>
+
+        <!-- New comment field -->
         <% if user_signed_in? %>
           <li>
             <header>

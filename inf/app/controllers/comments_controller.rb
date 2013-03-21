@@ -38,9 +38,12 @@ class CommentsController < ApplicationController
 	def destroy
 		@comment = Comment.find(params[:id])
 		@project = @comment.project
-	    @comment.destroy
 
 	    checkAuthorization
+
+	    # Finds and deletes the notification of this comment
+	    PublicActivity::Activity.where(owner_id: current_user, trackable_id: @comment, key: "comment.create").destroy_all
+	    @comment.destroy
 
 	    redirect_to @project
 	end

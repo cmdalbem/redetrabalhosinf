@@ -56,7 +56,7 @@
 							    <li>
 									<%= render_activity a %>
 									<small>
-										<p class="muted pull-right"><i class="icon-time"></i>há <%= time_ago_in_words(a.created_at) %></p>
+										<p class="muted pull-right"></i><%= time_ago_in_words(a.created_at) %></p>
 									</small>
 								</li>
 							<% end %>
@@ -81,7 +81,7 @@
 							<p class="author">por <%= link_to p.person, profile_path(p.person.nick) %></p>
 							<small>
 								<p class="muted"><i class="icon-book"></i><%= link_to p.course.name, projects_path(course: p.course.id), class: "muted" %></p>
-								<p class="muted"><i class="icon-time"></i>há <%= time_ago_in_words(p.created_at) %></p>
+								<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(p.created_at) %></p>
 							</small>
 						</li>
 					<% end %>
@@ -102,7 +102,7 @@
 							<header><%= link_to p, profile_path(p.nick) %></header>
 							<p class="author"><%= p.name %></p>
 							<small>
-								<p class="muted"><i class="icon-time"></i>há <%= time_ago_in_words(p.created_at) %></p>
+								<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(p.created_at) %></p>
 							</small>
 						</li>
 					<% end %>
@@ -121,7 +121,7 @@
 					    <li>
 							<%= render_activity a %>
 							<small>
-								<p class="muted"><i class="icon-time"></i>há <%= time_ago_in_words(a.created_at) %></p>
+								<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(a.created_at) %></p>
 							</small>
 						</li>
 					<% end %>

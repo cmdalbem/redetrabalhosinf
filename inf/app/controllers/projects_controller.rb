@@ -298,6 +298,7 @@ class ProjectsController < ApplicationController
     if @project
       @person = current_user.person
       if @project.likes.include?(@person)
+        # Finds and deletes the notification of this like
         PublicActivity::Activity.where(owner_id: current_user, trackable_id: @project.id, key: "project.like").destroy_all
         @project.likes.delete(@person)
       end
