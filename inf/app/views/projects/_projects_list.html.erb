@@ -29,7 +29,7 @@
           <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
             <div class="thumb-buttons">
               <div class="btn-group project-hidden-options">
-                <% btnColor = (current_user.admin? and project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
+                <% btnColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
                 <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini"+btnColor %>
                 <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini"+btnColor %>
               </div>

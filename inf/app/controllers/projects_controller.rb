@@ -312,7 +312,10 @@ class ProjectsController < ApplicationController
   def downloadFile
     @project = Project.find(params[:id])
 
-    @project.update_attributes(downloadCount: @project.downloadCount+1)
+    if cookies["#{@project.id}_downloaded"]==nil
+      @project.update_attributes(downloadCount: @project.downloadCount+1)
+      cookies["#{@project.id}_downloaded"] = true
+    end
 
     respond_to do |format|
       format.html { redirect_to @project.file.url }
@@ -322,7 +325,10 @@ class ProjectsController < ApplicationController
   def clickLink
     @project = Project.find(params[:id])
 
-    @project.update_attributes(linkHitCount: @project.linkHitCount+1)
+    if cookies["#{@project.id}_clicked"]==nil
+      @project.update_attributes(linkHitCount: @project.linkHitCount+1)
+      cookies["#{@project.id}_clicked"] = true     
+    end
 
     respond_to do |format|
       format.html { redirect_to @project.link }
