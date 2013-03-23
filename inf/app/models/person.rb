@@ -43,7 +43,7 @@ class Person < ActiveRecord::Base
 
 	def getTotalLikes()
 		sum=0
-		projects.each { |p| sum += p.likes.count }
+		projects.each { |p| sum += p.likeCount }
 		sum
 	end
 

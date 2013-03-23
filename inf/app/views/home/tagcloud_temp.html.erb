@@ -1,0 +1,10 @@
+<%= projects_path(search: Tag.find(140).tag_text) %>
+<%= link_to Tag.find(140).tag_text, projects_path(search: Tag.find(140).tag_text) %>
+	
+<script type="text/javascript">
+   var word_array = <%= raw Tag.all.collect { |t| {text: t.tag_text, weight: t.projects.size, link: projects_path(search: t.tag_text)} }.to_json %>;
+  
+  $(function() {
+    $("#tagcloud").jQCloud(word_array);
+  });
+</script>

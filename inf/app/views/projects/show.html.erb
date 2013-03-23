@@ -61,7 +61,7 @@
           </div>
 
           <p class="curtir-frame"> 
-            <span id="project-like-count-<%= @project.id %>"><%= link_to @project.likes.count, "#likesModal", "data-toggle" => "modal" %></span>
+            <span id="project-like-count-<%= @project.id %>"><%= link_to @project.likeCount, "#likesModal", "data-toggle" => "modal" %></span>
             <i class="icon-thumbs-up"></i>
             <% if user_signed_in? %>
             <%  likeClass = unlikeClass = ""

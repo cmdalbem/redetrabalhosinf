@@ -68,8 +68,8 @@ module ApplicationHelper
 		ret = "<div class=\"icons\">"
 	    hasAny = false
 
-	    if project.likes.count!=0
-	    	ret += "<i class=\"icon-thumbs-up\"></i> #{project.likes.count}"
+	    if project.likeCount!=0
+	    	ret += "<i class=\"icon-thumbs-up\"></i> #{project.likeCount}"
 			hasAny = true
 		end
 

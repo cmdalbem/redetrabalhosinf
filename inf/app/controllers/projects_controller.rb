@@ -42,10 +42,8 @@ class ProjectsController < ApplicationController
         plist.sort_by! {|p| p.course.name.downcase }
       when "person"
         plist.sort_by! {|p| p.person.name.downcase }
-      # when "likes"
-      #   plist.sort_by! {|p| p.likes.size }
-      # when "downloads"
-      #   plist.sort_by! {|p| p.downloadCount }
+      when "likes"
+        plist.sort_by! {|p| p.likeCount }
       when "relevance"
         plist.sort_by! {|p| p.relevance }
       when "date"
@@ -285,8 +283,8 @@ class ProjectsController < ApplicationController
         
         # FIX ME: sends the notification only for the first author of the list.
         @project.create_activity :like, owner: current_user, recipient: @project.people.first.user 
- 
         @project.likes.push(@person)
+        @project.update_attributes(likeCount: @project.likeCount+1)
       end
     end
 
@@ -304,6 +302,7 @@ class ProjectsController < ApplicationController
         # Finds and deletes the notification of this like
         PublicActivity::Activity.where(owner_id: current_user, trackable_id: @project.id, key: "project.like").destroy_all
         @project.likes.delete(@person)
+        @project.update_attributes(likeCount: @project.likeCount-1)
       end
     end
     

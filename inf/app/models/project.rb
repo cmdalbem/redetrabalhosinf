@@ -48,8 +48,8 @@ class Project < ActiveRecord::Base
 
 	attr_reader :relevance
 	def relevance
-		# (20*self.likes.count + 10*self.downloadCount + 10*self.linkHitCount)*100.0 / (1+self.viewCount)
-		10*self.likes.count + 7*self.downloadCount + 7*self.linkHitCount + 5*self.comments.count + 1*self.viewCount
+		# (20*self.likeCount + 10*self.downloadCount + 10*self.linkHitCount)*100.0 / (1+self.viewCount)
+		10*self.likeCount + 7*self.downloadCount + 7*self.linkHitCount + 5*self.comments.count + 1*self.viewCount
 	end
 
 	def self.search(search)

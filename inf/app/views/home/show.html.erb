@@ -39,6 +39,13 @@
 	</div>
 
 	<!-- Tag Cloud -->
+    <div class="row-fluid">
+		<center>
+			<div id="tagcloud"></div>
+		</center>
+	</div>
+	
+
     <% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5 nube6) do |name, css_class| %>
 	  <%= link_to name, projects_path(search: name), class: css_class %>
 	<% end %>

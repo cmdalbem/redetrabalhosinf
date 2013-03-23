@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130313171317) do
-=======
-ActiveRecord::Schema.define(:version => 20130319230933) do
->>>>>>> origin/multiple-authors
+ActiveRecord::Schema.define(:version => 20130323181331) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -76,8 +72,6 @@ ActiveRecord::Schema.define(:version => 20130319230933) do
 
   add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
 
-<<<<<<< HEAD
-=======
   create_table "ownerships", :force => true do |t|
     t.integer  "person_id"
     t.integer  "project_id"
@@ -88,7 +82,6 @@ ActiveRecord::Schema.define(:version => 20130319230933) do
   add_index "ownerships", ["person_id"], :name => "index_ownerships_on_person_id"
   add_index "ownerships", ["project_id"], :name => "index_ownerships_on_project_id"
 
->>>>>>> origin/multiple-authors
   create_table "people", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
@@ -104,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20130319230933) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "avatarPath"
   end
 
   create_table "people_projects", :id => false, :force => true do |t|
@@ -132,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20130319230933) do
     t.integer  "viewCount",          :default => 0
     t.string   "link"
     t.integer  "linkHitCount",       :default => 0
+    t.integer  "likeCount"
   end
 
   add_index "projects", ["person_id"], :name => "index_projects_on_person_id"
