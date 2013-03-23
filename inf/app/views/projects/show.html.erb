@@ -37,7 +37,7 @@
         <p>
           <ul class="tags clearfix">
           <% @project.tags.each do |tag| %>
-            <li> <%= link_to tag.tag_text, projects_path(search: tag.tag_text) %> </li>
+            <li> <%= link_to_tag tag %> </li>
           <% end %>
           </ul>
         </p>

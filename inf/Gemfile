@@ -53,8 +53,11 @@ gem 'bootstrap-will_paginate'
 # Adds UTF8 encoding to all files
 gem "magic_encoding"
 
-#
+# Users activities recording and displaying
 gem "public_activity"
+
+# Tagclouds!
+gem "jqcloud-rails"
 
 # Gems to be added only when running on Linux
 platforms :ruby do

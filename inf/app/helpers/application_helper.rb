@@ -73,15 +73,15 @@ module ApplicationHelper
 			hasAny = true
 		end
 
-		if project.downloadCount + project.linkHitCount != 0
-			if hasAny
-				ret += "<span class=\"muted\"> #{separator} </span>"
-			else
-				hasAny = true
-			end
+		# if project.downloadCount + project.linkHitCount != 0
+		# 	if hasAny
+		# 		ret += "<span class=\"muted\"> #{separator} </span>"
+		# 	else
+		# 		hasAny = true
+		# 	end
 
-			ret += "<i class=\"icon-download\"></i> #{(project.downloadCount+project.linkHitCount)}"
-		end
+		# 	ret += "<i class=\"icon-download\"></i> #{(project.downloadCount+project.linkHitCount)}"
+		# end
 
 		if project.comments.count!=0
 			if hasAny
@@ -116,5 +116,31 @@ module ApplicationHelper
 	def url_to_project project
 		# person_project_path(project.person.nick, project.title)
 		project_path(project)
+	end
+
+	# Link to the projects list with a search for this tag
+	def link_to_tag tag
+		link_to tag.tag_text, projects_path(search: tag.tag_text)
+	end
+
+	# Thanks to: http://juixe.com/techknow/index.php/2006/07/15/acts-as-taggable-tag-cloud/
+	def tag_cloud(tags, classes)
+		max, min = 0, 0
+		i=0
+		count = []
+		tags.each { |t|
+			count[i] = t.projects.count
+			max = count[i] if count[i] > max
+			min = count[i] if count[i] < min
+			i+=1
+		}
+
+		divisor = ((max - min) / classes.size) + 1
+
+		i=0
+		tags.each { |t|
+			yield t.tag_text, classes[(count[i] / divisor)]
+			i+=1
+		}
 	end
 end

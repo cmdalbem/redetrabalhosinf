@@ -7,11 +7,14 @@ class ProjectsController < ApplicationController
 
   def createUnexistingTags(tags)
     # Check if one of the entered Tags doesn't exist on the Database.
-    # This is how freeTagging on TokenInput works: it will give us the a number if the recognizes that the tag entered already exists, otherwise it will give us the string of this new tag.
+    # This is how freeTagging on TokenInput works: it will give us the a number if the recognizes
+    #   that the tag entered already exists, otherwise it will give us the string of this new tag.
     tags.size.times do |i|
       # Check if it's a "FreeTag"
       if not is_number?(tags[i])
-        # Make sure this tag doesn't already exist (the user entered a custom tag before TokenInput ended searching)
+        # Make sure this tag doesn't already exist, i.e. if the user entered a custom tag before 
+        #   TokenInput ended searching - that's actually a bug of tokeninput which I hope will be
+        #   addressed soon.
         duplicates = Tag.where(tag_text: tags[i])
         if duplicates.empty?
           newTag = Tag.create(tag_text: tags[i])
@@ -70,7 +73,7 @@ class ProjectsController < ApplicationController
 
     # if params[:sort] == @lastSort
       # Handle searchs
-      @projects = Project.includes(:tags).includes(:comments)
+      @projects = Project.includes(:tags).includes(:comments) # are these 'includes' needed???
 
       if params[:course] and !params[:course].empty?
         @course = Course.find(params[:course].to_i)

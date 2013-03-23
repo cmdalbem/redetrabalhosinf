@@ -38,6 +38,12 @@
 
 	</div>
 
+	<!-- Tag Cloud -->
+    <% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5 nube6) do |name, css_class| %>
+	  <%= link_to name, projects_path(search: name), class: css_class %>
+	<% end %>
+
+	<!-- My Notifications section -->
 	<% if user_signed_in? %>
 		<div class="row-fluid">
 			<div class="offset2 span8">
@@ -70,6 +76,7 @@
 		</div>
 	<% end %>
 
+	<!-- News lists -->
 	<div class="row-fluid">
 		<div class="span4">
 			<div class="news">

@@ -15,6 +15,7 @@
 //= require_tree .
 //= require bootstrap
 //= require select2
+//= require jqcloud
 
 // TokenInput Settings
 // Thanks to http://loopj.com/jquery-tokeninput/

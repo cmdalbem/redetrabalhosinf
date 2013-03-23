@@ -11,6 +11,7 @@
 *= require_self
 *= require_tree .
 *= require select2
+*= require jqcloud
 */
 
 @import "bootstrap";
@@ -702,6 +703,28 @@ label {
 	background: #000;
 	color: white;
 }*/
+
+
+/*Tag Cloud*/
+.jqcloud {
+	line-height: normal;
+}
+#tagcloud {
+	width: 100%;
+	height: 350px;
+
+	span.w10, span.w9, span.w8, span.w7 {
+	    text-shadow: 0px 1px 1px rgb(204, 204, 204);
+	}
+}
+
+.nube1 { font-size: 0.6em; opacity:0.5; }
+.nube2 { font-size: 1.0em; opacity:0.6; }
+.nube3 { font-size: 1.4em; opacity:0.7; }
+.nube4 { font-size: 1.8em; opacity:0.8; }
+.nube5 { font-size: 2.2em; opacity:0.9; }
+.nube6 { font-size: 2.6em; opacity:1 }
+
 
 .person-thumb:hover img {
 	opacity: 1;
