@@ -1,0 +1,87 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <tr class="muted">
+      <!-- <th><%= sortable "Título", "title" %></th>
+      <th><%= sortable "Disciplina", "course" %></th>
+      <th><%= sortable "Semestre", "barra" %></th>
+      <% if not @hideAuthors %>
+        <th><%= sortable "Autor(es)", "person" %></th>
+      <% end %>
+      <th>
+        <%= sortable "Popularidade
+        <a href=\"#\"
+        rel=\"popover\"
+        data-original-title=\"Popularidade?\"
+        data-content=\"É ordenada pela seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>\"
+        >
+        <i class=\"icon-question-sign\"></i></a>
+        ", "relevance" %>
+      </th>-->
+      
+      <th> TÍTULO </th>
+      <% if not @hideAuthors %>
+        <th> AUTORES </th>
+      <% end %>
+      <th> DISCIPLINA </th>
+      <th>
+        <center>
+          POPULARIDADE
+          <a href="#" rel="popover" data-original-title="Popularidade?" 
+            data-content="É ordenada pela seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>"
+            > <i class="icon-question-sign"></i></a>
+        </center>
+      </th> 
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr class="project-options-trigger">
+        <td style="max-width: 600px">
+          <!-- Edit Buttons -->
+          <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
+            <div class="thumb-buttons">
+              <div class="btn-group project-hidden-options">
+                <% btnColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
+                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project) %>
+                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete %>
+              </div>
+            </div>
+          <% end %>
+
+          <%# The use of raw here is probably bad too, but I dont understand enough to fix it %>
+          <a href=<%=url_to_project(project)%> class="title no-decoration">
+            <%=project.title%> <%= raw(getContentIcons(project)) %>
+            <% if not project.tags.empty? %>
+              <br>
+              <smaller class="muted">
+                <i class="icon-tag"></i>
+                <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
+              </smaller>
+            <% end %>
+          </a>
+
+          
+        </td>
+        
+        <% if not @hideAuthors %>
+          <td style="width: 10%" class="small"><%= project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %></td>
+        <% end %>
+
+        <td style="width: 30%"><small><%= link_to project.course.name, projects_path(course: project.course.id) %> (<%= project.semester %>) </small></td>
+
+        <td style="width: 130px">
+          <center class="small">
+            <%= raw(printProjectPopularityStats(project,"·")) %>
+          </center>
+        </td>
+        
+        <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likeCount %></span>  </td> -->
+        <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
+        <!-- <td style="width: 120px"><%= number_with_precision(project.relevance, :precision => 1) %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>

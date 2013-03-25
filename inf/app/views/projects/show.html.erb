@@ -95,7 +95,7 @@
 
     <p>
       <span class="muted"><i class="icon-book"></i> Disciplina</span>
-      <%= "#{@project.course.name} (#{@project.semester})"%>
+      <%= link_to @project.course.name, projects_path(course: @project.course.id) %> (<%=@project.semester%>)
     </p>
     
     <p>

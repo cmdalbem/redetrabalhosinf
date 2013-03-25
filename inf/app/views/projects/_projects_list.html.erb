@@ -1,25 +1,19 @@
-<table class="table table-striped table-condensed table-hover">
-  <thead>
-    <tr style="font-style: normal;">
-      <th><%= sortable "Título", "title" %></th>
-      <th><%= sortable "Disciplina", "course" %></th>
-      <th><%= sortable "Semestre", "barra" %></th>
-      <% if not @hideAuthors %>
-        <th><%= sortable "Autor(es)", "person" %></th>
-      <% end %>
-      <th>
-        <%= sortable "Popularidade
-        <a href=\"#\"
-        rel=\"popover\"
-        data-original-title=\"Popularidade?\"
-        data-content=\"É ordenada pela seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>\"
-        >
-        <i class=\"icon-question-sign\"></i></a>
-        ", "relevance" %>
-      </th>
-    </tr>
-  </thead>
+<!-- <div class="media">
 
+  <% @projects.each do |project| %>
+    <a class="pull-left" href="#">
+      <%= image_tag project.image.url %>
+    </a>
+
+    <div class="media-body">
+      <h4 class="media-heading"><%=project.title%></h4>
+      <%=project.description%>
+    </div>
+  <% end %>
+
+</div> -->
+
+<table class="table table-striped table-condensed table-hover">
 
   <tbody>
     <% @projects.each do |project| %>
@@ -36,9 +30,24 @@
             </div>
           <% end %>
 
-          <%# The use of raw here is probably bad too, but I dont understand enough to fix it %>
           <a href=<%=url_to_project(project)%> class="title no-decoration">
+            <!-- Project title -->
             <%=project.title%> <%= raw(getContentIcons(project)) %>
+
+            <!-- Authors -->
+            <br>
+            <smaller>
+              <span class="muted">
+                <% if project.people.size==1 %>
+                  <i class="icon-user"></i>
+                <% else %>
+                  <i class="icon-group"></i>
+                <% end %>
+                <%= project.people.collect { |p| p.nick }.join(", ").html_safe %>
+              </span>
+            </smaller>
+            
+            <!-- Tags -->
             <% if not project.tags.empty? %>
               <br>
               <smaller class="muted">
@@ -51,14 +60,12 @@
           
         </td>
 
-        <td style="width: 22%"><small><%= link_to project.course.name, {course: project.course.id} %></small></td>
-        
-
-        <td style="width: 10%"><%= project.semester %></td>
-        
-        <% if not @hideAuthors %>
-          <td style="width: 10%" class="small"><%= project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %></td>
-        <% end %>
+        <td style="width: 30%">
+          <small>
+            <span class="muted"><i class="icon-book"></i></span>
+            <%= link_to project.course.name, projects_path(course: project.course.id) %> (<%= project.semester %>)
+          </small>
+        </td>
 
         <td style="width: 130px">
           <center class="small">
