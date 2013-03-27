@@ -1,8 +1,10 @@
+<% meta [:property => "og:image", :content => @project.image.url], :description => @project.description %>
+
 <div class="content">
 
 <div class="container-fluid center">
 
-<h1 class="projectname-text" style="display: inline;"> <%= @project.title %></h1>
+<h1 class="projectname-text" style="display: inline;"> <%= title @project.title %> </h1>
 <div class="pull-right">
   <% if user_signed_in? and @project.canBeEditedBy?(current_user) %>
     <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(@project), class: "btn btn-info btn-large" %>
@@ -140,6 +142,11 @@
       <ul class="comments-list">
         
         <!-- Comments list  -->
+        <% if @project.comments.empty? %>
+          <span class="muted">
+            Sem comentários a exibir.
+          </span>
+        <% end %>
         <% @project.comments.each do |c| %>
           <li id=<%="comment-#{c.id}"%>>
             

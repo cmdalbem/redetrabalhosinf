@@ -55,9 +55,19 @@ class Project < ActiveRecord::Base
 	def self.search(search)
 		search.downcase!
 		if search
-			# Queries: http://m.onkey.org/active-record-query-interface
-			# Joins: http://edgeguides.rubyonrails.org/active_record_querying.html#joining-tables
-			where("lower(title) LIKE ? OR lower(description) LIKE ? OR tags.tag_text LIKE ? ", "%#{search}%", "%#{search}%", "%#{search}%")
+			query = []
+			# Creates queries for each word of the input, and then join them with ANDs.
+			words = search.split(" ")
+			words.each do |w|
+				query << "(lower(title) LIKE '%#{w}%' OR lower(tag_text) LIKE '%#{w}%' OR lower(description) LIKE '%#{w}%')"
+			end
+			query = query.join(" OR ")
+
+			# References
+			# 	Queries: http://m.onkey.org/active-record-query-interface
+			# 	ActiveRecord HABTM finds with "AND": http://www.ruby-forum.com/topic/191062
+			# 	Joins: http://edgeguides.rubyonrails.org/active_record_querying.html#joining-tables
+			joins(:tags).where(query).group("projects.id")#.having("count(*)>=#{words.size}")
 		else
 			scoped
 		end

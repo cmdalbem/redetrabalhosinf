@@ -71,7 +71,8 @@ class ProjectsController < ApplicationController
 
     # if params[:sort] == @lastSort
       # Handle searchs
-      @projects = Project.includes(:tags).includes(:comments) # are these 'includes' needed???
+      # @projects = Project.includes(:tags)
+      @projects = Project.scoped
 
       if params[:course] and !params[:course].empty?
         @course = Course.find(params[:course].to_i)
@@ -81,11 +82,10 @@ class ProjectsController < ApplicationController
       if params[:search] and !params[:search].empty?
         @projects = @projects.search(params[:search])
       end
-
-      @searchSize = @projects.size
     # end
 
     @projects = @projects.all
+    @searchSize = @projects.size
 
     # Handle sortings
     sort_projects_by_column @projects, params[:sort], params[:direction]
@@ -113,12 +113,12 @@ class ProjectsController < ApplicationController
   def show
 
     # Test if we're doing it github style
-    if params[:person] && params[:project]
-      user = Person.find_by_nick(params[:person])
-      @project = user.projects.includes(:comments).find_by_title(params[:project]) if user
-    else
+    # if params[:person] && params[:project]
+    #   user = Person.find_by_nick(params[:person])
+    #   @project = user.projects.includes(:comments).find_by_title(params[:project]) if user
+    # else
       @project = Project.includes(:comments).find(params[:id])
-    end
+    # end
 
     not_found if @project.nil?
 

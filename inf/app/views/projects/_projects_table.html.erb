@@ -27,7 +27,7 @@
         <center>
           POPULARIDADE
           <a href="#" rel="popover" data-original-title="Popularidade?" 
-            data-content="É ordenada pela seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>"
+            data-content="Os projetos são ordenados usando a seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>"
             > <i class="icon-question-sign"></i></a>
         </center>
       </th> 
@@ -44,8 +44,8 @@
             <div class="thumb-buttons">
               <div class="btn-group project-hidden-options">
                 <% btnColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
-                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project) %>
-                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete %>
+                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini "+btnColor %>
+                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini "+btnColor%>
               </div>
             </div>
           <% end %>

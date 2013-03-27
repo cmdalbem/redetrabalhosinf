@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<body>
 
 <head>
-	<title>infHUB</title>
+	<%= title site: "infHUB" %>
+
+	<%= metamagic [:property => "og:image", :content => "http://infhub.herokuapp.com/assets/logo.png"], [:property => "og:site_name", :content => "infHUB"], description: "A rede social de compartilhamento de trabalhos do INF.", keywords: %w(inf ufrgs social network projects trabalhos disciplinas cadeiras rede social compartilhamento arquivos downloads ciencia da computação cic engenharia da computação ecp) %>
+
 	<%= stylesheet_link_tag    "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
-	<%= analytics_init if Rails.env.production? %>
 </head>
+
+<body>
 
 <div id="wrap">
 	<div id="main">
@@ -118,8 +121,12 @@
 		</center>
 	</div>
 
-  </div>
+  </section>
 </footer>
+
+
+<!-- Google Analytics -->
+<%= analytics_init if Rails.env.production? %>
 
 </body>
 

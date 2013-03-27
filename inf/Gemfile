@@ -56,8 +56,13 @@ gem "magic_encoding"
 # Users activities recording and displaying
 gem "public_activity"
 
-# Tagclouds!
+# Beautiful tagclouds
 gem "jqcloud-rails"
+
+# Helpers for meta tags
+gem "headliner"
+gem 'metamagic'
+
 
 # Gems to be added only when running on Linux
 platforms :ruby do

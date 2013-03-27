@@ -34,13 +34,15 @@ module ApplicationHelper
 	end
 
 	def courseSelector(options)
-		select_tag :course,
-					options_for_select(Course.order("name asc").all.collect {|p| [("<div class=\"" + (p.projects.size==0 ? "muted" : "") + "\">#{p.name} <span class=\"pull-right\">#{p.projects.size}</span></div>"), p.id] }),
-					:include_blank => true,
-					"data-placeholder" => options[:placeholder],
-					class: "select2",
-					:onchange => 'this.form.submit()'
-
+		# select_tag :course,
+		# 			# options_for_select(Course.order("name asc").all.collect {|p| [("<div class=\"" + (p.projects.size==0 ? "muted" : "") + "\">#{p.name} <span class=\"pull-right\">#{p.projects.size}</span></div>"), p.id] }),
+		# 			:include_blank => true,
+		# 			"data-placeholder" => options[:placeholder],
+		# 			class: "select2",
+		# 			:onchange => 'this.form.submit()'
+		content = javascript_tag("var select2Array = " + raw(Course.order("name asc").all.collect {|p| {text: p.name, id: p.id, nprojects: p.projects.size} }.to_json) + ";")
+		content += text_field_tag(:course, "", "data-placeholder" => options[:placeholder], class: "select2", :onchange => 'this.form.submit()')
+		content
 	end
 
 

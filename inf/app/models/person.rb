@@ -35,7 +35,7 @@ class Person < ActiveRecord::Base
 		search.downcase!
 		if search
 			# Queries: http://m.onkey.org/active-record-query-interface
-			where("lower(name) LIKE ? OR lower(nick) LIKE ?", "%#{search}%", "%#{search}%")
+			where("lower(name) LIKE %#{search}% OR lower(nick) LIKE %#{search}%")
 		else
 			scoped
 		end

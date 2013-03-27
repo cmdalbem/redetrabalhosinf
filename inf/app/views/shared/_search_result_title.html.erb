@@ -2,7 +2,9 @@
 	<%if params[:search] and !params[:search].empty? %>
 		<br>
 		<div class="muted well well-small" style="width: 40%;">
-			Mostrando <strong><%= @searchSize %></strong> resultados para: <strong><%=params[:search]%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil), class: "muted no-decoration" %>
+			Mostrando <strong><%= @searchSize %></strong> <%= @searchSize==1 ? "resultado" : "resultados" %> para: 
+			<strong><%=params[:search].split(" ").join(" · ")%></strong> 
+			<%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil), class: "close" %>
 		</div>
 	<% end %>
 </center>

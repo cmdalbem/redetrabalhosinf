@@ -22,7 +22,7 @@
             <%= image_tag @person.avatar, class: "img-polaroid" %>
           </center>
         
-          <h2 class="username-text"><%= @person.name %> <small><%=@person.nick%></small></h2>
+          <h2 class="username-text"><%= title @person.name %><small><%=@person.nick%></small></h2>
           
           <p>
             <%= @person.about %>

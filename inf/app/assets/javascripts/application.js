@@ -53,7 +53,26 @@ function deleteUploadedField(toDeleteCheckbox,fieldName)
 }
 
 $(function() {
-	$(".select2").select2();
+	function formatResult(state) {
+	    divclass = state.nprojects==0 ? "muted" : "";
+	    return "<div class=\"" + divclass + "\"> " + state.text + "<span class=\"pull-right\">" + state.nprojects + "</span></div>";
+	}
+
+	function formatSelection(state) {
+		return state.text;
+	}
+
+	$(".select2").select2({
+		formatNoMatches: function () { return "Nenhum resultado encontrado"; }
+        ,formatInputTooShort: function (input, min) { var n = min - input.length; return "Informe " + n + " caracter" + (n == 1? "" : "es"); }
+        ,formatInputTooLong: function (input, max) { var n = input.length - max; return "Apague " + n + " caracter" + (n == 1? "" : "es"); }
+        ,formatSelectionTooBig: function (limit) { return "Só é possível selecionar " + limit + " elemento" + (limit == 1 ? "" : "s"); }
+        ,formatLoadMore: function (pageNumber) { return "Carregando mais resultados..."; }
+        ,formatSearching: function () { return "Buscando..."; }
+        ,data: select2Array
+        ,formatResult: formatResult
+        ,formatSelection: formatSelection
+	});
 });
 
 $(function() {

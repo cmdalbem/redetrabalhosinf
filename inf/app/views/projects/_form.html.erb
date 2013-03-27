@@ -15,7 +15,7 @@
     <div class="span6">
       <div class="field">
         <%= f.label "Disciplina", class: "required" %><br />
-        <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {include_blank: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "select2"} %>
+        <%= f.select :course_id, options_for_select(Course.all.collect {|p| [p.name, p.id] }, selected: params[:course_id]), {include_blank: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "select2"} %>
       </div>
 
       <div class="field">
