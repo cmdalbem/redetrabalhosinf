@@ -31,6 +31,20 @@
 				<%= form_tag projects_path, method: 'get', class: "form-search" do %>
 					<%= courseSelector({placeholder: "Escolha uma disciplina..."}) %>
 					<!-- <%= submit_tag "Ir", class: "btn", name: nil, style: "margin-bottom: 20px;" %> -->
+					<%= javascript_tag do %>
+						function formatResult(state) {
+						    divclass = state.nprojects==0 ? "muted" : "";
+						    return "<div class=\"" + divclass + "\"> " + state.text + "<span class=\"pull-right\">" + state.nprojects + "</span></div>";
+						}
+						function formatSelection(state) {
+							return state.text;
+						}
+						$("#course.select2").select2({
+							data: coursesArray
+					        ,formatResult: formatResult
+					        ,formatSelection: formatSelection
+						});
+					<% end %>
 				<% end %>			
 
 			</center>

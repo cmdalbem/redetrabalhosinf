@@ -15,7 +15,13 @@
     <div class="span6">
       <div class="field">
         <%= f.label "Disciplina", class: "required" %><br />
-        <%= f.select :course_id, options_for_select(Course.all.collect {|p| [p.name, p.id] }, selected: params[:course_id]), {include_blank: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "select2"} %>
+        <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {include_blank: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "select2"} %>
+        <%= javascript_tag do %>
+          var preselect = <%= params[:course_id]!=nil ? params[:course_id] : (@project.course_id? ? @project.course_id : 0) %>;
+          $(function() {
+            $("#project_course_id.select2").select2().select2('val',preselect);
+          });
+        <% end %>
       </div>
 
       <div class="field">
@@ -46,9 +52,14 @@
             <i class="icon-info-sign"></i> Tags ajudam a encontrarem teu trabalho mais facilmente.
           </small>
         </span>
-        <%= f.text_area :tag_tokens, "data-pre" => @project.tags.as_json.to_json %>
-        <% #f.select :tag_tokens, options_for_select(Tag.all.collect{|p| [p.tag_text, p.id]}, selected: @project.tag_ids ), {}, { "data-placeholder" => "Digite tags para adicionar...", multiple: true, class: "select2"} %>
-        <% #f.text_field :tag_tokens, { data: { :tags => Tag.all.collect{|p| [p.tag_text, p.id]}, placeholder: "Digite tags para adicionar..." }, class: "select2" } %>
+        
+        <%= javascript_tag("var tagsArray = " + raw(Tag.order("tag_text asc").all.collect{|p| {text: p.tag_text, id: p.id}}.to_json) + ";") %>
+        <%= text_field_tag :tag_tokens, "", "data-placeholder" => "Digite tags para adicionar...", class: "select2", value: @project.tag_ids.join(",") %>
+        <%= javascript_tag do %>
+          $(function() {
+            $("#tag_tokens.select2").select2({tags: tagsArray, multiple: true});
+          });
+        <% end %>
 
           <span class="help-block">
             Por exemplo: c++, opengl, grafos, cg, ...
@@ -182,7 +193,30 @@
             <div class="accordion-inner">
               <!-- CONTENT -->
               <div class="field">
-                <%= f.select :people, options_for_select(Person.order("name asc").all.collect{|p| ["#{p.name} (#{p.nick})", p.id]}.delete_if{|x,y| y==current_user.person.id}, selected: @project.person_ids.delete_if{|x| x==current_user.person.id} ), {}, { "data-placeholder" => "Clique para adicionar outros autores...", multiple: true, class: "select2"} %>
+                <% #f.select :people, options_for_select(Person.order("name asc").all.collect{|p| ["#{p.name} (#{p.nick})", p.id]}.delete_if{|x,y| y==current_user.person.id}, selected: @project.person_ids.delete_if{|x| x==current_user.person.id} ), {}, { "data-placeholder" => "Clique para adicionar outros autores...", multiple: true, class: "select2"} %>
+
+
+                <%= javascript_tag("var peopleArray = " + raw(Person.where("id!=?",current_user.person.id).order("name asc").all.collect{|p| {id: p.id, text: "#{p.name} (#{p.nick})", locked: (p.id == current_user.person.id) }}.to_json) + ";") %>
+                <%= text_field_tag :people, "", "data-placeholder" => "Clique para adicionar outros autores...", class: "select2", value: (@project.person_ids).join(',') %>
+                <%= javascript_tag do %>
+                  $(function() {
+                    $("#people.select2").select2({
+                        data: peopleArray,
+                        multiple: true,
+                        initSelection : function (element, callback) {
+                          var data = [];
+                          $(element.val().split(",")).each(function (index,value) {
+                              peopleArray.forEach( function(item) {
+                                if(item.id == value) {
+                                  data.push(item);
+                                }
+                              });
+                          });
+                          callback(data);
+                        }
+                    });
+                  });
+                <% end %>
               </div>
             </div>
           </div>            

@@ -7,14 +7,12 @@ class ProjectsController < ApplicationController
 
   def createUnexistingTags(tags)
     # Check if one of the entered Tags doesn't exist on the Database.
-    # This is how freeTagging on TokenInput works: it will give us the a number if the recognizes
+    # This is how select2 taggin mode works: it will give us the a number if the recognizes
     #   that the tag entered already exists, otherwise it will give us the string of this new tag.
     tags.size.times do |i|
       # Check if it's a "FreeTag"
       if not is_number?(tags[i])
-        # Make sure this tag doesn't already exist, i.e. if the user entered a custom tag before 
-        #   TokenInput ended searching - that's actually a bug of tokeninput which I hope will be
-        #   addressed soon.
+        # Make sure this tag doesn't already exist.
         duplicates = Tag.where(tag_text: tags[i])
         if duplicates.empty?
           newTag = Tag.create(tag_text: tags[i])
@@ -144,9 +142,10 @@ class ProjectsController < ApplicationController
   def create
     pp = params["project"]
     owner = current_user.person
-    tags = pp["tag_tokens"].split(",")
-    people = pp["people"]
-    people.delete_at(0) # for some reason, select2 will always give us a blank string in the first position.
+    
+    tags = params["tag_tokens"].split(",")
+
+    people = params["people"].split(',')
     people.push(current_user.person.id)
 
     createUnexistingTags(tags)
@@ -162,7 +161,8 @@ class ProjectsController < ApplicationController
       image: pp["image"],
       file: pp["file"],
       link: pp["link"],
-      person_ids: people
+      person_ids: people,
+      likeCount: 0
     )
 
     respond_to do |format|
@@ -198,9 +198,9 @@ class ProjectsController < ApplicationController
 
     pp = params[:project]
     
-    tags = pp["tag_tokens"].split(',')
-    people = pp["people"]
-    people.delete_at(0) # for some reason, select2 will always give us a blank string in the first position.
+    tags = params["tag_tokens"].split(',')
+
+    people = params["people"].split(',')
     people.push(current_user.person.id)
     oldAuthors = @project.people.dup
 

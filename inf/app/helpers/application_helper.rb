@@ -40,7 +40,7 @@ module ApplicationHelper
 		# 			"data-placeholder" => options[:placeholder],
 		# 			class: "select2",
 		# 			:onchange => 'this.form.submit()'
-		content = javascript_tag("var select2Array = " + raw(Course.order("name asc").all.collect {|p| {text: p.name, id: p.id, nprojects: p.projects.size} }.to_json) + ";")
+		content = javascript_tag("var coursesArray = " + raw(Course.order("name asc").all.collect {|p| {text: p.name, id: p.id, nprojects: p.projects.size} }.to_json) + ";")
 		content += text_field_tag(:course, "", "data-placeholder" => options[:placeholder], class: "select2", :onchange => 'this.form.submit()')
 		content
 	end

@@ -5,17 +5,17 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-	if(params[:q])
-		params[:q].downcase!
-		@tags = Tag.find(:all, :conditions => ["lower(tag_text) LIKE ?", "%#{params[:q]}%"])
-	else
-		@tags = Tag.all
-	end
+  	if(params[:q])
+  		params[:q].downcase!
+  		@tags = Tag.where("lower(tag_text) LIKE ?", params[:q]).all
+  	else
+  		@tags = Tag.order("tag_text ASC").all
+  	end
 
-	respond_to do |format|
-		format.html
-		format.json { render :json => @tags.as_json }
-	end
+  	respond_to do |format|
+  		format.html
+  		format.json { render :json => @tags.as_json }
+  	end
   end
 
   # GET /tags/new
