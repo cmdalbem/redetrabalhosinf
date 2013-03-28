@@ -34,8 +34,19 @@ class Person < ActiveRecord::Base
 	def self.search(search)
 		search.downcase!
 		if search
-			# Queries: http://m.onkey.org/active-record-query-interface
-			where("lower(name) LIKE %#{search}% OR lower(nick) LIKE %#{search}%")
+			query = []
+			# Creates queries for each word of the input, and then join them with ANDs.
+			words = search.split(" ")
+			words.each do |w|
+				query << "(lower(name) LIKE '%#{w}%' OR lower(nick) LIKE '%#{w}%')"
+			end
+			query = query.join(" AND ")
+
+			# References
+			# 	Queries: http://m.onkey.org/active-record-query-interface
+			# 	ActiveRecord HABTM finds with "AND": http://www.ruby-forum.com/topic/191062
+			# 	Joins: http://edgeguides.rubyonrails.org/active_record_querying.html#joining-tables
+			where(query)
 		else
 			scoped
 		end
