@@ -1,9 +1,13 @@
-<h1>Activities#index</h1>
+<h1>Atividades</h1>
 
-<ul>
-	<% @activities.each do |a| %>
-	    <li>
-			<%= a.inspect %>
-		</li>
-	<% end %>
-</ul>
+<br>
+
+<div class="news" style="width: 650px; padding-left: 200px;">
+	<ul>
+		<% @activities.each do |a| %>
+		    <li>
+				<%= render_activity a %>
+			</li>
+		<% end %>
+	</ul>
+</div>

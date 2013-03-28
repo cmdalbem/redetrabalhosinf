@@ -1,6 +1,6 @@
 <legend>Detalhes de Perfil
   <% if user_signed_in? and @person.user.authorizes?(current_user) %>
-    <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_person_path(@person), class: "btn btn-info" %>
+    <%= link_to raw("<i class=\"icon-edit\"></i> Editar Perfil"), edit_person_path(@person), class: "btn btn-info pull-right" %>
     <!-- <div class="pull-right">
       <small>
         <%= link_to raw("<i class=\"icon-trash\"></i> Deletar conta"), edit_user_registration_path(@person.user), confirm: 'Tem certeza?', method: :delete %>

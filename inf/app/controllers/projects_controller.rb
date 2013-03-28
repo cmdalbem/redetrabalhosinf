@@ -267,7 +267,7 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to projects_url, notice: 'Projeto exluído com sucesso.' }
       format.js
     end
   end

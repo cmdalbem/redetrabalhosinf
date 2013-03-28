@@ -11,8 +11,14 @@
             <div class="thumb-buttons">
               <div class="btn-group project-hidden-options">
                 <% btnColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
-                <%= link_to nav_icon('',"icon-edit"), edit_project_path(project), class: "btn btn-mini"+btnColor %>
-                <%= link_to nav_icon('',"icon-trash"), project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-mini"+btnColor %>
+                <a class="btn btn-mini dropdown-toggle <%=btnColor%>"  data-toggle="dropdown" href="#">
+                  <i class="icon-cog"></i>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                  <li> <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(project), class: "small" %> </li>
+                  <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), project, confirm: 'Tem certeza?', method: :delete, class: "small" %> </li>
+                </ul>
               </div>
             </div>
           <% end %>

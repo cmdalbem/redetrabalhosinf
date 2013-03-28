@@ -9,6 +9,9 @@
 	<%= stylesheet_link_tag    "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
+
+	<!-- Google Analytics -->
+	<%= analytics_init if Rails.env.production? %>
 </head>
 
 <body>
@@ -60,6 +63,7 @@
 								<small>Administração</small>
 								<li><%= link_to nav_icon("Disciplinas", "icon-wrench"), courses_path %></li>
 								<li><%= link_to nav_icon("Tags", "icon-wrench"), tags_path %></li>
+								<li><%= link_to nav_icon("Atividades", "icon-wrench"), activities_path %></li>
 								<li class="divider"></li>
 							<% end %>
 							<li><%= link_to nav_icon("Editar Perfil", "icon-edit"), edit_person_path(current_user.person) %></li>
@@ -123,10 +127,6 @@
 
   </section>
 </footer>
-
-
-<!-- Google Analytics -->
-<%= analytics_init if Rails.env.production? %>
 
 </body>
 
