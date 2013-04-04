@@ -1,45 +1,28 @@
 <h1>
-	<%= title "Explorar" %>
+	<%= title "Projetos" %>
 </h1>
-
-<br>
 
 <div class="content">
 
 	<!-- Course Filter Form -->
 	<center>
-		<%= form_tag projects_path, method: 'get' do %>
-			<%= hidden_field_tag :direction, params[:direction] %>
-			<%= hidden_field_tag :sort, params[:sort] %>
-			<%= hidden_field_tag :view, params[:view] %>
-			<!-- no hidden field for search, which means that the search will be reseted when changing this filter -->
-			<div class="field big-chosen">
-				<%= courseSelector({placeholder: "Filtrar por disciplina..."}) %>
-				<%= javascript_tag do %>
-					function formatResult(state) {
-					    divclass = state.nprojects==0 ? "muted" : "";
-					    return "<div class=\"" + divclass + "\"> " + state.text + "<span class=\"pull-right\">" + state.nprojects + "</span></div>";
-					}
-					function formatSelection(state) {
-						return state.text;
-					}
-					$("#course.select2").select2({
-						data: coursesArray
-				        ,formatResult: formatResult
-				        ,formatSelection: formatSelection
-					});
-				<% end %>
-			</div>
-		<% end %>
-
 		<!-- Shows actual course filter, if filtered -->
 		<%if params[:course] and !params[:course].empty? %>
+		<hr>
 			<legend>
 				<!-- <i class="icon-filter icon-mini"></i> -->
-				<strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove muted\"></i>"), params.merge(course: nil), class: "no-decoration" %>
+				<strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "close", style: "float: none;" %>
 			</legend>
 		<% else %>
-
+			<%= form_tag projects_path, method: 'get' do %>
+				<%= hidden_field_tag :direction, params[:direction] %>
+				<%= hidden_field_tag :sort, params[:sort] %>
+				<%= hidden_field_tag :view, params[:view] %>
+				<!-- no hidden field for search, which means that the search will be reseted when changing this filter -->
+				<div class="field big-chosen">
+					<%= render "shared/course_selector", placeholder: "Filtrar por disciplina..." %>
+				</div>
+			<% end %>
 		<% end %>
 	</center>
 
@@ -63,7 +46,6 @@
 															"Data do upload" => "date",
 															"Título"=>"title",
 															"Semestre"=>"barra",
-															"Disciplina"=>"course",
 															"Likes"=>"likes"},
 														selected: @column) %>
 			</center>

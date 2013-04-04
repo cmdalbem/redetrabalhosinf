@@ -1,0 +1,15 @@
+<ul class="project-stats">
+
+	<% if project.likeCount!=0 %>
+		<li><i class="icon-thumbs-up"></i> <%= project.likeCount %></li>
+	<% end %>
+
+	<% if project.comments.count!=0 %>
+		<li><i class="icon-comments"></i> <%= project.comments.count %></li>
+	<% end %>
+
+	<% if project.viewCount!=0 %>
+		<li><i class="icon-eye-open"></i> <%= project.viewCount %></li>
+	<% end %>
+
+</ul>

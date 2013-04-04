@@ -63,7 +63,7 @@
         <td style="width: 30%">
           <small>
             <span class="muted"><i class="icon-book"></i></span>
-            <%= link_to project.course.name, projects_path(course: project.course.id) %> (<%= project.semester %>)
+            <%= link_to_course project.course %> (<%= project.semester %>)
           </small>
         </td>
 

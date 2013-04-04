@@ -1,0 +1,19 @@
+<!-- Make sure you pass the value for "placeholder" by the RENDER call of this partial. -->
+<%= javascript_tag("var coursesArray = " + raw(Course.joins(:projects).group("courses.id").having("count(courses.id) > 0").order("name asc").all.collect {|p| {text: p.name, id: p.id, nprojects: p.projects.size} }.to_json) + ";") %>
+
+<%= text_field_tag(:course, "", "data-placeholder" => placeholder, class: "select2", :onchange => 'this.form.submit()') %>
+
+<%= javascript_tag do %>
+	function formatResult(state) {
+	    divclass = state.nprojects==0 ? "muted" : "";
+	    return "<div class=\"" + divclass + "\"> " + state.text + "<span class=\"pull-right\">" + state.nprojects + "</span></div>";
+	}
+	function formatSelection(state) {
+		return state.text;
+	}
+	$("#course.select2").select2({
+		data: coursesArray
+        ,formatResult: formatResult
+        ,formatSelection: formatSelection
+	});
+<% end %>

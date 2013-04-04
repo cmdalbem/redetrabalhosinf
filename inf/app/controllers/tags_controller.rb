@@ -9,7 +9,8 @@ class TagsController < ApplicationController
   		params[:q].downcase!
   		@tags = Tag.where("lower(tag_text) LIKE ?", params[:q]).all
   	else
-  		@tags = Tag.order("tag_text ASC").all
+      # Ordering by a many-to-many relation count: http://stackoverflow.com/questions/10957025/rails-3-order-by-count-on-has-many-through
+  		@tags = Tag.joins(:taggings).group("tags.id").order('count(tag_id) desc').all
   	end
 
   	respond_to do |format|

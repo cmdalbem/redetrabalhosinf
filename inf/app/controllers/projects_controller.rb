@@ -36,10 +36,10 @@ class ProjectsController < ApplicationController
         plist.sort_by! {|p| p.title.downcase }
       when "barra"
         plist.sort_by! {|p| p.semester }
-      when "course"
-        plist.sort_by! {|p| p.course.name.downcase }
-      when "person"
-        plist.sort_by! {|p| p.person.name.downcase }
+      # when "course"
+      #   plist.sort_by! {|p| p.course.name.downcase }
+      # when "person"
+      #   plist.sort_by! {|p| p.person.name.downcase }
       when "likes"
         plist.sort_by! {|p| p.likeCount }
       when "relevance"
@@ -146,7 +146,9 @@ class ProjectsController < ApplicationController
     tags = params["tag_tokens"].split(",")
 
     people = params["people"].split(',')
-    people.push(current_user.person.id)
+    if not people.include?(current_user.person.id.to_s)
+      people.push(current_user.person.id)
+    end
 
     createUnexistingTags(tags)
     
@@ -195,13 +197,16 @@ class ProjectsController < ApplicationController
     @project = Project.find(params["id"])
 
     checkAuthorization(@project)
+    isAdminEditing = (current_user.admin? and not @project.people.include?(current_user.person))
 
     pp = params[:project]
     
     tags = params["tag_tokens"].split(',')
 
     people = params["people"].split(',')
-    people.push(current_user.person.id)
+    if not people.include?(current_user.person.id.to_s) and not isAdminEditing
+      people.push(current_user.person.id)
+    end
     oldAuthors = @project.people.dup
 
     createUnexistingTags(tags)
@@ -236,17 +241,19 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if success
-        @project.create_activity :update, owner: current_user
+        if not isAdminEditing
+          @project.create_activity :update, owner: current_user
 
-        @project.people.each do |p|
-          if not oldAuthors.include?(p)
-            @project.create_activity :addOwnership, owner: current_user, recipient: p.user
+          @project.people.each do |p|
+            if not oldAuthors.include?(p)
+              @project.create_activity :addOwnership, owner: current_user, recipient: p.user
+            end
           end
-        end
 
-        oldAuthors.each do |p|
-          if not @project.people.include?(p)
-            @project.create_activity :removeOwnership, owner: current_user, recipient: p.user
+          oldAuthors.each do |p|
+            if not @project.people.include?(p)
+              @project.create_activity :removeOwnership, owner: current_user, recipient: p.user
+            end
           end
         end
 

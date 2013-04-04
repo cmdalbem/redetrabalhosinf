@@ -64,6 +64,12 @@ class Person < ActiveRecord::Base
 		sum
 	end
 
+	def getTotalViews()
+		sum=0
+		projects.each { |p| sum += p.viewCount }
+		sum
+	end
+
 	def to_s
 		nick
 	end

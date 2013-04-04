@@ -110,7 +110,7 @@ module ApplicationHelper
 	    return ret
 	end
 
-	# Creates the github style links using the Rails Route Helper
+	# Easy link to project helper
 	def link_to_project project
 		# link_to project.title, url_to_project(project)
 		link_to project.title, project_path(project)
@@ -118,6 +118,11 @@ module ApplicationHelper
 	def url_to_project project
 		# person_project_path(project.person.nick, project.title)
 		project_path(project)
+	end
+
+	# Link to the list of projects of a course
+	def link_to_course course
+		link_to course.name, projects_path(course: course.id)
 	end
 
 	# Link to the projects list with a search for this tag

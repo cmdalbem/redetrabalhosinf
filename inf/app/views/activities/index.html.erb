@@ -5,8 +5,9 @@
 <div class="news" style="width: 650px; padding-left: 200px;">
 	<ul>
 		<% @activities.each do |a| %>
-		    <li>
+		    <li class="project-options-trigger">
 				<%= render_activity a %>
+				<span class="project-hidden-options pull-right"><%= link_to raw("<i class=\"icon-remove-sign\"></i>"), activity_path(a), confirm: "o rly?", 	method: "delete" %></span>
 			</li>
 		<% end %>
 	</ul>

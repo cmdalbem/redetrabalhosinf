@@ -52,11 +52,11 @@ class PeopleController < ApplicationController
     # What to sort by?
     case @column
       when "title"
-        plist.sort_by! {|p| p.title }
+        plist.sort_by! {|p| p.title.downcase }
       when "barra"
         plist.sort_by! {|p| p.semester }
-      when "course"
-        plist.sort_by! {|p| p.course.name }
+      when "likes"
+        plist.sort_by! {|p| p.likeCount }
       when "relevance"
         plist.sort_by! {|p| p.relevance }
       when "date"

@@ -14,20 +14,26 @@
         <th>Nome</th>
         <th>Código</th>
         <th>Projetos</th>
-        <th></th>
-        <th colspan="1"></th>
       </tr>
     </thead>
 
   <% @courses.each do |course| %>
-    <tr>
-      <td><%= course.name %></td>
+    <tr class="project-options-trigger">
+      <td>
+        <%= course.name %>
+        <div class="btn-group project-hidden-options">
+          <a class="btn btn-mini dropdown-toggle"  data-toggle="dropdown" href="#">
+            <i class="icon-cog"></i>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu pull-right">
+            <li> <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_course_path(course), class: "small" %> </li>
+            <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), course, confirm: 'o rly?', method: :delete, class: "small" %> </li>
+          </ul>
+        </div>
+      </td>
       <td><%= course.code %></td>
       <td><%= course.projects.count %></td>
-      <td>
-        <%= link_to 'Editar', edit_course_path(course) %>
-        <%= link_to 'Excluir', course, confirm: 'Tem certeza mano?', method: :delete %>
-      </td>
     </tr>
   <% end %>
   </table>

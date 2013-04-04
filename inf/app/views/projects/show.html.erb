@@ -81,8 +81,8 @@
                 else
                   unlikeClass = "hidden"
                 end %>
-                <%= link_to raw(" Curtir"), like_project_path(@project), remote: true, class: likeClass + " no-decoration", id: "project-like-action-"+@project.id.to_s %>
-                <%= link_to raw(" Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass + " no-decoration", id: "project-unlike-action-"+@project.id.to_s %>
+                <%= link_to raw(" Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
+                <%= link_to raw(" Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
             <% end %>
           </p>
         </center>

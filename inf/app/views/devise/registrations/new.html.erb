@@ -10,11 +10,13 @@
 			<%= person_builder.text_field :name, required: true %>
 		</div>
 
-		<div><%= f.label "Email da INF" %><br />
+		<%= f.label "Email da INF" %><br />
 		<div class="input-append">
 			<%= f.text_field :email, required: true, class: "input-medium", onchange: "$('#hidden_nick').val(this.value);" %>
 			<span class="add-on">@inf.ufrgs.br</span>
 		</div>
+
+		<br />
 
 		<div class="input-prepend">
 			<span class="add-on muted"><%= SITE_URL %>/</span>

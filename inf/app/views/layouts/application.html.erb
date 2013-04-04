@@ -19,11 +19,11 @@
 <div id="wrap">
 	<div id="main">
 
-		<header class="navbar navbar-fixed-top ">
+		<header class="navbar navbar-fixed-top">
 		  <div class="navbar-inner">
 			<div class="container">
 			  <nav>
-				<%= link_to tag(:img, :src => "/assets/logo_txt_mini.png"), root_path, class: "brand"%>
+				<%= link_to tag(:img, :src => "/assets/logo_txt_mini.png"), root_path, class: "brand no-decoration" %>
 				<!-- <text class="muted">A rede de compartilhamento de trabalhos do INF</text> -->
 				<ul class="nav">
 					<%= nav_link nav_icon("Início",""), root_path, false %>
@@ -52,7 +52,7 @@
 
 					<li>
 					<% if user_signed_in? %>
-					  <div class="btn-group"> %>
+					  <div class="btn-group">
 						<%= link_to tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName, profile_path(current_user.person.nick), class: "btn", style: "max-width: 200px; overflow: hidden;"%>
 						  <button class="btn dropdown-toggle" data-toggle="dropdown">
 						  <span class="caret"></span>
@@ -61,9 +61,9 @@
 							<!-- List of user options -->
 							<% if current_user.admin %>
 								<small>Administração</small>
-								<li><%= link_to nav_icon("Disciplinas", "icon-wrench"), courses_path %></li>
-								<li><%= link_to nav_icon("Tags", "icon-wrench"), tags_path %></li>
-								<li><%= link_to nav_icon("Atividades", "icon-wrench"), activities_path %></li>
+								<li><%= link_to nav_icon("Disciplinas", "icon-book"), courses_path %></li>
+								<li><%= link_to nav_icon("Tags", "icon-tags"), tags_path %></li>
+								<li><%= link_to nav_icon("Atividades", "icon-rss"), activities_path %></li>
 								<li class="divider"></li>
 							<% end %>
 							<li><%= link_to nav_icon("Editar Perfil", "icon-edit"), edit_person_path(current_user.person) %></li>
@@ -113,7 +113,6 @@
 
 <!-- Footer -->
 <footer>
-  <section class="container-fluid">
 
 	<div class="row-fluid">
 		<center>
@@ -125,7 +124,6 @@
 		</center>
 	</div>
 
-  </section>
 </footer>
 
 </body>

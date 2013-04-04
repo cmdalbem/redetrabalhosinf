@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
 
 	def destroy
 		@activity = PublicActivity::Activity.find(params[:id])
-		@activity.destroy
+		@activity.destroy 
 
 		respond_to do |format|
 			format.html { redirect_to activities_path }

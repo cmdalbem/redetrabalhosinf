@@ -6,56 +6,67 @@
       <div class="pull-left"%>
         <li class="thumbnail project-thumb project-options-trigger">
 
-          <!-- Buttons -->
-          <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
-            <div class="thumb-buttons">
-              <div class="btn-group project-hidden-options">
-                <% btnColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
-                <a class="btn btn-mini dropdown-toggle <%=btnColor%>"  data-toggle="dropdown" href="#">
-                  <i class="icon-cog"></i>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                  <li> <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(project), class: "small" %> </li>
-                  <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), project, confirm: 'Tem certeza?', method: :delete, class: "small" %> </li>
-                </ul>
+          <!-- <a href=<%= url_to_project project %> class="thumbnail project-thumb project-options-trigger"> -->
+
+            <!-- Buttons -->
+            <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
+              <div class="thumb-buttons">
+                <div class="btn-group project-hidden-options">
+                  <% btnColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
+                  <a class="btn btn-mini dropdown-toggle <%=btnColor%>"  data-toggle="dropdown" href="#">
+                    <i class="icon-cog"></i>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu pull-right">
+                    <li> <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(project), class: "small" %> </li>
+                    <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), project, confirm: 'Tem certeza?', method: :delete, class: "small" %> </li>
+                  </ul>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
 
-          <!-- Image in the background -->
-          <% if project.image? %>
-            <%= image_tag project.image %>
-          <% else %>
-            <div class="bgtext muted small">
-              <%= project.description %>
-            </div>
-          <% end %>
+            <!-- Image in the background -->
+            <% if project.image? %>
+              <%= image_tag project.image %>
+            <% else %>
+              <div class="bgtext muted small">
+                <%= project.description %>
+              </div>
+            <% end %>
 
-          <!-- The content -->
-          <div class="thumb-content">
-            <header>
-              <center>
-                <%= link_to_project project %>
-              </center>
-            </header>
-            <% aux = project.image? ? "hidable" : "" %>
-            <div class="text" id=<%=aux%> >
-              <% if project.people.size==1 %>
-                <span class="muted"><i class="icon-user"></i></span>
-              <% else %>
-                <span class="muted"><i class="icon-group"></i></span>
-              <% end %>
-              <%= project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %>
+            <!-- The content -->
+            <div class="thumb-content">
+              
+              <header>
+                <center>
+                  
+                  <div class="smaller">
+                    <%= render "shared/project_popularity_stats", project: project %>
+                  </div>
+                  
+                  <div class="title">
+                    <%= link_to_project project %>
+                  </div>
 
-              <br>
-              <i class="icon-book muted"></i> <%= "#{project.course.name} (#{project.semester})"%>
+                </center>
+              </header>
+
+              <% aux = project.image? ? "hidable" : "" %>
+              <div class="text" id=<%=aux%> >
+                <% if project.people.size==1 %>
+                  <span class="muted"><i class="icon-user"></i></span>
+                <% else %>
+                  <span class="muted"><i class="icon-group"></i></span>
+                <% end %>
+                <%= project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %>
+
+                <br>
+                <i class="icon-book muted"></i> <%= link_to_course project.course %> (<%= project.semester%>)
+              </div>
+
             </div>
-          </div>
- 
-          <center>
-            <%= raw(printProjectPopularityStats(project)) %>
-          </center>
+
+          <!-- </a> -->
 
         </li>
       </div>
