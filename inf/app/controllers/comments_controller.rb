@@ -13,14 +13,7 @@ class CommentsController < ApplicationController
 			c = Comment.new(input)
 			project = Project.find(input[:project_id])
 	      	if c.save
-	      		# project.people.each do |p|
-	      		# 	if p==current_user.person
-		       #  		c.create_activity :create, owner: current_user, recipient: p.user
-		       #  	end
-		       #  end
-
-		    	# FIX ME: sends the notification only for the first author of the list.
-		    	c.create_activity :create, owner: current_user, recipient: project.people.first.user 
+		    	c.create_activity :create, owner: current_user
 
 	      		notice = "Comentário enviado com sucesso."
 	      	else

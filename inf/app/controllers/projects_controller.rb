@@ -284,12 +284,7 @@ class ProjectsController < ApplicationController
     if @project
       @person = current_user.person
       if not @project.likes.include?(@person)
-        # @project.people.each do |p|
-        #   @project.create_activity :like, owner: current_user, recipient: p.user
-        # end
-        
-        # FIX ME: sends the notification only for the first author of the list.
-        @project.create_activity :like, owner: current_user, recipient: @project.people.first.user 
+        @project.create_activity :like, owner: current_user
         @project.likes.push(@person)
         @project.update_attributes(likeCount: @project.likeCount+1)
       end

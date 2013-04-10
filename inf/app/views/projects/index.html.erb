@@ -8,7 +8,6 @@
 	<center>
 		<!-- Shows actual course filter, if filtered -->
 		<%if params[:course] and !params[:course].empty? %>
-		<hr>
 			<legend>
 				<!-- <i class="icon-filter icon-mini"></i> -->
 				<strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "close", style: "float: none;" %>

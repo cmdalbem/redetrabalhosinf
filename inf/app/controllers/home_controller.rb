@@ -2,14 +2,18 @@
 class HomeController < ApplicationController
   
   def show
-  	@lastProjects = Project.order("created_at DESC").limit(5).all
-  	@lastPeople = Person.order("created_at DESC").limit(5).all
-  	@globalActivities = PublicActivity::Activity.order("created_at desc").limit(8).all
+    # newsLimit = user_signed_in? ? 10 : 5;
+    newsLimit = 5;
+
+  	@lastProjects = Project.order("created_at DESC").limit(newsLimit).all
+  	@lastPeople = Person.order("created_at DESC").limit(newsLimit+2).all
+  	@globalActivities = PublicActivity::Activity.order("created_at desc").limit(newsLimit+3).all
     # @tags = Tag.order("tag_text asc").all
     @tags = Tag.all
 	
     if user_signed_in?
-  		@myActivities = PublicActivity::Activity.where(recipient_id: current_user).order("created_at desc").limit(15).all
+      @myActivities = PublicActivity::Activity.where("owner_id != ? AND trackable_id IN (?)", current_user, current_user.person.project_ids).order("created_at desc").limit(20).all
+      @person = current_user.person
   	end
 
   	respond_to do |format|

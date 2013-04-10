@@ -14,36 +14,31 @@
 <div class="container-fluid center">
 
   <div class="row-fluid">
-    <div class="span3">
+    <div class="span3 person-profile">
 
       <div class="row-fluid">
-        <div class="profile-picture">
-          <center>
-            <%= image_tag @person.avatar, class: "img-polaroid" %>
-          </center>
+        <center>
+          <%= image_tag @person.avatar, class: "img-polaroid" %>
+        </center>
+      
+        <h2 class="username-text"><%= title @person.name %> <small><%=@person.nick%></small></h2>
         
-          <h2 class="username-text"><%= title @person.name %> <small><%=@person.nick%></small></h2>
-          
+        <p>
+          <%= @person.about %>
+        </p>
+
+        <% if @person.personal_link? %>
           <p>
-            <%= @person.about %>
+            <i class="icon-external-link"></i>
+            <%= link_to @person.personal_link, @person.personal_link %>
           </p>
-
-          <% if @person.personal_link? %>
-            <center>
-              <p class="small">
-                <i class="icon-external-link"></i>
-                <%= link_to @person.personal_link, @person.personal_link %>
-              </p>
-            </center>
-          <% end %>
-          
-          <% if @person.semester? %>
-            <p>
-              Semestre: <%= @person.semester %>
-            </p>
-          <% end %>
-
-        </div>
+        <% end %>
+        
+        <% if @person.semester? %>
+          <p>
+            Semestre: <%= @person.semester %>
+          </p>
+        <% end %>
       </div>
 
       <hr>

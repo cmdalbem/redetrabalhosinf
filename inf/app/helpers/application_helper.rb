@@ -19,6 +19,11 @@ module ApplicationHelper
 		content_tag(:i, '', :class => icon_class) + " " + link_text
 	end
 
+	# Little helper for getting the absolute path for an image
+	def image_url(source)
+	  URI.join(root_url, image_path(source))
+	end
+
 	# A table header which is a link for sorting the table by it's column.
 	# Make sure you program the logics on the table's controller (see example on Projects Controller)
 	def sortable(title, column)
