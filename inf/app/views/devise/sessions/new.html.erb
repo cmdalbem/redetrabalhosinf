@@ -1,23 +1,25 @@
-<h1><%= title "Entrar" %></h1>
+<div class="content">
+	<h2><%= title "Entrar" %></h2>
 
-<br>
+	<br>
 
-<div class="row-fluid">
-	<center>
-		<%= form_for resource, :as => resource_name, :url => session_path(resource_name), html: {class: "form-inline"} do |f| %>
-			<%= f.email_field :email, required: true, class: "input-medium", placeholder: "Email" %>
-			<%= f.password_field :password, required: true, class: "input-medium", placeholder: "Senha" %>
-			<% if devise_mapping.rememberable? -%>
-				<label class="checkbox">
-					<%= f.check_box :remember_me %> Manter logado
-			    </label>
+	<div class="row-fluid">
+		<center>
+			<%= form_for resource, :as => resource_name, :url => session_path(resource_name), html: {class: "form-inline"} do |f| %>
+				<%= f.email_field :email, required: true, class: "input-medium", placeholder: "Email" %>
+				<%= f.password_field :password, required: true, class: "input-medium", placeholder: "Senha" %>
+				<% if devise_mapping.rememberable? -%>
+					<label class="checkbox">
+						<%= f.check_box :remember_me %> Manter logado
+				    </label>
+				<% end %>
+				<%= f.submit "Entrar", class: "btn btn-primary"%>
 			<% end %>
-			<%= f.submit "Entrar", class: "btn btn-primary"%>
-		<% end %>
-		
-		<hr>
+			
+			<hr>
 
-		<%= render "devise/shared/links" %>
+			<%= render "devise/shared/links" %>
 
-	</center>
+		</center>
+	</div>
 </div>

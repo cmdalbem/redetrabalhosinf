@@ -1,4 +1,6 @@
 # -*- encoding : utf-8 -*-
+require 'will_paginate/array'
+
 class HomeController < ApplicationController
   
   def show
@@ -12,7 +14,10 @@ class HomeController < ApplicationController
     @tags = Tag.all
 	
     if user_signed_in?
-      @myActivities = PublicActivity::Activity.where("owner_id != ? AND trackable_id IN (?)", current_user, current_user.person.project_ids).order("created_at desc").limit(20).all
+      @myActivities = PublicActivity::Activity.where("owner_id != ? AND trackable_id IN (?)", current_user, current_user.person.project_ids).order("created_at desc")
+      @myActivities = @myActivities.paginate(per_page: 7, page: params[:page])
+      @myActivities = @myActivities.all
+
       @person = current_user.person
   	end
 

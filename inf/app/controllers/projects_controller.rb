@@ -177,9 +177,9 @@ class ProjectsController < ApplicationController
         end
 
         if params[:commit]=="save_and_add_new"
-          format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
+          format.html { redirect_to new_project_url, notice: 'Projeto <b>' + @project.title + '</b> criado com sucesso.' }
         else
-          format.html { redirect_to project_path(@project), notice: 'Projeto atualizado com sucesso.' }
+          format.html { redirect_to project_path(@project), notice: 'Novo projeto criado com sucesso.' }
         end
       else
         format.html { render action: "new" }
@@ -271,10 +271,11 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   def destroy
     @project = Project.find(params[:id])
+    title = @project.title
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Projeto exluído com sucesso.' }
+      format.html { redirect_to projects_url, notice: 'Projeto <b>' + title + '</b> exluído com sucesso.' }
       format.js
     end
   end

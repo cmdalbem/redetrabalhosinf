@@ -41,7 +41,7 @@
 					<% if user_signed_in? %>
 						<% if project.people.include?(current_user.person) %>
 							<small><div>
-								<%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(project) %>
+								<%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(project) %>
 								| 
 								<%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), project, confirm: 'Tem certeza?', method: :delete %>
 							</div></small>

@@ -332,7 +332,6 @@ ul.project-content-icons {
 		}
 	}
 
-
 	li.nav_link {
 		a {
 			border-bottom: 4px solid transparent;
@@ -344,6 +343,12 @@ ul.project-content-icons {
 		a:hover {
 			border-bottom: 4px solid $myred;
 		}    
+	}
+
+	.mysearch {
+		input#search {
+			width: 95px;
+		}
 	}
 }
 
@@ -432,7 +437,6 @@ h0 {
 		padding: 30px 100px;
 		width: 96%;
     	margin-left: -70px;
-    	margin-top: 10px;
 
 		border-radius: 0;
 
@@ -464,13 +468,15 @@ h0 {
 				color: rgba(200,200,200,0.6);
 				@include transition(0.2s);
 			}
-
 			a:hover {
 				color: rgb(240,240,240);
 			}
 		}
 
 		iframe {
+			a {
+				color: rgb(230,230,230) !important;
+			}
 		}
 
 	}
@@ -614,12 +620,12 @@ h0 {
 	}
 
     input#search:focus {
-		width: 150%;
+		width: 270px;
 	}
 
 	.icon-search {
 		position: absolute;
-		top: 0;
+		top: 2px;
 		left: 0;
 		margin-top: 5px;
 		margin-left: 10px;
@@ -647,6 +653,7 @@ h0 {
 
 footer {
 	/*font-size: 12px;*/
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 	border-top: 1px solid rgba(0,0,0,0.1);
 	background-color: rgba(0,0,0,0.05);
 
@@ -711,7 +718,8 @@ label.required:after {
 }
 
 .content {
-	padding-bottom: 50px;
+	padding-top: 10px;
+	padding-bottom: 30px;
 }
 
 #search.search-query {
@@ -1048,6 +1056,11 @@ label {
 	border-radius: 7px 7px 7px 7px;
 	height: 30px;
 	/*padding: 10px 8px;*/
+
+	.select2-container {
+		min-width: 300px;
+		padding-top: 1px;
+	}
 }
 
 .accordion-heading a{
@@ -1132,7 +1145,7 @@ html, body {
 }
 #wrap {
 	min-height: 100%;
-	padding-top: 60px;
+	padding-top: 43px;
 }
 #main {
 	overflow: auto;

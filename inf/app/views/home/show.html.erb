@@ -1,34 +1,41 @@
 <div class="homepage">
 
 	<% if user_signed_in? %>
+		<br>
+		
 		<!-- My Notifications section -->
 		<div class="row-fluid">
-				<div class="news">
-					<legend>
-						<i class="icon-bell"></i> Atividade nos Meus Projetos
-					</legend>
+			<div class="news">
+				<legend>
+					<i class="icon-bell"></i> Atividade nos Meus Projetos
+				</legend>
 
-					<% if @myActivities.empty? %>
-						<center class="muted">
-						Sem atividade a exibir.
-						</center>
-					<% else %>
-						<ul>
-							<% @myActivities.each do |a| %>
-							    <li>
-									<%= render_activity a %>
-									<small>
-										<p class="muted pull-right"></i><%= time_ago_in_words(a.created_at) %></p>
-									</small>
-								</li>
-							<% end %>
-						</ul>
-						<small>
-							<% # link_to "Ver mais", activities_path %>
-						</small>
-					<% end %>
-				</div>
+				<% if @myActivities.empty? %>
+					<center class="muted">
+					Sem atividade a exibir.
+					</center>
+				<% else %>
+					<ul>
+						<% @myActivities.each do |a| %>
+						    <li>
+								<%= render_activity a %>
+								<small>
+									<p class="muted pull-right"></i><%= time_ago_in_words(a.created_at) %></p>
+								</small>
+							</li>
+						<% end %>
+					</ul>
+					<small>
+						<% # link_to "Ver mais", activities_path %>
+					</small>
+				<% end %>
+			</div>
 		</div>
+
+		<!-- Pagination -->
+		<center>
+			<%= will_paginate @myActivities %>
+		</center>
 	<% end %>
 
 	<% #if not user_signed_in? %>
@@ -58,7 +65,10 @@
 					</p>
 
 					<!-- Like Button -->
-					<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfhub.herokuapp.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=tahoma&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+					<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhub.inf.br&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=tahoma&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+
+					<!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfhub.herokuapp.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=tahoma&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe> -->
+					
 					<!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfhub.herokuapp.com&amp;send=false&amp;layout=box_count&amp;width=450&amp;show_faces=false&amp;font=tahoma&amp;colorscheme=light&amp;action=like&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:70px; height:70px; position: absolute; bottom: 10px; right: 10px;" allowTransparency="true"></iframe> -->
 				</div>
 		    </div>
