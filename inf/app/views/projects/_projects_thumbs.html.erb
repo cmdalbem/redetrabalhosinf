@@ -18,7 +18,7 @@
                     <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu pull-right">
-                    <li> <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(project), class: "small" %> </li>
+                    <li> <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(project), class: "small" %> </li>
                     <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), project, confirm: 'Tem certeza?', method: :delete, class: "small" %> </li>
                   </ul>
                 </div>
@@ -61,7 +61,7 @@
                 <%= project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %>
 
                 <br>
-                <i class="icon-book muted"></i> <%= link_to_course project.course %> (<%= project.semester%>)
+                <i class="icon-book muted"></i> <%= link_to_course project.course %> <%= project.getSemesterString %>
               </div>
 
             </div>

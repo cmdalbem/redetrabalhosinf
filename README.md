@@ -19,14 +19,10 @@ Remember to execute the following commands on your command line:
 
 #### Ideas
 
-* Notification system
 * Add any number of links and files
-* Add multiple authors for each project
 * File format detection and pretty display
 * A special place on the user profile page for display set of his featured works (chosen by himself)
 * Tree-style navigation for a better exploring experience.
-* Integrate with Open Graph (facebook login)
 * Integrate with Dropbox Chooser (https://www.dropbox.com/developers/chooser) (upload files directly from Dropbox)
-* Integrate with UserVoice (nice plataform for users suggestions)
 * Create a special field for an user to mark how good he rates his own project (like "Best project in class", "So-so", "Awful! Can't even tell why I'm publishing this")
 * Playlist style content aggregation. (like: "my favorite CG projects")

@@ -4,12 +4,6 @@ require 'will_paginate/array'
 class PeopleController < ApplicationController
   
   before_filter :checkLogged, :only => [:edit, :update, :destroy]
-  def checkLogged
-    if not user_signed_in?
-      redirect_to new_user_session_path, alert: 'Tu deves estar logado pra fazer isso...'
-      return
-    end
-  end
 
   def checkAuthorization(owner)
     if !owner.authorizes?(current_user)

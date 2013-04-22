@@ -3,11 +3,10 @@
 
 <!-- The content view -->
 <% if @projects.empty? %>
-  <br>
-  Sem projetos a exibir.
-  <br>
-  <br>
-
+	<br>
+	Sem projetos a exibir.
+	<br>
+	<br>
 <% else %>
 	<% if @viewMode == :list %>
 	  <%= render 'projects/projects_table' %>
@@ -16,7 +15,7 @@
 	<% end %>
 <% end %>
 
-<!-- Pagination -->
+<!-- Pagination navigation -->
 <center>
 	<%= will_paginate @projects%>
 </center>

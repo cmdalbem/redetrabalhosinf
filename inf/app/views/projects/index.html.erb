@@ -1,18 +1,20 @@
-<h1>
-	<%= title "Projetos" %>
-</h1>
-
 <div class="content">
+
+	<% hasSelectedCourse = (params[:course] and !params[:course].empty?) %>
+
+	<h2>
+		<%= title "Projetos" %>
+		<% if hasSelectedCourse %>
+			<small>
+				<%= @course.name %>
+				<%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "close no-decoration", style: "float: none;" %>
+			</small>
+		<% end %>
+	</h2>
 
 	<!-- Course Filter Form -->
 	<center>
-		<!-- Shows actual course filter, if filtered -->
-		<%if params[:course] and !params[:course].empty? %>
-			<legend>
-				<!-- <i class="icon-filter icon-mini"></i> -->
-				<strong><%=@course.name%></strong> <%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "close", style: "float: none;" %>
-			</legend>
-		<% else %>
+		<div id="courseSelector">
 			<%= form_tag projects_path, method: 'get' do %>
 				<%= hidden_field_tag :direction, params[:direction] %>
 				<%= hidden_field_tag :sort, params[:sort] %>
@@ -22,7 +24,7 @@
 					<%= render "shared/course_selector", placeholder: "Filtrar por disciplina..." %>
 				</div>
 			<% end %>
-		<% end %>
+		</div>
 	</center>
 
 	<br>
@@ -42,7 +44,7 @@
 				<%= render 'shared/sort_by_buttons',
 						destinyPath: projects_path,
 						sortbyOptions: options_for_select({"Popularidade"=>"relevance",
-															"Data do upload" => "date",
+															"Recente" => "date",
 															"Título"=>"title",
 															"Semestre"=>"barra",
 															"Likes"=>"likes"},

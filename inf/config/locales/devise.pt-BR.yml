@@ -12,6 +12,7 @@ pt-BR:
       invalid: 'E-mail ou senha inválidos.'
       invalid_token: 'O token de autenticação não é válido.'
       locked: 'Tua conta está bloqueada.'
+      not_found_in_database: 'E-mail ou senha inválidos.'
       timeout: 'Tua sessão expirou, por favor, efetua login novamente para continuar.'
       unauthenticated: 'Para continuar, efetue login ou cadastre-se.'
       unconfirmed: 'Teu cadastro ainda nao foi confirmado.'
@@ -40,8 +41,10 @@ pt-BR:
       update_needs_confirmation: 'Tua conta foia atualizada com sucesso, mas o teu novo endereço de e-mail precisa ser confirmado. Por favor, acesse-o e clique no link de confirmação que enviamos.'
       updated: 'Tua conta foi atualizada com sucesso.'
     sessions:
-      signed_in: 'Tu agora estás logado!'
-      signed_out: 'Tu agora estás deslogado.'
+      # signed_in: 'Tu agora estás logado!'
+      # signed_out: 'Tu agora estás deslogado.'
+      signed_in: ''
+      signed_out: ''
     unlocks:
       send_instructions: 'Dentro de minutos receberás um email com instruções para o desbloqueio da tua conta.'
       send_paranoid_instructions: 'Se tua conta existir, receberás um e-mail com instruções para desbloqueá-la em alguns minutos.'

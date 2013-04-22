@@ -2,80 +2,74 @@
 
 <div class="content">
 
-<div class="container-fluid center">
+  <div class="container-fluid center">
 
-<h1 class="projectname-text" style="display: inline;"> <%= title @project.title %> </h1>
-<div class="pull-right">
-  <% if user_signed_in? and @project.canBeEditedBy?(current_user) %>
-    <div class="btn-group project-hidden-options">
-      <a class="btn dropdown-toggle btn-info btn-medium"  data-toggle="dropdown" href="#">
-        <i class="icon-cog"></i>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu pull-right">
-        <li> <%= link_to raw("<i class=\"icon-edit\"></i> Editar"), edit_project_path(@project) %> </li>
-        <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), @project, confirm: 'Tem certeza?', method: :delete %> </li>
-      </ul>
-    </div>
-  <% end %>
-</div>
-
-<br>
-<br>
-
-<div class="row-fluid">
-
-  <% if @project.image? %>
-    <div class="">
-      <center>
-        <%= image_tag @project.image.url %>
-      </center>
-    </div>
-    <br>
-    <br>
-  <% end %>
-</div>
-
-<div class="row-fluid">
-
-  <div class="block span12">
-
-    <h4>Descrição</h4>
-    <%= simple_format(@project.description) %>
-
-    <div class="row-fluid">
-      <div class="span8">
-        <p>
-          <ul class="tags clearfix">
-          <% @project.tags.each do |tag| %>
-            <li> <%= link_to_tag tag %> </li>
-          <% end %>
-          </ul>
-        </p>
+  <h1 class="projectname-text" style="display: inline;"> <%= title @project.title %> </h1>
+  <div class="pull-right">
+    <% if user_signed_in? and @project.canBeEditedBy?(current_user) %>
+      <div class="btn-group project-hidden-options">
+        <a class="btn dropdown-toggle btn-info btn-medium"  data-toggle="dropdown" href="#">
+          <i class="icon-cog"></i>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <li> <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(@project) %> </li>
+          <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), @project, confirm: 'Tem certeza?', method: :delete %> </li>
+        </ul>
       </div>
+    <% end %>
+  </div>
 
-      <div class="span4">
+  <br>
+  <br>
+
+  <div class="row-fluid">
+
+    <% if @project.image? %>
+      <div class="">
         <center>
-          <!-- Modal window for showing who liked this project -->
-          <div id="likesModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h3>Quem curtiu</h3>
-            </div>
-            <div class="modal-body">
-              <ol>
-                <% @project.likes.each do |l| %>
-                  <li><%=link_to l.name, profile_path(l.nick) %></li>
-                <% end %>
-              </ol>
-            </div>
-          </div>
+          <%= image_tag @project.image.url %>
+        </center>
+      </div>
+      <br>
+      <br>
+    <% end %>
+  </div>
 
-          <p class="curtir-frame"> 
-            <span id="project-like-count-<%= @project.id %>"><%= link_to @project.likeCount, "#likesModal", "data-toggle" => "modal" %></span>
-            <i class="icon-thumbs-up"></i>
-            <% if user_signed_in? %>
-            <%  likeClass = unlikeClass = ""
+  <div class="row-fluid">
+
+    <div class="block span12">
+
+      <h4>Descrição</h4>
+      <% if @project.description.blank? %>
+        <span class="muted">
+              Projeto sem descrição.
+        </span>
+      <% else %>
+        <%= simple_format(@project.description) %>
+      <% end %>
+
+      <div class="row-fluid">
+        <div class="span8">
+          <p>
+            <ul class="tags clearfix">
+            <% @project.tags.each do |tag| %>
+              <li> <%= link_to_tag tag %> </li>
+            <% end %>
+            </ul>
+          </p>
+        </div>
+
+        <div class="span4">
+          <center>
+            <!-- Modal window for showing who liked this project -->
+            <%= render 'likes_list' %>
+
+            <p class="curtir-frame"> 
+              <span id="project-like-count-<%= @project.id %>"><%= link_to @project.likeCount, "#likesModal", "data-toggle" => "modal" %></span>
+              <i class="icon-thumbs-up"></i>
+              <% if user_signed_in? %>
+                <%  likeClass = unlikeClass = ""
                 if (current_user.person.likes.include?(@project))
                   likeClass = "hidden"
                 else
@@ -83,128 +77,162 @@
                 end %>
                 <%= link_to raw(" Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
                 <%= link_to raw(" Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
-            <% end %>
-          </p>
-        </center>
+              <% else %>
+                <%= link_to raw(" Curtir"), like_project_path(@project), class: likeClass, id: "project-like-action-"+@project.id.to_s %>
+              <% end %>
+            </p>
+          </center>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<br>
+  <br>
 
-<div class="row-fluid">
-  <div class="block span6">
-    <p>
-      <% if @project.people.size==1 %>
-        <span class="muted"><i class="icon-user"></i> Autor</span>
-      <% else %>
-        <span class="muted"><i class="icon-group"></i> Autores</span>
-      <% end %>
-      <%= @project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %>
-    </p>
-
-    <p>
-      <span class="muted"><i class="icon-book"></i> Disciplina</span>
-      <%= link_to @project.course.name, projects_path(course: @project.course.id) %> (<%=@project.semester%>)
-    </p>
-    
-    <p>
-      <span class="muted"><i class="icon-eye-open"></i> Visualizações</span>
-      <%= @project.viewCount %>
-    </p>
-
-    <p>
-      <span class="muted"><i class="icon-time"></i> Adicionado em</span>
-      <%= @project.created_at.strftime("%d/%m/%Y") %>
-    </p>
-
-  </div>
-
-  <div class="block span6">
-    <p>
-      <% if @project.link? %>
-        <h4><i class="icon-external-link"></i></i> Link</h4>
-        <p>
-          <%= link_to @project.link, project_link_path(@project) %> <span class="badge"><%=@project.linkHitCount%> hits</span>
-        </p>
-      <% end %>
-    </p>
-    <p>
-      <% if @project.file? %>
-        <h4><i class="icon-file"></i> Arquivo</h4>
-        <p>
-          <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", project_download_path(@project) %> <span class="badge"><%=@project.downloadCount%> hits</span>
-        </p>
-      <% end %>
-    </p>        
-  </div>
-</div>
-
-<br>
-
-<div class="row-fluid">
-  <div class="block span12">
-    <p>
-      <h3><i class="icon-comments"></i> Comentários</h3>
-      <% @project.comments.sort_by! {|x| x.created_at} %>
-      <ul class="comments-list">
-        
-        <!-- Comments list  -->
-        <% if @project.comments.empty? %>
-          <span class="muted">
-            Sem comentários a exibir.<br>
-            <br>
-          </span>
+  <div class="row-fluid">
+    <div class="block span6">
+      <p>
+        <% if @project.people.size==1 %>
+          <span class="muted"><i class="icon-user"></i> Autor</span>
+        <% else %>
+          <span class="muted"><i class="icon-group"></i> Autores</span>
         <% end %>
-        <% @project.comments.each do |c| %>
-          <li id=<%="comment-#{c.id}"%>>
-            
-            <header>
-              <%= image_tag c.person.avatar.url(:thumb) %>
-              <%= link_to c.person.name, profile_path(c.person.nick) %>
-              <text class="time muted">
-                há <%= time_ago_in_words(c.created_at) %>
-              </text>
-              <div class="pull-right">
-                <% if user_signed_in? and current_user.person==c.person %>
-                  <%= link_to raw("<i class=\"icon-trash\"></i>"), c, confirm: 'Tem certeza?', method: :delete %>
+        <%= @project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %>
+      </p>
+
+      <p>
+        <span class="muted"><i class="icon-book"></i> Disciplina</span>
+        <%= link_to @project.course.name, projects_path(course: @project.course.id) %> <%=@project.getSemesterString%>
+      </p>
+      
+      <p>
+        <span class="muted"><i class="icon-eye-open"></i> Visualizações</span>
+        <%= @project.viewCount %>
+      </p>
+
+      <p>
+        <span class="muted"><i class="icon-time"></i> Adicionado em</span>
+        <%= @project.created_at.strftime("%d/%m/%Y") %>
+      </p>
+
+    </div>
+
+    <div class="block span6">
+      <p>
+        <% if @project.link? %>
+          <h4><i class="icon-external-link"></i></i> Link</h4>
+          <p>
+            <%= link_to @project.link, project_link_path(@project) %> <span class="badge"><%=@project.linkHitCount%> hits</span>
+          </p>
+        <% end %>
+      </p>
+      <p>
+        <% if @project.file? %>
+          <h4><i class="icon-file"></i> Arquivo</h4>
+          <p>
+            <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", project_download_path(@project) %> <span class="badge"><%=@project.downloadCount%> hits</span>
+          </p>
+        <% end %>
+      </p>        
+    </div>
+  </div>
+
+  <br>
+
+  <!-- Comments --> 
+  <div class="row-fluid">
+    <div class="block span12">
+      <p>
+        <h3><i class="icon-comments"></i> Comentários</h3>
+        <% @project.comments.sort_by! {|x| x.created_at} %>
+        <ul class="comments-list">
+          
+          <!-- Comments list  -->
+          <% if @project.comments.empty? %>
+            <span class="muted">
+              Sem comentários a exibir.<br>
+              <br>
+            </span>
+          <% else %>
+            <% @project.comments.each do |c| %>
+              <li id=<%="comment-#{c.id}"%>>
+                
+                <header>
+                  
+                  <table border="0">
+                    <tr>
+                      <td>
+                        <%= link_to image_tag(c.person.avatar.url(:small)), profile_path(c.person.nick), class: "no-decoration" %>
+                      </td>
+                      
+                      <td style="width: 100%">
+                        <%= link_to c.person.name, profile_path(c.person.nick), class: "username-text" %>
+                        <br>
+                        <text class="time muted">
+                          há <%= time_ago_in_words(c.created_at) %>
+                        </text>
+                      </td>
+                    </tr>
+                  </table> 
+
+                  <div class="deleteOpt">
+                    <% if user_signed_in? and current_user.person==c.person %>
+                      <%= link_to raw("<i class=\"icon-trash\"></i>"), c, confirm: 'Tem certeza?', method: :delete %>
+                    <% end %>
+                  </div>
+
+                </header>
+
+                <div class="comment">
+                    <%= c.text %>
+                </div>
+<!--                 <header>
+                  <%= image_tag c.person.avatar.url(:thumb) %>
+                  <%= link_to c.person.name, profile_path(c.person.nick), class: "username-text" %>
+                  
+                  <text class="time muted small">
+                    há <%= time_ago_in_words(c.created_at) %>
+                  </text>
+                  <div class="pull-right">
+                    <% if user_signed_in? and current_user.person==c.person %>
+                      <%= link_to raw("<i class=\"icon-trash\"></i>"), c, confirm: 'Tem certeza?', method: :delete %>
+                    <% end %>
+                  </div>
+                </header>
+
+                <div class="comment">
+                    <%= c.text %>
+                </div> -->
+
+              </li>
+            <% end %>
+          <% end %>
+
+          <!-- New comment field -->
+          <% if user_signed_in? %>
+            <li>
+              <header>
+                <%= link_to image_tag(current_user.person.avatar.url(:small)), profile_path(current_user.person.nick), class: "no-decoration" %>
+                <%= link_to current_user.person.name, profile_path(current_user.person.nick) %>
+              </header>
+              <div class="comment">
+                <%= form_for(Comment.new) do |f| %>
+                  <%= f.hidden_field :project_id, value: @project.id %>
+                  <%= f.hidden_field :person_id, value: current_user.person.id %>
+                  <div class="field">
+                    <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 1, style: "width: 50%" %>
+                    <br>
+                    <%= f.submit "Enviar", class: "btn btn-primary" %>
+                  </div>
                 <% end %>
               </div>
-            </header>
-
-            <div class="comment">
-                <%= c.text %>
-            </div>
-
-          </li>
-        <% end %>
-
-        <!-- New comment field -->
-        <% if user_signed_in? %>
-          <li>
-            <header>
-              <%= image_tag current_user.person.avatar.url(:thumb) %>
-              <%= link_to current_user.person.name, profile_path(current_user.person.nick) %>
-            </header>
-            <div class="comment">
-              <%= form_for(Comment.new) do |f| %>
-                <%= f.hidden_field :project_id, value: @project.id %>
-                <%= f.hidden_field :person_id, value: current_user.person.id %>
-                <div class="field">
-                  <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 5, style: "width: 50%" %>
-                  <br>
-                  <%= f.submit "Enviar", class: "btn btn-primary" %>
-                </div>
-              <% end %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    </p>
+            </li>
+          <% end %>
+        </ul>
+      </p>
+    </div>
   </div>
-</div>
 
 
-</div>
+  </div>
 </div>

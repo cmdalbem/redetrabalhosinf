@@ -1,4 +1,4 @@
-SITE_URL = "infhub.heroku.com"
+SITE_URL = "hub.inf.br"
 
 PROJECT_DESCRIPTION_MAX_LENGTH = 1500
 PROJECT_TITLE_MAX_LENGTH = 80
