@@ -12,10 +12,9 @@ class CommentsController < ApplicationController
 			input = params["comment"]
 			c = Comment.new(input)
 			project = Project.find(input[:project_id])
+	      	notice = ""
 	      	if c.save
 		    	c.create_activity :create, owner: current_user
-
-	      		notice = "Comentário enviado com sucesso."
 	      	else
 	      		notice = "Erro: seu comentário não foi enviado."
 			end

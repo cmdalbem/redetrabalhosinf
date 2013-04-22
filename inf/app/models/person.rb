@@ -15,7 +15,7 @@ class Person < ActiveRecord::Base
 
 	
 	imagePath = Rails.env.development? ? "dev/:attachment/:id/:style.:extension" : ":attachment/:id/:style.:extension"
-	has_attached_file :avatar, :path => imagePath, :default_url => "https://s3.amazonaws.com/redesocialinf/user.gif", :styles => { thumb: "x18", original: "x200" }
+	has_attached_file :avatar, :path => imagePath, :default_url => "https://s3.amazonaws.com/redesocialinf/user_:style.gif", :styles => { thumb: "x18", small: "x32", original: "x200" }
 		validates_attachment_content_type :avatar, :content_type=>['image/jpeg', 'image/png', 'image/gif', 'image/bmp'] 
 		validates_attachment_size :avatar, :less_than => MAX_IMAGE_FILE_SIZE_MB.megabytes
 
@@ -35,18 +35,22 @@ class Person < ActiveRecord::Base
 		search.downcase!
 		if search
 			query = []
+			params = []
 			# Creates queries for each word of the input, and then join them with ANDs.
 			words = search.split(" ")
-			words.each do |w|
-				query << "(lower(name) LIKE '%#{w}%' OR lower(nick) LIKE '%#{w}%')"
+			words.size.times do |i|
+				query << "(name ILIKE :w#{i} OR nick ILIKE :w#{i})"
+				params << [:"w#{i}", "%#{words[i]}%"]
 			end
 			query = query.join(" AND ")
+
+			where(query, Hash[params])
 
 			# References
 			# 	Queries: http://m.onkey.org/active-record-query-interface
 			# 	ActiveRecord HABTM finds with "AND": http://www.ruby-forum.com/topic/191062
 			# 	Joins: http://edgeguides.rubyonrails.org/active_record_querying.html#joining-tables
-			where(query)
+			# where(query)
 		else
 			scoped
 		end

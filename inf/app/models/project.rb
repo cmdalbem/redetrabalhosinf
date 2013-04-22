@@ -46,6 +46,20 @@ class Project < ActiveRecord::Base
 		end
 	end
 
+	def getSemesterString
+		if not semester_sem?
+			if semester_year?
+				return "(#{semester_year})"
+			else
+				return ""
+			end
+		else
+			if semester_year?
+				return "(#{semester})"
+			end
+		end
+	end
+
 	attr_reader :relevance
 	def relevance
 		# (20*self.likeCount + 10*self.downloadCount + 10*self.linkHitCount)*100.0 / (1+self.viewCount)
@@ -56,18 +70,23 @@ class Project < ActiveRecord::Base
 		search.downcase!
 		if search
 			query = []
+			params = []
+			
 			# Creates queries for each word of the input, and then join them with ANDs.
 			words = search.split(" ")
-			words.each do |w|
-				query << "(lower(title) LIKE '%#{w}%' OR lower(tag_text) LIKE '%#{w}%' OR lower(description) LIKE '%#{w}%')"
+			words.size.times do |i|
+				query << "(title ILIKE :w#{i} OR tags_str ILIKE :w#{i} OR description ILIKE :w#{i})"
+				params << [:"w#{i}", "%#{words[i]}%"]
 			end
-			query = query.join(" OR ")
+			query = query.join(" AND ")
 
-			# References
+			where(query, Hash[params])
+
+			# References:
 			# 	Queries: http://m.onkey.org/active-record-query-interface
 			# 	ActiveRecord HABTM finds with "AND": http://www.ruby-forum.com/topic/191062
 			# 	Joins: http://edgeguides.rubyonrails.org/active_record_querying.html#joining-tables
-			joins(:tags).where(query).group("projects.id")#.having("count(*)>=#{words.size}")
+			# joins(:tags).where(query).group("projects.id")#.having("count(*)>=#{words.size}")
 		else
 			scoped
 		end

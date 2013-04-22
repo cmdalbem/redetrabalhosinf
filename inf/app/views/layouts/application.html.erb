@@ -64,36 +64,38 @@
 					<% end %>
 				</div>
 				
-				<ul class="nav pull-right">			
-					<% if user_signed_in? %>
-						<li class="small"><%= link_to nav_icon("Novo Projeto","icon-plus"), new_project_path %></small></li>
-						<!-- <li class="divider-vertical"></li> -->
-					<% end %>
-
-					<li class="dropdown">
+				<ul class="nav pull-right">						
+					
 					<!-- User section -->
 					<% if user_signed_in? %>
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif; ">
-							<%= tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName %>
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<!-- List of user options -->
-							<% if current_user.admin %>
-								<li class="nav-header">Administração</li>
-								<li><%= link_to nav_icon("Disciplinas", "icon-book"), courses_path %></li>
-								<li><%= link_to nav_icon("Tags", "icon-tags"), tags_path %></li>
-								<li><%= link_to nav_icon("Atividades", "icon-rss"), activities_path %></li>
-								<li class="divider"></li>
-							<% end %>
-							<li><%=	link_to nav_icon("Meu Perfil", "icon-user"), profile_path(current_user.person.nick) %></li>
-							<li><%= link_to nav_icon("Editar Perfil", "icon-pencil"), edit_person_path(current_user.person) %></li>
-							<li><%= link_to nav_icon("Sair","icon-signout"), destroy_user_session_path, :method => :delete %></li>
-						</ul>
+
+						<li class="small"><%= link_to nav_icon("Novo Projeto","icon-plus"), new_project_path %></small></li>
+						<li class="divider-vertical"></li>
+
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif; ">
+								<%= tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName %>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<!-- List of user options -->
+								<li><%=	link_to nav_icon("Meu Perfil", "icon-user icon-large"), profile_path(current_user.person.nick) %></li>
+								<li><%= link_to nav_icon("Editar Perfil", "icon-edit icon-large"), edit_person_path(current_user.person) %></li>
+								<li><%= link_to nav_icon("Sair","icon-signout icon-large"), destroy_user_session_path, :method => :delete %></li>
+								<% if current_user.admin %>
+									<li class="nav-header">Administração</li>
+									<li><%= link_to nav_icon("Disciplinas", "icon-book"), courses_path %></li>
+									<li><%= link_to nav_icon("Tags", "icon-tags"), tags_path %></li>
+									<li><%= link_to nav_icon("Atividades", "icon-rss"), activities_path %></li>
+								<% end %>
+							</ul>
+						</li>
+
 					<% else %>
-					  <%= link_to "Entrar", new_user_session_path %>
+						<li>
+						  <%= nav_link nav_icon("Entrar","icon-signin"), new_user_session_path %>
+						</li>
 					<% end %>
-					</li>
 
 					<!--<% if user_signed_in? %>
 					 	<li class="dropdown">
@@ -121,7 +123,7 @@
 				<br>
 				<div class="alert alert-success"><%= raw(notice) %><a class="close" data-dismiss="alert" href="#">&times;</a></div>
 			<% end %>
-			<% if alert and not notice.blank? %>
+			<% if alert and not alert.blank? %>
 				<br>
 				<div class="alert alert-error"><%= raw(alert) %><a class="close" data-dismiss="alert" href="#">&times;</a></div>
 			<% end %>

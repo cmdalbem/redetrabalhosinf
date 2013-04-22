@@ -3,15 +3,17 @@ require 'will_paginate/array'
 
 class ProjectsController < ApplicationController
 
-  before_filter :checkLogged, :only => [:edit, :update, :destroy, :new, :create]
+  before_filter :checkLogged, :only => [:edit, :update, :destroy, :new, :create, :like, :unlike]
 
-  def createUnexistingTags(tags)
+  def processTags(tags)
+    tagTexts = []
     # Check if one of the entered Tags doesn't exist on the Database.
     # This is how select2 taggin mode works: it will give us the a number if the recognizes
-    #   that the tag entered already exists, otherwise it will give us the string of this new tag.
+    #   that the tag entered already exists, otherwise it will give us the string of the new tag.
     tags.size.times do |i|
-      # Check if it's a "FreeTag"
+      
       if not is_number?(tags[i])
+        tagTexts << tags[i]
         # Make sure this tag doesn't already exist.
         duplicates = Tag.where(tag_text: tags[i])
         if duplicates.empty?
@@ -20,8 +22,12 @@ class ProjectsController < ApplicationController
         else
           tags[i] = duplicates.first.id
         end
+      else
+        tagTexts << Tag.find(tags[i]).tag_text
       end
     end
+
+    return tagTexts
   end
 
   def sort_projects_by_column(plist, column, direction)
@@ -144,14 +150,13 @@ class ProjectsController < ApplicationController
     owner = current_user.person
     
     tags = params["tag_tokens"].split(",")
+    tags_str = processTags(tags).join(" ")
 
     people = params["people"].split(',')
     if not people.include?(current_user.person.id.to_s)
       people.push(current_user.person.id)
     end
 
-    createUnexistingTags(tags)
-    
 
     @project = Project.new(title: pp["title"],
       course_id: pp["course_id"],
@@ -164,7 +169,8 @@ class ProjectsController < ApplicationController
       file: pp["file"],
       link: pp["link"],
       person_ids: people,
-      likeCount: 0
+      likeCount: 0,
+      tags_str: tags_str
     )
 
     respond_to do |format|
@@ -202,6 +208,7 @@ class ProjectsController < ApplicationController
     pp = params[:project]
     
     tags = params["tag_tokens"].split(',')
+    tags_str = processTags(tags).join(" ")
 
     people = params["people"].split(',')
     if not people.include?(current_user.person.id.to_s) and not isAdminEditing
@@ -209,7 +216,6 @@ class ProjectsController < ApplicationController
     end
     oldAuthors = @project.people.dup
 
-    createUnexistingTags(tags)
     
 
     success = true
@@ -237,7 +243,10 @@ class ProjectsController < ApplicationController
           semester_year: pp["semester_year"],
           semester_sem: pp["semester_sem"],
           tag_ids: tags,
-          person_ids: people) 
+          person_ids: people,
+          tags_str: tags_str
+    ) 
+
 
     respond_to do |format|
       if success

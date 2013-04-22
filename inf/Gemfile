@@ -59,9 +59,12 @@ gem "public_activity"
 # Beautiful tagclouds
 gem "jqcloud-rails"
 
-# Helpers for meta tags
+# Helpers for HTML meta tags
 gem "headliner"
 gem 'metamagic'
+
+# Sitemap generator (for Google Webmaster Tools)
+# gem 'sitemap_generator'
 
 
 # Gems to be added only when running on Linux

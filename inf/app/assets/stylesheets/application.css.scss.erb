@@ -26,6 +26,7 @@ $footer_height: 140px;
 $defaultBlack: rgb(51,51,51);
 $myred: rgb(200,100,100);
 $muted: rgb(153, 153, 153);
+$warningColor: rgb(185, 74, 72);
 
 @mixin transition($duration: 2s) {
 	-webkit-transition: all #{$duration} ease-in-out;
@@ -311,6 +312,7 @@ ul.project-content-icons {
 }
 
 .navbar {
+
 	border-bottom: 2px solid $myred;
 	
 	img {
@@ -321,6 +323,10 @@ ul.project-content-icons {
 	text {
 		line-height: 50px;
 		font-size: 12px;
+	}
+
+	#loginText {
+		color: $warningColor;
 	}
 
 	.brand {
@@ -350,6 +356,13 @@ ul.project-content-icons {
 			width: 95px;
 		}
 	}
+
+	.divider-vertical {
+	    height: 20px;
+	    margin: 10px 0 0 0;
+	    border-left: 1px dotted rgb(130, 130, 130);
+	    border-right: none;
+	}
 }
 
 .navbar-search {
@@ -363,26 +376,42 @@ ul.project-content-icons {
 .comments-list {
 	list-style-type: none;
 
-	header {
+	.username-text {
 		font-weight: bold;
-		border-bottom: 1px solid rgba(0,0,0,0.07);
-		padding-bottom: 5px;
-		margin-bottom: 5px;
-
-		.time {
-			font-weight: normal;
-		}
-
-		img {
-			height: 18px;
-			width: auto;
-		}
-
 	}
 
-	.comment {
-	    padding: 0px 0px 0px 25px;
-	    margin: 0px 0px 20px;
+	li {
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+		position: relative;
+
+		header {
+			font-weight: bold;
+			border-bottom: 1px solid rgba(0,0,0,0.07);
+			padding-bottom: 5px;
+			margin-bottom: 5px;
+
+			.time {
+				font-weight: normal;
+			}
+
+			img {
+				margin: 5px 5px;
+				vertical-align: top;
+			}
+
+			.deleteOpt {
+				position: absolute;
+				top: 25px;
+				right: 0;
+			}
+
+		}
+
+		.comment {
+		    padding: 0px 0px 0px 25px;
+		    margin: 0px 0px 20px;
+		}
 	}
 }
 
@@ -631,6 +660,18 @@ h0 {
 		margin-left: 10px;
 		/*color: $defaultBlack;*/
 		color: gray;
+	}
+}
+
+#likesModal {
+	
+	li {
+		padding-bottom: 5px;
+	}
+
+	.modal-body {
+		text-align: left;
+		margin-left: 20px;
 	}
 }
 

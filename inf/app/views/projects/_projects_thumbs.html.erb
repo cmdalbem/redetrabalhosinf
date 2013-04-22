@@ -61,7 +61,7 @@
                 <%= project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %>
 
                 <br>
-                <i class="icon-book muted"></i> <%= link_to_course project.course %> (<%= project.semester%>)
+                <i class="icon-book muted"></i> <%= link_to_course project.course %> <%= project.getSemesterString %>
               </div>
 
             </div>

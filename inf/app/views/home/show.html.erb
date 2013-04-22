@@ -198,11 +198,21 @@
 				<ul>
 					<% @lastPeople.each do |p| %>
 						<li>
-							<header><%= link_to p, profile_path(p.nick) %></header>
-							<p class="author"><%= p.name %></p>
-							<small>
-								<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(p.created_at) %></p>
-							</small>
+							<table border="0">
+								<tr>
+									<td>
+										<%= link_to image_tag(p.avatar.url(:small)), profile_path(p.nick), class: "no-decoration" %>
+									</td>
+
+									<td>
+										<header><%= link_to p, profile_path(p.nick) %></header>
+										<p class="author"><%= p.name %></p>
+										<small>
+											<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(p.created_at) %></p>
+										</small>
+									</td>
+								</tr>
+							</table>							
 						</li>
 					<% end %>
 				</ul>

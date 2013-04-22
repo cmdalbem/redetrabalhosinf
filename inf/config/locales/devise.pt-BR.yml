@@ -43,6 +43,8 @@ pt-BR:
     sessions:
       # signed_in: 'Tu agora estás logado!'
       # signed_out: 'Tu agora estás deslogado.'
+      signed_in: ''
+      signed_out: ''
     unlocks:
       send_instructions: 'Dentro de minutos receberás um email com instruções para o desbloqueio da tua conta.'
       send_paranoid_instructions: 'Se tua conta existir, receberás um e-mail com instruções para desbloqueá-la em alguns minutos.'
