@@ -7,10 +7,10 @@ class TagsController < ApplicationController
   def index
   	if(params[:q])
   		params[:q].downcase!
-  		@tags = Tag.where("lower(tag_text) LIKE ?", params[:q]).all
+  		@tags = Tag.where("LOWER(tag_text) LIKE ?", params[:q]).all
   	else
       # Ordering by a many-to-many relation count: http://stackoverflow.com/questions/10957025/rails-3-order-by-count-on-has-many-through
-  		@tags = Tag.joins(:taggings).group("tags.id").order('count(tag_id) desc').all
+  		@tags = Tag.joins("LEFT JOIN taggings ON tags.id = taggings.tag_id").group("tags.id").order('COUNT(tag_id) DESC').all
   	end
 
   	respond_to do |format|

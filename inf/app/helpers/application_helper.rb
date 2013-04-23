@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ApplicationHelper
 
 	# A list item link (li a) which appears activated when the user is actually on it's url.
@@ -142,8 +143,11 @@ module ApplicationHelper
 		count = []
 		tags.each { |t|
 			count[i] = t.projects.count
-			max = count[i] if count[i] > max
-			min = count[i] if count[i] < min
+			# We ignore tags without projects
+			if count[i]>0
+				max = count[i] if count[i] > max
+				min = count[i] if count[i] < min
+			end
 			i+=1
 		}
 
@@ -151,7 +155,17 @@ module ApplicationHelper
 
 		i=0
 		tags.each { |t|
-			yield t.tag_text, classes[(count[i] / divisor)]
+			if count[i]>0
+				if count[i]==min
+					pos = 0
+				elsif count[i]==max
+					pos = classes.size-1
+				else
+					pos = count[i] / divisor
+				end
+
+				yield t, classes[pos]
+			end
 			i+=1
 		}
 	end

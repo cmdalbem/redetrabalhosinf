@@ -198,6 +198,14 @@ a.accordion-toggle:hover, a.accordion-toggle:focus
 	height: 100%;
 }
 
+.block-red {
+	background: -moz-linear-gradient(center top , rgb(255, 240, 240), rgba(230, 230, 230,0))
+}
+
+.block-green {
+	background: -moz-linear-gradient(center top , rgb(230, 255, 230), rgba(230, 230, 230,0))
+}
+
 .profile-block {
 	border: 1px solid #e5e5e5;
 	-webkit-border-radius: 4px;
@@ -279,8 +287,8 @@ ul.project-content-icons {
 	margin: 0;
 
 	li {
-		padding-left: 5px;
-		padding-right: 5px;
+		padding-left: 7px;
+		padding-right: 2px;
 		display: inline;
 		text-indent: 0;
 	}
@@ -567,14 +575,15 @@ h0 {
 		/*These properties must be set to "!important" because the are overwritten on a hardcoded styling in the javascript. Yea, that's really shameful.*/
 		/*width: 100%;*/	
 		width: 600px;
-		font-size: 25px !important;
-		color: $defaultBlack !important;
+		font-size: 22px !important;
+		padding: 10px 0;
 
 		.select2-choice {
-			box-shadow: 0 0 5px rgba(200, 200, 200, 0.8);
+			/*box-shadow: 0 0 5px rgba(200, 200, 200, 0.8);*/
 			/*border: 2px solid rgb(235, 235, 235);*/
 			height: 30px;
 			line-height: 30px;
+			color: rgb(80,80,80) !important;
 
 			/*@include transition(.4s);*/
 		}
@@ -586,29 +595,52 @@ h0 {
 
 }
 
-.news {
+.news-list {
 	overflow: hidden;
-	padding-bottom: 30px;
+	/*padding-bottom: 30px;*/
 	
 	legend {
-		margin-bottom: 0;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		border-bottom: 2px solid rgba(200, 100, 100, 0.7);
+		margin-bottom: 5px;
 		font-weight: bold;
 		font-size: 18px;
 		text-align: center;
-		border-color: rgb(200,200,200);
 		line-height: 30px;
 		@include carvedText;
 	}
 
+	.news-sublist {
+		padding-left: 10px;
+		font-size: 80%;
+		width: 90%;
+
+		li {
+			padding: 0;
+		}
+	}
+
 	ul {
 		margin: 0;
+		/*border-bottom: 1px solid rgb(200, 200, 200);*/
+
+		li:hover {
+			background-color: rgba(0,0,0,0.02);
+		}
+
+		li:not(:last-child) {
+			border-bottom: 1px dotted rgb(200, 200, 200);
+		}
 
 		li {
 			position: relative;
 			list-style-type: none;
 			margin: 0px;
 			padding: 5px 0px;
-			border-bottom: 1px solid rgb(221, 221, 221);
+
+			img {
+				padding-right: 3px;
+			}
 
 			header {
 				@include font_breeSerif;
@@ -694,8 +726,8 @@ h0 {
 
 footer {
 	/*font-size: 12px;*/
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-	border-top: 1px solid rgba(0,0,0,0.1);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2) inset;
+	border-top: 2px solid $myred;
 	background-color: rgba(0,0,0,0.05);
 
 	/*font-weight: bold;*/
@@ -863,21 +895,29 @@ label {
 .jqcloud {
 	line-height: normal;
 }
+
 #tagcloud {
+	padding: 30px 0 20px 0;
+	text-align: justify;
 	width: 100%;
 	/*height: 350px;*/
+
+	a {
+		@include transition(0.2s);
+		border-radius: 10px;
+	}
 
 	span.w10, span.w9, span.w8, span.w7 {
 	    text-shadow: 0px 1px 1px rgb(204, 204, 204);
 	}
-}
 
-.nube1 { font-size: 0.6em; opacity:0.5; }
-.nube2 { font-size: 1.0em; opacity:0.6; }
-.nube3 { font-size: 1.4em; opacity:0.7; }
-.nube4 { font-size: 1.8em; opacity:0.8; }
-.nube5 { font-size: 2.2em; opacity:0.9; }
-.nube6 { font-size: 2.6em; opacity:1 }
+	.cloud1 { font-size: 0.8em; opacity:0.35; }
+	.cloud2 { font-size: 1.0em; opacity:0.35; }
+	.cloud3 { font-size: 1.6em; opacity:0.5; }
+	.cloud4 { font-size: 2.3em; opacity:0.7; }
+	.cloud5 { font-size: 2.8em; opacity:0.9; }
+	.cloud6 { font-size: 3.0em; opacity:1 }
+}
 
 
 .person-thumb:hover img {

@@ -81,8 +81,10 @@
 								<!-- List of user options -->
 								<li><%=	link_to nav_icon("Meu Perfil", "icon-user icon-large"), profile_path(current_user.person.nick) %></li>
 								<li><%= link_to nav_icon("Editar Perfil", "icon-edit icon-large"), edit_person_path(current_user.person) %></li>
+								<li class="divider"></li>
 								<li><%= link_to nav_icon("Sair","icon-signout icon-large"), destroy_user_session_path, :method => :delete %></li>
 								<% if current_user.admin %>
+									<li class="divider"></li>
 									<li class="nav-header">Administração</li>
 									<li><%= link_to nav_icon("Disciplinas", "icon-book"), courses_path %></li>
 									<li><%= link_to nav_icon("Tags", "icon-tags"), tags_path %></li>

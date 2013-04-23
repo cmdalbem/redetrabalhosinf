@@ -6,7 +6,7 @@
 		
 		<!-- My Notifications section -->
 		<div class="row-fluid">
-			<div class="news">
+			<div class="news-list">
 				<legend>
 					<i class="icon-bell"></i> Atividade nos Meus Projetos
 				</legend>
@@ -27,7 +27,7 @@
 						<% end %>
 					</ul>
 					<small>
-						<% # link_to "Ver mais", activities_path %>
+						<% # link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), activities_path %>
 					</small>
 				<% end %>
 			</div>
@@ -85,20 +85,35 @@
 
 		</div>
 
-		<!-- Tag Cloud -->
-		<div id="tagcloud">
-		    <% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5 nube6) do |name, css_class| %>
-			  <%= link_to name, projects_path(search: name), class: css_class %>
-			<% end %>
-		</div>
-
 	<% else %>
 
-		<br>
+<!-- 		<br>
+		<br> -->
+
+		<div class="hero-unit">
+			<div class="row-fluid">
+			    
+			    <div class="span2">
+			    	<center>
+			    		<%= link_to image_tag(@person.avatar.url, class: "img-polaroid", style: "max-height: 130px; width: auto;"), profile_path(current_user.person.nick) %>
+			    	</center>
+			    </div>
+				
+				<div class="span7">
+					<h3>Bem-vindo <b><%= link_to @person.name, profile_path(current_user.person.nick) %></b> <%= link_to "(sair)", destroy_user_session_path, :method => :delete, class: "small" %></h3>
+					<% #link_to nav_icon("Novo Projeto","icon-plus"), new_project_path, class: "btn btn-success btn-large" %>
+					<% #link_to nav_icon("Meu Perfil", "icon-user"), edit_person_path(current_user.person), class: "btn btn-info" %>
+					<% #link_to nav_icon("Editar Perfil", "icon-edit"), edit_person_path(current_user.person), class: "btn btn-info" %>
+					<% #link_to nav_icon("Sair","icon-signout"), destroy_user_session_path, :method => :delete, class: "btn" %>
+				</div>
+		    </div>
+
+		</div>
+
 		<br>
 
-		<div class="row-fluid person-profile block">
-			<div class="span3">
+		<div class="row-fluid person-profile ">
+<!-- 			<div class="span3">
 				<center>
 					<%= link_to image_tag(@person.avatar, class: "img-polaroid"), profile_path(current_user.person.nick) %>
 				</center>
@@ -113,17 +128,72 @@
 					</ul>
 				</center>
 			</div>
+ -->
+
+ 			<% numSuggestions = @recommendedActions.values.count{|x|x==true} %>
+ 			<div class="span4 block <%= numSuggestions>0 ? 'block-red' : 'block-green' %>">
+ 				<div class="news-list">
+					<legend>
+						Ações Recomendadas (<%=numSuggestions%>)
+					</legend>
+
+					<% if numSuggestions==0 %>
+						<center class="muted">
+							Nenhuma recomendação no momento.
+						</center>
+					<% else %>
+						<ul>
+							<% if @recommendedActions[:addProjects] %>
+								<li>
+									<i class="icon-file-alt icon-large"></i>
+									Comece a compartilhar teus trabalhos com teus colegas, <%=link_to "adicione um projeto", new_project_path%> ao infHUB.
+								</li>
+							<% end %>
+
+							<% if @recommendedActions[:addAvatar] %>
+								<li>
+									<i class="icon-picture icon-large"></i>
+									<%= link_to "Adicione um avatar ao seu perfil.", edit_person_path(@person) %>
+								</li>
+							<% end %>
+
+							<% if @recommendedActions[:likeProjects] %>
+								<li>
+									<i class="icon-thumbs-up icon-large"></i>
+									Tu ainda não curtiu nenhum trabalho no infHUB. Seja legal e <%= link_to "curta um trabalho bacana.", projects_path %>
+								</li>
+							<% end %>
+
+							<% if @recommendedActions[:tagProjects] %>
+								<li>
+									<i class="icon-tags icon-large"></i>
+									Adicione tags ao seus projetos pra que sejam encontrados mais facilmente. Ainda tens <b><%=@untaggedProjects.size%></b> projetos sem tags:
+									<ul class="news-sublist">
+										<% @untaggedProjects.each do |p| %>
+											<li>
+												<%= link_to_project p %>
+												<span class="pull-right"> <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(p) %>
+											</li>
+										<% end %>
+									</ul>
+								</li>
+							<% end %>
+						</ul>
+					<% end %>
+
+				</div>
+ 			</div>
 
 			<!-- My Notifications section -->
-			<div class="span9">
-				<div class="news">
+			<div class="span8 block">
+				<div class="news-list">
 					<legend>
-						<i class="icon-bell"></i> Atividade nos Meus Projetos
+						<!-- <i class="icon-bell"></i> --> Notificações
 					</legend>
 
 					<% if @myActivities.empty? %>
 						<center class="muted">
-						Sem atividade a exibir.
+							Sem notificações a exibir.
 						</center>
 					<% else %>
 						<ul>
@@ -137,7 +207,7 @@
 							<% end %>
 						</ul>
 						<small>
-							<% # link_to "Ver mais", activities_path %>
+							<% # link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), activities_path %>
 						</small>
 					<% end %>
 				</div>
@@ -153,12 +223,22 @@
 
 	<% end %>
 
-	<br>
 
-	<!-- News lists -->
+	<!-- Tag Cloud -->
+	<div id="tagcloud">
+	    <% tag_cloud @tags, %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6) do |t, css_class| %>
+		  <%= link_to t.tag_text, projects_path(search: t.tag_text), class: css_class %>
+		  <% if t!=@tags.last %>
+		  	<span class="muted small">·</span>
+		  <% end %>
+		<% end %>
+	</div>
+	
+
+	<!-- News-list lists -->
 	<div class="row-fluid">
 		<div class="span4">
-			<div class="news">
+			<div class="news-list">
 				<legend>Novos Projetos</legend>
 				<ul>
 					<% @lastProjects.each do |p| %>
@@ -173,14 +253,14 @@
 					<% end %>
 				</ul>
 				<small>
-					<%= link_to "Ver mais", projects_path(sort: "date", direction: "desc") %>
+					<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), projects_path(sort: "date", direction: "desc") %>
 				</small>
 			</div>
 
 		</div>
 
 		<div class="span4">
-			<div class="news">
+			<div class="news-list">
 				<legend>Novos Usuários</legend>
 				<ul>
 					<% @lastPeople.each do |p| %>
@@ -204,13 +284,13 @@
 					<% end %>
 				</ul>
 				<small>
-					<%= link_to "Ver mais", people_path(sort: "date", direction: "desc") %>
+					<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), people_path(sort: "date", direction: "desc") %>
 				</small>
 			</div>
 		</div>
 
 		<div class="span4">
-			<div class="news">
+			<div class="news-list">
 				<legend>Atividade Recente</legend>
 				<ul>
 					<% @globalActivities.each do |a| %>
@@ -223,7 +303,7 @@
 					<% end %>
 				</ul>
 				<small>
-					<% # link_to "Ver mais", activities_path %>
+					<% # link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), activities_path %>
 				</small>
 			</div>
 		</div>

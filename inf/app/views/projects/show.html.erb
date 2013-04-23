@@ -143,7 +143,7 @@
   <div class="row-fluid">
     <div class="block span12">
       <p>
-        <h3><i class="icon-comments"></i> Comentários</h3>
+        <h3><i class="icon-comments"></i> Comentários (<%= @project.comments.size %>)</h3>
         <% @project.comments.sort_by! {|x| x.created_at} %>
         <ul class="comments-list">
           
