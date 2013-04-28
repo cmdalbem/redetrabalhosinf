@@ -45,12 +45,6 @@ class Person < ActiveRecord::Base
 			query = query.join(" AND ")
 
 			where(query, Hash[params])
-
-			# References
-			# 	Queries: http://m.onkey.org/active-record-query-interface
-			# 	ActiveRecord HABTM finds with "AND": http://www.ruby-forum.com/topic/191062
-			# 	Joins: http://edgeguides.rubyonrails.org/active_record_querying.html#joining-tables
-			# where(query)
 		else
 			scoped
 		end

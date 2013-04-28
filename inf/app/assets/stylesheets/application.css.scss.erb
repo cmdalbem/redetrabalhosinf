@@ -105,7 +105,7 @@ http://stackoverflow.com/questions/9421966/how-do-i-center-the-twitter-bootstrap
      zoom:1; /* hasLayout ie7 trigger */
 }
 .nav-tabs, .nav-pills {
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .tab-content {
@@ -200,6 +200,10 @@ a.accordion-toggle:hover, a.accordion-toggle:focus
 
 .block-red {
 	background: -moz-linear-gradient(center top , rgb(255, 240, 240), rgba(230, 230, 230,0))
+}
+
+.block-blue {
+	background: -moz-linear-gradient(center top , rgb(240, 245, 255), rgba(230, 230, 230,0))
 }
 
 .block-green {
@@ -360,8 +364,8 @@ ul.project-content-icons {
 	}
 
 	.mysearch {
-		input#search {
-			width: 95px;
+		.search-query {
+			/*width: 60px;*/
 		}
 	}
 
@@ -488,6 +492,10 @@ h0 {
 		background: -ms-linear-gradient(top,  rgba(172,77,73,1) 10%,rgba(132,37,33,1) 100%); /* IE10+ */
 		background: linear-gradient(to bottom,  rgba(172,77,73,1) 10%,rgba(132,37,33,1) 100%); /* W3C */
 		
+		a {
+			color: inherit;
+		}
+
 		h1 {
 			font-size: 50px;
 			@include font_breeSerif;
@@ -525,7 +533,10 @@ h0 {
 		padding-right: 55px;
 		max-width: 100%;
 
-		input#search {
+		margin-top: 10px;
+		margin-bottom: 25px;
+
+		.search-query {
 			background: rgb(255,255,255); /* Old browsers */
 			background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(238,238,238,1) 100%); /* FF3.6+ */
 			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(238,238,238,1))); /* Chrome,Safari4+ */
@@ -534,20 +545,21 @@ h0 {
 			background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(238,238,238,1) 100%); /* IE10+ */
 			background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(238,238,238,1) 100%); /* W3C */
 
-			font-size: 25px;
+			font-size: 22px;
+			height: 26px;
 			/*color: rgba(68,68,68,0.5);*/
-			padding-left: 40px;
+			padding-left: 30px;
 			width: 100%;
 			/*width: 100%;*/
 			box-shadow: 0 0 5px rgba(200, 200, 200, 0.8);
 		}
 
-		input#search:focus {
+		.search-query:focus {
 			width: 100%;
 		}
 
 		.icon-search {
-			margin-top: 10px;
+			margin-top: 6px;
 		}
 	}
 
@@ -674,13 +686,13 @@ h0 {
 .mysearch { 
 	position: relative;
 
-	input#search {
+	.search-query {
 		padding-left: 25px;
 		width: 180px;
 		@include transition(.4s);
 	}
 
-    input#search:focus {
+    .search-query:focus {
 		width: 270px;
 	}
 
@@ -903,7 +915,7 @@ label {
 	/*height: 350px;*/
 
 	a {
-		@include transition(0.2s);
+		/*@include transition(0.2s);*/
 		border-radius: 10px;
 	}
 

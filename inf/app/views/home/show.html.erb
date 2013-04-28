@@ -56,11 +56,11 @@
 					<h1>A rede de compartilhamento de trabalhos do INF</h1>
 
 					<p>
-						Teu programa do Neander ficou mais rápido que o do Weber? Tirou a nota mais alta da turma no relatório de Redes? Inventou uma classe que finalmente resolve o problema de usar texturas em OpenGL? Não deixa teus projetos sumirem na obscuridão das páginas pessoais da INF!
+						Não deixa teus trabalhos sumirem na obscuridão das páginas pessoais da INF. No infHUB é fácil publicar teus trabalhos e curtir os dos teus colegas.
 					</p>
 
 					<p>
-						No infHUB é fácil publicar teus melhores trabalhos, curtir os trabalhos dos teus colegas e até descobrir rapidamente qual foi o joguinho mais bacana que alguém já fez pra Projeto de Computação Gráfica.
+						Descobre mais sobre aquela cadeira que tu tá pensando em pegar vendo os trabalhos dela. Aprende a usar bibliotecas com exemplos que funcionam. Confere aqueles detalhes que não podem faltar no teu relatório... Dá até pra descobrir qual foi trabalho mais bacana de todos os tempos em Computação Gráfica.
 						<%= link_to "Leia mais...", about_path, class: "no-decoration" %>
 					</p>
 
@@ -77,9 +77,7 @@
 		
 			<div class="row-fluid">
 				<center>
-					<%= form_tag projects_path, method: 'get', class: "form-search" do %>
-						<%= render "shared/course_selector", placeholder: "Escolha uma disciplina..." %>
-					<% end %>
+					<%= render "shared/global_search_form", placeholder: "Pesquisar projetos, disciplinas, usuários..." %>
 				</center>
 			</div>
 
@@ -95,16 +93,20 @@
 			    
 			    <div class="span2">
 			    	<center>
-			    		<%= link_to image_tag(@person.avatar.url, class: "img-polaroid", style: "max-height: 130px; width: auto;"), profile_path(current_user.person.nick) %>
+			    		<%= link_to image_tag(@person.avatar.url, class: "img-polaroid", style: "max-height: 100px; width: auto;"), profile_path(current_user.person.nick) %>
 			    	</center>
 			    </div>
 				
 				<div class="span7">
-					<h3>Bem-vindo <b><%= link_to @person.name, profile_path(current_user.person.nick) %></b> <%= link_to "(sair)", destroy_user_session_path, :method => :delete, class: "small" %></h3>
-					<% #link_to nav_icon("Novo Projeto","icon-plus"), new_project_path, class: "btn btn-success btn-large" %>
-					<% #link_to nav_icon("Meu Perfil", "icon-user"), edit_person_path(current_user.person), class: "btn btn-info" %>
-					<% #link_to nav_icon("Editar Perfil", "icon-edit"), edit_person_path(current_user.person), class: "btn btn-info" %>
-					<% #link_to nav_icon("Sair","icon-signout"), destroy_user_session_path, :method => :delete, class: "btn" %>
+					<h3>Bem-vindo <b><%= link_to @person.name, profile_path(current_user.person.nick) %></b>.</h3>
+
+					<!-- <p> -->
+						<ul class="dotted-horizontal-list small" style="color: rgb(50, 186, 234);">
+							<li><%= link_to nav_icon("Novo Projeto",""), new_project_path %></li>
+							<li><%= link_to nav_icon("Meu Perfil", ""), edit_person_path(current_user.person) %></li>
+							<li><%= link_to nav_icon("Sair",""), destroy_user_session_path, :method => :delete %></li>
+						</ul>
+					<!-- </p> -->
 				</div>
 		    </div>
 
@@ -131,10 +133,10 @@
  -->
 
  			<% numSuggestions = @recommendedActions.values.count{|x|x==true} %>
- 			<div class="span4 block <%= numSuggestions>0 ? 'block-red' : 'block-green' %>">
+ 			<div class="span4 block <%= numSuggestions>0 ? 'block-red' : 'block-blue' %>">
  				<div class="news-list">
 					<legend>
-						Ações Recomendadas (<%=numSuggestions%>)
+						Ações Recomendadas <%= if numSuggestions!=0 then "(#{numSuggestions})" end %>
 					</legend>
 
 					<% if numSuggestions==0 %>
@@ -145,29 +147,29 @@
 						<ul>
 							<% if @recommendedActions[:addProjects] %>
 								<li>
-									<i class="icon-file-alt icon-large"></i>
+									<i class="icon-plus-sign icon-large"></i>
 									Comece a compartilhar teus trabalhos com teus colegas, <%=link_to "adicione um projeto", new_project_path%> ao infHUB.
 								</li>
 							<% end %>
 
 							<% if @recommendedActions[:addAvatar] %>
 								<li>
-									<i class="icon-picture icon-large"></i>
-									<%= link_to "Adicione um avatar ao seu perfil.", edit_person_path(@person) %>
+									<i class="icon-user icon-large"></i>
+									Dê uma cara ao seu perfil: <%= link_to "adicione um avatar.", edit_person_path(@person) %>
 								</li>
 							<% end %>
 
 							<% if @recommendedActions[:likeProjects] %>
 								<li>
 									<i class="icon-thumbs-up icon-large"></i>
-									Tu ainda não curtiu nenhum trabalho no infHUB. Seja legal e <%= link_to "curta um trabalho bacana.", projects_path %>
+									Tu ainda não curtiu nenhum trabalho no infHUB. Seja legal e <%= link_to "encontre um trabalho bacana pra curtir.", projects_path %>
 								</li>
 							<% end %>
 
 							<% if @recommendedActions[:tagProjects] %>
 								<li>
 									<i class="icon-tags icon-large"></i>
-									Adicione tags ao seus projetos pra que sejam encontrados mais facilmente. Ainda tens <b><%=@untaggedProjects.size%></b> projetos sem tags:
+									Adicione tags ao seus projetos pra que sejam encontrados mais facilmente. Ainda tens <b><%=@untaggedProjects.size%></b> <%= @untaggedProjects.size==1 ? "projeto" : "projetos" %> sem tags:
 									<ul class="news-sublist">
 										<% @untaggedProjects.each do |p| %>
 											<li>
@@ -227,7 +229,7 @@
 	<!-- Tag Cloud -->
 	<div id="tagcloud">
 	    <% tag_cloud @tags, %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6) do |t, css_class| %>
-		  <%= link_to t.tag_text, projects_path(search: t.tag_text), class: css_class %>
+		  <%= link_to t.tag_text, projects_path(q: t.tag_text), class: css_class %>
 		  <% if t!=@tags.last %>
 		  	<span class="muted small">·</span>
 		  <% end %>
@@ -235,7 +237,7 @@
 	</div>
 	
 
-	<!-- News-list lists -->
+	<!-- Lists -->
 	<div class="row-fluid">
 		<div class="span4">
 			<div class="news-list">
@@ -246,7 +248,7 @@
 							<header><%= link_to_project p %></header>
 							<p class="author">por <%= link_to p.person, profile_path(p.person.nick) %></p>
 							<small>
-								<p class="muted"><i class="icon-book"></i><%= link_to p.course.name, projects_path(course: p.course.id), class: "muted" %></p>
+								<p><i class="icon-book muted"></i><%= link_to p.course.name, projects_path(course: p.course.id), class: "" %></p>
 								<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(p.created_at) %></p>
 							</small>
 						</li>
@@ -265,19 +267,21 @@
 				<ul>
 					<% @lastPeople.each do |p| %>
 						<li>
-							<table border="0">
-								<tr>
+							<table border="0" style="width:100%;">
+								<tr onmouseover="this.style.cursor='pointer'" onclick="window.location = '<%=profile_path(p.nick)%>'">
 									<td>
 										<%= link_to image_tag(p.avatar.url(:small)), profile_path(p.nick), class: "no-decoration" %>
 									</td>
 
-									<td>
+									<td style="width:100%;">
 										<header><%= link_to p, profile_path(p.nick) %></header>
 										<p class="author"><%= p.name %></p>
 										<small>
 											<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(p.created_at) %></p>
 										</small>
 									</td>
+
+									<td></td>
 								</tr>
 							</table>							
 						</li>

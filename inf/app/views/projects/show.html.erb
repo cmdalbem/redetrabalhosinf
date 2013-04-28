@@ -5,26 +5,18 @@
   <div class="container-fluid center">
 
   <h1 class="projectname-text" style="display: inline;"> <%= title @project.title %> </h1>
+
+  <br>
   <div class="pull-right">
     <% if user_signed_in? and @project.canBeEditedBy?(current_user) %>
-      <div class="btn-group project-hidden-options">
-        <a class="btn dropdown-toggle btn-info btn-medium"  data-toggle="dropdown" href="#">
-          <i class="icon-cog"></i>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu pull-right">
-          <li> <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(@project) %> </li>
-          <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), @project, confirm: 'Tem certeza?', method: :delete %> </li>
-        </ul>
-      </div>
+      <%= link_to raw("<i class=\"icon-pencil\"></i> "), edit_project_path(@project), class: "btn btn-info" %>
+      <%= link_to raw("<i class=\"icon-trash\"></i> "), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>
     <% end %>
   </div>
+  <br>
 
-  <br>
-  <br>
 
   <div class="row-fluid">
-
     <% if @project.image? %>
       <div class="">
         <center>
@@ -35,6 +27,7 @@
       <br>
     <% end %>
   </div>
+
 
   <div class="row-fluid">
 

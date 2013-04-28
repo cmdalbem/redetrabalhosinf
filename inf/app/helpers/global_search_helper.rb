@@ -1,0 +1,2 @@
+module GlobalSearchHelper
+end

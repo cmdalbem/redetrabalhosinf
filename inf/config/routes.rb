@@ -1,23 +1,21 @@
 Inf::Application.routes.draw do
 
-  get "activities/index"
-
   resources :courses
 
   resources :s3_uploads
 
-  resources :activities
+  resources :global_search, path: "busca"
 
   resources :projects, path: "projetos", :path_names => { new: "novo", edit: "editar" }
   resources :people, path: "pessoas", :path_names => { new: "novo", edit: "editar" }, constraints: { :id => /[^\/]+/ }
-  resources :home, :tags, :comments
+  resources :home, :tags, :comments, :activities
   devise_for :users, :controllers => { :registrations  => "registrations" }, path: "", :path_names => { sign_in: 'entrar', sign_out: 'logout', sign_up: "cadastro"}
 
-  root :to => "home#show"
-
   match 'pessoas/:id' => 'People#show', :as => 'profile'
-  
-  match 'about' => 'Home#about', :as => 'about'
+
+  root :to => "home#show"
+  match 'sobre' => 'Home#about', :as => 'about', :via => :get  
+
   
   # match 'people/:name/deleteAvatar' => 'People#deleteAvatar', :as => 'deleteAvatar'
 

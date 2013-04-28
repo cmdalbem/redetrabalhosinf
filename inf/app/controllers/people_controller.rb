@@ -68,8 +68,10 @@ class PeopleController < ApplicationController
     # Handle searchs
     @people = Person.scoped
 
-    if params[:search] and !params[:search].empty?
-      @people = Person.search(params[:search])
+    if params[:q] and !params[:q].empty?
+      @hasQuery = true
+      @query = params[:q]
+      @people = Person.search(@query)
       @searchSize = @people.size
     end
 

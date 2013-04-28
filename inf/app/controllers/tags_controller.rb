@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_filter :check_admin
 
   # GET /tags
-  # GET /tags.json
+# GET /tags.json
   def index
   	if(params[:q])
   		params[:q].downcase!

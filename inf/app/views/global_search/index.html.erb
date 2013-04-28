@@ -1,0 +1,58 @@
+<div class="content">
+
+	<h2>
+		<%= title "Busca Geral" %>
+	</h2>
+
+
+	<!-- Showing results for... -->
+	<%= render 'shared/search_result_title' %>
+
+
+	<% if @numProjects>0 %>
+		<h3>Projetos (<%=@numProjects%>)</h3>
+
+		<!-- Mostrando <b><%= @projects.size %></b> <%= @projects.size==1 ? "resultado" : "resultados" %> de <b><%= @numProjects %></b>. -->
+		<div id="projects-table"> 
+			<%= render 'projects/projects_table' %>
+		</div>
+	<% end %>
+	
+
+	<% if @numCourses>0 %>
+		<h3>Disciplinas (<%=@numCourses%>)</h3>
+
+		<!-- Mostrando <b><%= @courses.size %></b> <%= @courses.size==1 ? "resultado" : "resultados" %> de <b><%= @numCourses %></b>. -->
+		<div>
+			<table class="table table-striped">
+			  <thead>
+			    <tr class="muted">
+			      <th>Nome</th>
+			      <!-- <th>Usuário</th> -->
+			      <!-- <th>Nro. Projetos</th> -->
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @courses.each do |c| %>
+			      <tr>
+			        <td><%= link_to_course c %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		</div>
+	<% end %>
+
+
+	<% if @numPeople>0 %>
+		<h3>Usuários (<%=@numPeople%>)</h3>
+
+		<!-- Mostrando <b><%= @people.size %></b> <%= @people.size==1 ? "resultado" : "resultados" %> de <b><%= @numPeople %></b>. -->
+
+		<div id="people-table" class="clearfix"> 
+			<%= render 'people/people_thumbs' %>
+		</div>
+	<% end %>
+
+</div>

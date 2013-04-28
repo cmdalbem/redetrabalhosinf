@@ -1,5 +1,7 @@
 <!-- Showing results for... -->
-<%= render 'shared/search_result_title' %>
+<% if @hasQuery %>
+	<%= render 'shared/search_result_title' %>
+<% end %>
 
 <!-- The content view -->
 <% if @projects.empty? %>

@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
-
+	
 	# A list item link (li a) which appears activated when the user is actually on it's url.
 	# Most commonly used on navbars.
 	def nav_link(link_text, link_path, activable=true)

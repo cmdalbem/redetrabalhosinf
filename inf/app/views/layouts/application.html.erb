@@ -54,14 +54,7 @@
 
 				<!-- Search Form -->
 				<div class="mysearch navbar-search">
-					<%= form_tag projects_path, method: 'get', class: "form-search", style: "margin: 0;" do %>
-						<%= hidden_field_tag :direction, params[:direction] %>
-						<%= hidden_field_tag :sort, params[:sort] %>
-						<%= hidden_field_tag :view, params[:view] %>
-						<%= hidden_field_tag :course, params[:course] %>
-						<i class="icon-search"></i>
-						<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Buscar projetos" %>
-					<% end %>
+					<%= render "shared/global_search_form", placeholder: "Pesquisar" %>
 				</div>
 				
 				<ul class="nav pull-right">						

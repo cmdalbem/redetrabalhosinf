@@ -63,8 +63,8 @@ class HomeController < ApplicationController
     end
   end
 
-  def about
-  	render :action => 'about'
+  def sobre
+  	
   end
 
 end

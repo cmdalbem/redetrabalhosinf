@@ -38,27 +38,21 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr class="project-options-trigger">
+        <!-- <td style="max-width: 600px" onmouseover="this.style.cursor='pointer'" onclick="window.location = '<%=url_to_project(project)%>'"> -->
         <td style="max-width: 600px">
           <!-- Edit Buttons -->
           <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
             <div class="thumb-buttons">
-              <div class="btn-group project-hidden-options">
-                <% btnColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " btn-danger" : " btn-info" %>
-                <a class="btn btn-mini dropdown-toggle <%=btnColor%>"  data-toggle="dropdown" href="#">
-                  <i class="icon-cog"></i>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                  <li> <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_project_path(project), class: "small" %> </li>
-                  <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), project, confirm: 'Tem certeza?', method: :delete, class: "small" %> </li>
-                </ul>
+              <div class="dropdown project-hidden-options">
+                <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
+                <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: adminActionColor %>
+                <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: adminActionColor %>                
               </div>
             </div>
           <% end %>
 
-          <%# The use of raw here is probably bad too, but I dont understand enough to fix it %>
           <a href=<%=url_to_project(project)%> class="title no-decoration">
-            <%=project.title%> <%= raw(getContentIcons(project)) %>
+            <%= project.title %> <%= raw(getContentIcons(project)) %>
             <% if not project.tags.empty? %>
               <br>
               <smaller class="muted">

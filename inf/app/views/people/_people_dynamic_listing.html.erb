@@ -1,14 +1,16 @@
 <!-- Showing results for... -->
-<%= render 'shared/search_result_title' %>
+<% if @hasQuery %>
+	<%= render 'shared/search_result_title' %>
+<% end %>
 
 <!-- The content view -->
 <% if @viewMode == :thumbs %>
-	<%= render 'people_thumbs' %>
+	<%= render 'people/people_thumbs' %>
 <% else %>
-	<%= render 'people_list' %>
+	<%= render 'people/people_list' %>
 <% end %>
 
 <!-- Pagination -->
 <center>
-  <%= will_paginate @projects %>
+	<%= will_paginate @people %>
 </center>

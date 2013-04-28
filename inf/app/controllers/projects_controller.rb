@@ -83,8 +83,10 @@ class ProjectsController < ApplicationController
         @projects = @projects.where(course_id: params[:course].to_i)
       end
 
-      if params[:search] and !params[:search].empty?
-        @projects = @projects.search(params[:search])
+      if params[:q] and !params[:q].empty?
+        @hasQuery = true
+        @query = params[:q]
+        @projects = @projects.search(@query)
       end
     # end
 
