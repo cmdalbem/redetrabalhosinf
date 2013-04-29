@@ -1,44 +1,5 @@
 <div class="homepage">
 
-	<% #if user_signed_in? %>
-	<% if false %>
-		<br>
-		
-		<!-- My Notifications section -->
-		<div class="row-fluid">
-			<div class="news-list">
-				<legend>
-					<i class="icon-bell"></i> Atividade nos Meus Projetos
-				</legend>
-
-				<% if @myActivities.empty? %>
-					<center class="muted">
-					Sem atividade a exibir.
-					</center>
-				<% else %>
-					<ul>
-						<% @myActivities.each do |a| %>
-						    <li>
-								<%= render_activity a %>
-								<small>
-									<p class="muted pull-right"></i><%= time_ago_in_words(a.created_at) %></p>
-								</small>
-							</li>
-						<% end %>
-					</ul>
-					<small>
-						<% # link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), activities_path %>
-					</small>
-				<% end %>
-			</div>
-		</div>
-
-		<!-- Pagination -->
-		<center>
-			<%= will_paginate @myActivities %>
-		</center>
-	<% end %>
-
 	<% if not user_signed_in? %>
 		<div class="center hero-unit">
 			
@@ -55,21 +16,26 @@
 
 					<h1>A rede de compartilhamento de trabalhos do INF</h1>
 
-					<p>
-						Não deixa teus trabalhos sumirem na obscuridão das páginas pessoais da INF. No infHUB é fácil publicar teus trabalhos e curtir os dos teus colegas.
-					</p>
+					<div class="body">
 
-					<p>
-						Descobre mais sobre aquela cadeira que tu tá pensando em pegar vendo os trabalhos dela. Aprende a usar bibliotecas com exemplos que funcionam. Confere aqueles detalhes que não podem faltar no teu relatório... Dá até pra descobrir qual foi trabalho mais bacana de todos os tempos em Computação Gráfica.
-						<%= link_to "Leia mais...", about_path, class: "no-decoration" %>
-					</p>
+						<p>
+							Não deixa teus trabalhos sumirem na obscuridão das páginas pessoais do INF! No infHUB é fácil publicar teus projetos e encontrar e curtir os dos teus colegas. <%= link_to "Leia mais...", about_path, class: "no-decoration" %>
+						</p>
 
-					<!-- Like Button -->
-					<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhub.inf.br&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=tahoma&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+						<ul>
+							<li>Aprenda a usar bibliotecas com exemplos que funcionam</li>
+							<li>Confira os detalhes que não podem faltar no seu relatório</li>
+							<li>Conheça mais sobre uma disciplina vendo os trabalhos dela</li>
+							<li>Descubra e se inspire com alguns dos trabalhos mais criativos do INF</li>
+						</ul>
+						
+						<!-- Like Button -->
+						<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhub.inf.br&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=tahoma&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
 
-					<!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfhub.herokuapp.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=tahoma&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe> -->
-					
-					<!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfhub.herokuapp.com&amp;send=false&amp;layout=box_count&amp;width=450&amp;show_faces=false&amp;font=tahoma&amp;colorscheme=light&amp;action=like&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:70px; height:70px; position: absolute; bottom: 10px; right: 10px;" allowTransparency="true"></iframe> -->
+						<!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfhub.herokuapp.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=tahoma&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe> -->
+						
+						<!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfhub.herokuapp.com&amp;send=false&amp;layout=box_count&amp;width=450&amp;show_faces=false&amp;font=tahoma&amp;colorscheme=light&amp;action=like&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:70px; height:70px; position: absolute; bottom: 10px; right: 10px;" allowTransparency="true"></iframe> -->
+					</div>
 				</div>
 		    </div>
 		    
@@ -132,14 +98,13 @@
 			</div>
  -->
 
- 			<% numSuggestions = @recommendedActions.values.count{|x|x==true} %>
- 			<div class="span4 block <%= numSuggestions>0 ? 'block-red' : 'block-blue' %>">
+ 			<div class="span4 block <%= @numSuggestions>0 ? 'block-red' : 'block-blue' %>">
  				<div class="news-list">
 					<legend>
-						Ações Recomendadas <%= if numSuggestions!=0 then "(#{numSuggestions})" end %>
+						Ações Recomendadas <%= if @numSuggestions!=0 then "(#{@numSuggestions})" end %>
 					</legend>
 
-					<% if numSuggestions==0 %>
+					<% if @numSuggestions==0 %>
 						<center class="muted">
 							Nenhuma recomendação no momento.
 						</center>
@@ -174,7 +139,7 @@
 										<% @untaggedProjects.each do |p| %>
 											<li>
 												<%= link_to_project p %>
-												<span class="pull-right"> <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(p) %>
+												<span class="pull-right"> <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(p) %> </span>
 											</li>
 										<% end %>
 									</ul>

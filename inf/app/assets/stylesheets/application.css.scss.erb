@@ -231,9 +231,38 @@ a.accordion-toggle:hover, a.accordion-toggle:focus
 		background-image: none;
 }
 
+/* MULTI-COLUMN LIST - Thanks to: http://csswizardry.com/2010/02/mutiple-column-lists-using-one-ul */
+.multi-column {
+
+	ul {
+		overflow: hidden;
+		margin-bottom: 20px;
+		line-height: 15px;
+		border-top: 1px solid rgb(221, 221, 221);
+	}
+
+	li {
+		float: left;
+		padding: 6px 0;
+		display: inline;
+		border-bottom: 1px solid rgb(221, 221, 221);
+	}
+
+	#double li  { width:50%;}
+	#triple li  { width:33.333%; }
+	#quad li    { width:25%; }
+	#six li     { width:16.666%; }
+}
+
 .username-text {
 	@include font_breeSerif;
 }
+
+/*h2:before {
+	content: ".";
+	color: $warningColor;
+	font-size: 44px;
+}*/
 
 h2.username-text {
 	line-height: 25px;
@@ -265,25 +294,27 @@ ul.project-content-icons {
 	.username-text {
 		border-bottom: 3px solid rgb(200, 100, 100);
 	}
+}
 
-	.person-stats {
-			header {
-				/*color: rgb(130, 130, 130);*/
-				padding-bottom: 10px;
-				/*font-size: 80%;*/
-				/*color: rgb(180,180,180);*/
-				@include carvedText;
-			}
+.person-stats {
+	header {
+		/*color: rgb(130, 130, 130);*/
+		padding-bottom: 10px;
+		font-size: 80%;
+		/*color: rgb(100,100,100);*/
+		opacity: 0.8;
+		text-transform: uppercase;
+		/*@include carvedText;*/
+	}
 
-			.bigNumber {
-				display: block;
-				font-size: 30px;
-				@include carvedText;
-			}
+	.bigNumber {
+		display: block;
+		font-size: 30px;
+		@include carvedText;
+	}
 
-			span {
-				/*font-size: 90%;*/
-			}
+	span {
+		/*font-size: 90%;*/
 	}
 }
 
@@ -502,7 +533,7 @@ h0 {
 			text-shadow: 2px 2px 2px rgb(51, 51, 51);
 		}
 
-		p {
+		.body {
 			font-size: 16px;
 			line-height: 20px;
 			text-align: justify;
@@ -533,7 +564,6 @@ h0 {
 		padding-right: 55px;
 		max-width: 100%;
 
-		margin-top: 10px;
 		margin-bottom: 25px;
 
 		.search-query {

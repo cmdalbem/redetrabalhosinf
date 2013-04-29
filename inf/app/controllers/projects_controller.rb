@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
     # end
 
     @projects = @projects.all
-    @searchSize = @projects.size
+    @numResults = @projects.size
 
     # Handle sortings
     sort_projects_by_column @projects, params[:sort], params[:direction]

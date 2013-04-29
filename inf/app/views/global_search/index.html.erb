@@ -9,49 +9,46 @@
 	<%= render 'shared/search_result_title' %>
 
 
-	<% if @numProjects>0 %>
-		<h3>Projetos (<%=@numProjects%>)</h3>
-
-		<!-- Mostrando <b><%= @projects.size %></b> <%= @projects.size==1 ? "resultado" : "resultados" %> de <b><%= @numProjects %></b>. -->
+	<h3><i class="icon-chevron-right text-error"></i> <%= link_to "Projetos (#{@totalProjects})", projects_path(q: @query), class: "no-decoration blacktext" %></h3>
+	<% if @totalProjects>0 %>
+		<!-- Mostrando <b><%= @projects.size %></b> <%= @projects.size==1 ? "resultado" : "resultados" %> de <b><%= @totalProjects %></b>. -->
 		<div id="projects-table"> 
 			<%= render 'projects/projects_table' %>
 		</div>
-	<% end %>
-	
 
-	<% if @numCourses>0 %>
-		<h3>Disciplinas (<%=@numCourses%>)</h3>
+		<% if @projects.size < @totalProjects %>
+			<center>
+				<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i>"), projects_path(q: @query) %>
+			</center>
+		<% end %>
 
-		<!-- Mostrando <b><%= @courses.size %></b> <%= @courses.size==1 ? "resultado" : "resultados" %> de <b><%= @numCourses %></b>. -->
-		<div>
-			<table class="table table-striped">
-			  <thead>
-			    <tr class="muted">
-			      <th>Nome</th>
-			      <!-- <th>Usuário</th> -->
-			      <!-- <th>Nro. Projetos</th> -->
-			    </tr>
-			  </thead>
-
-			  <tbody>
-			    <% @courses.each do |c| %>
-			      <tr>
-			        <td><%= link_to_course c %></td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
-		</div>
 	<% end %>
 
-
-	<% if @numPeople>0 %>
-		<h3>Usuários (<%=@numPeople%>)</h3>
-
-		<!-- Mostrando <b><%= @people.size %></b> <%= @people.size==1 ? "resultado" : "resultados" %> de <b><%= @numPeople %></b>. -->
+	<h3><i class="icon-chevron-right text-error"></i> <%= link_to "Usuários (#{@totalPeople})", people_path(q: @query), class: "no-decoration blacktext" %></h3>
+	<% if @totalPeople>0 %>
+		<!-- Mostrando <b><%= @people.size %></b> <%= @people.size==1 ? "resultado" : "resultados" %> de <b><%= @totalPeople %></b>. -->
 
 		<div id="people-table" class="clearfix"> 
 			<%= render 'people/people_thumbs' %>
+		</div>
+
+		<% if @people.size < @totalPeople %>
+			<center>
+				<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i>"), people_path(q: @query) %>
+			</center>
+		<% end %>
+
+	<% end %>
+
+	<h3><i class="icon-chevron-right text-error"></i> Disciplinas (<%=@totalCourses%>)</h3>
+	<% if @totalCourses>0 %>
+		<!-- Mostrando <b><%= @courses.size %></b> <%= @courses.size==1 ? "resultado" : "resultados" %> de <b><%= @totalCourses %></b>. -->
+		<div class="multi-column">
+			<ul id="triple">
+			    <% @courses.each do |c| %>
+			        <li><%= link_to_course c %></li>
+			    <% end %>
+		    </ul>
 		</div>
 	<% end %>
 

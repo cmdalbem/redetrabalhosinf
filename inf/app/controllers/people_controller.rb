@@ -72,7 +72,7 @@ class PeopleController < ApplicationController
       @hasQuery = true
       @query = params[:q]
       @people = Person.search(@query)
-      @searchSize = @people.size
+      @numResults = @people.size
     end
 
     @people = @people.all

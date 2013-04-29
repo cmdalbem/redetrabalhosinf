@@ -115,11 +115,9 @@
 		<div class="container">
 			<!-- Flash messages -->
 			<% if notice and not notice.blank? %>
-				<br>
 				<div class="alert alert-success"><%= raw(notice) %><a class="close" data-dismiss="alert" href="#">&times;</a></div>
 			<% end %>
 			<% if alert and not alert.blank? %>
-				<br>
 				<div class="alert alert-error"><%= raw(alert) %><a class="close" data-dismiss="alert" href="#">&times;</a></div>
 			<% end %>
 

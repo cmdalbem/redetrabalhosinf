@@ -5,21 +5,25 @@ class HomeController < ApplicationController
 
   def listRecommendedActions
     actions = {}
+    @numSuggestions = 0
     actions[:addProjects] = actions[:addAvatar] = actions[:likeProjects] = actions[:tagProjects] = false
 
     # Person without projects
     if @person.projects.empty?
       actions[:addProjects] = true
+      @numSuggestions += 1
     end
 
     # Person without Avatar
     if not @person.avatar?
       actions[:addAvatar] = true
+      @numSuggestions += 1
     end
 
     # Didn't like anything yet
     if @person.likes.empty?
       actions[:likeProjects] = true
+      @numSuggestions += 1
     end
 
     # There are projects without tags
@@ -31,6 +35,7 @@ class HomeController < ApplicationController
     end
     if not @untaggedProjects.empty?
       actions[:tagProjects] = true
+      @numSuggestions += 1
     end
 
     return actions
