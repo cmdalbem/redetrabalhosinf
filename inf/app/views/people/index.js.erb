@@ -1,5 +1,5 @@
 // Dynamic redrawing for remote methods
-$("div#people-table").html("<%= escape_javascript(render (@viewMode == :thumbs ? 'people_thumbs' : 'people_list'))%>");
+$("div#people-table").html("<%= escape_javascript(render (@viewMode == :thumbs ? 'people_thumbs' : 'people_table'))%>");
 <% if @viewMode == :thumbs %>
 	$("#thumbs-view").addClass('active');
 	$("#list-view").removeClass('active');

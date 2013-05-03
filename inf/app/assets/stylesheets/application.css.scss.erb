@@ -15,7 +15,7 @@
 */
 
 @import "bootstrap";
-@import "bootstrap-responsive";
+/*@import "bootstrap-responsive";*/
 @import "font-awesome";
 
 
@@ -94,6 +94,10 @@ body {
 	font-size: 80%;
 }
 
+.hidden {
+	display: none;
+}
+
 /*
 How do I center the twitter bootstrap tabs on the page?
 http://stackoverflow.com/questions/9421966/how-do-i-center-the-twitter-bootstrap-tabs-on-the-page
@@ -136,6 +140,10 @@ a.accordion-toggle:hover, a.accordion-toggle:focus
 {
 	color: inherit;
 	background-color: inherit;
+}
+
+.pagination {
+	margin: 20px 0 0 0;
 }
 
 .table th, .table td {
@@ -258,6 +266,10 @@ a.accordion-toggle:hover, a.accordion-toggle:focus
 	@include font_breeSerif;
 }
 
+.infhub-text {
+	@include font_inder;
+}
+
 /*h2:before {
 	content: ".";
 	color: $warningColor;
@@ -294,6 +306,12 @@ ul.project-content-icons {
 	.username-text {
 		border-bottom: 3px solid rgb(200, 100, 100);
 	}
+}
+
+.little-title {
+	padding-bottom: 10px;
+	opacity: 0.8;
+	text-transform: uppercase;
 }
 
 .person-stats {
@@ -357,6 +375,12 @@ ul.project-content-icons {
 .navbar {
 
 	border-bottom: 2px solid $myred;
+
+	.container {
+		max-width: 1170px;
+		width: auto;
+		padding: 0 50px;
+	}
 	
 	img {
 		height: 18px;
@@ -428,6 +452,11 @@ ul.project-content-icons {
 		margin-bottom: 5px;
 		position: relative;
 
+		img {
+			margin: 5px 5px;
+			vertical-align: top;
+		}
+
 		header {
 			font-weight: bold;
 			border-bottom: 1px solid rgba(0,0,0,0.07);
@@ -436,11 +465,6 @@ ul.project-content-icons {
 
 			.time {
 				font-weight: normal;
-			}
-
-			img {
-				margin: 5px 5px;
-				vertical-align: top;
 			}
 
 			.deleteOpt {
@@ -522,6 +546,31 @@ h0 {
 		background: -o-linear-gradient(top,  rgba(172,77,73,1) 10%,rgba(132,37,33,1) 100%); /* Opera 11.10+ */
 		background: -ms-linear-gradient(top,  rgba(172,77,73,1) 10%,rgba(132,37,33,1) 100%); /* IE10+ */
 		background: linear-gradient(to bottom,  rgba(172,77,73,1) 10%,rgba(132,37,33,1) 100%); /* W3C */
+
+		.hero-stats {
+
+			line-height: 20px;
+			opacity: 0.9;
+
+			.title {
+				margin: 5px 0;
+				border-bottom: 2px solid rgba(255,255,255,0.2);
+				font-weight: normal;
+			}
+
+			p {
+				font-size: 70%;
+				font-weight: normal;
+			}
+
+		}
+
+		.hero-utility-links {
+			/*opacity: 0.8;*/
+			li:before {
+				content: "\203A";
+			}
+		}
 		
 		a {
 			color: inherit;
@@ -660,6 +709,10 @@ h0 {
 		li {
 			padding: 0;
 		}
+
+		li:last-child {
+			border-bottom: 1px dotted rgb(200, 200, 200);
+		}
 	}
 
 	ul {
@@ -702,15 +755,6 @@ h0 {
 		}
 	}
 
-}
-
-.project-options-trigger .project-hidden-options {
-	float: right;
-	display: inline;
-	visibility: hidden;
-}
-.project-options-trigger:hover .project-hidden-options {
-	visibility: visible;
 }
 
 .mysearch { 
@@ -939,7 +983,7 @@ label {
 }
 
 #tagcloud {
-	padding: 30px 0 20px 0;
+	/*padding: 30px 0 20px 0;*/
 	text-align: justify;
 	width: 100%;
 	/*height: 350px;*/
@@ -954,8 +998,8 @@ label {
 	}
 
 	.cloud1 { font-size: 0.8em; opacity:0.35; }
-	.cloud2 { font-size: 1.0em; opacity:0.35; }
-	.cloud3 { font-size: 1.6em; opacity:0.5; }
+	.cloud2 { font-size: 1.2em; opacity:0.5; }
+	.cloud3 { font-size: 1.8em; opacity:0.6; }
 	.cloud4 { font-size: 2.3em; opacity:0.7; }
 	.cloud5 { font-size: 2.8em; opacity:0.9; }
 	.cloud6 { font-size: 3.0em; opacity:1 }
@@ -1020,7 +1064,7 @@ label {
 }
 
 .project-options-trigger .project-hidden-options{
-	float: right;
+	/*float: right;*/
 	display: inline;
 	visibility: hidden;
 
@@ -1208,10 +1252,30 @@ label {
 }
 
 /* Neat list of tags! Thanks to: http://cssglobe.com/pure-css3-post-tags */
+
+.tag-single {
+    margin-left: 13px;
+    padding: 5px 10px 5px 12px;
+    background: none repeat scroll 0% 0% rgb(0, 137, 224);
+    color: rgb(255, 255, 255);
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    display: inline;
+    margin-top: 10px;
+}
+.tag-single, .tag-single a {
+    color: rgb(255, 255, 255);
+    line-height: 24px;
+    position: relative;
+    height: 24px;
+    font-size: 11px;
+}
+
+
 .tags{
 	list-style:none;
 }
-.tags li, .tags a{
+.tags li, .tags a {
 	color:#fff;
 	float:left;
 	height:24px;
@@ -1219,7 +1283,7 @@ label {
 	position:relative;
 	font-size:11px;
 	}
-.tags li{
+.tags li {
 	margin-top:4px;
 	margin-left:20px;
 	padding:0 10px 0 12px;
@@ -1232,7 +1296,7 @@ label {
 	-webkit-border-top-right-radius:4px;  
 	border-top-right-radius:4px;  
 	} 
-.tags li:before{
+.tags li:before, .tag-single:before {
 	content:"";
 	float:left;
 	position:absolute;
@@ -1244,7 +1308,7 @@ label {
 	border-style:solid;
 	border-width:12px 12px 12px 0;    
 	}
-.tags li:after{
+.tags li:after, .tag-single:after {
 	content:"";
 	position:absolute;
 	top:10px;

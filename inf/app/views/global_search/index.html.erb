@@ -18,7 +18,7 @@
 
 		<% if @projects.size < @totalProjects %>
 			<center>
-				<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i>"), projects_path(q: @query) %>
+				<%= link_to raw("Ver todos resultados <i class=\"icon-double-angle-right text-error\"></i>"), projects_path(q: @query) %>
 			</center>
 		<% end %>
 
@@ -34,7 +34,7 @@
 
 		<% if @people.size < @totalPeople %>
 			<center>
-				<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i>"), people_path(q: @query) %>
+				<%= link_to raw("Ver todos resultados <i class=\"icon-double-angle-right text-error\"></i>"), people_path(q: @query) %>
 			</center>
 		<% end %>
 
@@ -47,6 +47,22 @@
 			<ul id="triple">
 			    <% @courses.each do |c| %>
 			        <li><%= link_to_course c %></li>
+			    <% end %>
+		    </ul>
+		</div>
+	<% end %>
+
+	<h3><i class="icon-chevron-right text-error"></i> Tags (<%=@totalTags%>)</h3>
+	<% if @totalTags>0 %>
+		<!-- Mostrando <b><%= @courses.size %></b> <%= @courses.size==1 ? "resultado" : "resultados" %> de <b><%= @totalCourses %></b>. -->
+		<div class="multi-column">
+			<ul id="quad">
+			    <% @tags.each do |t| %>
+			        <li>
+			        	<div class="tag-single">
+			        		<%= link_to t.tag_text, t %>
+			        	</div>
+			        </li>
 			    <% end %>
 		    </ul>
 		</div>

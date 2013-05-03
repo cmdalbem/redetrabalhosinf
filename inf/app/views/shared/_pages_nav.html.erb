@@ -1,0 +1,9 @@
+<!-- DON'T FORGET TO PASS IN THE "items" array -->
+<center>
+	<%= will_paginate items %>
+	<% if items.total_entries > items.per_page %>
+		<div class="smaller muted">
+			(<%=items.total_entries%> items)
+		</div>
+	<% end %>
+</center>

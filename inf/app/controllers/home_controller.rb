@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def listRecommendedActions
     actions = {}
     @numSuggestions = 0
-    actions[:addProjects] = actions[:addAvatar] = actions[:likeProjects] = actions[:tagProjects] = false
+    actions[:addProjects] = actions[:incompleteProfile] = actions[:likeProjects] = actions[:tagProjects] = false
 
     # Person without projects
     if @person.projects.empty?
@@ -14,9 +14,24 @@ class HomeController < ApplicationController
       @numSuggestions += 1
     end
 
-    # Person without Avatar
+    # Person with incomplete profile
+    totalProfileDetails = 4
+    missingProfileDetails = 0
     if not @person.avatar?
-      actions[:addAvatar] = true
+      missingProfileDetails += 1
+    end
+    if @person.about.blank?
+      missingProfileDetails += 1
+    end
+    if not @person.semester?
+      missingProfileDetails += 1
+    end
+    if @person.personal_link.blank?
+      missingProfileDetails += 1
+    end
+    if missingProfileDetails > 0
+      actions[:incompleteProfile] = true
+      @profileCompletePerc = 100*(totalProfileDetails-missingProfileDetails)/totalProfileDetails
       @numSuggestions += 1
     end
 

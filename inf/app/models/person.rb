@@ -21,7 +21,17 @@ class Person < ActiveRecord::Base
 
 	attr_reader :semester
 	def semester
-		semester_year.to_s + "/" + semester_sem.to_s
+		if not semester_sem?
+			if semester_year?
+				return "#{semester_year}"
+			else
+				return ""
+			end
+		else
+			if semester_year?
+				return "#{semester_year}/#{semester_sem}"
+			end
+		end
 	end
 	def semester?
 		return semester_year?

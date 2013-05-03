@@ -1,0 +1,24 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <tr class="muted">
+      <!-- <th><%= sortable "Nome", "name" %></th>
+      <th><%= sortable "Usuário", "nick" %></th>
+      <th><%= sortable "Nro. projetos", "projects" %></th> -->
+      <th>Nome</th>
+      <th>Usuário</th>
+      <th>Semestre</th>
+      <th>Nro. Projetos</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |p| %>
+      <tr onmouseover="this.style.cursor='pointer'" onclick="window.location = '<%=profile_path(p.nick)%>'">
+        <td><%= link_to p.name, profile_path(p.nick), class: "fulltitle no-decoration" %></td>
+        <td><%= p.nick %></td>
+        <td><%= p.semester %></td>
+        <td><%= p.projects.size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

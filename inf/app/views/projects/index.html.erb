@@ -6,6 +6,7 @@
 		<%= title "Projetos" %>
 		<% if hasSelectedCourse %>
 			<small>
+				<i class="icon-book"></i>
 				<%= @course.name %>
 				<%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "close no-decoration", style: "float: none;" %>
 			</small>
@@ -13,53 +14,29 @@
 	</h2>
 
 	<!-- Course Filter Form -->
-	<center>
-		<div id="courseSelector">
-			<%= form_tag projects_path, method: 'get' do %>
-				<%= hidden_field_tag :direction, params[:direction] %>
-				<%= hidden_field_tag :sort, params[:sort] %>
-				<%= hidden_field_tag :view, params[:view] %>
-				<!-- no hidden field for search, which means that the search will be reseted when changing this filter -->
-				<div class="field big-chosen">
-					<%= render "shared/course_selector", placeholder: "Filtrar por disciplina..." %>
-				</div>
-			<% end %>
-		</div>
-	</center>
+	<% if not hasSelectedCourse %>
+		<center>
+			<div id="courseSelector">
+				<%= form_tag projects_path, method: 'get' do %>
+					<%= hidden_field_tag :direction, params[:direction] %>
+					<%= hidden_field_tag :sort, params[:sort] %>
+					<%= hidden_field_tag :view, params[:view] %>
+					<!-- no hidden field for search, which means that the search will be reseted when changing this filter -->
+					<div class="field big-chosen">
+						<%= render "shared/course_selector", placeholder: "Filtrar por disciplina..." %>
+					</div>
+				<% end %>
+			</div>
+		</center>
+	<% end %>
 
 	<br>
 
-	<!-- Options at the top of the table -->
-	<div class="row-fluid ctrlbar">
-		<!-- Search Form --> 
-		<div class="span3">
-			<div class="pull-left">
-				<%= render 'shared/search_form', destinyPath: projects_path, placeholder: "Título / Descrição / Tag" %>
-			</div>
-		</div>
-
-		<!-- "Sort By" option -->
-		<div class="span6">
-			<center>
-				<%= render 'shared/sort_by_buttons',
-						destinyPath: projects_path,
-						sortbyOptions: options_for_select({"Popularidade"=>"relevance",
+	<%= render "shared/project_ctrlbar", sortbyOptions: {"Popularidade"=>"relevance",
 															"Recente" => "date",
 															"Título"=>"title",
 															"Semestre"=>"barra",
-															"Likes"=>"likes"},
-														selected: @column) %>
-			</center>
-		</div>
-
-		<!-- Button group for choosing view (list or thumbnail) -->
-		<div class="span3">
-			<div class="pull-right">
-				<%= render 'shared/viewmodes_buttons' %>
-			</div>
-		</div>
-
-	</div>
+															"Likes"=>"likes"} %>
 
 	<br>
 

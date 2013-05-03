@@ -1,5 +1,38 @@
 <div class="homepage">
 
+	<% #if user_signed_in? %>
+	<% if false %>
+	  <!-- My Notifications section -->
+	  <br>
+	  <div class="row-fluid">
+	      <div class="news-list">
+	        <legend>
+	          Atividade nos Meus Projetos
+	        </legend>
+	        <% if @myActivities.empty? %>
+	          <center class="muted">
+	          Sem atividade a exibir.
+	          </center>
+	        <% else %>
+	          <ul>
+	            <% @myActivities.each do |a| %>
+	                <li>
+	                <%= render_activity a %>
+	                <small>
+	                  <p class="muted pull-right"></i><%= time_ago_in_words(a.created_at) %></p>
+	                </small>
+	              </li>
+	            <% end %>
+	          </ul>
+	          <small>
+	            <% # link_to "Ver mais", activities_path %>
+	          </small>
+	        <% end %>
+	      </div>
+	  </div>
+	  <br>
+	<% end %>
+
 	<% if not user_signed_in? %>
 		<div class="center hero-unit">
 			
@@ -43,7 +76,7 @@
 		
 			<div class="row-fluid">
 				<center>
-					<%= render "shared/global_search_form", placeholder: "Pesquisar projetos, disciplinas, usuários..." %>
+					<%= render "shared/global_search_form", placeholder: "Buscar projetos, disciplinas, usuários..." %>
 				</center>
 			</div>
 
@@ -64,15 +97,38 @@
 			    </div>
 				
 				<div class="span7">
-					<h3>Bem-vindo <b><%= link_to @person.name, profile_path(current_user.person.nick) %></b>.</h3>
+					<h3>Bem-vindo <%= link_to @person.name, profile_path(current_user.person.nick)%>.</h3>
 
 					<!-- <p> -->
-						<ul class="dotted-horizontal-list small" style="color: rgb(50, 186, 234);">
+						<ul class="dotted-horizontal-list hero-utility-links smaller">
 							<li><%= link_to nav_icon("Novo Projeto",""), new_project_path %></li>
 							<li><%= link_to nav_icon("Meu Perfil", ""), edit_person_path(current_user.person) %></li>
+							<li><%= link_to nav_icon("Sobre o infHUB", ""), about_path %></li>
 							<li><%= link_to nav_icon("Sair",""), destroy_user_session_path, :method => :delete %></li>
 						</ul>
 					<!-- </p> -->
+				</div>
+
+				<div class="span3 hero-stats">
+					<div class="row-fluid">
+						<div class="span6">
+							<h4 class="title username-text"><%= link_to @person.nick, profile_path(current_user.person.nick) %></h4>
+							<p>
+								<b><%= @person.projects.size %></b> projetos<br>
+								<b><%= @person.getTotalLikes %></b> curtir recebidos<br>
+								<b><%= @person.getTotalViews %></b> visualizações
+							</p>
+						</div>
+						<div class="span6">
+							<h4 class="title infhub-text"><%= link_to "infHUB", about_path %></h4>
+							<p>
+								<b><%= Project.count %></b> projetos<br>
+								<b><%= User.count %></b> usuários<br>
+								<b><%= Course.joins(:projects).group("courses.id").having("count(courses.id) > 0").count.length %></b> disciplinas<br>
+								<b><%= Tag.count %></b> tags
+							</p>
+						</div>
+					</div>
 				</div>
 		    </div>
 
@@ -98,7 +154,7 @@
 			</div>
  -->
 
- 			<div class="span4 block <%= @numSuggestions>0 ? 'block-red' : 'block-blue' %>">
+ 			<div class="span4 block <%= @numSuggestions>0 ? 'block-red' : '' %>">
  				<div class="news-list">
 					<legend>
 						Ações Recomendadas <%= if @numSuggestions!=0 then "(#{@numSuggestions})" end %>
@@ -117,10 +173,10 @@
 								</li>
 							<% end %>
 
-							<% if @recommendedActions[:addAvatar] %>
+							<% if @recommendedActions[:incompleteProfile] %>
 								<li>
 									<i class="icon-user icon-large"></i>
-									Dê uma cara ao seu perfil: <%= link_to "adicione um avatar.", edit_person_path(@person) %>
+									Seu perfil está <%=@profileCompletePerc%>% completo. <%= link_to "Clique aqui para completá-lo.", edit_person_path(@person) %>
 								</li>
 							<% end %>
 
@@ -168,7 +224,7 @@
 							    <li>
 									<%= render_activity a %>
 									<small>
-										<p class="muted pull-right"></i><%= time_ago_in_words(a.created_at) %></p>
+										<p class="muted pull-right"><%= time_ago_in_words(a.created_at) %></p>
 									</small>
 								</li>
 							<% end %>
@@ -180,9 +236,7 @@
 				</div>
 
 				<!-- Activities pagination -->
-				<center>
-					<%= will_paginate @myActivities %>
-				</center>
+				<%= render "shared/pages_nav", items: @myActivities %>
 
 			</div>
 
@@ -191,16 +245,14 @@
 	<% end %>
 
 
+	<br>
+	
 	<!-- Tag Cloud -->
-	<div id="tagcloud">
-	    <% tag_cloud @tags, %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6) do |t, css_class| %>
-		  <%= link_to t.tag_text, projects_path(q: t.tag_text), class: css_class %>
-		  <% if t!=@tags.last %>
-		  	<span class="muted small">·</span>
-		  <% end %>
-		<% end %>
+	<div class="row-fluid">
+		<%= render "shared/tag_cloud" %>
 	</div>
 	
+	<br>
 
 	<!-- Lists -->
 	<div class="row-fluid">
@@ -263,11 +315,22 @@
 				<legend>Atividade Recente</legend>
 				<ul>
 					<% @globalActivities.each do |a| %>
-					    <li>
-							<%= render_activity a %>
-							<small>
-								<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(a.created_at) %></p>
-							</small>
+					    <li class="project-options-trigger">
+					    	<table>
+					    		<tr>
+									<td style="width: 100%;">
+										<%= render_activity a %>
+										<small>
+											<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(a.created_at) %></p>
+										</small>
+									</td>
+					    			<td>
+										<% if user_signed_in? and a.owner=current_user %>
+											<span class="project-hidden-options"><%= link_to raw("<i class=\"icon-remove-sign\"></i>"), activity_path(a), confirm: "Tem certeza?", method: "delete", class: "no-decoration" %></span>
+										<% end %>
+									</td>
+								</tr>
+							</table>
 						</li>
 					<% end %>
 				</ul>

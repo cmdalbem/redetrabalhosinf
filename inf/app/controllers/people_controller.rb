@@ -29,32 +29,8 @@ class PeopleController < ApplicationController
         plist.sort_by! {|p| p.projects.size }
       when "date"
         plist.sort_by! {|p| p.created_at }
-    end
-
-    # How is the ordering?
-    if @direction == "desc"
-      plist.reverse!
-    end
-  end
-
-  def sort_projects_by_column(plist, column, direction)
-    
-    # Default values
-    @column = (column and !column.empty?) ? column : "relevance"
-    @direction = (direction and !direction.empty?) ? direction : "desc"
-
-    # What to sort by?
-    case @column
-      when "title"
-        plist.sort_by! {|p| p.title.downcase }
-      when "barra"
+      when "semester"
         plist.sort_by! {|p| p.semester }
-      when "likes"
-        plist.sort_by! {|p| p.likeCount }
-      when "relevance"
-        plist.sort_by! {|p| p.relevance }
-      when "date"
-        plist.sort_by! {|p| p.created_at }
     end
 
     # How is the ordering?
@@ -112,28 +88,25 @@ class PeopleController < ApplicationController
         @person = search.first
         @projects = @person.projects
 
+        handleProjectSearch
+
         @projects = @projects.all
 
         # Handle sortings
-        sort_projects_by_column @projects, params[:sort], params[:direction]
+        handleProjectsSorting @projects, params[:sort], params[:direction]
 
         # Do pagination
         @projects = @projects.paginate(per_page: PROJECTS_PER_PAGE, page: params[:page])
 
-        # Handle view modes (default is LIST)
-        @viewMode = :list
-        if params[:view]=="list"
-          @viewMode = :list
-        elsif params[:view]=="thumbs"
-          @viewMode = :thumbs
-        end
-        
         # Default view is LIST
         @viewMode = (!params[:view] or params[:view].empty? or params[:view]=="list") ? :list : :thumbs
 
         @hideAuthors = true
 
+        # User's activities list
         @activities = PublicActivity::Activity.where(owner_id: @person.user.id).order("created_at desc")
+
+        @tags = Tag.joins(:taggings).group("tags.id").where("taggings.project_id" => @person.project_ids)
 
         respond_to do |format|
           format.html

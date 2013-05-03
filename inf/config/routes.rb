@@ -7,11 +7,11 @@ Inf::Application.routes.draw do
   resources :global_search, path: "busca"
 
   resources :projects, path: "projetos", :path_names => { new: "novo", edit: "editar" }
-  resources :people, path: "pessoas", :path_names => { new: "novo", edit: "editar" }, constraints: { :id => /[^\/]+/ }
+  resources :people, path: "usuarios", :path_names => { new: "novo", edit: "editar" }, constraints: { :id => /[^\/]+/ }
   resources :home, :tags, :comments, :activities
   devise_for :users, :controllers => { :registrations  => "registrations" }, path: "", :path_names => { sign_in: 'entrar', sign_out: 'logout', sign_up: "cadastro"}
 
-  match 'pessoas/:id' => 'People#show', :as => 'profile'
+  match 'usuarios/:id' => 'People#show', :as => 'profile'
 
   root :to => "home#show"
   match 'sobre' => 'Home#about', :as => 'about', :via => :get  

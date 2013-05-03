@@ -3,14 +3,14 @@
 	<%= render 'shared/search_result_title' %>
 <% end %>
 
+<br>
+
 <!-- The content view -->
 <% if @viewMode == :thumbs %>
 	<%= render 'people/people_thumbs' %>
 <% else %>
-	<%= render 'people/people_list' %>
+	<%= render 'people/people_table' %>
 <% end %>
 
 <!-- Pagination -->
-<center>
-	<%= will_paginate @people %>
-</center>
+<%= render "shared/pages_nav", items: @people %>

@@ -18,6 +18,4 @@
 <% end %>
 
 <!-- Pagination navigation -->
-<center>
-	<%= will_paginate @projects%>
-</center>
+<%= render "shared/pages_nav", items: @projects %>

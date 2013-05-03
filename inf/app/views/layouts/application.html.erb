@@ -53,16 +53,18 @@
 				</ul>				
 
 				<!-- Search Form -->
-				<div class="mysearch navbar-search">
-					<%= render "shared/global_search_form", placeholder: "Pesquisar" %>
-				</div>
+				<% if not current_page?(root_path) or user_signed_in? %>
+					<div class="mysearch navbar-search">
+						<%= render "shared/global_search_form", placeholder: "Buscar" %>
+					</div>
+				<% end %>
 				
 				<ul class="nav pull-right">						
 					
 					<!-- User section -->
 					<% if user_signed_in? %>
 
-						<li class="small"><%= link_to nav_icon("Novo Projeto","icon-plus"), new_project_path %></small></li>
+						<li class="small"><%= link_to nav_icon("Novo Projeto","icon-plus"), new_project_path %></li>
 						<li class="divider-vertical"></li>
 
 						<li class="dropdown">

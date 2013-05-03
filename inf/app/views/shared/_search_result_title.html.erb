@@ -1,7 +1,7 @@
 <center>
 	<br>
 	<div class="muted well well-small" style="width: 40%;">
-		<i class="icon-search"></i> Mostrando <strong><%= @numResults %></strong> <%= @numResults==1 ? "resultado" : "resultados" %> para: 
+		<i class="icon-search"></i> Encontrado<%=my_pluralize @numResults%> <strong><%= @numResults %></strong> resultado<%=my_pluralize @numResults%> para: 
 		<strong><%=@query.split(" ").join(" · ")%></strong> 
 		<% #link_to raw("<i class=\"icon-remove\"></i>"), params.merge(search: nil), class: "close" %>
 	</div>

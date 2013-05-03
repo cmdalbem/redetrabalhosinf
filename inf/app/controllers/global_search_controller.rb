@@ -5,34 +5,40 @@ class GlobalSearchController < ApplicationController
 	MAX_PEOPLE = 14
 
 	def index
-		@projects = []
-	    @courses = []
-	    @people = []
+		@projects = @courses = @people = @tags = []
 
 	    if params[:gq] and !params[:gq].empty?
 	    	@hasQuery = true
 	    	@query = params[:gq]
-
+	    	
 	    	@projects = Project.scoped
 		    @courses = Course.scoped
 		    @people = Person.scoped
+		    @tags = Tag.scoped
 
+			# Projects search
 			@projects = @projects.search(@query)
 			@totalProjects = @projects.size
 			@projects.sort_by!{|p| p.relevance }.reverse!
 			@projects = @projects[0..MAX_PROJECTS-1]
 
+			# Courses search
 			@courses = @courses.search(@query).order("name DESC")
 			@totalCourses = @courses.size
-			# @courses = @courses.limit(MAX_COURSES)
 
+			# People search
 			@people = @people.search(@query).order("created_at DESC")
 			@totalPeople = @people.size
 			@people = @people.limit(MAX_PEOPLE)
 
-			@numResults = @totalProjects + @totalCourses + @totalPeople
+			# Tags search
+			@tags = @tags.search(@query).order("tag_text DESC")
+			@totalTags = @tags.size
+
+
+			@numResults = @totalProjects + @totalCourses + @totalPeople + @totalTags
 	    else
-	    	@numResults = @totalProjects = @totalCourses = @totalPeople = 0
+	    	@numResults = @totalProjects = @totalCourses = @totalPeople = @totalTags = 0
 	    	@hasQuery = false
 	    	@query = ""
 	    end

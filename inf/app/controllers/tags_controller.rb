@@ -1,11 +1,11 @@
 class TagsController < ApplicationController
 
-  before_filter :check_admin
+  before_filter :check_admin, :except => :show
 
   # GET /tags
 # GET /tags.json
   def index
-  	if(params[:q])
+  	if params[:q]
   		params[:q].downcase!
   		@tags = Tag.where("LOWER(tag_text) LIKE ?", params[:q]).all
   	else
@@ -64,6 +64,31 @@ class TagsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def show 
+    @tag = Tag.find(params[:id])
+    @projects = @tag.projects
+
+    @tags = Tag.all
+
+    handleCourseFiltering()
+
+    handleProjectSearch()
+
+    @projects = @projects.all
+
+    handleProjectsSorting @projects, params[:sort], params[:direction]
+
+    # Do pagination
+    @projects = @projects.paginate(per_page: PROJECTS_PER_PAGE, page: params[:page])
+
+    # Default view is LIST
+    @viewMode = (!params[:view] or params[:view].empty? or params[:view]=="list") ? :list : :thumbs
+
+    respond_to do |format|
+      format.html
     end
   end
 

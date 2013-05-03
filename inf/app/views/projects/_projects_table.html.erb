@@ -43,7 +43,7 @@
           <!-- Edit Buttons -->
           <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
             <div class="thumb-buttons">
-              <div class="dropdown project-hidden-options">
+              <div class="dropdown project-hidden-options pull-right">
                 <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
                 <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: adminActionColor %>
                 <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: adminActionColor %>                

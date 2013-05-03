@@ -131,11 +131,6 @@ module ApplicationHelper
 		link_to course.name, projects_path(course: course.id)
 	end
 
-	# Link to the projects list with a search for this tag
-	def link_to_tag tag
-		link_to tag.tag_text, projects_path(search: tag.tag_text)
-	end
-
 	# Thanks to: http://juixe.com/techknow/index.php/2006/07/15/acts-as-taggable-tag-cloud/
 	def tag_cloud(tags, classes)
 		max, min = 0, 0
@@ -168,5 +163,9 @@ module ApplicationHelper
 			end
 			i+=1
 		}
+	end
+
+	def my_pluralize(var)
+		return var==1 ? "" : "s"
 	end
 end

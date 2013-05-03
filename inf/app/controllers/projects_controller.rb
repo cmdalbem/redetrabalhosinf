@@ -3,352 +3,299 @@ require 'will_paginate/array'
 
 class ProjectsController < ApplicationController
 
-  before_filter :checkLogged, :only => [:edit, :update, :destroy, :new, :create, :like, :unlike]
+	before_filter :checkLogged, :only => [:edit, :update, :destroy, :new, :create, :like, :unlike]
 
-  def processTags(tags)
-    tagTexts = []
-    # Check if one of the entered Tags doesn't exist on the Database.
-    # This is how select2 taggin mode works: it will give us the a number if the recognizes
-    #   that the tag entered already exists, otherwise it will give us the string of the new tag.
-    tags.size.times do |i|
-      
-      if not is_number?(tags[i])
-        tagTexts << tags[i]
-        # Make sure this tag doesn't already exist.
-        duplicates = Tag.where(tag_text: tags[i])
-        if duplicates.empty?
-          newTag = Tag.create(tag_text: tags[i])
-          tags[i] = newTag.id
-        else
-          tags[i] = duplicates.first.id
-        end
-      else
-        tagTexts << Tag.find(tags[i]).tag_text
-      end
-    end
+	def processTags(tags)
+		tagTexts = []
+		# Check if one of the entered Tags doesn't exist on the Database.
+		# This is how select2 taggin mode works: it will give us the a number if the recognizes
+		#   that the tag entered already exists, otherwise it will give us the string of the new tag.
+		tags.size.times do |i|
+			
+			if not is_number?(tags[i])
+				tagTexts << tags[i]
+				# Make sure this tag doesn't already exist.
+				duplicates = Tag.where(tag_text: tags[i])
+				if duplicates.empty?
+					newTag = Tag.create(tag_text: tags[i])
+					tags[i] = newTag.id
+				else
+					tags[i] = duplicates.first.id
+				end
+			else
+				tagTexts << Tag.find(tags[i]).tag_text
+			end
+		end
 
-    return tagTexts
-  end
+		return tagTexts
+	end
 
-  def sort_projects_by_column(plist, column, direction)
-    
-    # Default values
-    @column = (column and !column.empty?) ? column : "relevance"
-    @direction = (direction and !direction.empty?) ? direction : "desc"
+	# GET /projects
+	def index
+		@projects = Project.scoped
 
-    # What to sort by?
-    case @column
-      when "title"
-        plist.sort_by! {|p| p.title.downcase }
-      when "barra"
-        plist.sort_by! {|p| p.semester }
-      # when "course"
-      #   plist.sort_by! {|p| p.course.name.downcase }
-      # when "person"
-      #   plist.sort_by! {|p| p.person.name.downcase }
-      when "likes"
-        plist.sort_by! {|p| p.likeCount }
-      when "relevance"
-        plist.sort_by! {|p| p.relevance }
-      when "date"
-        plist.sort_by! {|p| p.created_at }
-    end
+		handleCourseFiltering()
 
-    # How is the ordering?
-    if @direction == "desc"
-      plist.reverse!
-    end
-  end
+		handleProjectSearch()
 
+		@projects = @projects.all
 
-  # GET /projects
-  def index
-    # if params[:person]
-    #   personSearch = Person.where(nick: params[:person])
-    #   if(personSearch.empty?)
-    #     redirect_to root_path, alert: "Nao consegui encontrar #{params[:id]}."
-    #     return
-    #   else
-    #     @projects = personSearch.first.projects
-    #   end
-    # end
+		# Handle sorting
+		handleProjectsSorting @projects, params[:sort], params[:direction]
+		
+		# Do pagination
+		@projects = @projects.paginate(per_page: PROJECTS_PER_PAGE, page: params[:page])
 
-    # if params[:sort] == @lastSort
-      # Handle searchs
-      # @projects = Project.includes(:tags)
-      @projects = Project.scoped
+		# Handle view modes (default is LIST)
+		@viewMode = :list
+		if params[:view]=="list"
+			@viewMode = :list
+		elsif params[:view]=="thumbs"
+			@viewMode = :thumbs
+		end
 
-      if params[:course] and !params[:course].empty?
-        @course = Course.find(params[:course].to_i)
-        @projects = @projects.where(course_id: params[:course].to_i)
-      end
+		# @lastSort = params[:sort]
 
-      if params[:q] and !params[:q].empty?
-        @hasQuery = true
-        @query = params[:q]
-        @projects = @projects.search(@query)
-      end
-    # end
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
 
-    @projects = @projects.all
-    @numResults = @projects.size
+	# GET /projects/1
+	def show
 
-    # Handle sortings
-    sort_projects_by_column @projects, params[:sort], params[:direction]
-    
-    # Do pagination
-    @projects = @projects.paginate(per_page: PROJECTS_PER_PAGE, page: params[:page])
+		# Test if we're doing it github style
+		# if params[:person] && params[:project]
+		#   user = Person.find_by_nick(params[:person])
+		#   @project = user.projects.includes(:comments).find_by_title(params[:project]) if user
+		# else
+			@project = Project.includes(:comments).find(params[:id])
+		# end
 
-    # Handle view modes (default is LIST)
-    @viewMode = :list
-    if params[:view]=="list"
-      @viewMode = :list
-    elsif params[:view]=="thumbs"
-      @viewMode = :thumbs
-    end
+		not_found if @project.nil?
 
-    # @lastSort = params[:sort]
+		@project.update_attributes(viewCount: @project.viewCount+1)
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
+	end
 
-  # GET /projects/1
-  def show
+	# GET /projects/new
+	def new
+		@project = Project.new
 
-    # Test if we're doing it github style
-    # if params[:person] && params[:project]
-    #   user = Person.find_by_nick(params[:person])
-    #   @project = user.projects.includes(:comments).find_by_title(params[:project]) if user
-    # else
-      @project = Project.includes(:comments).find(params[:id])
-    # end
+	end
 
-    not_found if @project.nil?
+	# GET /projects/1/edit
+	def edit
+		@project = Project.find(params[:id])
 
-    @project.update_attributes(viewCount: @project.viewCount+1)
+		checkAuthorization(@project)
 
-  end
+	end
 
-  # GET /projects/new
-  def new
-    @project = Project.new
+	# POST /projects
+	def create
+		pp = params["project"]
+		owner = current_user.person
+		
+		tags = params["tag_tokens"].split(",")
+		tags_str = processTags(tags).join(" ")
 
-  end
-
-  # GET /projects/1/edit
-  def edit
-    @project = Project.find(params[:id])
-
-    checkAuthorization(@project)
-
-  end
-
-  # POST /projects
-  def create
-    pp = params["project"]
-    owner = current_user.person
-    
-    tags = params["tag_tokens"].split(",")
-    tags_str = processTags(tags).join(" ")
-
-    people = params["people"].split(',')
-    if not people.include?(current_user.person.id.to_s)
-      people.push(current_user.person.id)
-    end
+		people = params["people"].split(',')
+		if not people.include?(current_user.person.id.to_s)
+			people.push(current_user.person.id)
+		end
 
 
-    @project = Project.new(title: pp["title"],
-      course_id: pp["course_id"],
-      person: owner,
-      description: pp["description"],
-      semester_year: pp["semester_year"],
-      semester_sem: pp["semester_sem"],
-      tag_ids: tags,
-      image: pp["image"],
-      file: pp["file"],
-      link: pp["link"],
-      person_ids: people,
-      likeCount: 0,
-      tags_str: tags_str
-    )
+		@project = Project.new(title: pp["title"],
+			course_id: pp["course_id"],
+			person: owner,
+			description: pp["description"],
+			semester_year: pp["semester_year"],
+			semester_sem: pp["semester_sem"],
+			tag_ids: tags,
+			image: pp["image"],
+			file: pp["file"],
+			link: pp["link"],
+			person_ids: people,
+			likeCount: 0,
+			tags_str: tags_str
+		)
 
-    respond_to do |format|
-      if @project.save
-        @project.create_activity :create, owner: current_user
-        @project.people.each do |p|
-          if p.user!=current_user
-            @project.create_activity :addOwnership, owner: current_user, recipient: p.user
-          end
-        end
+		respond_to do |format|
+			if @project.save
+				@project.create_activity :create, owner: current_user
+				@project.people.each do |p|
+					if p.user!=current_user
+						@project.create_activity :addOwnership, owner: current_user, recipient: p.user
+					end
+				end
 
-        if params[:commit]=="save_and_add_new"
-          format.html { redirect_to new_project_url, notice: 'Projeto <b>' + @project.title + '</b> criado com sucesso.' }
-        else
-          format.html { redirect_to project_path(@project), notice: 'Novo projeto criado com sucesso.' }
-        end
-      else
-        format.html { render action: "new" }
-      end
-    end
+				if params[:commit]=="save_and_add_new"
+					format.html { redirect_to new_project_url, notice: 'Projeto <b>' + @project.title + '</b> criado com sucesso.' }
+				else
+					format.html { redirect_to project_path(@project), notice: 'Novo projeto criado com sucesso.' }
+				end
+			else
+				format.html { render action: "new" }
+			end
+		end
 
-  end
+	end
 
-  def is_number?(object)
-    Float(object) != nil rescue false
-  end
+	def is_number?(object)
+		Float(object) != nil rescue false
+	end
 
-  # PUT /projects/1
-  def update
-    @project = Project.find(params["id"])
+	# PUT /projects/1
+	def update
+		@project = Project.find(params["id"])
 
-    checkAuthorization(@project)
-    isAdminEditing = (current_user.admin? and not @project.people.include?(current_user.person))
+		checkAuthorization(@project)
+		isAdminEditing = (current_user.admin? and not @project.people.include?(current_user.person))
 
-    pp = params[:project]
-    
-    tags = params["tag_tokens"].split(',')
-    tags_str = processTags(tags).join(" ")
+		pp = params[:project]
+		
+		tags = params["tag_tokens"].split(',')
+		tags_str = processTags(tags).join(" ")
 
-    people = params["people"].split(',')
-    if not people.include?(current_user.person.id.to_s) and not isAdminEditing
-      people.push(current_user.person.id)
-    end
-    oldAuthors = @project.people.dup
+		people = params["people"].split(',')
+		if not people.include?(current_user.person.id.to_s) and not isAdminEditing
+			people.push(current_user.person.id)
+		end
+		oldAuthors = @project.people.dup
 
-    
+		
 
-    success = true
-    if params["deleteImage"] == "1"
-      success = @project.update_attributes(image: nil)
-    elsif pp["image"]
-      success = @project.update_attributes(image: pp["image"])
-    end
+		success = true
+		if params["deleteImage"] == "1"
+			success = @project.update_attributes(image: nil)
+		elsif pp["image"]
+			success = @project.update_attributes(image: pp["image"])
+		end
 
-    if params["deleteFile"] == "1"
-      success &&= @project.update_attributes(file: nil, downloadCount: 0)
-    elsif pp["file"]
-      success &&= @project.update_attributes(file: pp["file"], downloadCount: 0)
-    end
+		if params["deleteFile"] == "1"
+			success &&= @project.update_attributes(file: nil, downloadCount: 0)
+		elsif pp["file"]
+			success &&= @project.update_attributes(file: pp["file"], downloadCount: 0)
+		end
 
-    if pp["link"]!=@project.link
-      @project.update_attributes(link: pp["link"], linkHitCount: 0)
-    end
-    
-    success &&= @project.update_attributes(
-          # person: @project.person,
-          title: pp["title"],
-          description: pp["description"],
-          course_id: pp["course_id"],
-          semester_year: pp["semester_year"],
-          semester_sem: pp["semester_sem"],
-          tag_ids: tags,
-          person_ids: people,
-          tags_str: tags_str
-    ) 
+		if pp["link"]!=@project.link
+			@project.update_attributes(link: pp["link"], linkHitCount: 0)
+		end
+		
+		success &&= @project.update_attributes(
+					# person: @project.person,
+					title: pp["title"],
+					description: pp["description"],
+					course_id: pp["course_id"],
+					semester_year: pp["semester_year"],
+					semester_sem: pp["semester_sem"],
+					tag_ids: tags,
+					person_ids: people,
+					tags_str: tags_str
+		) 
 
 
-    respond_to do |format|
-      if success
-        if not isAdminEditing
-          @project.create_activity :update, owner: current_user
+		respond_to do |format|
+			if success
+				if not isAdminEditing
+					@project.create_activity :update, owner: current_user
 
-          @project.people.each do |p|
-            if not oldAuthors.include?(p)
-              @project.create_activity :addOwnership, owner: current_user, recipient: p.user
-            end
-          end
+					@project.people.each do |p|
+						if not oldAuthors.include?(p)
+							@project.create_activity :addOwnership, owner: current_user, recipient: p.user
+						end
+					end
 
-          oldAuthors.each do |p|
-            if not @project.people.include?(p)
-              @project.create_activity :removeOwnership, owner: current_user, recipient: p.user
-            end
-          end
-        end
+					oldAuthors.each do |p|
+						if not @project.people.include?(p)
+							@project.create_activity :removeOwnership, owner: current_user, recipient: p.user
+						end
+					end
+				end
 
-        if params[:commit]=="save_and_add_new"
-          format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
-        else
-          format.html { redirect_to project_path(@project), notice: 'Projeto atualizado com sucesso.' }
-        end
-      else
-        format.html { render action: "edit" }
-      end
-    end
-  end
+				if params[:commit]=="save_and_add_new"
+					format.html { redirect_to new_project_url, notice: 'Projeto atualizado com sucesso.' }
+				else
+					format.html { redirect_to project_path(@project), notice: 'Projeto atualizado com sucesso.' }
+				end
+			else
+				format.html { render action: "edit" }
+			end
+		end
+	end
 
-  # DELETE /projects/1
-  def destroy
-    @project = Project.find(params[:id])
-    title = @project.title
-    @project.destroy
+	# DELETE /projects/1
+	def destroy
+		@project = Project.find(params[:id])
+		title = @project.title
+		@project.destroy
 
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Projeto <b>' + title + '</b> exluído com sucesso.' }
-      format.js
-    end
-  end
+		respond_to do |format|
+			format.html { redirect_to projects_url, notice: 'Projeto <b>' + title + '</b> exluído com sucesso.' }
+			format.js
+		end
+	end
 
-  def like
-    @project = Project.find(params[:id])
-    if @project
-      @person = current_user.person
-      if not @project.likes.include?(@person)
-        @project.create_activity :like, owner: current_user
-        @project.likes.push(@person)
-        @project.update_attributes(likeCount: @project.likeCount+1)
-      end
-    end
+	def like
+		@project = Project.find(params[:id])
+		if @project
+			@person = current_user.person
+			if not @project.likes.include?(@person)
+				@project.create_activity :like, owner: current_user
+				@project.likes.push(@person)
+				@project.update_attributes(likeCount: @project.likeCount+1)
+			end
+		end
 
-    respond_to do |format|
-      format.html { redirect_to Project }
-      format.js
-    end
-  end
+		respond_to do |format|
+			format.html { redirect_to Project }
+			format.js
+		end
+	end
 
-  def unlike
-    @project = Project.find(params[:id])
-    if @project
-      @person = current_user.person
-      if @project.likes.include?(@person)
-        # Finds and deletes the notification of this like
-        PublicActivity::Activity.where(owner_id: current_user, trackable_id: @project.id, key: "project.like").destroy_all
-        @project.likes.delete(@person)
-        @project.update_attributes(likeCount: @project.likeCount-1)
-      end
-    end
-    
-    respond_to do |format|
-      format.js
-    end
-  end
+	def unlike
+		@project = Project.find(params[:id])
+		if @project
+			@person = current_user.person
+			if @project.likes.include?(@person)
+				# Finds and deletes the notification of this like
+				PublicActivity::Activity.where(owner_id: current_user, trackable_id: @project.id, key: "project.like").destroy_all
+				@project.likes.delete(@person)
+				@project.update_attributes(likeCount: @project.likeCount-1)
+			end
+		end
+		
+		respond_to do |format|
+			format.js
+		end
+	end
 
-  def downloadFile
-    @project = Project.find(params[:id])
+	def downloadFile
+		@project = Project.find(params[:id])
 
-    if cookies["#{@project.id}_downloaded"]==nil
-      @project.update_attributes(downloadCount: @project.downloadCount+1)
-      cookies["#{@project.id}_downloaded"] = true
-    end
+		if cookies["#{@project.id}_downloaded"]==nil
+			@project.update_attributes(downloadCount: @project.downloadCount+1)
+			cookies["#{@project.id}_downloaded"] = true
+		end
 
-    respond_to do |format|
-      format.html { redirect_to @project.file.url }
-    end
-  end
+		respond_to do |format|
+			format.html { redirect_to @project.file.url }
+		end
+	end
 
-  def clickLink
-    @project = Project.find(params[:id])
+	def clickLink
+		@project = Project.find(params[:id])
 
-    if cookies["#{@project.id}_clicked"]==nil
-      @project.update_attributes(linkHitCount: @project.linkHitCount+1)
-      cookies["#{@project.id}_clicked"] = true     
-    end
+		if cookies["#{@project.id}_clicked"]==nil
+			@project.update_attributes(linkHitCount: @project.linkHitCount+1)
+			cookies["#{@project.id}_clicked"] = true     
+		end
 
-    respond_to do |format|
-      format.html { redirect_to @project.link }
-    end
-  end
+		respond_to do |format|
+			format.html { redirect_to @project.link }
+		end
+	end
 
 end
