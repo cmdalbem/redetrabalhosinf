@@ -1,62 +1,48 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Entrar", new_session_path(resource_name), class: "btn" %><br />
+  <%= link_to "Entrar", new_session_path(:user), class: "btn" %><br />
 <% end -%>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  Não está cadastrado? <%= link_to "Cadastre-se", new_registration_path(resource_name), class: "btn btn-mini btn-success" %>
-  <br>
-  <br>
-<% end -%>
+<!-- Not Registered -->
+Não está cadastrado? <%= link_to "Cadastre-se", new_registration_path(:user)  %>
+<br>
+<br>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-	<small>
-		<a href="#forgotPasswordModal" role="button" data-toggle="modal">Esqueceu tua senha?</a>
-		<br>
-	</small>
-
-	<div id="forgotPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">Resetar senha</h3>
-		</div>
-		<div class="modal-body">
-			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-			  <%= devise_error_messages! %>
-			  <%= f.email_field :email, required: true, class: "input-large", placeholder: "Email cadastrado" %>
-			  <%= f.submit "Ok", class: "btn btn-primary" %>
-			<% end %>
-		</div>
+<!-- Forgot Password -->
+<small>
+	<a href="#forgotPasswordModal" role="button" data-toggle="modal">Esqueceu tua senha?</a>
+	<br>
+</small>
+<div id="forgotPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Resetar senha</h3>
 	</div>
-<% end -%>
-
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-	<!-- link_to "Não recebou instruções de confirmação?", new_confirmation_path(resource_name) -->
-	<small>
-		<a href="#resendConfirmationModal" role="button" data-toggle="modal">Não recebeu email de confirmação?</a>
-		<br>
-	</small>
-
-	<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">Reenviar email de confirmação</h3>
-		</div>
-		<div class="modal-body">
-			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-				<%= devise_error_messages! %>
-				<%= f.email_field :email, required: true, class: "input-large", placeholder: "Email cadastrado" %>
-				<%= f.submit "Reenviar", class: "btn btn-primary" %>
-			<% end %>
-		</div>
+	<div class="modal-body">
+		<%= form_for(:user, :url => password_path(:user), :html => { :method => :post }) do |f| %>
+		  <%= devise_error_messages! %>
+		  <%= f.email_field :email, required: true, class: "input-large", placeholder: "Email cadastrado" %>
+		  <%= f.submit "Ok", class: "btn btn-primary" %>
+		<% end %>
 	</div>
-<% end %>
+</div>
 
-<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
-<% end -%>
+<!-- Confirmation Email -->
+<!-- link_to "Não recebou instruções de confirmação?", new_confirmation_path(:user) -->
+<small>
+	<a href="#resendConfirmationModal" role="button" data-toggle="modal">Não recebeu email de confirmação?</a>
+	<br>
+</small>
 
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
-<% end -%>
+<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Reenviar email de confirmação</h3>
+	</div>
+	<div class="modal-body">
+		<%= form_for(:user, :url => confirmation_path(:user), :html => { :method => :post }) do |f| %>
+			<%= devise_error_messages! %>
+			<%= f.email_field :email, required: true, class: "input-large", placeholder: "Email cadastrado" %>
+			<%= f.submit "Reenviar", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>

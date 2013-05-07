@@ -34,6 +34,16 @@
 						Caracteres sobrando: <span id="char_count"><%=PERSON_ABOUT_MAX_LENGTH-(@person.about? ? @person.about.length : 0)%></span>
 					</small>
 				</span>
+
+				<script type="text/javascript">
+					// Character counter. Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/
+					$('#person_about').on('keyup keydown', function() {
+					    // global_constants.rb: PERSON_ABOUT_MAX_LENGTH = 300
+					    var maxLen = 300;
+					    var left = maxLen - $(this).val().length;
+					    $('#char_count').html(left);
+					  });
+				</script>
 			</div>
 		</div>
 

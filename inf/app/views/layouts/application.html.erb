@@ -90,8 +90,10 @@
 
 					<% else %>
 						<li>
-						  <%= nav_link nav_icon("Entrar","icon-signin"), new_user_session_path %>
+							<%= nav_link nav_icon("Entrar","icon-signin"), new_user_session_path %>
 						</li>
+						<li class="divider-vertical"></li>
+						<%= link_to "Cadastrar", new_registration_path(:user), class: "btn btn-warning btn-small"%>
 					<% end %>
 
 					<!--<% if user_signed_in? %>

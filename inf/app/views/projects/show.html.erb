@@ -215,12 +215,16 @@
                       <%= f.hidden_field :project_id, value: @project.id %>
                       <%= f.hidden_field :person_id, value: current_user.person.id %>
                       <div class="field">
-                        <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 1, style: "width: 50%" %>
-                        <!-- <br> -->
+                        <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 1, style: "width: 50%; resize: none;", class: "textarea-expansible" %>
+                        <br>
                         <%= f.submit "Enviar", class: "btn btn-primary" %>
                       </div>
                     <% end %>
                   </td>
+
+                  <script>
+                    $('.textarea-expansible').autogrow();
+                  </script>
                 </tr>
               </table> 
             </li>

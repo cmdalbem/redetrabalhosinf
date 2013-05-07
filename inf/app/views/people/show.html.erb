@@ -104,17 +104,17 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab1">
 
-							<div class="row-fluid">
+							<!-- <div class="row-fluid">
 								<%= render "shared/tag_cloud" %>
 							</div>
 
-							<br>
+							<br> -->
 
 							<%= render "shared/project_ctrlbar", sortbyOptions: {"Popularidade"=>"relevance",
-																																			"Data do upload" => "date",
-																																			"Título"=>"title",
-																																			"Semestre"=>"barra",
-																																			"Likes"=>"likes"} %>
+																				"Data do upload" => "date",
+																				"Título"=>"title",
+																				"Semestre"=>"barra",
+																				"Likes"=>"likes"} %>
 
 							<!-- The listing itself -->
 							<div id="projects-table" class="clearfix"> 
@@ -136,7 +136,7 @@
 											<% @activities.each do |a| %>
 												<li class="project-options-trigger" style="overflow: hidden;">
 													<%= render_activity a %>
-													<% if user_signed_in? and a.owner=current_user %>
+													<% if user_signed_in? and a.owner==current_user %>
 														<span class="project-hidden-options"><%= link_to raw("<i class=\"icon-remove-sign\"></i>"), activity_path(a), confirm: "Tem certeza?", method: "delete", class: "no-decoration" %></span>
 													<% end %>
 													<small>

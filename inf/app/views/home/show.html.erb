@@ -76,7 +76,7 @@
 		
 			<div class="row-fluid">
 				<center>
-					<%= render "shared/global_search_form", placeholder: "Buscar projetos, disciplinas, usuários..." %>
+					<%= render "shared/global_search_form", placeholder: "Buscar projetos, disciplinas, usuários, tags..." %>
 				</center>
 			</div>
 
@@ -315,7 +315,7 @@
 				<legend>Atividade Recente</legend>
 				<ul>
 					<% @globalActivities.each do |a| %>
-					    <li class="project-options-trigger">
+					    <li>
 					    	<table>
 					    		<tr>
 									<td style="width: 100%;">
@@ -325,8 +325,9 @@
 										</small>
 									</td>
 					    			<td>
-										<% if user_signed_in? and a.owner=current_user %>
-											<span class="project-hidden-options"><%= link_to raw("<i class=\"icon-remove-sign\"></i>"), activity_path(a), confirm: "Tem certeza?", method: "delete", class: "no-decoration" %></span>
+										<% if user_signed_in? and a.owner==current_user %>
+											<span><%= link_to raw("<i class=\"icon-remove-sign\"></i>"), activity_path(a), confirm: "Tem certeza?", method: "delete", class: "no-decoration" %>
+											</span>
 										<% end %>
 									</td>
 								</tr>

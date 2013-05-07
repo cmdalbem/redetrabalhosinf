@@ -43,6 +43,16 @@
             Caracteres sobrando: <span id="char_count"><%=PROJECT_DESCRIPTION_MAX_LENGTH - (@project.description? ? @project.description.length : 0)%></span>
           </small>
         </span>
+
+        <script type="text/javascript">
+          // Character counter. Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/
+          $('#project_description').on('keyup keydown', function() {
+            // global_constants.rb: PROJECT_DESCRIPTION_MAX_LENGTH = 1500  
+            var maxLen = 1500;
+            var left = maxLen - $(this).val().length;
+            $('#char_count').html(left);
+          });
+        </script>        
       </div>
 
       <div class="field">
