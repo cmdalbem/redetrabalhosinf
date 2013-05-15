@@ -7,24 +7,18 @@
 		<%= devise_error_messages! %>
 
 		<%= f.fields_for :person do |person_builder| %>
+			<%= person_builder.hidden_field :nick %>
 			<div class="field">
 				<%= person_builder.label "Nome" %><br />
 				<%= person_builder.text_field :name, required: true %>
 			</div>
-
-			<%= f.label "Email da INF" %><br />
-			<div class="input-append">
-				<%= f.text_field :email, required: true, class: "input-medium", onchange: "$('#hidden_nick').val(this.value);" %>
-				<span class="add-on">@inf.ufrgs.br</span>
-			</div>
-
-			<br />
-
-			<div class="input-prepend">
-				<span class="add-on muted"><%= SITE_URL %>/</span>
-				<%= person_builder.text_field :nick, id: "hidden_nick", class: "input-medium uneditable-input", readonly: true %>
-			</div>
 		<% end %>
+
+		<%= f.label "Email da INF" %><br />
+		<div class="input-append">
+			<%= f.text_field :email, required: true, class: "input-medium" %>
+			<span class="add-on">@inf.ufrgs.br</span>
+		</div>
 
 		<div><%= f.label "Senha" %><br />
 		<%= f.password_field :password, required: true %></div>

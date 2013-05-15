@@ -63,7 +63,7 @@ module ApplicationHelper
 			ret +="<li><i class=\"icon-picture\"></i></li>"
 		end
 		if project.link?
-			ret +="<li><i class=\"icon-external-link\"></i></li>"
+			ret +="<li><i class=\"icon-link\"></i></li>"
 		end
 		ret += "</ul>"
 
@@ -124,6 +124,11 @@ module ApplicationHelper
 	def url_to_project project
 		# person_project_path(project.person.nick, project.title)
 		project_path(project)
+	end
+
+	# Easy link to user profiles
+	def url_to_user user
+		profile_path(user.person.nick)
 	end
 
 	# Link to the list of projects of a course

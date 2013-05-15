@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 
 	# GET /projects
 	def index
-		@projects = Project.scoped
+		@projects = Project.includes(:people).includes(:course)
 
 		handleCourseFiltering()
 
@@ -71,11 +71,10 @@ class ProjectsController < ApplicationController
 		#   @project = user.projects.includes(:comments).find_by_title(params[:project]) if user
 		# else
 			@project = Project.includes(:comments).find(params[:id])
-		# end
 
 		not_found if @project.nil?
 
-		@project.update_attributes(viewCount: @project.viewCount+1)
+		@project.update_attribute :viewCount, @project.viewCount+1
 
 	end
 
@@ -109,7 +108,6 @@ class ProjectsController < ApplicationController
 
 		@project = Project.new(title: pp["title"],
 			course_id: pp["course_id"],
-			person: owner,
 			description: pp["description"],
 			semester_year: pp["semester_year"],
 			semester_sem: pp["semester_sem"],
@@ -185,7 +183,6 @@ class ProjectsController < ApplicationController
 		end
 		
 		success &&= @project.update_attributes(
-					# person: @project.person,
 					title: pp["title"],
 					description: pp["description"],
 					course_id: pp["course_id"],
@@ -200,14 +197,18 @@ class ProjectsController < ApplicationController
 		respond_to do |format|
 			if success
 				if not isAdminEditing
-					@project.create_activity :update, owner: current_user
+					if not params["hiddenUpdate"]
+						@project.create_activity :update, owner: current_user
+					end
 
+					# Check if there were new authors included in project's authorship
 					@project.people.each do |p|
 						if not oldAuthors.include?(p)
 							@project.create_activity :addOwnership, owner: current_user, recipient: p.user
 						end
 					end
 
+					# Check if there were authors removed from project's authorship
 					oldAuthors.each do |p|
 						if not @project.people.include?(p)
 							@project.create_activity :removeOwnership, owner: current_user, recipient: p.user
@@ -276,7 +277,7 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id])
 
 		if cookies["#{@project.id}_downloaded"]==nil
-			@project.update_attributes(downloadCount: @project.downloadCount+1)
+			@project.update_attribute :downloadCount, @project.downloadCount+1
 			cookies["#{@project.id}_downloaded"] = true
 		end
 
@@ -289,7 +290,7 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id])
 
 		if cookies["#{@project.id}_clicked"]==nil
-			@project.update_attributes(linkHitCount: @project.linkHitCount+1)
+			@project.update_attribute :linkHitCount, @project.linkHitCount+1
 			cookies["#{@project.id}_clicked"] = true     
 		end
 

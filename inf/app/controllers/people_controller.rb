@@ -83,10 +83,10 @@ class PeopleController < ApplicationController
       search = Person.where(nick: params[:id])
 
       if(search.empty?)
-        redirect_to root_path, alert: "Não consegui encontrar #{params[:id]}."
+        not_found
       else
         @person = search.first
-        @projects = @person.projects
+        @projects = @person.projects.includes(:course)
 
         handleProjectSearch
 
@@ -104,7 +104,7 @@ class PeopleController < ApplicationController
         @hideAuthors = true
 
         # User's activities list
-        @activities = PublicActivity::Activity.where(owner_id: @person.user.id).order("created_at desc")
+        @activities = PublicActivity::Activity.where(owner_id: @person.user.id).order("created_at desc").includes(:owner).includes(:trackable).includes(:recipient)
 
         @tags = Tag.joins(:taggings).group("tags.id").where("taggings.project_id" => @person.project_ids)
 
@@ -127,26 +127,6 @@ class PeopleController < ApplicationController
 
     checkAuthorization(@person.user)
 
-  end
-
-  # POST /people
-  def create
-    pp = params[:person];
-
-    @person = Person.new(name: pp["name"],
-              email: pp["email"],
-              semester_year: pp["semester_year"],
-              semester_sem: pp["semester_sem"],
-              avatar: pp["avatar"],
-              personal_link: "")
-
-    respond_to do |format|
-      if @person.save
-        format.html { redirect_to @person, notice: 'Perfil criado com sucesso.' }
-      else
-        format.html { render action: "new" }
-      end
-    end
   end
 
   # PUT /people/1

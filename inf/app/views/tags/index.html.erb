@@ -13,25 +13,24 @@
       <tr>
         <th>Tag</th>
         <th>Projetos</th>
+        <th></th>
       </tr>
     </thead>
 
   <% @tags.each do |tag| %>
-    <tr>
-      <td class="project-options-trigger">
+    <tr class="project-options-trigger">
+      <td>
         <%= tag.tag_text %>
-        <div class="btn-group project-hidden-options">
-          <a class="btn btn-mini dropdown-toggle"  data-toggle="dropdown" href="#">
-            <i class="icon-cog"></i>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu pull-right">
-            <li> <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_tag_path(tag), class: "small" %> </li>
-            <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), tag, confirm: 'o rly?', method: :delete, class: "small" %> </li>
-          </ul>
+      </td>
+      
+      <td><%= tag.projects.count %></td>
+
+      <td>
+        <div class="pull-right project-hidden-options">
+          <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_tag_path(tag) %>
+          <%= link_to raw("<i class=\"icon-trash\"></i>"), tag, confirm: 'o rly?', method: :delete %>
         </div>
       </td>
-      <td><%= tag.projects.count %></td>
     </tr>
   <% end %>
   </table>

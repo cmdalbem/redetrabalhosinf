@@ -96,7 +96,7 @@
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
               <!-- HEADER -->
-              <h5> <i class="icon-external-link icon-large"></i> Link </h5>
+              <h5> <i class="icon-link icon-large"></i> Link </h5>
             </a>
           </div>
           <div id="collapse<%=collapseId%>" class="accordion-body collapse">
@@ -246,10 +246,19 @@
     <br>
 
     <div class="actions">
-      <%= f.submit "Salvar", class: "btn btn-primary"%>
-      <%= button_tag(type: 'submit', class: "btn btn-info", name: "commit", value: "save_and_add_new") do %>
-        <i class="icon-plus"></i> Salvar e adicionar outro
-      <% end %>
+      <% if @project.id? %>
+        <label class="checkbox inline">
+          <input type="checkbox" name="hiddenUpdate">Não tornar pública esta atualização
+        </label>
+        <br>
+        <%= f.submit "Salvar", class: "btn btn-primary btn-large"%>
+      <% else %>
+        <%= f.submit "Salvar", class: "btn btn-primary btn-large"%>
+        <%= button_tag(type: 'submit', class: "btn btn-info btn-large", name: "commit", value: "save_and_add_new") do %>
+          <i class="icon-plus"></i> Salvar e adicionar outro
+        <% end %>
+      <% end %>  
+
       <!--<%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>-->
     </div>
   </center>

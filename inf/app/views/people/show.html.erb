@@ -28,7 +28,7 @@
 
 					<% if @person.personal_link? %>
 						<p>
-							<i class="icon-external-link"></i>
+							<i class="icon-link"></i>
 							<%= link_to @person.personal_link, @person.personal_link %>
 						</p>
 					<% end %>
@@ -136,12 +136,14 @@
 											<% @activities.each do |a| %>
 												<li class="project-options-trigger" style="overflow: hidden;">
 													<%= render_activity a %>
-													<% if user_signed_in? and a.owner==current_user %>
-														<span class="project-hidden-options"><%= link_to raw("<i class=\"icon-remove-sign\"></i>"), activity_path(a), confirm: "Tem certeza?", method: "delete", class: "no-decoration" %></span>
-													<% end %>
 													<small>
 														<p class="muted pull-right">há <%= time_ago_in_words(a.created_at) %></p>
 													</small>
+													<% if user_signed_in? and a.owner==current_user %>
+														<iv class="project-hidden-options pull-right">
+															<%= link_to raw("<i class=\"icon-remove-sign\"></i>"), activity_path(a), confirm: "Tem certeza?", method: "delete", class: "no-decoration" %>
+														</iv>
+													<% end %>
 												</li>
 											<% end %>
 										</ul>

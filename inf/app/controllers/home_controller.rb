@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     end
 
     # Person with incomplete profile
-    totalProfileDetails = 4
+    totalProfileDetails = 5
     missingProfileDetails = 0
     if not @person.avatar?
       missingProfileDetails += 1
@@ -62,16 +62,23 @@ class HomeController < ApplicationController
     activitiesPerPage = 10
     # newsLimit = 5;
 
-  	@lastProjects = Project.order("created_at DESC").limit(newsLimit).all
+  	@lastProjects = Project.order("created_at DESC").limit(newsLimit).includes(:people).includes(:course).all
   	@lastPeople = Person.order("created_at DESC").limit(newsLimit+2).all
-  	@globalActivities = PublicActivity::Activity.order("created_at desc").limit(newsLimit+3).all
+  	@globalActivities = PublicActivity::Activity.order("created_at desc").limit(newsLimit+3)
+    @globalActivities = @globalActivities.includes(:owner).includes(:trackable).all
     # @tags = Tag.order("tag_text asc").all
     @tags = Tag.all.shuffle
+
+    @totalCourses = Course.joins(:projects).group("courses.id").having("count(courses.id) > 0").count.length
+    @totalProjects = Project.count
+    @totalUsers = User.count
+    @totalTags = Tag.count
 	
     if user_signed_in?
       @person = current_user.person
 
       @myActivities = PublicActivity::Activity.where("owner_id != ? AND trackable_id IN (?)", current_user, current_user.person.project_ids).order("created_at desc")
+      @myActivities = @myActivities.includes(:owner).includes(:trackable)
       @myActivities = @myActivities.paginate(per_page: activitiesPerPage, page: params[:page])
       @myActivities = @myActivities.all
 

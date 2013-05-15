@@ -76,15 +76,19 @@
 								<!-- List of user options -->
 								<li><%=	link_to nav_icon("Meu Perfil", "icon-user icon-large"), profile_path(current_user.person.nick) %></li>
 								<li><%= link_to nav_icon("Editar Perfil", "icon-edit icon-large"), edit_person_path(current_user.person) %></li>
+								<% if current_user.admin %>
+									<li class="dropdown-submenu">
+										<a tabindex="-1" href="#"><i class="icon-star icon-large"></i> Administração</a>
+										<ul class="dropdown-menu">
+											<li><%= link_to nav_icon("Disciplinas", "icon-book"), courses_path %></li>
+											<li><%= link_to nav_icon("Tags", "icon-tags"), tags_path %></li>
+											<li><%= link_to nav_icon("Atividades", "icon-rss"), activities_path %></li>
+											<li><%= link_to nav_icon("Search Logs", "icon-search"), search_logs_path %></li>
+										</ul>
+									</li>
+								<% end %>
 								<li class="divider"></li>
 								<li><%= link_to nav_icon("Sair","icon-signout icon-large"), destroy_user_session_path, :method => :delete %></li>
-								<% if current_user.admin %>
-									<li class="divider"></li>
-									<li class="nav-header">Administração</li>
-									<li><%= link_to nav_icon("Disciplinas", "icon-book"), courses_path %></li>
-									<li><%= link_to nav_icon("Tags", "icon-tags"), tags_path %></li>
-									<li><%= link_to nav_icon("Atividades", "icon-rss"), activities_path %></li>
-								<% end %>
 							</ul>
 						</li>
 

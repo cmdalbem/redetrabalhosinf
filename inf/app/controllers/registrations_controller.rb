@@ -7,11 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
 
 	def create
 		# super
-		# if Rails.env.development?
-		# 	@user.update_attribute(:confirmed_at,Time.now)
-		# 	@user.update_attribute(:active,true)
-		# end
 
+		params[:user][:person_attributes]["nick"] = params[:user]["email"]
 		params[:user]["email"] += "@inf.ufrgs.br";
 
 		@user = User.new(params[:user])

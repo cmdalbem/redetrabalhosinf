@@ -142,6 +142,12 @@ a.accordion-toggle:hover, a.accordion-toggle:focus
 	background-color: inherit;
 }
 
+.cut-text {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
 .pagination {
 	margin: 20px 0 0 0;
 }
@@ -432,7 +438,7 @@ ul.project-content-icons {
 
 	.mysearch {
 		.search-query {
-			/*width: 60px;*/
+			width: 200px;
 		}
 	}
 
@@ -621,7 +627,7 @@ h0 {
 	/* Search input personalized for the Homepage */
 	.mysearch { 
 		position: relative;
-		width: 580px;
+		width: 660px;
 		padding-right: 55px;
 		max-width: 100%;
 
@@ -645,9 +651,9 @@ h0 {
 			box-shadow: 0 0 5px rgba(200, 200, 200, 0.8);
 		}
 
-		.search-query:focus {
+		/*.search-query:focus {
 			width: 100%;
-		}
+		}*/
 
 		.icon-search {
 			margin-top: 6px;
@@ -774,13 +780,13 @@ h0 {
 
 	.search-query {
 		padding-left: 25px;
-		width: 180px;
+		width: 260px;
 		@include transition(.4s);
 	}
 
-    .search-query:focus {
+    /*.search-query:focus {
 		width: 270px;
-	}
+	}*/
 
 	.icon-search {
 		position: absolute;
@@ -1175,8 +1181,7 @@ label {
 
 			header {
 				/*font-size: 18px;*/
-				padding-bottom: 10px;
-				padding-top: 3px;
+				padding: 0 3px;
 							
 				background-image: linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
 				background-image: -o-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
@@ -1340,6 +1345,43 @@ label {
 	-webkit-box-shadow:-1px -1px 2px #004977;
 	box-shadow:-1px -1px 2px #004977;
 	}
+
+
+@mixin linkIcon {
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 18px;
+}
+
+a[rel$=".zip"], [rel$=".tar"], [rel$=".tgz"], [rel$=".7z"], [rel$=".rar"] {
+	background-image: url('icons/compressed.png');
+	@include linkIcon;
+}
+a[rel$=".pdf"] {
+	background-image: url('icons/pdf.gif');
+	@include linkIcon;
+}
+a[rel$=".ppt"], [rel$=".pptx"], [rel$=".pps"], [rel$=".odp"] {
+	background-image: url('icons/ppt.gif');
+	@include linkIcon;
+}
+
+a[rel*="github"] {
+	background-image: url('icons/github.png');
+	@include linkIcon;
+}
+a[rel*="code.google"], [rel*="googlecode"] {
+	background-image: url('icons/googlecode.png');
+	@include linkIcon;
+}
+a[rel*="docs.google"] {
+	background-image: url('icons/google_drive.png');
+	@include linkIcon;
+}
+a[rel*="dropbox"] {
+	background-image: url('icons/dropbox.png');
+	@include linkIcon;
+}
 
 /* SPECIAL CODE FOR STICK FOOT(ER) */
 /* http://bootstrapfooter.codeplex.com */

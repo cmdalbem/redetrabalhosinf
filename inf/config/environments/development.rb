@@ -44,4 +44,9 @@ Inf::Application.configure do
 
   config.i18n.default_locale = "pt-BR"
 
+  config.after_initialize do
+    Bullet.enable = false
+    Bullet.alert = true
+  end
+
 end

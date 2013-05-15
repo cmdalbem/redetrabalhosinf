@@ -66,6 +66,9 @@ gem 'metamagic'
 # Sitemap generator (for Google Webmaster Tools)
 # gem 'sitemap_generator'
 
+# Queries optimizer
+gem "bullet", :group => "development"
+
 
 # Gems to be added only when running on Linux
 platforms :ruby do

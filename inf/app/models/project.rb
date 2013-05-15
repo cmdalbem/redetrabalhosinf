@@ -1,7 +1,6 @@
 class Project < ActiveRecord::Base
 	include PublicActivity::Common
 
-	belongs_to :person
 	belongs_to :course
 
 	has_many :ownerships, dependent: :destroy
@@ -9,6 +8,7 @@ class Project < ActiveRecord::Base
 	
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
+	
 	has_many :comments, dependent: :destroy 
 
 	#Like relationship
@@ -24,7 +24,6 @@ class Project < ActiveRecord::Base
 	has_attached_file :file, :path => attachmentsPath
 		validates_attachment_size :file, :less_than => MAX_FILE_SIZE_MB.megabytes
 
-	validates :person, presence: true
 	validates :title, presence: true, length: {maximum: PROJECT_TITLE_MAX_LENGTH}, format: /^[^\/]+$/
 	validates :description, length: {maximum: PROJECT_DESCRIPTION_MAX_LENGTH}
 	validates :course, presence: true

@@ -40,8 +40,6 @@ class ApplicationController < ActionController::Base
 				plist.sort_by! {|p| p.semester }
 			# when "course"
 			#   plist.sort_by! {|p| p.course.name.downcase }
-			# when "person"
-			#   plist.sort_by! {|p| p.person.name.downcase }
 			when "likes"
 				plist.sort_by! {|p| p.likeCount }
 			when "relevance"

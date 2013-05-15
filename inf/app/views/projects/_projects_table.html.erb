@@ -15,7 +15,7 @@
         data-content=\"É ordenada pela seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>\"
         >
         <i class=\"icon-question-sign\"></i></a>
-        ", "relevance" %>
+        ", "relevance" %>sadsdafalksçoirehgçarejkghrn
       </th>-->
       
       <th> Título </th>
@@ -26,7 +26,7 @@
       <th>
         <center>
           Popularidade
-          <a href="#" rel="popover" data-original-title="Popularidade?" 
+          <a href="#" rel="popover" data-original-title="Popularidade?" class="no-decoration"
             data-content="Os projetos são ordenados usando a seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>"
             > <i class="icon-question-sign"></i></a>
         </center>
@@ -46,7 +46,7 @@
               <div class="dropdown project-hidden-options pull-right">
                 <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
                 <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: adminActionColor %>
-                <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: adminActionColor %>                
+                <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: adminActionColor %>
               </div>
             </div>
           <% end %>
@@ -56,8 +56,10 @@
             <% if not project.tags.empty? %>
               <br>
               <smaller class="muted">
-                <i class="icon-tag"></i>
-                <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
+                <div class="cut-text">
+                    <i class="icon-tag"></i>
+                    <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
+                </div>
               </smaller>
             <% end %>
           </a>

@@ -10,8 +10,12 @@ class GlobalSearchController < ApplicationController
 	    if params[:gq] and !params[:gq].empty?
 	    	@hasQuery = true
 	    	@query = params[:gq]
+
+	    	SearchLog.create(text: @query,
+				    		ip: request.remote_ip,
+				    		user: (user_signed_in? ? current_user : nil))
 	    	
-	    	@projects = Project.scoped
+	    	@projects = Project.scoped.includes(:people).includes(:course)
 		    @courses = Course.scoped
 		    @people = Person.scoped
 		    @tags = Tag.scoped

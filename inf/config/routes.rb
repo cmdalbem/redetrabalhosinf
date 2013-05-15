@@ -5,6 +5,7 @@ Inf::Application.routes.draw do
   resources :s3_uploads
 
   resources :global_search, path: "busca"
+  resources :search_logs
 
   resources :projects, path: "projetos", :path_names => { new: "novo", edit: "editar" }
   resources :people, path: "usuarios", :path_names => { new: "novo", edit: "editar" }, constraints: { :id => /[^\/]+/ }
@@ -22,10 +23,10 @@ Inf::Application.routes.draw do
   # Github style project URL
   # match 'p/:person/:project' => 'Projects#show', :as => 'person_project', constraints: { :project => /[^\/]+/, :person => /[^\/]+/ }
 
-  match 'project/like/:id' => 'Projects#like', :as => 'like_project'
-  match 'project/unlike/:id' => 'Projects#unlike', :as => 'unlike_project'
-  match 'project/:id/download' => 'Projects#downloadFile', :as => 'project_download'
-  match 'project/:id/link' => 'Projects#clickLink', :as => 'project_link'
+  match 'projetos/:id/like' => 'Projects#like', :as => 'like_project'
+  match 'projetos/:id/unlike' => 'Projects#unlike', :as => 'unlike_project'
+  match 'projetos/:id/download' => 'Projects#downloadFile', :as => 'project_download'
+  match 'projetos/:id/link' => 'Projects#clickLink', :as => 'project_link'
 
 
   # The priority is based upon order of creation:

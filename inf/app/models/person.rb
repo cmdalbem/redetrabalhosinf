@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
 	has_and_belongs_to_many :likes, :foreign_key => 'person_id', :class_name => "Project"
 
 	validates :name, presence: true, length: {minimum:4, maximum: PERSON_NAME_MAX_LENGTH}
-	validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: PERSON_NICK_MAX_LENGTH}
+	# validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: PERSON_NICK_MAX_LENGTH}
 	validates :about, length: {maximum: PERSON_ABOUT_MAX_LENGTH}
 	validates :semester_year, allow_blank: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
 	validates :semester_sem, allow_blank: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }

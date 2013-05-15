@@ -8,11 +8,9 @@
 			<%= form_for resource, :as => resource_name, :url => session_path(resource_name), html: {class: "form-inline"} do |f| %>
 				<%= f.email_field :email, required: true, class: "input-medium", placeholder: "Email" %>
 				<%= f.password_field :password, required: true, class: "input-medium", placeholder: "Senha" %>
-				<% if devise_mapping.rememberable? -%>
-					<label class="checkbox">
-						<input type="checkbox" name="user[remember_me]" checked> Manter logado
-				    </label>
-				<% end %>
+				<label class="checkbox">
+					<input type="checkbox" name="user[remember_me]" checked> Manter logado
+			    </label>
 				<%= f.submit "Entrar", class: "btn btn-primary"%>
 			<% end %>
 			

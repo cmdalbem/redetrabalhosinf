@@ -55,11 +55,12 @@
 							Não deixa teus trabalhos sumirem na obscuridão das páginas pessoais do INF! No infHUB é fácil publicar teus projetos e encontrar e curtir os dos teus colegas. <%= link_to "Leia mais...", about_path, class: "no-decoration" %>
 						</p>
 
-						<ul>
-							<li>Aprenda a usar bibliotecas com exemplos que funcionam</li>
-							<li>Confira os detalhes que não podem faltar no seu relatório</li>
-							<li>Conheça mais sobre uma disciplina vendo os trabalhos dela</li>
-							<li>Descubra e se inspire com alguns dos trabalhos mais criativos do INF</li>
+						<ul class="unstyled" style="padding-left: 20px;">
+							<li><i class="icon-cogs icon-large"></i> Aprenda a usar bibliotecas com exemplos que funcionam</li>
+							<li><i class="icon-check icon-large"></i> Confira os detalhes que não podem faltar no seu relatório</li>
+							<li><i class="icon-book icon-large"></i> Conheça mais sobre uma disciplina com base nos trabalhos dela</li>
+							<li><i class="icon-group icon-large"></i> Socialize e compartilhe o conhecimento com seus colegas</li>
+							<li><i class="icon-lightbulb icon-large"></i> Descubra e se inspire com alguns dos trabalhos mais criativos do INF</li>
 						</ul>
 						
 						<!-- Like Button -->
@@ -76,7 +77,7 @@
 		
 			<div class="row-fluid">
 				<center>
-					<%= render "shared/global_search_form", placeholder: "Buscar projetos, disciplinas, usuários, tags..." %>
+					<%= render "shared/global_search_form", placeholder: "Buscar em #{@totalProjects} projetos, #{@totalCourses} disciplinas, #{@totalUsers} usuários e #{@totalTags} tags" %>
 				</center>
 			</div>
 
@@ -122,10 +123,10 @@
 						<div class="span6">
 							<h4 class="title infhub-text"><%= link_to "infHUB", about_path %></h4>
 							<p>
-								<b><%= Project.count %></b> projetos<br>
-								<b><%= User.count %></b> usuários<br>
-								<b><%= Course.joins(:projects).group("courses.id").having("count(courses.id) > 0").count.length %></b> disciplinas<br>
-								<b><%= Tag.count %></b> tags
+								<b><%= @totalProjects %></b> projetos<br>
+								<b><%= @totalUsers %></b> usuários<br>
+								<b><%= @totalCourses %></b> disciplinas<br>
+								<b><%= @totalTags %></b> tags
 							</p>
 						</div>
 					</div>
@@ -263,7 +264,7 @@
 					<% @lastProjects.each do |p| %>
 						<li>
 							<header><%= link_to_project p %></header>
-							<p class="author">por <%= link_to p.person, profile_path(p.person.nick) %></p>
+							<p class="author">por <%= p.people.collect { |guy| link_to guy.nick, profile_path(guy.nick) }.join(", ").html_safe %> </p>
 							<small>
 								<p><i class="icon-book muted"></i><%= link_to p.course.name, projects_path(course: p.course.id), class: "" %></p>
 								<p class="muted"><i class="icon-time"></i><%= time_ago_in_words(p.created_at) %></p>

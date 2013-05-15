@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_filter :check_admin, :except => :show
 
   # GET /tags
-# GET /tags.json
+  # GET /tags.json
   def index
   	if params[:q]
   		params[:q].downcase!
@@ -69,7 +69,7 @@ class TagsController < ApplicationController
 
   def show 
     @tag = Tag.find(params[:id])
-    @projects = @tag.projects
+    @projects = @tag.projects.includes(:people).includes(:course)
 
     @tags = Tag.all
 

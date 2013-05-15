@@ -113,9 +113,9 @@
     <div class="block span6">
       <p>
         <% if @project.link? %>
-          <h4><i class="icon-external-link"></i></i> Link</h4>
+          <h4><i class="icon-link"></i></i> Link</h4>
           <p>
-            <%= link_to @project.link, project_link_path(@project) %> <span class="badge"><%=@project.linkHitCount%> hits</span>
+            <%= link_to @project.link, project_link_path(@project), rel: @project.link %> <span class="badge"><%=@project.linkHitCount%> hits</span>
           </p>
         <% end %>
       </p>
@@ -123,7 +123,7 @@
         <% if @project.file? %>
           <h4><i class="icon-file"></i> Arquivo</h4>
           <p>
-            <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", project_download_path(@project) %> <span class="badge"><%=@project.downloadCount%> hits</span>
+            <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", project_download_path(@project), rel: @project.file.original_filename %> <span class="badge"><%=@project.downloadCount%> hits</span>
           </p>
         <% end %>
       </p>        

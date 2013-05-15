@@ -14,6 +14,7 @@
         <th>Nome</th>
         <th>Código</th>
         <th>Projetos</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -21,19 +22,19 @@
     <tr class="project-options-trigger">
       <td>
         <%= course.name %>
-        <div class="btn-group project-hidden-options">
-          <a class="btn btn-mini dropdown-toggle"  data-toggle="dropdown" href="#">
-            <i class="icon-cog"></i>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu pull-right">
-            <li> <%= link_to raw("<i class=\"icon-pencil\"></i> Editar"), edit_course_path(course), class: "small" %> </li>
-            <li> <%= link_to raw("<i class=\"icon-trash\"></i> Excluir"), course, confirm: 'o rly?', method: :delete, class: "small" %> </li>
-          </ul>
+      </td>
+
+      <td><%= course.code %></td>
+
+      <td><%= course.projects.count %></td>
+
+      <td>
+        <div class="pull-right project-hidden-options">
+          <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_course_path(course) %>
+          <%= link_to raw("<i class=\"icon-trash\"></i>"), course, confirm: 'o rly?', method: :delete %>
         </div>
       </td>
-      <td><%= course.code %></td>
-      <td><%= course.projects.count %></td>
+
     </tr>
   <% end %>
   </table>
