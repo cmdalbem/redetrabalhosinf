@@ -1,0 +1,266 @@
+<%= form_for(@project) do |f| %>
+
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "erro") %> impediram deste projeto ser salvo:</h2>
+      <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="field">
+        <%= f.label "Disciplina", class: "required" %><br />
+        <%= f.select :course_id, Course.all.collect {|p| [p.name, p.id] }, {include_blank: true}, {"data-placeholder" => "Selecione uma disciplina...", class: "select2"} %>
+        <%= javascript_tag do %>
+          var preselect = <%= params[:course_id]!=nil ? params[:course_id] : (@project.course_id? ? @project.course_id : 0) %>;
+          $(function() {
+            $("#project_course_id.select2").select2().select2('val',preselect);
+          });
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label "Ano/Semestre" %><br />
+        <%= f.select :semester_year, (Time.now.year.downto(MINIMUM_YEAR_ACCEPTABLE)).to_a, {include_blank: "Ano"}, {class: "input-small"} %>
+        <%= f.select :semester_sem, [["1º Semestre","1"], ["2º Semestre","2"] ], {include_blank: "Semestre"}, {class: "input-medium"} %><br />
+      </div>
+
+      <div class="field">
+        <%= f.label "Título", class: "required" %><br />
+      <%= f.text_field :title, required: true, style: "width: 80%;", maxlength: PROJECT_TITLE_MAX_LENGTH, placeholder: "Título" %>
+      </div>
+
+      <div class="field">
+        <%= f.label "Descrição" %><br />
+        <%= f.text_area :description, rows: 10, style: "width: 80%; margin-bottom: 0;", placeholder: "Descrição do projeto. Comente sobre o que foi pedido no enunciado do trabalho, tecnologias e técnicas empregadas, assim como particularidades que diferenciam teu trabalho." %>
+        <span class="help-block">
+          <small>
+            Caracteres sobrando: <span id="char_count"><%=PROJECT_DESCRIPTION_MAX_LENGTH - (@project.description? ? @project.description.length : 0)%></span>
+          </small>
+        </span>
+
+        <script type="text/javascript">
+          // Character counter. Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/
+          $('#project_description').on('keyup keydown', function() {
+            // global_constants.rb: PROJECT_DESCRIPTION_MAX_LENGTH = 1500  
+            var maxLen = 1500;
+            var left = maxLen - $(this).val().length;
+            $('#char_count').html(left);
+          });
+        </script>        
+      </div>
+
+      <div class="field">
+        <%= f.label "Tags" %>
+        <span class="help-inline">
+          <small>
+            <i class="icon-info-sign"></i> Tags ajudam a encontrarem teu trabalho mais facilmente.
+          </small>
+        </span>
+        
+        <%= javascript_tag("var tagsArray = " + raw(Tag.order("tag_text asc").all.collect{|p| {text: p.tag_text, id: p.id}}.to_json) + ";") %>
+        <%= text_field_tag :tag_tokens, "", "data-placeholder" => "Digite tags para adicionar...", class: "select2", value: @project.tag_ids.join(",") %>
+        <%= javascript_tag do %>
+          $(function() {
+            $("#tag_tokens.select2").select2({tags: tagsArray, multiple: true});
+          });
+        <% end %>
+
+          <span class="help-block">
+            Por exemplo: c++, opengl, grafos, cg, ...
+          </span>
+
+      </div>
+
+    </div>
+
+    <div class="span6">
+    
+    <div class="field">
+
+    <!-- Additional Accordion Content -->
+
+      <div class="accordion" id="accordion">
+
+        <%= f.label "Conteúdo Adicional" %>
+
+        <div class="accordion-group">
+          <% collapseId = 0 %>
+
+          <!-- Accordion Item -->
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
+              <!-- HEADER -->
+              <h5> <i class="icon-link icon-large"></i> Link </h5>
+            </a>
+          </div>
+          <div id="collapse<%=collapseId%>" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <!-- CONTENT -->
+              <%= f.url_field :link, style: "width: 500px", placeholder: "URL" %>
+            </div>
+          </div>
+
+          <% collapseId+=1 %>
+
+          <!-- Accordion Item -->
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
+              <!-- HEADER -->
+              <h5> <i class="icon-file icon-large"></i> Arquivo </h5>
+            </a>
+          </div>
+          <div id="collapse<%=collapseId%>" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <!-- CONTENT -->
+              <% if @project.file.exists? %>
+                <!-- Shows the uploaded file, with an option for replacing it with a new one. -->
+                <div id="keepFileField">
+                  <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", @project.file.url %>
+                  <%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); ", class: "btn btn-mini btn-warning" %>
+                </div>
+                <!-- Field for uploading a replacing file. (it's initially hidden) -->
+                <div id="updateFileField" style="display: none;">
+                  <%= f.file_field :file, id: "fileInputField" %>
+                  <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+                  <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); $('#fileInputField').val('');", class: "btn btn-mini btn-warning" %>
+                </div>
+
+                <!-- Delete option. -->
+                <%= check_box_tag :deleteFile %> <i class="icon-trash"></i> Deletar
+
+              <% else %>
+                <%= f.file_field :file %>
+              <% end %>
+
+              <span class="help-block">
+                Máx.: <%=MAX_FILE_SIZE_MB%>Mb.
+              </span>
+
+            </div>
+          </div> 
+
+          <% collapseId+=1 %>
+
+          <!-- Accordion Item -->
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
+              <!-- HEADER -->
+              <h5> <i class="icon-picture icon-large"></i> Imagem de exibição </h5>
+            </a>
+          </div>
+          <div id="collapse<%=collapseId%>" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <!-- CONTENT -->
+              <% if @project.image.exists? %>
+                <!-- Shows the uploaded image, with an option for replacing it with a new one. -->
+                <div id="keepImageField">
+                  <table>
+                      <tr>
+                        <td style="text-align: center;">
+                          <%= image_tag @project.image.url, :height => '100px', :width => '100px' %> <br>
+                          <%= link_to "#{@project.image.original_filename}", @project.image.url %>
+                        </td>
+                        <td><%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); ", class: "btn btn-mini btn-warning" %></td>
+                      </tr>
+                  </table>
+                </div>
+                <!-- Field for uploading a replacing file. (it's initially hidden) -->
+                <div id="updateImageField" style="display: none;">
+                  <%= f.file_field :image, id: "avatarInputField" %>
+                  <!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+                  <%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
+                </div>
+
+                <!-- Delete option. -->
+                <%= check_box_tag :deleteImage %> <i class="icon-trash"></i> Deletar
+
+              <% else %>
+                  <%= f.file_field :image %>
+              <% end %>
+
+              <span class="help-block">
+                Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
+              </span>
+            </div>
+          </div>
+
+          <% collapseId+=1 %>
+
+          <!-- Accordion Item -->
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
+              <!-- HEADER -->
+              <h5> <i class="icon-group  icon-large"></i> Mais autores </h5>
+            </a>
+          </div>
+          <div id="collapse<%=collapseId%>" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <!-- CONTENT -->
+              <div class="field">
+                <% #f.select :people, options_for_select(Person.order("name asc").all.collect{|p| ["#{p.name} (#{p.nick})", p.id]}.delete_if{|x,y| y==current_user.person.id}, selected: @project.person_ids.delete_if{|x| x==current_user.person.id} ), {}, { "data-placeholder" => "Clique para adicionar outros autores...", multiple: true, class: "select2"} %>
+
+
+                <%= javascript_tag("var peopleArray = " + raw(Person.where("id!=?",current_user.person.id).order("name asc").all.collect{|p| {id: p.id, text: "#{p.name} (#{p.nick})", locked: (p.id == current_user.person.id) }}.to_json) + ";") %>
+                <%= text_field_tag :people, "", "data-placeholder" => "Clique para adicionar outros autores...", class: "select2", value: (@project.person_ids).join(',') %>
+                <%= javascript_tag do %>
+                  $(function() {
+                    $("#people.select2").select2({
+                        data: peopleArray,
+                        multiple: true,
+                        initSelection : function (element, callback) {
+                          var data = [];
+                          $(element.val().split(",")).each(function (index,value) {
+                              peopleArray.forEach( function(item) {
+                                if(item.id == value) {
+                                  data.push(item);
+                                }
+                              });
+                          });
+                          callback(data);
+                        }
+                    });
+                  });
+                <% end %>
+              </div>
+            </div>
+          </div>            
+
+        </div>
+
+      </div>          
+    </div>
+
+    </div>
+
+  </div>
+
+  <center>    
+    <small class="muted">Apenas campos marcados com <label class="required"></label> são obrigatórios.</small>
+
+    <br>
+
+    <div class="actions">
+      <% if @project.id? %>
+        <label class="checkbox inline">
+          <input type="checkbox" name="hiddenUpdate">Não tornar pública esta atualização
+        </label>
+        <br>
+        <%= f.submit "Salvar", class: "btn btn-primary btn-large"%>
+      <% else %>
+        <%= f.submit "Salvar", class: "btn btn-primary "%> | 
+        <%= button_tag(type: 'submit', class: "btn btn-info ", name: "commit", value: "save_and_add_new") do %>
+          <i class="icon-plus"></i> Salvar e adicionar outro
+        <% end %>
+      <% end %>  
+
+      <!--<%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>-->
+    </div>
+  </center>
+  
+<% end %>

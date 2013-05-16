@@ -1,0 +1,29 @@
+<div class="content">
+	<h2><%= title "Entrar" %></h2>
+
+	<br>
+
+	<div class="row-fluid">
+		<center>
+			<%= form_for resource, :as => resource_name, :url => session_path(resource_name), html: {class: "form-inline"} do |f| %>
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-envelope"></i></span>
+					<%= f.email_field :email, required: true, class: "input-medium", placeholder: "Email" %>
+				</div>
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-key"></i></span>
+					<%= f.password_field :password, required: true, class: "input-medium", placeholder: "Senha" %>
+				</div>
+				<label class="checkbox">
+					<input type="checkbox" name="user[remember_me]" checked> Manter logado
+			    </label>
+				<%= f.submit "Entrar", class: "btn btn-primary"%>
+			<% end %>
+			
+			<hr>
+
+			<%= render "devise/shared/links" %>
+
+		</center>
+	</div>
+</div>

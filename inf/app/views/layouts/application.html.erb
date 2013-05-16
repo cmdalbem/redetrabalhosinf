@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<%= title site: "infHUB" %>
+
+	<%= metamagic [:property => "og:image", :content => "http://infhub.herokuapp.com/assets/logo.png"], [:property => "og:site_name", :content => "infHUB"], [:property => "og:type", :content => "website"], [:property => "fb:admins", :content => "1299864678"], description: "A rede social de compartilhamento de trabalhos do INF.", keywords: %w(inf ufrgs social network projects trabalhos disciplinas cadeiras rede social compartilhamento arquivos downloads ciencia da computação cic engenharia da computação ecp) %>
+
+	<link rel="shortcut icon" href="<%=image_url 'favicon.ico'%>">
+
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+
+	<!-- Google Analytics -->
+	<%= analytics_init if Rails.env.production? %>
+
+	<!-- UserVoice JavaScript SDK (only needed once on a page) -->
+	<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/o9oLNxwYj1eQMsNgxE2kXA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
+
+	<!-- A tab to launch the Classic Widget -->
+	<script>
+	UserVoice = window.UserVoice || [];
+	UserVoice.push(['showTab', 'classic_widget', {
+	  mode: 'full',
+	  primary_color: '#c72a2a',
+	  link_color: '#007dbf',
+	  default_mode: 'feedback',
+	  forum_id: 201957,
+	  tab_label: 'Feedback',
+	  tab_color: '#c73030',
+	  tab_position: 'middle-right',
+	  tab_inverted: true
+	}]);
+	</script>
+</head>
+
+<body>
+
+<div id="wrap">
+	<div id="main">
+
+		<header class="navbar navbar-fixed-top">
+		  <div class="navbar-inner">
+			<div class="container">
+			  <nav>
+				<%= link_to tag(:img, :src => "/assets/logo_txt_mini.png"), root_path, class: "brand no-decoration" %>
+				<!-- <text class="muted">A rede de compartilhamento de trabalhos do INF</text> -->
+				<ul class="nav">
+					<%= nav_link nav_icon("Início",""), root_path, false %>
+					<%= nav_link nav_icon("Projetos",""), projects_path %>
+					<%= nav_link nav_icon("Usuários",""), people_path %>
+				</ul>				
+
+				<!-- Search Form -->
+				<% if not current_page?(root_path) or user_signed_in? %>
+					<div class="navbar-search">
+						<%= render "shared/global_search_form", placeholder: "Buscar" %>
+					</div>
+				<% end %>
+				
+				<ul class="nav pull-right">						
+					
+					<!-- User section -->
+					<% if user_signed_in? %>
+
+						<li class="small"><%= link_to nav_icon("Novo Projeto","icon-plus"), new_project_path %></li>
+						<li class="divider-vertical"></li>
+
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif; ">
+								<%= tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName %>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<!-- List of user options -->
+								<li><%=	link_to nav_icon("Meu Perfil", "icon-user icon-large"), profile_path(current_user.person.nick) %></li>
+								<li><%= link_to nav_icon("Editar Perfil", "icon-edit icon-large"), edit_person_path(current_user.person) %></li>
+								<% if current_user.admin %>
+									<li class="divider"></li>
+									<li class="dropdown-submenu">
+										<a tabindex="-1" href="#"><i class="icon-star icon-large"></i> Administração</a>
+										<ul class="dropdown-menu">
+											<li><%= link_to nav_icon("Disciplinas", "icon-book"), courses_path %></li>
+											<li><%= link_to nav_icon("Tags", "icon-tags"), tags_path %></li>
+											<li><%= link_to nav_icon("Atividades", "icon-rss"), activities_path %></li>
+											<li><%= link_to nav_icon("Search Logs", "icon-search"), search_logs_path %></li>
+										</ul>
+									</li>
+								<% end %>
+								<li class="divider"></li>
+								<li><%= link_to nav_icon("Sair","icon-signout icon-large"), destroy_user_session_path, :method => :delete %></li>
+							</ul>
+						</li>
+
+					<% else %>
+						<li>
+							<%= nav_link nav_icon("Entrar","icon-signin"), new_user_session_path %>
+						</li>
+						<li class="divider-vertical"></li>
+						<%= link_to "Cadastrar", new_registration_path(:user), class: "btn btn-warning btn-small"%>
+					<% end %>
+
+					<!--<% if user_signed_in? %>
+					 	<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-globe"></i>
+							</a>
+							<ul class="dropdown-menu">
+								linha de texto<br>
+								linha de texto<br>
+								linha de texto<br>
+								linha de texto<br>
+							</ul>
+						</li>
+					<% end %> -->
+				</ul>
+			  </nav>
+			</div>
+		  </div>
+		</header>
+
+		<!-- Page content goes here -->
+		<div class="container">
+			<!-- Flash messages -->
+			<% if notice and not notice.blank? %>
+				<div class="alert alert-success"><%= raw(notice) %><a class="close" data-dismiss="alert" href="#">&times;</a></div>
+			<% end %>
+			<% if alert and not alert.blank? %>
+				<div class="alert alert-error"><%= raw(alert) %><a class="close" data-dismiss="alert" href="#">&times;</a></div>
+			<% end %>
+
+			<%= yield %>
+
+		</div>
+
+	</div>
+</div>
+
+<!-- Footer -->
+<footer>
+
+	<div class="row-fluid">
+		<center>
+			<!-- inf<strong>HUB</strong> -->
+			<img src="/assets/logo_carved.png">
+			<br>
+			<%= link_to nav_icon("Sobre","icon-info-sign"), about_path, class: "no-decoration" %> | 
+			<%= link_to nav_icon("Github","icon-github-alt"), "https://github.com/cmdalbem/redetrabalhosinf", class: "no-decoration" %>
+		</center>
+	</div>
+
+</footer>
+
+</body>
+
+</html>

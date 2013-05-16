@@ -1,0 +1,88 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <!-- <th><%= sortable "Título", "title" %></th>
+      <th><%= sortable "Disciplina", "course" %></th>
+      <th><%= sortable "Semestre", "barra" %></th>
+      <% if not @hideAuthors %>
+        <th><%= sortable "Autor(es)", "person" %></th>
+      <% end %>
+      <th>
+        <%= sortable "Popularidade
+        <a href=\"#\"
+        rel=\"popover\"
+        data-original-title=\"Popularidade?\"
+        data-content=\"É ordenada pela seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>\"
+        >
+        <i class=\"icon-question-sign\"></i></a>
+        ", "relevance" %>sadsdafalksçoirehgçarejkghrn
+      </th>-->
+      
+      <th> Título </th>
+      <% if not @hideAuthors %>
+        <th> Autores </th>
+      <% end %>
+      <th> Disciplina </th>
+      <th>
+        <center>
+          Popularidade
+          <a href="#" rel="popover" data-original-title="Popularidade?" class="no-decoration"
+            data-content="Os projetos são ordenados usando a seguinte função:<br><small>10*likes + 7*downloads + 7*linkHits + 5*comments + 1*views</small>"
+            > <i class="icon-question-sign"></i></a>
+        </center>
+      </th> 
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr class="project-options-trigger">
+        <!-- <td style="max-width: 600px" onmouseover="this.style.cursor='pointer'" onclick="window.location = '<%=url_to_project(project)%>'"> -->
+        <td style="max-width: 600px">
+          <!-- Edit Buttons -->
+          <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
+            <div class="thumb-buttons project-hidden-options pull-right">
+              <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
+              <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: adminActionColor %> 
+              <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: adminActionColor %>
+            </div>
+          <% end %>
+
+          <a href=<%=url_to_project(project)%> class="title no-decoration">
+            <%= project.title %> <%= raw(getContentIcons(project)) %>
+            <% if not project.tags.empty? %>
+              <br>
+              <smaller class="muted">
+                <div class="cut-text">
+                    <i class="icon-tag"></i>
+                    <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
+                </div>
+              </smaller>
+            <% end %>
+          </a>
+
+          
+        </td>
+        
+        <% if not @hideAuthors %>
+          <td style="width: 10%" class="small"><%= project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %></td>
+        <% end %>
+
+        <td style="width: 30%"><small><%= link_to_course project.course %> <%= project.getSemesterString %> </small></td>
+
+        <td style="width: 150px">
+          <center class="small">
+            <% #raw(printProjectPopularityStats(project,"·")) %>
+            <%= render "shared/project_popularity_stats", project: project %>
+          </center>
+        </td>
+        
+        <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likeCount %></span>  </td> -->
+        <!-- <td style="width: 3%"><%= project.downloadCount %></td> -->
+        <!-- <td style="width: 120px"><%= number_with_precision(project.relevance, :precision => 1) %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>

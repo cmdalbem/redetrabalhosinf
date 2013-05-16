@@ -1,0 +1,55 @@
+<div class="content">
+
+	<% hasSelectedCourse = (params[:course] and !params[:course].empty?) %>
+
+	<h2>
+		<%= title "Projetos" %>
+		<% if hasSelectedCourse %>
+			<small>
+				<i class="icon-book"></i>
+				<%= @course.name %>
+				<%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "close no-decoration", style: "float: none;" %>
+			</small>
+		<% end %>
+	</h2>
+
+	<!-- Course Filter Form -->
+	<% if not hasSelectedCourse %>
+		<center>
+			<div id="courseSelector">
+				<%= form_tag projects_path, method: 'get' do %>
+					<%= hidden_field_tag :direction, params[:direction] %>
+					<%= hidden_field_tag :sort, params[:sort] %>
+					<%= hidden_field_tag :view, params[:view] %>
+					<!-- no hidden field for search, which means that the search will be reseted when changing this filter -->
+					<div class="field big-chosen">
+						<%= render "shared/course_selector", placeholder: "Filtrar por disciplina..." %>
+					</div>
+				<% end %>
+			</div>
+		</center>
+	<% end %>
+
+	<br>
+
+	<%= render "shared/project_ctrlbar", sortbyOptions: {"Popularidade"=>"relevance",
+															"Recente" => "date",
+															"Título"=>"title",
+															"Semestre"=>"barra",
+															"Likes"=>"likes"} %>
+
+	<br>
+
+	<!-- The listing itself -->
+	<div id="projects-table"> 
+		<%= render 'projects_dynamic_listing' %>
+	</div>
+
+	<br>
+	<br>
+
+	<center>
+	  <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path(course_id: params[:course]), class: "btn btn-success btn-large" %>
+	</center>
+
+</div>
