@@ -1,0 +1,7 @@
+<p>Oie <%= @resource.email %>!</p>
+
+<p>Tua conta foi bloqueada por ter tido tentativas demais de log in. Não tenho certeza de como tu fizeste isso, mas meu plugin aqui tinha essa opção então tive que escrever essa mensagem. Se tu não estiver gostando disso, entra em contato comigo que te dou um docinho e espero que fique tudo bem.</p>
+
+<p>Clica no link abaixo pra desbloquear tua conta:</p>
+
+<p><%= link_to 'Desbloquear my conta', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>

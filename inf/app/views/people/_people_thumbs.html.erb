@@ -1,0 +1,31 @@
+<div class="row-fluid">
+
+  <ul class="thumbnails"> 
+    <% @people.each do |person| %>
+      <div class="pull-left">
+        <li>
+          <a href=<%= profile_path(person.nick) %> class="person-thumb thumbnail no-decoration">
+            <%= image_tag person.avatar %>
+            <center>
+              <div class="thumb-content">
+                <header class="username-text">
+                  <div class="title">
+                    <%=person.name%>
+                    <span>
+                      <%=person.nick%>
+                    </span>
+                  </div>
+                </header>
+              </div>
+
+              <div class="blacktext">
+                <%=person.projects.count %> <text class="small">projeto<%=my_pluralize(person.projects.count)%></text>
+              </div>
+            </center>
+          </a>
+        </li>
+      </div>
+    <% end %>
+  </ul>
+
+</div>

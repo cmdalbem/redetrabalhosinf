@@ -70,6 +70,7 @@ class TagsController < ApplicationController
   def show 
     @tag = Tag.find(params[:id])
     @projects = @tag.projects.includes(:people).includes(:course)
+    @numTagResults = @projects.count;
 
     @tags = Tag.all
 

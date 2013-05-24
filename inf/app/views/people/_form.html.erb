@@ -38,68 +38,84 @@
 				<script type="text/javascript">
 					// Character counter. Thanks to http://bampa.se/2011/01/simple-jquery-character-counter/
 					$('#person_about').on('keyup keydown', function() {
-					    // global_constants.rb: PERSON_ABOUT_MAX_LENGTH = 300
-					    var maxLen = 300;
-					    var left = maxLen - $(this).val().length;
-					    $('#char_count').html(left);
-					  });
+						// global_constants.rb: PERSON_ABOUT_MAX_LENGTH = 300
+						var maxLen = 300;
+						var left = maxLen - $(this).val().length;
+						$('#char_count').html(left);
+					});
 				</script>
 			</div>
 		</div>
 
 		<div class="span6">				
 			<div class="field">
-				<h5> <i class="icon-link icon-border"></i> Link pessoal </h5>
-				<%= f.url_field :personal_link, style: "width: 500px", placeholder: "URL" %>
+				<h5> <i class="icon-link icon-large icon-grid"></i> Link pessoal </h5>
+				<div class="margin-left">
+					<%= f.url_field :personal_link, style: "width: 500px", placeholder: "URL" %>
+				</div>	
 			</div>
 
 			<div class="field">
-				<h5> <i class="icon-picture icon-border"></i> Avatar </h5>
-				<% if @person.avatar? %>            
-					<!-- Shows the uploaded image, with an option for replacing it with a new one. -->
-					<div id="keepAvatarField">
-						<table>
-								<tr>
-									<td style="text-align: center;">
-										<%= image_tag @person.avatar.url, :height => '100px', :width => '100px', class: "img-polaroid" %> <br>
-										<%= link_to "#{@person.avatar.original_filename}", @person.avatar.url %> 
-									</td>
-									<td><%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); ", class: "btn btn-mini btn-warning" %></td>
-								</tr>
-						</table>
-					</div>
-					
-					<!-- Field for uploading a replacing file. (it's initially hidden) -->
-					<div id="updateAvatarField" style="display: none;">
-						<%= f.file_field :avatar, id: "avatarInputField" %>
-						<!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
-						<%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
-					</div>
+				<h5> <i class="icon-picture icon-large icon-grid"></i> Avatar </h5>
+				<div class="margin-left">
+					<% if @person.avatar? %>            
+						<!-- Shows the uploaded image, with an option for replacing it with a new one. -->
+						<div class="filePanel" id="filePanel">
+							<div id="keepAvatarField">
+								<table>
+										<tr>
+											<td style="text-align: center;">
+												<%= image_tag @person.avatar.url, :height => '100px', :width => '100px', class: "img-polaroid" %> <br>
+												<%= link_to "#{@person.avatar.original_filename}", @person.avatar.url %> 
+											</td>
+											<td><%= link_to_function raw("<i class=\"icon-refresh\"></i> Substituir"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); ", class: "btn btn-mini btn-warning" %></td>
+										</tr>
+								</table>
+							</div>
+							
+							<!-- Field for uploading a replacing file. (it's initially hidden) -->
+							<div id="updateAvatarField" style="display: none;">
+								<%= f.file_field :avatar, id: "avatarInputField" %>
+								<!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
+								<%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateAvatarField').toggle(); $('#keepAvatarField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
+								<span class="help-block">
+					                Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
+					            </span>
+							</div>
+						</div>
 
-					<!-- Delete option. -->
-					<%= check_box_tag :deleteAvatar %> <i class="icon-trash"></i> Deletar
+						<!-- Delete option -->
+						<label class="checkbox inline">
+							<%= check_box_tag :deleteAvatar %> <i class="icon-trash"></i> Deletar
+					    </label>
+					    <script type="text/javascript">
+					    	$('#deleteAvatar').on('click', function() {
+					    		var isChecked = $(this).is(':checked');
+								$('#filePanel').toggleClass('transparent', isChecked);
+							});
+					    </script>
 
-				<% else %>
-					<%= f.file_field :avatar %>
-				<% end %>
+					<% else %>
+						<%= f.file_field :avatar %>
+						<span class="help-block">
+			                Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
+			            </span>
+					<% end %>
 
-				<span class="help-block">
-	                Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
-	              </span>
 	            </div>
 			</div>
 		</div>
 	</div>
 
-				<br>
+	<br>
 
-				<center>
-					<small class="muted">Apenas campos marcados com <label class="required"></label> são obrigatórios.</small>
+	<center>
+		<small class="muted">Apenas campos marcados com <label class="required"></label> são obrigatórios.</small>
 
-					<div class="actions">
-						<%= f.submit "Salvar", class: "btn btn-primary"%>
-					</div>
-				</center>
+		<div class="actions">
+			<%= f.submit "Salvar", class: "btn btn-primary"%>
+		</div>
+	</center>
 
 	
 	

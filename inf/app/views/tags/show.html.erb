@@ -1,0 +1,43 @@
+<div class="content">
+
+	<h2>
+		<%= title "Tags" %>
+	</h2>
+
+	<br>
+
+	<!-- Tag Cloud -->
+	<div class="row-fluid">
+		<div class="well well-headed">
+			<header>
+				Tags mais populares
+			</header>
+			<%= render "shared/tag_cloud" %>
+		</div>
+	</div>
+	
+</div>
+
+<center>
+	<div class="muted well ">
+		<i class="icon-tag"></i> Há <strong><%= @numTagResults %></strong> <%= @numTagResults==1 ? "projeto" : "projetos" %> com a tag
+		<div class="tag-single">
+	    	<%= @tag.tag_text %>
+		</div>			
+	</div>
+</center>
+
+<div class="content">
+
+	<%= render "shared/project_ctrlbar", sortbyOptions: {"Popularidade"=>"relevance",
+															"Recente" => "date",
+															"Título"=>"title",
+															"Semestre"=>"barra",
+															"Likes"=>"likes"} %>
+
+	<!-- The listing itself -->
+	<div id="projects-table" class="clearfix"> 
+		<%= render 'projects/projects_dynamic_listing' %>
+	</div>
+
+</div>

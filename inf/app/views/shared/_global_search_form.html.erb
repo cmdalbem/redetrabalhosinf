@@ -1,0 +1,11 @@
+<div class="mysearch">
+	<%= form_tag url_for(controller: "/global_search", action: "index"), method: 'get', class: "form-search", style: "margin: 0;" do %>
+		<i class="icon-search"></i>
+		<span class="clearable">
+			<%= text_field_tag :gq, params[:gq], class: "search-query", placeholder: placeholder %>
+			<% if clearable %>
+				<span class="icon_clear"><i class="icon-remove"></i></span>
+			<% end %>
+		</span>
+	<% end %>
+</div>

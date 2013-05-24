@@ -1,0 +1,183 @@
+<div class="content">
+	
+	<% if user_signed_in? and @person.user.authorizes?(current_user) %>
+		<%= link_to raw("<i class=\"icon-edit\"></i> Editar Perfil"), edit_person_path(@person), class: "btn btn-info pull-right" %>
+		<!-- <div class="pull-right">
+			<small>
+				<%= link_to raw("<i class=\"icon-trash\"></i> Deletar conta"), edit_user_registration_path(@person.user), confirm: 'Tem certeza?', method: :delete %>
+			</small>
+		</div>-->
+	<% end %>
+
+
+	<div class="center">
+
+		<div class="person-profile">
+
+			<div class="row-fluid">
+				<center>
+					<%= image_tag @person.avatar, class: "img-polaroid" %>
+				</center>
+			
+				<h2 class="username-text"><%= title @person.name %> <small><%=@person.nick%></small></h2>
+				
+				<% if @person.personal_link? %>
+					<p>
+						<%= link_to @person.personal_link, @person.personal_link %>
+					</p>
+				<% end %>
+
+				<blockquote>
+					<%= @person.about %>
+				</blockquote>
+				
+			</div>
+			
+			<hr class="soften">
+
+			<div class="person-stats">
+				<div class="row-fluid">
+					<center>
+						<header> Estatísticas dos meus projetos </header>
+					</center>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span4">
+						<center>
+							<div class="bigNumber"><%= @person.projects.count %></div>
+							<span>projetos</span>
+						</center>
+					</div>
+					 
+					<div class="span4">
+						<center>
+							<div class="bigNumber"><%= @person.getTotalLikes %></div>
+							<span>curtir</span>
+						</center>
+					</div>
+
+					<div class="span4">
+						<center>
+							<div class="bigNumber"><%= @person.getTotalViews %></div>
+							<span>visualizações</span>
+						</center>
+					</div>
+				</div>
+			</div>
+			
+			<hr class="soften">
+
+			<div class="row-fluid">
+				<div class="person-details">
+
+				<span class="muted"><i class="icon-envelope icon-grid"></i></span>
+				<%= mail_to @person.user.email %>
+
+				<br>
+
+				<% if @person.semester? %>
+					<span class="muted"><i class="icon-group icon-grid"></i> Semestre</span>
+					<%= @person.semester %>
+
+					<br>
+				<% end %>
+
+				<span class="muted"><i class="icon-time icon-grid"></i> Última atividade </span>
+				<% if @activities.empty? %>
+					<%= time_ago_in_words(@person.created_at) %> atrás
+				<% else %>
+					<%= time_ago_in_words(@activities.first.created_at) %> atrás
+				<% end %>
+
+				<% if @person.user.admin? %>
+					<br>
+
+					<span class="text-warning"><i class="icon-star icon-grid"></i></span>
+					<text class="text-warning">Administrador</text>
+				<% end %>
+			</div>
+			</div>
+
+
+
+		</div>
+
+		<div class="row-fluid">
+
+			<div class="span9" style="margin-left: 280px">
+				<div class="tabbable">
+
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab1" data-toggle="tab"><i class=" icon-reorder"></i> Projetos</a></li>
+						<li><a href="#tab2" data-toggle="tab"><i class=" icon-rss"></i> Atividades</a></li>
+					</ul>
+
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab1">
+
+							<!-- <div class="row-fluid">
+								<div class="well well-headed">
+									<header>Tags mais usadas</header>
+									<%= render "shared/tag_cloud" %>
+								</div>
+							</div>
+
+							<br> -->
+
+							<%= render "shared/project_ctrlbar", sortbyOptions: {"Popularidade"=>"relevance",
+																				"Data do upload" => "date",
+																				"Título"=>"title",
+																				"Semestre"=>"barra",
+																				"Likes"=>"likes"} %>
+
+							<!-- The listing itself -->
+							<div id="projects-table" class="clearfix"> 
+								<%= render 'projects/projects_dynamic_listing' %>
+							</div>
+						
+						</div>
+
+						<div class="tab-pane" id="tab2">
+							
+							<ul>
+								<div class="news-list">
+									<ul>
+										<% @activities.each do |a| %>
+											<li class="project-options-trigger" style="overflow: hidden;">
+												<%= render_activity a %>
+												<small>
+													<p class="muted pull-right">há <%= time_ago_in_words(a.created_at) %></p>
+												</small>
+												<% if user_signed_in? and a.owner==current_user %>
+													<span class="project-hidden-options pull-right">
+														<%= link_to raw("<i class=\"icon-remove-sign\"></i>"), activity_path(a), confirm: "Tem certeza?", method: "delete", class: "no-decoration" %>
+													</span>
+												<% end %>
+											</li>
+										<% end %>
+										<li>
+											<i class="icon-certificate"></i> <p class="author"> <%= link_to @person, profile_path(@person.nick) %> </p> entrou no <text class="infhub-text">infHUB</text>
+											<small>
+												<p class="muted pull-right">há <%= time_ago_in_words(@person.created_at) %></p>
+											</small>
+										</li>
+									</ul>
+									<small>
+										<% # link_to "Ver mais", activities_path %>
+									</small>
+								</div>
+							</ul>
+
+						</div>
+				
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

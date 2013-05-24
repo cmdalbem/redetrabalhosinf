@@ -1,0 +1,250 @@
+<% meta [:property => "og:image", :content => @project.image.url], :description => @project.description %>
+
+<div class="content">
+
+  <div class="container-fluid center">
+
+  <h1 class="projectname-text" style="display: inline;"> <%= title @project.title %> </h1>
+
+  <br>
+  <div class="pull-right">
+    <% if user_signed_in? and @project.canBeEditedBy?(current_user) %>
+      <%= link_to raw("Editar Projeto <i class=\"icon-pencil\"></i> "), edit_project_path(@project), class: "btn btn-info" %>
+      <%= link_to raw("Deletar <i class=\"icon-trash\"></i> "), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+  <br>
+
+
+  <div class="row-fluid">
+    <% if @project.image? %>
+      <div class="">
+        <center>
+          <%= image_tag @project.image.url %>
+        </center>
+      </div>
+      <br>
+    <% end %>
+  </div>
+
+  <br>
+
+  <div class="row-fluid">
+
+    <div class="block">
+
+      <h4>Descrição</h4>
+      <% if @project.description.blank? %>
+        <span class="muted">
+              Projeto sem descrição.
+        </span>
+      <% else %>
+        <p class="margin-left">
+          <%= simple_format(@project.description) %>
+        </p>
+      <% end %>
+
+      <div class="row-fluid">
+        <div class="offset8 span4">
+          <center>
+            <!-- Modal window for showing who liked this project -->
+            <%= render 'likes_list' %>
+
+            <p class="curtir-frame"> 
+              <span id="project-like-count-<%= @project.id %>"><%= link_to @project.likeCount, "#likesModal", "data-toggle" => "modal" %></span>
+              <i class="icon-thumbs-up"></i>
+              <% if user_signed_in? %>
+                <%  likeClass = unlikeClass = ""
+                if current_user.person.likes.include?(@project)
+                  likeClass = "hidden"
+                else
+                  unlikeClass = "hidden"
+                end %>
+                <%= link_to raw(" Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
+                <%= link_to raw(" Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
+              <% else %>
+                <%= link_to raw(" Curtir"), like_project_path(@project), class: likeClass, id: "project-like-action-"+@project.id.to_s %>
+              <% end %>
+            </p>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if not @project.tags.empty? %>
+    <br>
+
+    <div class="row-fluid">
+      <div class="block">
+          <h4><i class="icon-tags"></i> Tags </h4>
+          <ul class="tags">
+          <% @project.tags.each do |t| %>
+            <li> <%= link_to t.tag_text, t %> </li>
+          <% end %>
+          </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <br>
+
+  <div class="row-fluid">
+    <div class="block span6">
+      <p>
+        <% if @project.people.size==1 %>
+          <span class="muted"><i class="icon-user"></i> Autor</span>
+        <% else %>
+          <span class="muted"><i class="icon-group"></i> Autores</span>
+        <% end %>
+        <%= @project.people.collect { |p| link_to p.nick, profile_path(p.nick) }.join(", ").html_safe %>
+      </p>
+
+      <p>
+        <span class="muted"><i class="icon-book"></i> Disciplina</span>
+        <%= link_to @project.course.name, projects_path(course: @project.course.id) %> <%=@project.getSemesterString%>
+      </p>
+      
+      <p>
+        <span class="muted"><i class="icon-eye-open"></i> Visualizações</span>
+        <%= @project.viewCount %>
+      </p>
+
+      <p>
+        <span class="muted"><i class="icon-time"></i> Adicionado em</span>
+        <%= @project.created_at.strftime("%d/%m/%Y") %>
+      </p>
+
+    </div>
+
+    <div class="block span6">
+      <p>
+        <% if @project.link? %>
+          <h4><i class="icon-link"></i></i> Links (1)</h4>
+          <p class="margin-left">
+            <%= link_to @project.link, project_link_path(@project), rel: @project.link %> <span class="badge"><%=@project.linkHitCount%> hits</span>
+          </p>
+        <% else %>
+          <h4><i class="icon-link"></i></i> Links (0)</h4>
+        <% end %>
+      </p>
+      <p>
+        <% if @project.file? %>
+          <h4><i class="icon-file"></i> Arquivos (1)</h4>
+          <p class="margin-left">
+            <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", project_download_path(@project), rel: @project.file.original_filename %> <span class="badge"><%=@project.downloadCount%> hits</span>
+          </p>
+        <% else %>
+          <h4><i class="icon-file"></i> Arquivos (0)</h4>
+        <% end %>
+      </p>        
+    </div>
+  </div>
+
+  <br>
+
+  <!-- Comments --> 
+  <div class="row-fluid">
+    <div class="block span12">
+      <p>
+        <h3><i class="icon-comments"></i> Comentários (<%= @project.comments.size %>)</h3>
+        <% @project.comments.sort_by! {|x| x.created_at} %>
+        <ul class="comments-list">
+          
+          <!-- Comments list  -->
+          <% if @project.comments.empty? %>
+            <span class="muted">
+              Sem comentários a exibir.<br>
+              <br>
+            </span>
+          <% else %>
+            <% @project.comments.each do |c| %>
+              <li id=<%="comment-#{c.id}"%>>
+                
+                <header>
+                  
+                  <table border="0">
+                    <tr>
+                      <td>
+                        <%= link_to image_tag(c.person.avatar.url(:small)), profile_path(c.person.nick), class: "no-decoration" %>
+                      </td>
+                      
+                      <td style="width: 100%">
+                        <%= link_to c.person.name, profile_path(c.person.nick), class: "username-text" %>
+                        <br>
+                        <text class="time muted">
+                          há <%= time_ago_in_words(c.created_at) %>
+                        </text>
+                      </td>
+                    </tr>
+                  </table> 
+
+                  <div class="deleteOpt">
+                    <% if user_signed_in? and current_user.person==c.person %>
+                      <%= link_to raw("<i class=\"icon-remove-sign icon-large\"></i>"), c, confirm: 'Tem certeza?', method: :delete, title: "Apagar comentário" %>
+                    <% end %>
+                  </div>
+
+                </header>
+
+                <div class="comment">
+                    <%= c.text %>
+                </div>
+<!--                 <header>
+                  <%= image_tag c.person.avatar.url(:thumb) %>
+                  <%= link_to c.person.name, profile_path(c.person.nick), class: "username-text" %>
+                  
+                  <text class="time muted small">
+                    há <%= time_ago_in_words(c.created_at) %>
+                  </text>
+                  <div class="pull-right">
+                    <% if user_signed_in? and current_user.person==c.person %>
+                      <%= link_to raw("<i class=\"icon-trash\"></i>"), c, confirm: 'Tem certeza?', method: :delete %>
+                    <% end %>
+                  </div>
+                </header>
+
+                <div class="comment">
+                    <%= c.text %>
+                </div> -->
+
+              </li>
+            <% end %>
+          <% end %>
+
+          <!-- New comment field -->
+          <% if user_signed_in? %>
+            <li>
+              <table border="0">
+                <tr>
+                  <td style="vertical-align: top;">
+                    <%= link_to image_tag(current_user.person.avatar.url(:small)), profile_path(current_user.person.nick), class: "no-decoration" %>
+                  </td>
+                  
+                  <td style="width: 100%">
+                    <%= form_for(Comment.new) do |f| %>
+                      <%= f.hidden_field :project_id, value: @project.id %>
+                      <%= f.hidden_field :person_id, value: current_user.person.id %>
+                      <div class="field">
+                        <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 1, style: "width: 50%; resize: none;", class: "textarea-expansible" %>
+                        <br>
+                        <%= f.submit "Enviar", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
+                  </td>
+
+                  <script>
+                    $('.textarea-expansible').autogrow();
+                  </script>
+                </tr>
+              </table> 
+            </li>
+          <% end %>
+        </ul>
+      </p>
+    </div>
+  </div>
+
+
+  </div>
+</div>

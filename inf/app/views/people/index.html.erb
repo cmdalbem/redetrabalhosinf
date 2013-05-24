@@ -1,0 +1,21 @@
+<div class="content">
+
+  <h2><%= title "Usuários" %></h2>
+
+  <br>
+
+  <%= render "shared/project_ctrlbar", sortbyOptions: {"Data adicionado"=>"date",
+                                                        "Nome"=>"name",
+                                                        "Usuário"=>"nick",
+                                                        "Nro. projetos"=>"projects",
+                                                        "Semestre"=>"semester"} %>
+
+  <br>
+
+  <!-- The listing itself -->
+  <div id="people-table"> 
+    <%= render 'people_dynamic_listing' %>
+  </div>
+
+
+</div>

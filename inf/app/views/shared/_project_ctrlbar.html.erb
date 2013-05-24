@@ -1,0 +1,31 @@
+<!-- Remember to pass in a hash value for "sortByOptions" -->
+<% destinyPath = request.url %>
+
+<!-- Options at the top of the table -->
+<div class="ctrlbar">
+
+	<div class="row-fluid">
+		<!-- Search Form --> 
+		<div class="span10">
+			<div class="pull-left">
+				<%= render 'shared/search_form', destinyPath: destinyPath, placeholder: "Título / Descrição / Tag" %>
+			</div>
+		</div>
+
+		<!-- Button group for choosing view (list or thumbnail) -->
+		<div class="span2">
+			<div class="pull-right">
+				<%= render 'shared/viewmodes_buttons' %>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- "Sort By" options -->
+<center class="ctrlbar-addendum">
+	<%= render 'shared/links_sort_by',
+			destinyPath: destinyPath,
+			sortbyOptions: sortbyOptions,
+			selected: @column %>
+</center>
