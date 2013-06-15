@@ -4,15 +4,17 @@
 
   <div class="container-fluid center">
 
+  <% if user_signed_in? and @project.canBeEditedBy?(current_user) %>
+    <div class="panel">
+      <div class="pull-right">
+        <%= link_to raw("<i class=\"icon-pencil\"></i> Editar Trabalho"), edit_project_path(@project), class: "btn btn-info" %> 
+        <%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+
   <h1 class="projectname-text" style="display: inline;"> <%= title @project.title %> </h1>
 
-  <br>
-  <div class="pull-right">
-    <% if user_signed_in? and @project.canBeEditedBy?(current_user) %>
-      <%= link_to raw("Editar Projeto <i class=\"icon-pencil\"></i> "), edit_project_path(@project), class: "btn btn-info" %>
-      <%= link_to raw("Deletar <i class=\"icon-trash\"></i> "), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>
-    <% end %>
-  </div>
   <br>
 
 
@@ -36,7 +38,7 @@
       <h4>Descrição</h4>
       <% if @project.description.blank? %>
         <span class="muted">
-              Projeto sem descrição.
+              Trabalho sem descrição.
         </span>
       <% else %>
         <p class="margin-left">
@@ -52,7 +54,7 @@
 
             <p class="curtir-frame"> 
               <span id="project-like-count-<%= @project.id %>"><%= link_to @project.likeCount, "#likesModal", "data-toggle" => "modal" %></span>
-              <i class="icon-thumbs-up"></i>
+              <i class="icon-thumbs-up-alt"></i>
               <% if user_signed_in? %>
                 <%  likeClass = unlikeClass = ""
                 if current_user.person.likes.include?(@project)

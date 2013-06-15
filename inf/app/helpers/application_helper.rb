@@ -77,7 +77,7 @@ module ApplicationHelper
 	    hasAny = false
 
 	    if project.likeCount!=0
-	    	ret += "<i class=\"icon-thumbs-up\"></i> #{project.likeCount}"
+	    	ret += "<i class=\"icon-thumbs-up-alt\"></i> #{project.likeCount}"
 			hasAny = true
 		end
 
@@ -137,24 +137,19 @@ module ApplicationHelper
 	end
 
 	# Thanks to: http://juixe.com/techknow/index.php/2006/07/15/acts-as-taggable-tag-cloud/
-	def tag_cloud(tags, classes)
+	def tag_cloud(tags, count, classes)
 		max, min = 0, 0
-		i=0
-		count = []
-		tags.each { |t|
-			count[i] = t.projects.count
+		tags.each_with_index { |t,i|
 			# We ignore tags without projects
 			if count[i]>0
 				max = count[i] if count[i] > max
 				min = count[i] if count[i] < min
 			end
-			i+=1
 		}
 
 		divisor = ((max - min) / classes.size) + 1
 
-		i=0
-		tags.each { |t|
+		tags.each_with_index { |t,i|
 			if count[i]>0
 				if count[i]==min
 					pos = 0
@@ -166,7 +161,6 @@ module ApplicationHelper
 
 				yield t, classes[pos]
 			end
-			i+=1
 		}
 	end
 

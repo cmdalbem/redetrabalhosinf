@@ -29,7 +29,7 @@
 	  forum_id: 201957,
 	  tab_label: 'Feedback',
 	  tab_color: '#c73030',
-	  tab_position: 'middle-right',
+	  tab_position: 'middle-left',
 	  tab_inverted: true
 	}]);
 	</script>
@@ -40,7 +40,7 @@
 <div id="wrap">
 	<div id="main">
 
-		<header class="navbar navbar-fixed-top">
+		<header class="navbar navbar-inverse navbar-fixed-top">
 		  <div class="navbar-inner">
 			<div class="container">
 			  <nav>
@@ -48,7 +48,7 @@
 				<!-- <text class="muted">A rede de compartilhamento de trabalhos do INF</text> -->
 				<ul class="nav">
 					<%= nav_link nav_icon("Início",""), root_path, false %>
-					<%= nav_link nav_icon("Projetos",""), projects_path %>
+					<%= nav_link nav_icon("Trabalhos",""), projects_path %>
 					<%= nav_link nav_icon("Usuários",""), people_path %>
 				</ul>				
 
@@ -64,7 +64,7 @@
 					<!-- User section -->
 					<% if user_signed_in? %>
 
-						<li class="small"><%= link_to nav_icon("Novo Projeto","icon-plus"), new_project_path %></li>
+						<li class="small"><%= link_to nav_icon("Adicionar trabalho","icon-plus"), new_project_path %></li>
 						<li class="divider-vertical"></li>
 
 						<li class="dropdown">
@@ -94,7 +94,7 @@
 						</li>
 
 					<% else %>
-						<%= nav_link nav_icon("Entrar","icon-signin"), new_user_session_path %>
+						<li><%= link_to nav_icon("Entrar","icon-signin"), new_user_session_path %></li>
 						<li class="divider-vertical"></li>
 						<%= link_to "Cadastrar", new_registration_path(:user), class: "btn btn-warning btn-small"%>
 					<% end %>

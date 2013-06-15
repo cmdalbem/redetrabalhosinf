@@ -1,21 +1,22 @@
 <div class="homepage">
 
 	<% #if user_signed_in? %>
+	<!-- DEPRECATED -->
 	<% if false %>
 	  <!-- My Notifications section -->
 	  <br>
 	  <div class="row-fluid">
 	      <div class="news-list">
 	        <legend>
-	          Atividade nos Meus Projetos
+	          Atividade nos Meus Trabalhos
 	        </legend>
-	        <% if @myActivities.empty? %>
+	        <% if @notifications.empty? %>
 	          <center class="muted">
 	          Sem atividade a exibir.
 	          </center> 
 	        <% else %>
 	          <ul>
-	            <% @myActivities.each do |a| %>
+	            <% @notifications.each do |a| %>
 	                <li>
 	                <%= render_activity a %>
 	                <small>
@@ -33,6 +34,7 @@
 	  <br>
 	<% end %>
 
+	<!-- PRESENTATION HOMEPAGE -->
 	<% if not user_signed_in? %>
 		<div class="center hero-unit">
 			
@@ -53,7 +55,7 @@
 						<div class="body">
 
 							<p>
-								Não deixa teus trabalhos sumirem na obscuridão das páginas pessoais do INF! No infHUB é fácil publicar teus projetos e encontrar e curtir os dos teus colegas. <%= link_to "Leia mais...", about_path, class: "no-decoration" %>
+								No infHUB é fácil publicar teus trabalhos e encontrar e curtir os dos teus colegas. Além disso, sua página ainda serve como um portfólio pessoal. <%= link_to "Leia mais...", about_path, id: "read-more-link" %>
 							</p>
 
 							<div id="featuresList">
@@ -98,17 +100,15 @@
 		
 			<div class="row-fluid">
 				<center>
-					<%= render "shared/global_search_form", placeholder: "Buscar em #{@totalProjects} projetos, #{@totalCourses} disciplinas, #{@totalUsers} usuários e #{@totalTags} tags", clearable: false %>
+					<%= render "shared/global_search_form", placeholder: "Buscar em #{@totalProjects} trabalhos, #{@totalCourses} disciplinas, #{@totalUsers} usuários e #{@totalTags} tags", clearable: false %>
 				</center>
 			</div>
 
 
 		</div>
 
+	<!-- DASHBOARD  -->
 	<% else %>
-
-		<!--<br>
-		<br> -->
 
 		<div class="hero-unit">
 			<div class="content">
@@ -125,7 +125,6 @@
 
 						<!-- <p> -->
 							<ul class="dotted-horizontal-list hero-utility-links smaller">
-								<li><%= link_to nav_icon("Novo Projeto",""), new_project_path %></li>
 								<li><%= link_to nav_icon("Meu Perfil", ""), profile_path(current_user.person.nick) %></li>
 								<li><%= link_to nav_icon("Sobre o infHUB", ""), about_path %></li>
 								<li><%= link_to nav_icon("Sair",""), destroy_user_session_path, :method => :delete %></li>
@@ -138,7 +137,7 @@
 							<div class="span6">
 								<h4 class="title username-text"><%= link_to @person.nick, profile_path(current_user.person.nick) %></h4>
 								<p>
-									<b><%= @person.projects.size %></b> projetos<br>
+									<b><%= @person.projects.size %></b> trabalhos<br>
 									<b><%= @person.getTotalLikes %></b> curtir recebidos<br>
 									<b><%= @person.getTotalViews %></b> visualizações
 								</p>
@@ -146,7 +145,7 @@
 							<div class="span6">
 								<h4 class="title infhub-text"><%= link_to "infHUB", about_path %></h4>
 								<p>
-									<b><%= @totalProjects %></b> projetos<br>
+									<b><%= @totalProjects %></b> trabalhos<br>
 									<b><%= @totalUsers %></b> usuários<br>
 									<b><%= @totalCourses %></b> disciplinas<br>
 									<b><%= @totalTags %></b> tags
@@ -172,7 +171,7 @@
 					
 					<center>
 						<ul class="dotted-horizontal-list">
-							<li><%= link_to nav_icon("Novo Projeto",""), new_project_path %></li>
+							<li><%= link_to nav_icon("Adicionar trabalho",""), new_project_path %></li>
 							<li><%= link_to nav_icon("Editar Perfil", ""), edit_person_path(current_user.person) %></li>
 							<li><%= link_to nav_icon("Sair",""), destroy_user_session_path, :method => :delete %></li>
 						</ul>
@@ -193,29 +192,29 @@
 							<ul>
 								<% if @recommendedActions[:addProjects] %>
 									<li>
-										<i class="icon-plus-sign icon-large"></i>
-										Comece a compartilhar teus trabalhos com teus colegas, <%=link_to "adicione um projeto", new_project_path%> ao infHUB.
+										<i class="icon-plus-sign icon-large icon-grid"></i>
+										Comece a compartilhar teus trabalhos com teus colegas, <%=link_to "adicione um trabalho", new_project_path%> ao <text class="infhub-text">infHUB</text>.
 									</li>
 								<% end %>
 
 								<% if @recommendedActions[:incompleteProfile] %>
 									<li>
-										<i class="icon-user icon-large"></i>
-										Seu perfil está <%=@profileCompletePerc%>% completo. <%= link_to "Clique aqui para completá-lo.", edit_person_path(@person) %>
+										<i class="icon-user icon-large icon-grid"></i>
+										Teu perfil está <%=@profileCompletePerc%>% completo. <%= link_to "Clique aqui para completá-lo.", edit_person_path(@person) %>
 									</li>
 								<% end %>
 
 								<% if @recommendedActions[:likeProjects] %>
 									<li>
-										<i class="icon-thumbs-up icon-large"></i>
+										<i class="icon-thumbs-up-alt icon-large icon-grid"></i>
 										Tu ainda não curtiu nenhum trabalho no infHUB. Seja legal e <%= link_to "encontre um trabalho bacana pra curtir.", projects_path %>
 									</li>
 								<% end %>
 
 								<% if @recommendedActions[:tagProjects] %>
 									<li>
-										<i class="icon-tags icon-large"></i>
-										Adicione tags ao seus projetos pra que sejam encontrados mais facilmente. Ainda tens <b><%=@untaggedProjects.size%></b> <%= @untaggedProjects.size==1 ? "projeto" : "projetos" %> sem tags:
+										<i class="icon-tags icon-large icon-grid"></i>
+										Adiciona tags ao teus trabalhos pra que sejam encontrados mais facilmente. Ainda tens <b><%=@untaggedProjects.size%></b> trabalho<%=my_pluralize @untaggedProjects.size%> sem tags:
 										<ul class="news-sublist">
 											<% @untaggedProjects.each do |p| %>
 												<li>
@@ -236,17 +235,21 @@
 				<div class="span8 block">
 					<div class="news-list">
 						<legend>
-							<!-- <i class="icon-bell"></i> --> Notificações
+							<!-- <i class="icon-bell"></i> --> Notificações <%= if @unreadNotifications!=0 then "(#{@unreadNotifications})" end %>
 						</legend>
 
-						<% if @myActivities.empty? %>
+						<% if @notifications.empty? %>
 							<center class="muted">
 								Sem notificações a exibir.
 							</center>
 						<% else %>
 							<ul>
-								<% @myActivities.each do |a| %>
-								    <li>
+								<% @notifications.each do |a| %>
+									<% unread = false %>
+								    <% if a.created_at > current_user.current_sign_in_at %>
+								    	<% unread = true %>
+								    <% end %>
+								    <li class=<%= unread ? "news-unread" : ""%> >
 										<%= render_activity a %>
 										<small>
 											<p class="muted pull-right"><%= time_ago_in_words(a.created_at) %></p>
@@ -261,7 +264,7 @@
 					</div>
 
 					<!-- Activities pagination -->
-					<%= render "shared/pages_nav", items: @myActivities %>
+					<%= render "shared/pages_nav", items: @notifications %>
 
 				</div>
 
@@ -280,7 +283,7 @@
 				<header>
 					Tags mais populares
 				</header>
-				<%= render "shared/tag_cloud" %>
+				<%= render "shared/tag_cloud", tags: @tags %>
 			</div>
 		</div>
 		
@@ -290,7 +293,7 @@
 		<div class="row-fluid">
 			<div class="span4">
 				<div class="news-list">
-					<legend>Novos Projetos</legend>
+					<legend>Novos Trabalhos</legend>
 					<ul>
 						<% @lastProjects.each do |p| %>
 							<li>

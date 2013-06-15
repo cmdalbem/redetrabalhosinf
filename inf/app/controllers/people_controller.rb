@@ -106,6 +106,15 @@ class PeopleController < ApplicationController
 
         # Tags for personal tagcloud
         @tags = Tag.joins(:taggings).group("tags.id").where("taggings.project_id" => @person.project_ids)
+        @tagsCount = []
+        @tags.each_with_index do |t,i|
+          @tagsCount[i] = 0
+          t.projects.each do |p|
+            if p.people.include? @person
+              @tagsCount[i] += 1
+            end
+          end
+        end
 
         respond_to do |format|
           format.html

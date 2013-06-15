@@ -77,10 +77,17 @@ class HomeController < ApplicationController
     if user_signed_in?
       @person = current_user.person
 
-      @myActivities = PublicActivity::Activity.where("owner_id != ? AND trackable_id IN (?)", current_user, current_user.person.project_ids).order("created_at desc")
-      @myActivities = @myActivities.includes(:owner).includes(:trackable)
-      @myActivities = @myActivities.paginate(per_page: activitiesPerPage, page: params[:page])
-      @myActivities = @myActivities.all
+      @notifications = PublicActivity::Activity.where("owner_id != ? AND trackable_id IN (?)", current_user, current_user.person.project_ids).order("created_at desc")
+      @notifications = @notifications.includes(:owner).includes(:trackable)
+      @notifications = @notifications.paginate(per_page: activitiesPerPage, page: params[:page])
+      @notifications = @notifications.all
+
+      @unreadNotifications = 0
+      @notifications.each do |a|
+        if a.created_at > current_user.current_sign_in_at
+          @unreadNotifications += 1
+        end
+      end
 
       @recommendedActions = listRecommendedActions()
   	end

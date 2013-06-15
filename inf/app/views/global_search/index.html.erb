@@ -9,7 +9,7 @@
 	<%= render 'shared/search_result_title' %>
 
 
-	<h3><i class="icon-chevron-right text-error"></i> <%= link_to "Projetos (#{@totalProjects})", projects_path(q: @query), class: "no-decoration blacktext" %></h3>
+	<h3><i class="icon-chevron-right text-error"></i> <%= link_to "Trabalhos (#{@totalProjects})", projects_path(q: @query), class: "no-decoration blacktext" %></h3>
 	<% if @totalProjects>0 %>
 		<!-- Mostrando <b><%= @projects.size %></b> <%= @projects.size==1 ? "resultado" : "resultados" %> de <b><%= @totalProjects %></b>. -->
 		<div id="projects-table"> 

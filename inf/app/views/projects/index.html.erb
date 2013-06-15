@@ -3,7 +3,7 @@
 	<% hasSelectedCourse = (params[:course] and !params[:course].empty?) %>
 
 	<h2>
-		<%= title "Projetos" %>
+		<%= title "Trabalhos" %>
 		<% if hasSelectedCourse %>
 			<small>
 				<i class="icon-book"></i>
@@ -49,7 +49,7 @@
 	<br>
 
 	<center>
-	  <%= link_to raw("<i class=\"icon-plus\"></i> Novo Projeto"), new_project_path(course_id: params[:course]), class: "btn btn-success btn-large" %>
+	  <%= link_to raw("<i class=\"icon-plus\"></i> Adicionar trabalho"), new_project_path(course_id: params[:course]), class: "btn btn-success btn-large" %>
 	</center>
 
 </div>

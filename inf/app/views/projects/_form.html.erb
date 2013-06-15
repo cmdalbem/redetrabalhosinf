@@ -2,7 +2,7 @@
 
 	<% if @project.errors.any? %>
 		<div id="error_explanation">
-			<h2><%= pluralize(@project.errors.count, "erro") %> impediram deste projeto ser salvo:</h2>
+			<h2><%= pluralize(@project.errors.count, "erro") %> impediram deste trabalho ser salvo:</h2>
 			<ul>
 				<% @project.errors.full_messages.each do |msg| %>
 					<li><%= msg %></li>
@@ -37,7 +37,7 @@
 
 			<div class="field">
 				<%= f.label "Descrição" %><br />
-				<%= f.text_area :description, rows: 10, id: "project-desc-editor", style: "width: 80%; margin-bottom: 0;", placeholder: "Descrição do projeto. Comente sobre o que foi pedido no enunciado do trabalho, tecnologias e técnicas empregadas, assim como particularidades que diferenciam teu trabalho." %>
+				<%= f.text_area :description, rows: 10, id: "project-desc-editor", style: "width: 80%; margin-bottom: 0;", placeholder: "Descrição do trabalho. Comente sobre o que foi pedido no enunciado do trabalho, tecnologias e técnicas empregadas, assim como particularidades que diferenciam teu trabalho." %>
 				<span class="help-block">
 					<small>
 						Caracteres sobrando: <span id="char_count"><%=PROJECT_DESCRIPTION_MAX_LENGTH - (@project.description? ? @project.description.length : 0)%></span>

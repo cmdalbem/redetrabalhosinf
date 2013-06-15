@@ -1,13 +1,22 @@
+<%
+  if @direction=="asc"
+    invDirection = "desc"
+  else
+    invDirection = "asc"
+  end
+%>
+
 Ordernar por · 
+
 <% sortbyOptions.each_with_index do |s,i| %>
   <!-- If option is selected, clicking on it will reverse the sort order -->
   <% if @column == s[1] %>
     <strong>
-      <%= if @direction=="asc"
-        link_to raw("#{s[0].upcase}<i class=\"icon-arrow-down\"></i>"), params.merge(direction: "desc", page: nil), title: "Inverter ordem"
-      else
-        link_to raw("#{s[0].upcase}<i class=\"icon-arrow-up\"></i>"), params.merge(direction: "asc", page: nil), title: "Inverter ordem"
-      end %>
+      <% if @direction=="asc" %>
+        <%= link_to raw("#{s[0].upcase} <i class=\"icon-arrow-down\"></i>"), params.merge(direction: invDirection, page: nil), title: "Inverter ordem" %>
+      <% else %>
+        <%= link_to raw("#{s[0].upcase} <i class=\"icon-arrow-up\"></i>"), params.merge(direction: invDirection, page: nil), title: "Inverter ordem" %>
+      <% end %>
     </strong>
   <% else %>
     <%= link_to s[0], params.merge(sort: s[1]), title: "Ordenar por #{s[0].upcase}" %>

@@ -1,5 +1,13 @@
+<%
+	if not defined? count
+		count = []
+		tags.each_with_index do |t,i|
+			count[i] = t.projects.count
+		end
+	end 
+%>
 <div id="tagcloud">
-    <% tag_cloud @tags, %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6) do |t, css_class| %>
+    <% tag_cloud tags, count, %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6) do |t, css_class| %>
 	  <%= link_to t.tag_text, t, class: css_class %>
 	  <% if t!=@tags.last %>
 	  	<span class="muted small">·</span>

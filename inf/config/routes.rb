@@ -7,13 +7,13 @@ Inf::Application.routes.draw do
   resources :global_search, path: "busca"
   resources :search_logs
 
-  resources :projects, path: "projetos", :path_names => { new: "novo", edit: "editar" }
+  resources :projects, path: "trabalhos", :path_names => { new: "novo", edit: "editar" }
   resources :people, path: "usuarios", :path_names => { new: "novo", edit: "editar" }, constraints: { :id => /[^\/]+/ }
   resources :home, :tags, :comments, :activities
-  devise_for :users, :controllers => { :registrations  => "registrations" }, path: "", :path_names => { sign_in: 'entrar', sign_out: 'logout', sign_up: "cadastro"}
+  devise_for :users, :controllers => { :registrations  => "registrations", confirmations: 'confirmations' }, path: "", :path_names => { sign_in: 'entrar', sign_out: 'logout', sign_up: "cadastro"}
 
   match 'usuarios/:id' => 'People#show', :as => 'profile'
-  # match 'usuarios/:id/projetos' => 'Projects#index', :as => 'myProjects'
+  # match 'usuarios/:id/trabalhos' => 'Projects#index', :as => 'myProjects'
 
   root :to => "home#show"
   match 'sobre' => 'Home#about', :as => 'about', :via => :get  
@@ -24,12 +24,12 @@ Inf::Application.routes.draw do
   # Github style project URL
   # match 'p/:person/:project' => 'Projects#show', :as => 'person_project', constraints: { :project => /[^\/]+/, :person => /[^\/]+/ }
 
-  match 'projetos/:id/like' => 'Projects#like', :as => 'like_project'
-  match 'projetos/:id/unlike' => 'Projects#unlike', :as => 'unlike_project'
-  match 'projetos/:id/download' => 'Projects#downloadFile', :as => 'project_download'
-  match 'projetos/:id/link' => 'Projects#clickLink', :as => 'project_link'
+  match 'trabalhos/:id/like' => 'Projects#like', :as => 'like_project'
+  match 'trabalhos/:id/unlike' => 'Projects#unlike', :as => 'unlike_project'
+  match 'trabalhos/:id/download' => 'Projects#downloadFile', :as => 'project_download'
+  match 'trabalhos/:id/link' => 'Projects#clickLink', :as => 'project_link'
 
-  # match 'meusprojetos' => 'Projects#myProjects', :as => 'myProjects', :via => :get  
+  # match 'meustrabalhos' => 'Projects#myProjects', :as => 'myProjects', :via => :get  
 
 
   # The priority is based upon order of creation:

@@ -1,7 +1,7 @@
-<i class="icon-thumbs-up"></i> <p class="author"> <%= link_to a.owner.person, profile_path(a.owner.person.nick) if a.owner%> </p> curtiu 
+<i class="icon-thumbs-up-alt"></i> <p class="author"> <%= link_to a.owner.person, profile_path(a.owner.person.nick) if a.owner%> </p> curtiu 
 
 <% if activity.trackable %>
   <%= link_to activity.trackable.title, activity.trackable %>
 <% else %>
-  um projeto que não existe mais.
+  um trabalho que não existe mais.
 <% end %>

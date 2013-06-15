@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
 	# Setup accessible (or protected) attributes for your model
 	attr_accessible :email, :password, :password_confirmation, :remember_me
 
+	# Virtual attribute for authenticating by either username or email
+	attr_accessor :login
+	attr_accessible :login
+
+
 	# For using nested forms
 	attr_accessible :person_attributes
 
@@ -33,6 +38,20 @@ class User < ActiveRecord::Base
 	def authorizes?(user)
 		return self==user || user.admin?
 	end
+
+	# Overwrites original authentication method so we can login using either person's nick or email.
+	# Reference: https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
+    def self.find_first_by_auth_conditions(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions).joins(:person).readonly(false).where(["lower(nick) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      else
+        where(conditions).first
+      end
+    end
+	### This is the correct method you override with the code above
+	### def self.find_for_database_authentication(warden_conditions)
+	### end 
 
 
 end
