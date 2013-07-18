@@ -9,11 +9,11 @@
 	<%= render 'shared/search_result_title' %>
 
 
-	<h3><i class="icon-chevron-right text-error"></i> <%= link_to "Trabalhos (#{@totalProjects})", projects_path(q: @query), class: "no-decoration blacktext" %></h3>
+	<h3><i class="icon-chevron-right text-error"></i> <%= link_to raw("Trabalhos <span class=\"muted\">· #{@totalProjects}</span>"), projects_path(q: @query), class: "no-decoration blacktext" %></h3>
 	<% if @totalProjects>0 %>
 		<!-- Mostrando <b><%= @projects.size %></b> <%= @projects.size==1 ? "resultado" : "resultados" %> de <b><%= @totalProjects %></b>. -->
 		<div id="projects-table"> 
-			<%= render 'projects/projects_table' %>
+			<%= render 'projects/projects_table', projects: @projects %>
 		</div>
 
 		<% if @projects.size < @totalProjects %>
@@ -24,12 +24,12 @@
 
 	<% end %>
 
-	<h3><i class="icon-chevron-right text-error"></i> <%= link_to "Usuários (#{@totalPeople})", people_path(q: @query), class: "no-decoration blacktext" %></h3>
+	<h3><i class="icon-chevron-right text-error"></i> <%= link_to raw("Usuários <span class=\"muted\">· #{@totalPeople}</span>"), people_path(q: @query), class: "no-decoration blacktext" %></h3>
 	<% if @totalPeople>0 %>
 		<!-- Mostrando <b><%= @people.size %></b> <%= @people.size==1 ? "resultado" : "resultados" %> de <b><%= @totalPeople %></b>. -->
 
 		<div id="people-table" class="clearfix"> 
-			<%= render 'people/people_thumbs' %>
+			<%= render 'people/people_thumbs', projects: @projects %>
 		</div>
 
 		<% if @people.size < @totalPeople %>
@@ -40,7 +40,7 @@
 
 	<% end %>
 
-	<h3><i class="icon-chevron-right text-error"></i> Disciplinas (<%=@totalCourses%>)</h3>
+	<h3><i class="icon-chevron-right text-error"></i> Disciplinas <span class="muted">· <%=@totalCourses%></span></h3>
 	<% if @totalCourses>0 %>
 		<!-- Mostrando <b><%= @courses.size %></b> <%= @courses.size==1 ? "resultado" : "resultados" %> de <b><%= @totalCourses %></b>. -->
 		<div class="multi-column">
@@ -52,7 +52,7 @@
 		</div>
 	<% end %>
 
-	<h3><i class="icon-chevron-right text-error"></i> Tags (<%=@totalTags%>)</h3>
+	<h3><i class="icon-chevron-right text-error"></i> Tags <span class="muted">· <%=@totalTags%></span></h3>
 	<% if @totalTags>0 %>
 		<!-- Mostrando <b><%= @courses.size %></b> <%= @courses.size==1 ? "resultado" : "resultados" %> de <b><%= @totalCourses %></b>. -->
 		<div class="multi-column">

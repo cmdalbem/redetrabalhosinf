@@ -84,17 +84,17 @@ class PeopleController < ApplicationController
         not_found
       else
         @person = search.first
-        @projects = @person.projects.includes(:course)
+        @allProjects = @person.projects.includes(:course)
 
-        handleProjectSearch
+        handleProjectsParams
 
-        @projects = @projects.all
+        @allProjects = @allProjects.all
 
         # Handle sortings
-        handleProjectsSorting @projects, params[:sort], params[:direction]
+        handleProjectsSorting @allProjects, params[:sort], params[:direction]
 
         # Do pagination
-        @projects = @projects.paginate(per_page: PROJECTS_PER_PAGE_PROFILE, page: params[:page])
+        @allProjects = @allProjects.paginate(per_page: PROJECTS_PER_PAGE_PROFILE, page: params[:page])
 
         # Default view is LIST
         @viewMode = (!params[:view] or params[:view].empty? or params[:view]=="list") ? :list : :thumbs
@@ -103,6 +103,9 @@ class PeopleController < ApplicationController
 
         # User's activities list
         @activities = PublicActivity::Activity.where(owner_id: @person.user.id).order("created_at desc").includes(:owner).includes(:trackable).includes(:recipient)
+
+        # User's personal favorites projects
+        @favoriteProjects = @person.favorites.paginate(per_page: PROJECTS_PER_PAGE_PROFILE, page: params[:page])
 
         # Tags for personal tagcloud
         @tags = Tag.joins(:taggings).group("tags.id").where("taggings.project_id" => @person.project_ids)

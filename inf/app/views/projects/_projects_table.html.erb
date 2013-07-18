@@ -36,33 +36,42 @@
 
 
   <tbody>
-    <% @projects.each do |project| %>
+    <% projects.each do |project| %>
       <tr class="project-options-trigger">
         <!-- <td style="max-width: 600px" onmouseover="this.style.cursor='pointer'" onclick="window.location = '<%=url_to_project(project)%>'"> -->
         <td style="max-width: 600px">
-          <!-- Edit Buttons -->
-          <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
-            <div class="thumb-buttons project-hidden-options pull-right">
-              <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
-              <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: adminActionColor %> 
-              <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: adminActionColor %>
-            </div>
-          <% end %>
+          <div class="project-td-wrap">
+            <!-- Edit Buttons -->
+            <%= raw(getContentIcons(project)) %>
 
-          <a href=<%=url_to_project(project)%> class="title no-decoration">
-            <%= project.title %> <%= raw(getContentIcons(project)) %>
-            <% if not project.tags.empty? %>
-              <br>
-              <smaller class="muted">
-                <div class="cut-text">
-                    <i class="icon-tag"></i>
-                    <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
-                </div>
-              </smaller>
+            <% if user_signed_in? and project.showControlsForUser?(current_user) %>
+              <div class="thumb-buttons project-hidden-options pull-right">
+                
+                <% if project.canBeEditedBy?(current_user) %>
+                  <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
+                  <%= link_to raw("<i class=\"icon-pencil icon-minigrid\"></i>"), edit_project_path(project), class: adminActionColor %> 
+                  <%= link_to raw("<i class=\"icon-trash icon-minigrid\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: adminActionColor %>
+                <% end %>
+              </div>
             <% end %>
-          </a>
 
-          
+            <a href=<%=url_to_project(project)%> class="title no-decoration">
+              <div style="line-height: 20px;">
+                <%= project.title %>
+              </div>
+              
+              <smaller class="muted">
+                <% if not project.tags.empty? %>
+                    <div class="cut-text">
+                        <i class="icon-tag"></i>
+                        <%= project.tags.collect{|t| t.tag_text}.join(" · ") %>
+                  </smaller>
+                <% else %>
+                  <br>
+                <% end %>
+              </div>
+            </a>
+          </div>          
         </td>
         
         <% if not @hideAuthors %>

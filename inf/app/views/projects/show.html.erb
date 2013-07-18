@@ -4,11 +4,18 @@
 
   <div class="container-fluid center">
 
-  <% if user_signed_in? and @project.canBeEditedBy?(current_user) %>
+  <% if user_signed_in? and @project.showControlsForUser?(current_user) %>
+    <% @person = current_user.person %>
     <div class="panel">
       <div class="pull-right">
-        <%= link_to raw("<i class=\"icon-pencil\"></i> Editar Trabalho"), edit_project_path(@project), class: "btn btn-info" %> 
-        <%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>
+        <!-- Favorite Button -->
+
+
+        <!-- Edit and Delete -->
+        <% if @project.canBeEditedBy?(current_user) %>
+          <%= link_to raw("<i class=\"icon-pencil\"></i> Editar Trabalho"), edit_project_path(@project), class: "btn btn-info" %> 
+          <%= link_to raw("<i class=\"icon-trash\"></i> Deletar"), @project, confirm: 'Tem certeza?', method: :delete, class: "btn btn-danger" %>
+        <% end %>
       </div>
     </div>
   <% end %>
@@ -50,23 +57,28 @@
         <div class="offset8 span4">
           <center>
             <!-- Modal window for showing who liked this project -->
-            <%= render 'likes_list' %>
+            <div id="likesList">
+              <%= render 'likes_list' %>
+            </div>
 
             <p class="curtir-frame"> 
-              <span id="project-like-count-<%= @project.id %>"><%= link_to @project.likeCount, "#likesModal", "data-toggle" => "modal" %></span>
-              <i class="icon-thumbs-up-alt"></i>
+              <% likeClass = unlikeClass = "" %>
               <% if user_signed_in? %>
-                <%  likeClass = unlikeClass = ""
-                if current_user.person.likes.include?(@project)
-                  likeClass = "hidden"
-                else
-                  unlikeClass = "hidden"
-                end %>
-                <%= link_to raw(" Curtir"), like_project_path(@project), remote: true, class: likeClass, id: "project-like-action-"+@project.id.to_s %>
-                <%= link_to raw(" Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
+                <% if current_user.person.likes.include?(@project) %>
+                  <% likeClass = "hidden" %>
+                <% else %>
+                  <% unlikeClass = "hidden" %>
+                <% end %>
+                <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), remote: true, class: "btn btn-large btn-primary " + likeClass, id: "project-like-action-"+@project.id.to_s %>
+                <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir (desfazer)"), unlike_project_path(@project), remote: true, class: "btn btn-large active " + unlikeClass, id: "project-unlike-action-"+@project.id.to_s %>
               <% else %>
-                <%= link_to raw(" Curtir"), like_project_path(@project), class: likeClass, id: "project-like-action-"+@project.id.to_s %>
+                <%= link_to raw("<i class=\"icon-thumbs-up\"></i> Curtir"), like_project_path(@project), class: "btn btn-large btn-primary " + likeClass, id: "project-like-action-"+@project.id.to_s %>
               <% end %>
+              
+              <br>
+              
+              <span id="project-like-count-<%= @project.id %>" class="smaller"><%= showLikesText(@project.likeCount) %></span>
+
             </p>
           </center>
         </div>
@@ -132,12 +144,12 @@
       </p>
       <p>
         <% if @project.file? %>
-          <h4><i class="icon-file"></i> Arquivos (1)</h4>
+          <h4><i class="icon-paper-clip icon-rotate-90"></i> Arquivos (1)</h4>
           <p class="margin-left">
             <%= link_to "#{@project.file.original_filename} (#{@project.file.size/1024} Kb)", project_download_path(@project), rel: @project.file.original_filename %> <span class="badge"><%=@project.downloadCount%> hits</span>
           </p>
         <% else %>
-          <h4><i class="icon-file"></i> Arquivos (0)</h4>
+          <h4><i class="icon-paper-clip icon-rotate-90"></i> Arquivos (0)</h4>
         <% end %>
       </p>        
     </div>
@@ -165,21 +177,17 @@
                 
                 <header>
                   
-                  <table border="0">
-                    <tr>
-                      <td>
-                        <%= link_to image_tag(c.person.avatar.url(:small)), profile_path(c.person.nick), class: "no-decoration" %>
-                      </td>
-                      
-                      <td style="width: 100%">
-                        <%= link_to c.person.name, profile_path(c.person.nick), class: "username-text" %>
-                        <br>
-                        <text class="time muted">
-                          há <%= time_ago_in_words(c.created_at) %>
-                        </text>
-                      </td>
-                    </tr>
-                  </table> 
+                  <div class="avatar-left">
+                    <%= link_to image_tag(c.person.avatar.url(:small)), profile_path(c.person.nick), class: "no-decoration" %>
+                  </div>
+                  
+                  <div>
+                    <%= link_to c.person.name, profile_path(c.person.nick), class: "username-text" %>
+                    <br>
+                    <text class="time muted">
+                      há <%= time_ago_in_words(c.created_at) %>
+                    </text>
+                  </div>
 
                   <div class="deleteOpt">
                     <% if user_signed_in? and current_user.person==c.person %>
@@ -217,29 +225,25 @@
           <!-- New comment field -->
           <% if user_signed_in? %>
             <li>
-              <table border="0">
-                <tr>
-                  <td style="vertical-align: top;">
-                    <%= link_to image_tag(current_user.person.avatar.url(:small)), profile_path(current_user.person.nick), class: "no-decoration" %>
-                  </td>
-                  
-                  <td style="width: 100%">
-                    <%= form_for(Comment.new) do |f| %>
-                      <%= f.hidden_field :project_id, value: @project.id %>
-                      <%= f.hidden_field :person_id, value: current_user.person.id %>
-                      <div class="field">
-                        <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 1, style: "width: 50%; resize: none;", class: "textarea-expansible" %>
-                        <br>
-                        <%= f.submit "Enviar", class: "btn btn-primary" %>
-                      </div>
-                    <% end %>
-                  </td>
+              <div class="avatar-left">
+                <%= link_to image_tag(current_user.person.avatar.url(:small)), profile_path(current_user.person.nick), class: "no-decoration" %>
+              </div>
+              
+              <div>
+                <%= form_for(Comment.new) do |f| %>
+                  <%= f.hidden_field :project_id, value: @project.id %>
+                  <%= f.hidden_field :person_id, value: current_user.person.id %>
+                  <div class="field">
+                    <%= f.text_area :text, placeholder: "Escreva seu comentário...", rows: 1, style: "width: 50%; resize: none;", class: "textarea-expansible" %>
+                    <br>
+                    <%= f.submit "Enviar", class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+              </div>
 
-                  <script>
-                    $('.textarea-expansible').autogrow();
-                  </script>
-                </tr>
-              </table> 
+              <script>
+                $('.textarea-expansible').autogrow();
+              </script>
             </li>
           <% end %>
         </ul>

@@ -4,18 +4,18 @@
 <% end %>
 
 <!-- The content view -->
-<% if @projects.empty? %>
+<% if projects.empty? %>
 	<br>
 	Sem trabalhos a exibir.
 	<br>
 	<br>
 <% else %>
 	<% if @viewMode == :list %>
-	  <%= render 'projects/projects_table' %>
+	  <%= render 'projects/projects_table', projects: projects %>
 	<% else %>
-	  <%= render 'projects/projects_thumbs' %>
+	  <%= render 'projects/projects_thumbs', projects: projects %>
 	<% end %>
 <% end %>
 
 <!-- Pagination navigation -->
-<%= render "shared/pages_nav", items: @projects %>
+<%= render "shared/pages_nav", items: projects %>

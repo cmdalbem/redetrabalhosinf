@@ -1,15 +1,29 @@
 <!-- Remember to pass in a hash value for "sortByOptions" -->
 <% destinyPath = request.url %>
 
+<% if not defined? myPlaceholder %>
+	<% myPlaceholder = "Título / Descrição / Tag" %>
+<% end %>
+
 <!-- Options at the top of the table -->
 <div class="ctrlbar">
 
 	<div class="row-fluid">
 		<!-- Search Form --> 
-		<div class="span10">
+		<div class="span3">
 			<div class="pull-left">
-				<%= render 'shared/search_form', destinyPath: destinyPath, placeholder: "Título / Descrição / Tag" %>
+				<%= render 'shared/search_form', destinyPath: destinyPath, placeholder: myPlaceholder %>
 			</div>
+		</div>
+
+		<div class="span7">
+			<!-- "Sort By" options -->
+			<center class="ctrlbar-addendum">
+				<%= render 'shared/combo_sort_by',
+						destinyPath: destinyPath,
+						sortbyOptions: sortbyOptions,
+						selected: @column %>
+			</center>
 		</div>
 
 		<!-- Button group for choosing view (list or thumbnail) -->
@@ -22,10 +36,16 @@
 
 </div>
 
-<!-- "Sort By" options -->
-<center class="ctrlbar-addendum">
-	<%= render 'shared/links_sort_by',
-			destinyPath: destinyPath,
-			sortbyOptions: sortbyOptions,
-			selected: @column %>
-</center>
+<% if not defined? hideFilterImagesOption %>
+	<% if @viewMode == :thumbs %>
+		<div class="row-fluid" style="">
+			<div class="pull-right smaller">
+				<% if @onlyimages==true %>
+					<i class="icon-picture"></i> mostrando apenas resultados com imagens <%= link_to "(desfazer)", params.merge(onlyimages: "false", page: nil)%>
+				<% else %>
+					<%= link_to raw("<i class=\"icon-picture\"></i> mostrar apenas resultados com imagens"), params.merge(onlyimages: "true", page: nil)%>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+<% end %>

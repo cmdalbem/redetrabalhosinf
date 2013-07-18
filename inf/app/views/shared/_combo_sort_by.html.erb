@@ -7,11 +7,11 @@
   <%= hidden_field_tag :direction, params[:direction] %>
   Ordenar por 
   <div class="mySelect">
-    <%= select_tag :sort, sortbyOptions, class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
+    <%= select_tag :sort, options_for_select(sortbyOptions), class: "input-medium", style: "margin: 0;", :onchange => 'this.form.submit()' %>
   </div>
   <%= if @direction=="asc"
-    link_to raw("<i class=\"icon-arrow-down\"></i>"), params.merge(direction: "desc", page: nil), class: "blacktext no-decoration", title: "Inverter ordem"
+    link_to raw("<i class=\"icon-large icon-sort-by-attributes \"></i>"), params.merge(direction: "desc", page: nil), class: "blacktext no-decoration", title: "Inverter ordem"
   else
-    link_to raw("<i class=\"icon-arrow-up\"></i>"), params.merge(direction: "asc", page: nil), class: "blacktext no-decoration", title: "Inverter ordem"
+    link_to raw("<i class=\"icon-large icon-sort-by-attributes icon-flip-vertical\"></i>"), params.merge(direction: "asc", page: nil), class: "blacktext no-decoration", title: "Inverter ordem"
   end %>
 <% end %>

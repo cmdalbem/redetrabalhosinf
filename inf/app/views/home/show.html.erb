@@ -55,7 +55,7 @@
 						<div class="body">
 
 							<p>
-								No infHUB é fácil publicar teus trabalhos e encontrar e curtir os dos teus colegas. Além disso, sua página ainda serve como um portfólio pessoal. <%= link_to "Leia mais...", about_path, id: "read-more-link" %>
+								No infHUB é fácil publicar teus trabalhos e encontrar e curtir os dos teus colegas. Além disso, tua página ainda serve como um portfólio pessoal. <%= link_to "Leia mais...", about_path, id: "read-more-link" %>
 							</p>
 
 							<div id="featuresList">
@@ -235,7 +235,7 @@
 				<div class="span8 block">
 					<div class="news-list">
 						<legend>
-							<!-- <i class="icon-bell"></i> --> Notificações <%= if @unreadNotifications!=0 then "(#{@unreadNotifications})" end %>
+							<!-- <i class="icon-bell"></i> --> Atividades nos meus trabalhos <%= if @unreadNotifications!=0 then "(#{@unreadNotifications})" end %>
 						</legend>
 
 						<% if @notifications.empty? %>
@@ -291,13 +291,16 @@
 
 		<!-- Lists -->
 		<div class="row-fluid">
+
+			<!-- New projects -->
 			<div class="span4">
 				<div class="news-list">
-					<legend>Novos Trabalhos</legend>
+					<legend><i class="icon-file"></i> Novos Trabalhos</legend>
 					<ul>
 						<% @lastProjects.each do |p| %>
 							<li>
 								<header><%= link_to_project p %></header>
+								<%= raw(getContentIcons(p)) %>
 								<p class="author">por <%= p.people.collect { |guy| link_to guy.nick, profile_path(guy.nick) }.join(", ").html_safe %> </p>
 								<small>
 									<p><i class="icon-book muted"></i> <%= link_to p.course.name, projects_path(course: p.course.id), class: "" %></p>
@@ -305,47 +308,44 @@
 								</small>
 							</li>
 						<% end %>
+						<li class="small">
+							<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), projects_path(sort: "date", direction: "desc") %>
+						</li>
 					</ul>
-					<small>
-						<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), projects_path(sort: "date", direction: "desc") %>
-					</small>
 				</div>
 
 			</div>
 
+			<!-- New users -->
 			<div class="span4">
 				<div class="news-list">
-					<legend>Novos Usuários</legend>
+					<legend><i class="icon-user"></i> Novos Usuários</legend>
 					<ul>
 						<% @lastPeople.each do |p| %>
-							<li>
-								<table border="0" style="width:100%;">
-									<tr onmouseover="this.style.cursor='pointer'" onclick="window.location = '<%=profile_path(p.nick)%>'">
-										<td>
-											<%= link_to image_tag(p.avatar.url(:small)), profile_path(p.nick), class: "no-decoration" %>
-										</td>
-
-										<td style="width:90%;">
-											<header><%= link_to p, profile_path(p.nick) %></header>
-											<p class="author"><%= p.name %></p>
-											<small>
-												<p class="muted"><i class="icon-time"></i> <%= time_ago_in_words(p.created_at) %></p>
-											</small>
-										</td>
-									</tr>
-								</table>							
+							<li onmouseover="this.style.cursor='pointer'" onclick="window.location = '<%=profile_path(p.nick)%>'">
+								<div class="avatar-left">
+									<%= link_to image_tag(p.avatar.url(:small)), profile_path(p.nick), class: "no-decoration" %>
+								</div>							
+								<div>
+									<header><%= link_to p, profile_path(p.nick) %></header>
+									<p class="author"><%= p.name %></p>
+									<small>
+										<p class="muted"><i class="icon-time"></i> <%= time_ago_in_words(p.created_at) %></p>
+									</small>
+								</div>
 							</li>
 						<% end %>
+						<li class="small">
+							<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), people_path(sort: "date", direction: "desc") %>
+						</li>
 					</ul>
-					<small>
-						<%= link_to raw("Ver mais <i class=\"icon-double-angle-right text-error\"></i> "), people_path(sort: "date", direction: "desc") %>
-					</small>
 				</div>
 			</div>
 
+			<!-- Recent activity -->
 			<div class="span4">
 				<div class="news-list">
-					<legend>Atividade Recente</legend>
+					<legend><i class="icon-rss"></i> Atividade Recente</legend>
 					<ul>
 						<% @globalActivities.each do |a| %>
 						    <li>

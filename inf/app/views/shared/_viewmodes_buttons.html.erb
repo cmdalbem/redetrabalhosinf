@@ -1,16 +1,16 @@
-<ul class="nav nav-pills">
+<div class="btn-group">
   <% thisClass = "" %>
   <% if @viewMode == :list %>
     <% thisClass += "active" %>
   <% end %>
-  <li id="list-view" class="<%=thisClass%>"><%= link_to raw("<i class=\"icon-reorder\"></i>"), params.merge(view: "list"), title: "Ver em LISTA" %></li>
+  <%= link_to raw("<i class=\"icon-reorder\"></i>"), params.merge(view: "list", onlyimages: false), title: "Ver em LISTA", id: "list-view", class: "btn " + thisClass %>
   
   <% thisClass = "" %>
   <% if @viewMode == :thumbs %>
     <% thisClass += "active" %>
   <% end %>
-  <li id="thumbs-view" class="<%=thisClass%>"><%= link_to raw("<i class=\"icon-th\"></i>"), params.merge(view: "thumbs"), title: "Ver em MINIATURAS" %></li>
-</ul>
+  <%= link_to raw("<i class=\"icon-th\"></i>"), params.merge(view: "thumbs", onlyimages: false), title: "Ver em MINIATURAS", id: "thumbs-view", class: "btn " + thisClass %>
+</div>
 
 <!-- <div class="btn-toolbar">
   <div class="btn-group">

@@ -10,12 +10,8 @@ class GlobalSearchController < ApplicationController
 	    if params[:gq] and !params[:gq].empty?
 	    	@hasQuery = true
 	    	@query = params[:gq]
-
-	    	SearchLog.create(text: @query,
-				    		ip: request.remote_ip,
-				    		user: (user_signed_in? ? current_user : nil))
 	    	
-	    	@projects = Project.scoped.includes(:people).includes(:course)
+	    	@projects = Project.scoped.includes(:people)
 		    @courses = Course.scoped
 		    @people = Person.scoped
 		    @tags = Tag.scoped
@@ -39,8 +35,12 @@ class GlobalSearchController < ApplicationController
 			@tags = @tags.search(@query).order("tag_text DESC")
 			@totalTags = @tags.size
 
-
 			@numResults = @totalProjects + @totalCourses + @totalPeople + @totalTags
+
+			SearchLog.create(text: @query,
+				    		ip: request.remote_ip,
+				    		user: (user_signed_in? ? current_user : nil),
+				    		resultsCount: @numResults)
 	    else
 	    	@numResults = @totalProjects = @totalCourses = @totalPeople = @totalTags = 0
 	    	@hasQuery = false

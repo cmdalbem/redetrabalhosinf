@@ -4,6 +4,7 @@
       <!-- <th><%= sortable "Nome", "name" %></th>
       <th><%= sortable "Usuário", "nick" %></th>
       <th><%= sortable "Nro. trabalhos", "projects" %></th> -->
+      <th></th>
       <th>Nome</th>
       <th>Usuário</th>
       <th>Semestre</th>
@@ -14,7 +15,8 @@
   <tbody>
     <% @people.each do |p| %>
       <tr onmouseover="this.style.cursor='pointer'" onclick="window.location = '<%=profile_path(p.nick)%>'">
-        <td><%= link_to p.name, profile_path(p.nick), class: "fulltitle no-decoration" %></td>
+        <td style="width: 32px"><%= image_tag(p.avatar.url(:small))%></td>
+        <td><%= link_to p.name, profile_path(p.nick), class: "title no-decoration" %></td>
         <td><%= p.nick %></td>
         <td><%= p.semester %></td>
         <td><%= p.projects.size %></td>

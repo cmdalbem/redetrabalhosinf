@@ -39,7 +39,6 @@
 
 <div id="wrap">
 	<div id="main">
-
 		<header class="navbar navbar-inverse navbar-fixed-top">
 		  <div class="navbar-inner">
 			<div class="container">
@@ -68,7 +67,7 @@
 						<li class="divider-vertical"></li>
 
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-family: 'Bree Serif', 'Inder', 'Open Sans', sans-serif; ">
+							<a class="dropdown-toggle username-text" href="<%=profile_path(current_user.person.nick)%>">
 								<%= tag(:img, :src => current_user.person.avatar.url(:thumb)) + " " + current_user.person.getFirstName %>
 								<span class="caret"></span>
 							</a>
@@ -94,8 +93,38 @@
 						</li>
 
 					<% else %>
-						<li><%= link_to nav_icon("Entrar","icon-signin"), new_user_session_path %></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-signin"></i> Entrar</a>
+							<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+								<%= form_for("user", :url => user_session_path) do |f| %>
+									<div class="input-prepend" style="margin-bottom: 15;">
+										<span class="add-on"><i class="icon-user"></i></span>
+										<%= f.text_field :login, required: true, class: "input-medium", placeholder: "Usuario ou Email" %>
+									</div>
+									
+									<div class="input-prepend" style="margin-bottom: -5px;">
+										<span class="add-on"><i class="icon-key"></i></span>
+										<%= f.password_field :password, required: true, class: "input-medium", placeholder: "Senha" %>
+									</div>
+									<div class="pull-right">
+										<a href="#forgotPasswordModal" tabindex="-1" class="smaller" role="button" data-toggle="modal">(esqueci minha senha)</a>
+									</div>
+									
+									<label class="checkbox" style="float: left; margin-right: 10px;">
+										<input type="checkbox" name="user[remember_me]" checked> Manter logado
+								    </label>
+
+									<%= f.submit "OK", class: "btn btn-primary btn-block", style: "margin-bottom: 10px;"%>
+
+									<center>
+										<a href="#resendConfirmationModal" class="small" role="button" data-toggle="modal"><i class="icon-question-sign"></i> Não recebi email de confirmação.</a>
+									</center>
+								<% end %>
+							</div>
+						</li>
+
 						<li class="divider-vertical"></li>
+						
 						<%= link_to "Cadastrar", new_registration_path(:user), class: "btn btn-warning btn-small"%>
 					<% end %>
 
@@ -132,6 +161,34 @@
 
 		<!-- Page content goes here -->
 		<%= yield %>
+
+		<!-- Hidden modals for navbar sign-in dropdown -->
+		<div id="forgotPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">Resetar senha</h3>
+			</div>
+			<div class="modal-body">
+				<%= form_for(:user, :url => password_path(:user), :html => { :method => :post }) do |f| %>
+				  <%= devise_error_messages! %>
+				  <%= f.email_field :email, required: true, class: "input-large", placeholder: "Email cadastrado" %>
+				  <%= f.submit "Ok", class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div>
+		<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">Reenviar email de confirmação</h3>
+			</div>
+			<div class="modal-body">
+				<%= form_for(:user, :url => confirmation_path(:user), :html => { :method => :post }) do |f| %>
+					<%= devise_error_messages! %>
+					<%= f.email_field :email, required: true, class: "input-large", placeholder: "Email cadastrado" %>
+					<%= f.submit "Reenviar", class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div>
 
 
 	</div>

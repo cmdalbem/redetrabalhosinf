@@ -12,7 +12,7 @@ class Course < ActiveRecord::Base
 			# Creates queries for each word of the input, and then join them with ANDs.
 			words = search.split(" ")
 			words.size.times do |i|
-				query << "(name ILIKE :w#{i})"
+				query << "(name ILIKE :w#{i} OR code ILIKE :w#{i})"
 				params << [:"w#{i}", "%#{words[i]}%"]
 			end
 			query = query.join(" AND ")

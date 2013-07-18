@@ -4,16 +4,17 @@
 
   <br>
 
-  <%= render "shared/project_ctrlbar", sortbyOptions: {"Data adicionado"=>"date",
-                                                        "Nome"=>"name",
-                                                        "Usuário"=>"nick",
-                                                        "Nro. trabalhos"=>"projects",
-                                                        "Semestre"=>"semester"} %>
-
-  <br>
+  <%= render "shared/project_ctrlbar",
+              hideFilterImagesOption: true,
+              myPlaceholder: "Nome / Usuário",
+              sortbyOptions: {"Data adicionado"=>"date",
+                              "Nome"=>"name",
+                              "Usuário"=>"nick",
+                              "Nro. trabalhos"=>"projects",
+                              "Semestre"=>"semester"} %>
 
   <!-- The listing itself -->
-  <div id="people-table"> 
+  <div class="row-fluid" id="people-table"> 
     <%= render 'people_dynamic_listing' %>
   </div>
 

@@ -74,9 +74,7 @@ class TagsController < ApplicationController
 
     @tags = Tag.all
 
-    handleCourseFiltering()
-
-    handleProjectSearch()
+    handleProjectsParams()
 
     @projects = @projects.all
 

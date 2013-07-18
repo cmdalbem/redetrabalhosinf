@@ -57,7 +57,7 @@ module ApplicationHelper
 	def getContentIcons(project)
 		ret = "<ul class=\"project-content-icons\">"
 		if project.file?
-			ret +="<li><i class=\"icon-file icon-grid\"></i></li>"
+			ret +="<li><i class=\"icon-paper-clip icon-rotate-90 icon-grid\"></i></li>"
 		end
 		if project.image?
 			ret +="<li><i class=\"icon-picture icon-grid\"></i></li>"
@@ -166,5 +166,31 @@ module ApplicationHelper
 
 	def my_pluralize(var)
 		return var==1 ? "" : "s"
+	end
+
+	def my_normalize(string)
+		return string.chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
+	end
+
+	# Devise Helpers
+	#  thanks to: http://stackoverflow.com/questions/4081744/devise-form-within-a-different-controller
+	def resource_name
+		:user
+	end
+	def resource
+		@resource ||= User.new
+	end
+	def devise_mapping
+		@devise_mapping ||= Devise.mappings[:user]
+	end
+
+	def showLikesText(numLikes)
+		if numLikes==0
+			return "Ninguém curtiu ainda"
+		elsif numLikes==1
+			return link_to "1 pessoa curtiu", "#likesModal", "data-toggle" => "modal"
+		else
+			return link_to "#{numLikes} pessoas curtiram", "#likesModal", "data-toggle" => "modal"
+		end
 	end
 end

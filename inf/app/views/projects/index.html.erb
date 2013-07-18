@@ -5,11 +5,12 @@
 	<h2>
 		<%= title "Trabalhos" %>
 		<% if hasSelectedCourse %>
-			<small>
-				<i class="icon-book"></i>
-				<%= @course.name %>
-				<%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "close no-decoration", style: "float: none;" %>
-			</small>
+			<text class="text-error">/</text>
+				<small class="blacktext">
+					<i class="icon-book"></i>
+					<%= @course.name %>
+					<%= link_to raw("<i class=\"icon-remove\"></i>"), params.merge(course: nil), class: "close no-decoration", style: "float: none;" %>
+				</small>
 		<% end %>
 	</h2>
 
@@ -23,7 +24,7 @@
 					<%= hidden_field_tag :view, params[:view] %>
 					<!-- no hidden field for search, which means that the search will be reseted when changing this filter -->
 					<div class="field big-chosen">
-						<%= render "shared/course_selector", placeholder: "Filtrar por disciplina..." %>
+						<%= render "shared/course_selector", placeholder: "<i class=\"icon-book\"></i> Filtrar por disciplina..." %>
 					</div>
 				<% end %>
 			</div>
@@ -32,24 +33,23 @@
 
 	<br>
 
-	<%= render "shared/project_ctrlbar", sortbyOptions: {"Popularidade"=>"relevance",
-															"Recente" => "date",
-															"Título"=>"title",
-															"Semestre"=>"barra",
-															"Likes"=>"likes"} %>
-
-	<br>
+	<%= render "shared/project_ctrlbar",
+				sortbyOptions: {"Popularidade"=>"relevance",
+								"Data adicionado" => "date",
+								"Título"=>"title",
+								"Semestre"=>"barra",
+								"Likes"=>"likes"} %>
 
 	<!-- The listing itself -->
-	<div id="projects-table"> 
-		<%= render 'projects_dynamic_listing' %>
+	<div class="row-fluid" id="projects-table"> 
+		<%= render 'projects_dynamic_listing', projects: @projects %>
 	</div>
 
 	<br>
 	<br>
 
 	<center>
-	  <%= link_to raw("<i class=\"icon-plus\"></i> Adicionar trabalho"), new_project_path(course_id: params[:course]), class: "btn btn-success btn-large" %>
+	  <% #link_to raw("<i class=\"icon-plus\"></i> Adicionar trabalho"), new_project_path(course_id: params[:course]), class: "btn btn-success btn-large" %>
 	</center>
 
 </div>

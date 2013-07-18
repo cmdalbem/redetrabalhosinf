@@ -1,0 +1,7 @@
+<% if count==0 %>
+	Ninguém curtiu ainda.
+<% elsif count==1 %>
+	<%= link_to "1 pessoa curtiu.", "#likesModal", "data-toggle" => "modal" %>
+<% else %>
+	<%= link_to "#{count} pessoas curtiram.", "#likesModal", "data-toggle" => "modal" %>
+<% end %>

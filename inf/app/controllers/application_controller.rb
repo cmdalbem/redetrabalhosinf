@@ -56,19 +56,27 @@ class ApplicationController < ActionController::Base
 		return plist
 	end
 
-	def handleCourseFiltering
+	def handleProjectsParams
+		# Course filtering
 		if params[:course] and !params[:course].empty?
         	@course = Course.find(params[:course].to_i)
         	@projects = @projects.where(course_id: params[:course].to_i)
 		end
-	end
 
-	def handleProjectSearch
-    	if params[:q] and !params[:q].empty?
+		# Project search
+		if params[:q] and !params[:q].empty?
     		@hasQuery = true
     		@query = params[:q]
 			@projects = @projects.search(@query)
 			@numResults = @projects.count
+		end
+
+		# Filter projects without images
+		if params[:onlyimages] and params[:onlyimages] == "true"
+			@onlyimages = true
+			@projects = @projects.where("image_file_name IS NOT ?", nil)
+		else
+			@onlyimages = false
 		end
 	end
 

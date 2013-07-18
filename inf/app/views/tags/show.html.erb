@@ -29,11 +29,12 @@
 
 <div class="content">
 
-	<%= render "shared/project_ctrlbar", sortbyOptions: {"Popularidade"=>"relevance",
-															"Recente" => "date",
-															"Título"=>"title",
-															"Semestre"=>"barra",
-															"Likes"=>"likes"} %>
+	<%= render "shared/project_ctrlbar",
+				sortbyOptions: {"Popularidade"=>"relevance",
+								"Data adicionado" => "date",
+								"Título"=>"title",
+								"Semestre"=>"barra",
+								"Likes"=>"likes"} %>
 
 	<!-- The listing itself -->
 	<div id="projects-table" class="clearfix"> 

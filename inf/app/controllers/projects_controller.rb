@@ -43,11 +43,9 @@ class ProjectsController < ApplicationController
 			@projects = Project.scoped
 		# end
 
-		@projects = @projects.includes(:people).includes(:course)
+		@projects = @projects.includes(:people)
 
-		handleCourseFiltering()
-
-		handleProjectSearch()
+		handleProjectsParams()
 
 		@projects = @projects.all
 
@@ -92,9 +90,9 @@ class ProjectsController < ApplicationController
 		# It's called ID because of the default routing, but we use this parameter with the user's NICK.
 		if user_signed_in?
 			@person = current_user.person
-			@projects = @person.projects.includes(:course)
+			@projects = @person.projects
 
-			handleProjectSearch
+			handleProjectsParams()
 
 			@projects = @projects.all
 
@@ -248,6 +246,11 @@ class ProjectsController < ApplicationController
 					oldAuthors.each do |p|
 						if not @project.people.include?(p)
 							@project.create_activity :removeOwnership, owner: current_user, recipient: p.user
+
+							# Remove this project from the person's favorites projects list
+							if p.favorites.include?(@project)
+								p.favorites.delete(@project)
+							end
 						end
 					end
 				end
@@ -287,7 +290,6 @@ class ProjectsController < ApplicationController
 		end
 
 		respond_to do |format|
-			format.html { redirect_to Project }
 			format.js
 		end
 	end
@@ -299,11 +301,32 @@ class ProjectsController < ApplicationController
 			if @project.likes.include?(@person)
 				# Finds and deletes the notification of this like
 				PublicActivity::Activity.where(owner_id: current_user, trackable_id: @project.id, key: "project.like").destroy_all
+
 				@project.likes.delete(@person)
 				@project.update_attributes(likeCount: @project.likeCount-1)
 			end
 		end
 		
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def favorite
+		@project = Project.find(params[:id])
+		if @project
+			@person = current_user.person
+			if @project.isAuthoredByUser?(current_user)
+				if not @person.favorites.include?(@project)
+					# add favorite project
+					@person.favorites.push(@project)
+				else
+					# remove favorite project
+					@person.favorites.delete(@project)
+				end
+			end
+		end
+
 		respond_to do |format|
 			format.js
 		end

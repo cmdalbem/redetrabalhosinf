@@ -82,6 +82,8 @@ body {
 	-moz-box-shadow: 0 0 30px rgba(0,0,0,0.1);
 	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.1);
 	box-shadow: 0 0 30px rgba(0,0,0,0.1);
+
+	padding-top: 49px; /* approx. the navbar height */
 }
 
 article {
@@ -184,18 +186,13 @@ a.accordion-toggle:hover, a.accordion-toggle:focus
 
 .table th, .table td {
 	line-height: 15px;
-	overflow: visible;
+	overflow: hidden;
 	vertical-align: middle;
 
 	a.title {
 		display:block;
     	width: 90%;
     	font-size: 16px;
-	}
-
-	a.fulltitle {
-		display:block;
-    	width: 100%;
 	}
 }
 
@@ -309,12 +306,36 @@ h5.username-text {
 	text-align: center;
 }
 
+.icon-minigrid {
+	display: inline-block !important;
+	padding: 3px;
+	text-align: center;
+}
+
+div.project-td-wrap {
+	position: relative;
+	width: 100%;
+}
+
+.thumb-buttons {
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	top: 10px;
+	text-shadow: -1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 ul.project-content-icons {
 	margin: 0;
 	list-style-type: none;
 	display: inline;
 	font-size: 12px;
 	color: $muted;
+	
+	position: absolute;
+	right: 0;
+	font-size: 35px;
+	opacity: 0.15;
 	
 	li {
 		display: inline;
@@ -333,6 +354,33 @@ ul.project-content-icons {
 .sticky-top {
   position: fixed;
   top: auto;
+}
+
+/* Special styling for Carouself Thumbnails */
+.carousel {
+	margin-bottom: 0;
+	padding: 0 40px 30px 40px;
+}
+/* Reposition the controls slightly */
+.carousel-control {
+	left: -12px;
+}
+.carousel-control.right {
+	right: -12px;
+}
+/* Changes the position of the indicators */
+.carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: 0px;
+	margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.carousel-indicators li {
+	background: #c0c0c0;
+}
+.carousel-indicators .active {
+	background: #333333;
 }
 
 .person-profile {
@@ -448,6 +496,31 @@ ul.project-content-icons {
 	a {
 		color: $defaultBlack;
 	}
+}
+
+/* Automatic dropbdown on hover */
+/*   thanks to: http://stackoverflow.com/questions/8878033/how-to-make-twitter-bootstrap-menu-dropdown-on-hover-rather-than-click */
+ul.nav li.dropdown:hover > ul.dropdown-menu{
+    display: block;
+}
+
+/* Hide little upward arrow from dropdown */
+.dropdown-menu:before,
+.dropdown-menu:after {
+  display:none !important;
+}
+/* and make it flat in the top */
+.dropdown-menu {
+	margin: 0;
+	border-top: none;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.avatar-left {
+	width: 45px;
+	height: 45px;
+	float: left;
 }
 
 .navbar {
@@ -572,6 +645,17 @@ ul.project-content-icons {
 	}
 }
 
+h0 {
+    font-size: 21px;
+    padding-left: 60px;
+    margin-bottom: 30px;
+    margin-top: 0;
+    border-bottom: 2px solid rgb(200, 100, 100);
+    line-height: 30px;
+    /*background-color: rgb(230,230,230);*/
+	/*text-shadow: 2px 2px 2px rgb(215, 215, 215);*/
+}
+
 /* Some overriding settings for enhancing Chosen Plugin combobox */
 .select2-container {
 	min-width: 500px;
@@ -590,17 +674,6 @@ ul.project-content-icons {
 }
 .select2-drop {
 	z-index: 1000 !important;
-}
-
-h0 {
-    font-size: 21px;
-    padding-left: 60px;
-    margin-bottom: 30px;
-    margin-top: 0;
-    border-bottom: 2px solid rgb(200, 100, 100);
-    line-height: 30px;
-    /*background-color: rgb(230,230,230);*/
-	/*text-shadow: 2px 2px 2px rgb(215, 215, 215);*/
 }
 
 .big-chosen .select2-container {
@@ -883,6 +956,8 @@ hr.soften {
 			margin: 0px;
 			padding: 5px;
 
+			@include transition(.1s);
+
 			img {
 				padding-right: 3px;
 			}
@@ -968,9 +1043,11 @@ hr.soften {
 
 footer {
 	/*font-size: 12px;*/
-	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2) inset;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1) inset;
 	border-top: 2px solid $myred;
 	background-color: rgba(0,0,0,0.05);
+
+	padding-top: 30px;
 
 	/*font-weight: bold;*/
 	@include carvedText;
@@ -1175,10 +1252,6 @@ label {
 }
 
 
-.person-thumb:hover img {
-	opacity: 1;
-}
-
 .person-thumb {
 	width: 160px;
 	height: 195px;
@@ -1202,6 +1275,9 @@ label {
 		background: rgba(255, 255, 255, 0.6);
 	}*/
 }
+.person-thumb:hover img {
+	opacity: 1;
+}
 
 .project-options-trigger .project-hidden-options{
 	/*float: right;*/
@@ -1219,15 +1295,12 @@ label {
 
 .project-thumb.project-options-trigger:hover {
 	img {
-		opacity: 0.2;
-	}
-
-	.icons {
-		/*height: 20px;*/
+		/*opacity: 0.2;*/
 	}
 
 	#hidable{
 		opacity: 1;
+		bottom: 0;
 	}
 }
 
@@ -1239,6 +1312,25 @@ label {
 	opacity: 0.3;
 	line-height: 12px;
 	text-align: justify;
+}
+
+.thumbnail {
+	-moz-box-shadow: 0px 2px 7px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0px 2px 7px rgba(0,0,0,0.1);
+	box-shadow: 0px 2px 7px rgba(0,0,0,0.1);
+
+	background-color: rgba(255,255,255,0.5);
+
+	-webkit-transition: all 0.2s ease-in-out;
+       -moz-transition: all 0.2s ease-in-out;
+         -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+}
+.thumbnail:hover {
+	border-color: #0088cc;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+	   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+	        box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
 }
 
 .project-thumb {
@@ -1266,10 +1358,8 @@ label {
 		background-image: -ms-linear-gradient(top, rgba(252,252,250,1), rgba(230,230,230,1));*/
 
 		.thumb-buttons {
-			position: absolute; 
 			top: 1px;
 			right: 1px;
-			z-index: 1;
 		}
 
 		/* Reference for overlaping text over image: http://css-tricks.com/text-blocks-over-image */
@@ -1294,16 +1384,21 @@ label {
 	line-height: 15px;
 
 	#hidable {
-		@include transition(.2s);
+		-webkit-transition: all 0.2s ease-out;
+		   -moz-transition: all 0.2s ease-out;
+		     -o-transition: all 0.2s ease-out;
+		        transition: all 0.2s ease-out;
 		opacity: 0;
+		bottom: -50%;
 	}
 
 	.text {
-		/*height: 100%;
-		display: table-cell;
-		vertical-align: middle;*/
-		padding: 10px; 
+		padding: 5px;
 		font-size: 80%;
+		background-color: rgba(255, 255, 255, 0.8);
+		position: absolute;
+		bottom: 0px;
+		width: 95%;
 	}
 
 	header {
@@ -1324,7 +1419,6 @@ label {
 		}
 
 		.title {
-			padding-top: 3px;
 			padding-bottom: 3px;
 			max-height: 45px;
 			overflow: hidden;
@@ -1610,7 +1704,6 @@ html, body {
 }
 #wrap {
 	min-height: 100%;
-	padding-top: 49px; /* approx. the navbar height */
 }
 #main {
 	overflow: auto;
@@ -1622,4 +1715,4 @@ footer {
 	height: $footer_height;
 	clear: both;
 	padding-top: 30px;
-} 
+}

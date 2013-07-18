@@ -1,7 +1,7 @@
 <div class="row-fluid">
 
   <ul class="thumbnails">
-    <% @projects.each do |project| %>
+    <% projects.each do |project| %>
 
       <div class="pull-left"%>
         <li class="thumbnail project-thumb project-options-trigger">
@@ -9,10 +9,14 @@
           <!-- <a href=<%= url_to_project project %> class="thumbnail project-thumb project-options-trigger"> -->
 
             <!-- Buttons -->
-            <% if user_signed_in? and project.canBeEditedBy?(current_user) %>
-              <div class="thumb-buttons project-hidden-options">
-                <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
-                <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: "small" + adminActionColor %> <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: "small" + adminActionColor %> 
+            <% if user_signed_in? and project.showControlsForUser?(current_user) %>
+              <div class="thumb-buttons project-hidden-options pull-right small">
+                
+                <% if project.canBeEditedBy?(current_user) %>
+                  <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
+                  <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: adminActionColor %> 
+                  <%= link_to raw("<i class=\"icon-trash\"></i>"), project, confirm: 'Tem certeza?', method: :delete, class: adminActionColor %>
+                <% end %>
               </div>
             <% end %>
 

@@ -11,13 +11,16 @@ class Project < ActiveRecord::Base
 	
 	has_many :comments, dependent: :destroy 
 
-	#Like relationship
+	# Like relationship
 	has_and_belongs_to_many :likes, :foreign_key => 'project_id', :class_name => "Person", :join_table => 'people_projects'
 
-	# attachments
+	# My Favorite Projects relationship
+	has_and_belongs_to_many :favorites, :foreign_key => 'project_id', :class_name => "Person", :join_table => 'people_projects_favorites'
+
+	# Attachments
 	attachmentsPath = Rails.env.development? ? "dev/projects/:id/:attachment.:extension" : "projects/:id/:attachment.:extension"
 
-	has_attached_file :image, :path => attachmentsPath, :styles => { :original => "500x500>" }
+	has_attached_file :image, :path => attachmentsPath, :styles => { :original => "800x800>" }
 		validates_attachment_size :image, :less_than => MAX_IMAGE_FILE_SIZE_MB.megabytes
 		validates_attachment_content_type :image, :content_type=>['image/jpeg', 'image/png', 'image/gif', 'image/bmp'] 
 
@@ -74,12 +77,12 @@ class Project < ActiveRecord::Base
 			# Creates queries for each word of the input, and then join them with ANDs.
 			words = search.split(" ")
 			words.size.times do |i|
-				query << "(title ILIKE :w#{i} OR tags_str ILIKE :w#{i} OR description ILIKE :w#{i})"
+				query << "(title ILIKE :w#{i} OR tags_str ILIKE :w#{i} OR description ILIKE :w#{i} OR name ILIKE :w#{i})"
 				params << [:"w#{i}", "%#{words[i]}%"]
 			end
 			query = query.join(" AND ")
 
-			where(query, Hash[params])
+			joins(:course).where(query, Hash[params])
 
 			# References:
 			# 	Queries: http://m.onkey.org/active-record-query-interface
@@ -93,7 +96,15 @@ class Project < ActiveRecord::Base
 
 	# Tests if the user has authorization to edit this project
 	def canBeEditedBy?(user)
-		return people.include?(user.person) || user.admin?
+		return isAuthoredByUser?(user) || user.admin?
+	end
+
+	def isAuthoredByUser?(user)
+		return people.include?(user.person)
+	end
+
+	def showControlsForUser?(user)
+		return (isAuthoredByUser?(user) or canBeEditedBy?(user))
 	end
 
 end

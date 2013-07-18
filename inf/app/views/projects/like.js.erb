@@ -1,3 +1,3 @@
-$('#project-like-count-<%= @project.id %>').html('<%= link_to @project.likeCount, "#likesModal", "data-toggle" => "modal" %>');
+$('#project-like-count-<%= @project.id %>').html('<%= showLikesText(@project.likeCount) %>');
 $('#project-like-action-<%= @project.id %>').toggleClass("hidden");
 $('#project-unlike-action-<%= @project.id %>').toggleClass("hidden");

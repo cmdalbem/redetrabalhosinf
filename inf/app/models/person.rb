@@ -1,14 +1,17 @@
 class Person < ActiveRecord::Base
 	has_many :ownerships, dependent: :destroy
 	has_many :projects, through: :ownerships, dependent: :destroy
+
+	# My Favorite Projects relationship
+	has_and_belongs_to_many :favorites, :foreign_key => 'person_id', :class_name => "Project", :join_table => 'people_projects_favorites'
 	
 	belongs_to :user
 
-	#Like relationship
-	has_and_belongs_to_many :likes, :foreign_key => 'person_id', :class_name => "Project"
+	# Like relationship
+	has_and_belongs_to_many :likes, :foreign_key => 'person_id', :class_name => "Project", :join_table => 'people_projects'
 
 	validates :name, presence: true, length: {minimum:4, maximum: PERSON_NAME_MAX_LENGTH}
-	# validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: PERSON_NICK_MAX_LENGTH}
+	# Validates :nick, presence: true, uniqueness: true, length: {minimum:4, maximum: PERSON_NICK_MAX_LENGTH}
 	validates :about, length: {maximum: PERSON_ABOUT_MAX_LENGTH}
 	validates :semester_year, allow_blank: true, :numericality => { :greater_than => 1989, :less_than_or_equal_to => Time.now.year }
 	validates :semester_sem, allow_blank: true, :numericality => { :greater_than => 0, :less_than_or_equal_to => 2 }

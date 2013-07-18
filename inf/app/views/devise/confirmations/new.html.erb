@@ -1,16 +1,16 @@
-<h2>Reenvio de instruções de confirmação</h2>
+<div class="content">
+	<h2><%= title "Reenvio de instruções de confirmação" %></h2>
 
-<br>
-<br>
+	<br>
 
-<div class="row-fluid">
-	<div class="offset3 span6">
-		<center>
+	<div class="well row-fluid">
+		<div class="offset3 span6">
 			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-			  <%= devise_error_messages! %>
-			  <%= f.email_field :email, required: true, placeholder: "Email" %><br>
-			  <%= f.submit "Enviar", class: "btn" %>
+				<%= devise_error_messages! %>
+				<%= f.email_field :email, required: true, placeholder: "Email" %><br>
+				<%= f.submit "Enviar", class: "btn" %>
 			<% end %>
-		</center>
+		</div>
 	</div>
+
 </div>
