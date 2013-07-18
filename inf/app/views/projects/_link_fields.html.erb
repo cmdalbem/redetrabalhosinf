@@ -1,0 +1,5 @@
+<div class="url_fields input-append">
+	<%= f.url_field :url, style: "width: 500px", placeholder: "URL", disabled: (f.object.url? ? true : false) %>
+	<%= f.hidden_field :_destroy %>
+	<%= link_to_function raw("<i class=\"icon-remove\"></i>"), "remove_fields(this)", class: "btn" %>
+</div>

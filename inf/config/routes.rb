@@ -6,6 +6,7 @@ Inf::Application.routes.draw do
 
   resources :global_search, path: "busca"
   resources :search_logs
+  resources :links
 
   resources :projects, path: "trabalhos", :path_names => { new: "novo", edit: "editar" }
   resources :people, path: "usuarios", :path_names => { new: "novo", edit: "editar" }, constraints: { :id => /[^\/]+/ }

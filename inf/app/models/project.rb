@@ -27,6 +27,9 @@ class Project < ActiveRecord::Base
 	has_attached_file :file, :path => attachmentsPath
 		validates_attachment_size :file, :less_than => MAX_FILE_SIZE_MB.megabytes
 
+	has_many :links, dependent: :destroy
+	accepts_nested_attributes_for :links, :reject_if => lambda { |c| c[:url].blank? }, :allow_destroy => true
+
 	validates :title, presence: true, length: {maximum: PROJECT_TITLE_MAX_LENGTH}, format: /^[^\/]+$/
 	validates :description, length: {maximum: PROJECT_DESCRIPTION_MAX_LENGTH}
 	validates :course, presence: true
@@ -64,8 +67,8 @@ class Project < ActiveRecord::Base
 
 	attr_reader :relevance
 	def relevance
-		# (20*self.likeCount + 10*self.downloadCount + 10*self.linkHitCount)*100.0 / (1+self.viewCount)
-		10*self.likeCount + 7*self.downloadCount + 7*self.linkHitCount + 5*self.comments.count + 1*self.viewCount
+		# When editing this equation, remember to update it at: views/projets/_projects_table.html.erb
+		10*self.likeCount + 3*self.comments.count + 1*self.viewCount
 	end
 
 	def self.search(search)

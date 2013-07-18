@@ -116,6 +116,8 @@ class ProjectsController < ApplicationController
 	def new
 		@project = Project.new
 
+		@project.links.build
+
 	end
 
 	# GET /projects/1/edit
@@ -139,20 +141,12 @@ class ProjectsController < ApplicationController
 			people.push(current_user.person.id)
 		end
 
-
-		@project = Project.new(title: pp["title"],
-			course_id: pp["course_id"],
-			description: pp["description"],
-			semester_year: pp["semester_year"],
-			semester_sem: pp["semester_sem"],
-			tag_ids: tags,
-			image: pp["image"],
-			file: pp["file"],
-			link: pp["link"],
-			person_ids: people,
-			likeCount: 0,
-			tags_str: tags_str
-		)
+		# Save!
+		pp["tag_ids"] = tags
+		pp["person_ids"] = people
+		pp["likeCount"] = 0
+		pp["tags_str"] = tags_str
+		@project = Project.new(pp)
 
 		respond_to do |format|
 			if @project.save
@@ -216,16 +210,12 @@ class ProjectsController < ApplicationController
 			@project.update_attributes(link: pp["link"], linkHitCount: 0)
 		end
 		
-		success &&= @project.update_attributes(
-					title: pp["title"],
-					description: pp["description"],
-					course_id: pp["course_id"],
-					semester_year: pp["semester_year"],
-					semester_sem: pp["semester_sem"],
-					tag_ids: tags,
-					person_ids: people,
-					tags_str: tags_str
-		) 
+		
+		# Save!
+		pp["tag_ids"] = tags
+		pp["person_ids"] = people
+		pp["tags_str"] = tags_str
+		success &&= @project.update_attributes(pp) 
 
 
 		respond_to do |format|

@@ -140,17 +140,17 @@
     </div>
 
     <div class="block span6">
-      <p>
-        <% if @project.link? %>
-          <h4><i class="icon-link"></i></i> Links (1)</h4>
-          <p class="margin-left">
-            <%= link_to @project.link, project_link_path(@project), rel: @project.link %> <span class="badge"><%=@project.linkHitCount%> hits</span>
-          </p>
-        <% else %>
-          <h4><i class="icon-link"></i></i> Links (0)</h4>
-        <% end %>
-      </p>
-      <p>
+      <div>
+        <h4><i class="icon-link"></i></i> Links (<%=@project.links.count%>)</h4>
+        <div class="margin-left">
+          <% @project.links.each do |l| %>
+            <p>
+              <%= link_to l.url, l %> <span class="badge"><%=l.hits%> hits</span>
+            </p>
+          <% end %>
+        </div>
+      </div>
+      <div>
         <% if @project.file? %>
           <h4><i class="icon-paper-clip icon-rotate-90"></i> Arquivos (1)</h4>
           <p class="margin-left">
@@ -159,7 +159,7 @@
         <% else %>
           <h4><i class="icon-paper-clip icon-rotate-90"></i> Arquivos (0)</h4>
         <% end %>
-      </p>        
+      </div>        
     </div>
   </div>
 

@@ -97,8 +97,6 @@
 
 			<div class="accordion" id="accordion">
 
-				<%= f.label "Conteúdo Adicional" %>
-
 				<div class="accordion-group">
 					<% collapseId = 0 %>
 
@@ -106,13 +104,18 @@
 					<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
 							<!-- HEADER -->
-							<h5> <i class="icon-link icon-large icon-grid"></i> Link </h5>
+							<h5> <i class="icon-link icon-large icon-grid"></i> Links </h5>
 						</a>
 					</div>
 					<div id="collapse<%=collapseId%>" class="accordion-body collapse">
 						<div class="accordion-inner">
 							<!-- CONTENT -->
-							<%= f.url_field :link, style: "width: 500px", placeholder: "URL" %>
+							<%= f.fields_for :links do |builder| %>
+								<% render "link_fields", :f => builder %>
+							<% end %>
+							<p>
+								<%= link_to_add_fields "+ Adicionar link", f, :links %>
+							</p>
 						</div>
 					</div>
 
@@ -140,8 +143,8 @@
 										<%= f.file_field :file, id: "fileInputField" %>
 										<!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
 										<%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateFileField').toggle(); $('#keepFileField').toggle(); $('#fileInputField').val('');", class: "btn btn-mini btn-warning" %>
-										<span class="help-block">
-											Máx.: <%=MAX_FILE_SIZE_MB%>Mb.
+										<span class="help-block small">
+											Limite: <%=MAX_FILE_SIZE_MB%>Mb.
 										</span>
 									</div>
 								</div>
@@ -159,8 +162,8 @@
 
 							<% else %>
 								<%= f.file_field :file %>
-								<span class="help-block">
-									Máx.: <%=MAX_FILE_SIZE_MB%>Mb.
+								<span class="help-block small">
+									Limite: <%=MAX_FILE_SIZE_MB%>Mb.
 								</span>
 							<% end %>
 
@@ -198,8 +201,8 @@
 										<%= f.file_field :image, id: "avatarInputField" %>
 										<!-- This button toggles the according divs appearance state AND clears the input value (effectively canceling the replacing) -->
 										<%= link_to_function raw("<i class=\"icon-remove\"></i> Cancelar substituição"), "$('#updateImageField').toggle(); $('#keepImageField').toggle(); $('#avatarInputField').val('');", class: "btn btn-mini btn-warning" %>
-										<span class="help-block">
-											Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
+										<span class="help-block small">
+											Formatos aceitos: JPEG, PNG, GIF, BMP. Limite: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
 										</span>
 									</div>
 								</div>									
@@ -217,8 +220,8 @@
 
 							<% else %>
 								<%= f.file_field :image %>
-								<span class="help-block">
-									Formatos: jpeg, png, gif, bmp. Máx.: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
+								<span class="help-block small">
+									Formatos aceitos: JPEG, PNG, GIF, BMP. Limite: <%=MAX_IMAGE_FILE_SIZE_MB%>Mb.
 								</span>
 							<% end %>
 						</div>
@@ -230,7 +233,7 @@
 					<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=collapseId%>">
 							<!-- HEADER -->
-							<h5> <i class="icon-group icon-large icon-grid"></i> Mais autores </h5>
+							<h5> <i class="icon-group icon-large icon-grid"></i> Múltiplos autores </h5>
 						</a>
 					</div>
 					<div id="collapse<%=collapseId%>" class="accordion-body collapse">
