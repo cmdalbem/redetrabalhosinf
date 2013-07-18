@@ -9,7 +9,15 @@
     <div class="panel">
       <div class="pull-right">
         <!-- Favorite Button -->
-
+        <% if USE_FAVORITES %>
+          <% if @project.isAuthoredByUser?(current_user) %>
+            <% if @person.favorites.include?(@project) %>
+              <%= link_to raw("<i class=\"icon-star\"></i> Destaque (desfazer)"), favorite_project_path(@project), class: "btn btn-warning active", id: "favoriteButton" %> 
+            <% else %>
+              <%= link_to raw("<i class=\"icon-star\"></i> Adicionar aos Destaques"), favorite_project_path(@project), class: "btn btn-warning", id: "favoriteButton" %> 
+            <% end %>
+          <% end %>
+        <% end %>
 
         <!-- Edit and Delete -->
         <% if @project.canBeEditedBy?(current_user) %>

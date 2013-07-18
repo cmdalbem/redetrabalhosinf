@@ -195,8 +195,11 @@
 			<div class="span9">
 				<div class="tabbable">
 
-					<% #hasFavorites = not(@favoriteProjects.empty?) %>
-					<% hasFavorites = false %>
+					<% if USE_FAVORITES %>
+						<% hasFavorites = not(@favoriteProjects.empty?) %>
+					<% else %>
+						<% hasFavorites = false %>
+					<% end %>
 
 					<ul class="nav nav-tabs">
 						<% if hasFavorites %>

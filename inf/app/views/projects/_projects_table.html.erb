@@ -46,6 +46,15 @@
 
             <% if user_signed_in? and project.showControlsForUser?(current_user) %>
               <div class="thumb-buttons project-hidden-options pull-right">
+                <% if USE_FAVORITES %>
+                  <% if project.isAuthoredByUser?(current_user) %>
+                    <% if current_user.person.favorites.include?(project) %>
+                      <%= link_to raw("<i class=\"icon-star icon-minigrid icon-large text-warning\"></i>"), favorite_project_path(project), id: "favoriteButton" %> 
+                    <% else %>
+                      <%= link_to raw("<i class=\"icon-star icon-minigrid\"></i>"), favorite_project_path(project), id: "favoriteButton" %> 
+                    <% end %>
+                  <% end %>
+                <% end %>
                 
                 <% if project.canBeEditedBy?(current_user) %>
                   <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>

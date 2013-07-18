@@ -11,7 +11,16 @@
             <!-- Buttons -->
             <% if user_signed_in? and project.showControlsForUser?(current_user) %>
               <div class="thumb-buttons project-hidden-options pull-right small">
-                
+                <% if USE_FAVORITES %>
+                  <% if project.isAuthoredByUser?(current_user) %>
+                    <% if current_user.person.favorites.include?(project) %>
+                      <%= link_to raw("<i class=\"icon-star text-warning\"></i>"), favorite_project_path(project), id: "favoriteButton" %> 
+                    <% else %>
+                      <%= link_to raw("<i class=\"icon-star\"></i>"), favorite_project_path(project), id: "favoriteButton" %> 
+                    <% end %>
+                  <% end %>
+                <% end %>
+
                 <% if project.canBeEditedBy?(current_user) %>
                   <% adminActionColor = (current_user.admin? and not project.people.include?(current_user.person)) ? " text-error" : "" %>
                   <%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_project_path(project), class: adminActionColor %> 
