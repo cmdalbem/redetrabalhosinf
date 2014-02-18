@@ -6,7 +6,7 @@
         <li>
           <a href=<%= profile_path(person.nick) %> class="person-thumb thumbnail no-decoration">
             <%= image_tag person.avatar %>
-            <center>
+            <div class="text-center">
               <div class="thumb-content">
                 <header class="username-text">
                   <div class="title">
@@ -21,7 +21,7 @@
               <div class="blacktext">
                 <%=person.projects.count %> <text class="small">trabalho<%=my_pluralize(person.projects.count)%></text>
               </div>
-            </center>
+            </div>
           </a>
         </li>
       </div>

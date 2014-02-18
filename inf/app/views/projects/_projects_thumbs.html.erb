@@ -42,7 +42,7 @@
             <div class="thumb-content">
               
               <header>
-                <center>
+                <div class="text-center">
                   
                   <div class="smaller">
                     <%= render "shared/project_popularity_stats", project: project %>
@@ -52,7 +52,7 @@
                     <%= link_to_project project %>
                   </div>
 
-                </center>
+                </div>
               </header>
 
               <% aux = project.image? ? "hidable" : "" %>

@@ -15,7 +15,7 @@
 
 	<!-- Course Filter Form -->
 	<% if not hasSelectedCourse %>
-		<center>
+		<div class="text-center">
 			<div id="courseSelector">
 				<%= form_tag projects_path, method: 'get' do %>
 					<%= hidden_field_tag :direction, params[:direction] %>
@@ -27,7 +27,7 @@
 					</div>
 				<% end %>
 			</div>
-		</center>
+		</div>
 	<% end %>
 
 	<br>
@@ -49,8 +49,8 @@
 	<br>
 	<br>
 
-	<center>
+	<div class="text-center">
 	  <%= link_to raw("<i class=\"icon-plus\"></i> Adicionar trabalho"), new_project_path(course_id: params[:course]), class: "btn btn-success btn-large" %>
-	</center>
+	</div>
 
 </div>
