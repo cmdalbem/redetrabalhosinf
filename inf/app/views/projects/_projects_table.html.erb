@@ -90,7 +90,7 @@
         <td style="width: 30%"><small><%= link_to_course project.course %> <%= project.getSemesterString %> </small></td>
 
         <td style="width: 150px">
-          <center class="small">
+          <div class="small text-center">
             <% #raw(printProjectPopularityStats(project,"·")) %>
             <%= render "shared/project_popularity_stats", project: project %>
           </div>

@@ -11,7 +11,7 @@
 	          Atividade nos Meus Trabalhos
 	        </legend>
 	        <% if @notifications.empty? %>
-	          <center class="muted">
+	          <div class="muted text-center">
 	          Sem atividade a exibir.
 	          </div> 
 	        <% else %>
@@ -40,7 +40,7 @@
 			    <div class="row-fluid">
 				    
 				    <div class="span5">
-				    	<center class="logo-img">
+				    	<div class="logo-img text-center">
 				    		<img src="/assets/logo.png">
 				    	</div>
 				    </div>
@@ -183,7 +183,7 @@
 						</legend>
 
 						<% if @numSuggestions==0 %>
-							<center class="muted">
+							<div class="muted text-center">
 								Nenhuma recomendação no momento.
 							</div>
 						<% else %>
