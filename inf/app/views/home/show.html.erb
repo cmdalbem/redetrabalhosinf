@@ -19,9 +19,7 @@
 	            <% @notifications.each do |a| %>
 	                <li>
 	                <%= render_activity a %>
-	                <small>
-	                  <p class="muted pull-right"></i><%= time_ago_in_words(a.created_at) %></p>
-	                </small>
+	                  <p class="muted pull-right"><small><i class="icon-time"></i><%= time_ago_in_words(a.created_at) %></small></p>
 	              </li>
 	            <% end %>
 	          </ul>
@@ -251,9 +249,7 @@
 								    <% end %>
 								    <li class=<%= unread ? "news-unread" : ""%> >
 										<%= render_activity a %>
-										<small>
-											<p class="muted pull-right"><%= time_ago_in_words(a.created_at) %></p>
-										</small>
+											<p class="muted pull-right"><small><%= time_ago_in_words(a.created_at) %></small></p>
 									</li>
 								<% end %>
 							</ul>
@@ -302,10 +298,8 @@
 								<header><%= link_to_project p %></header>
 								<%= raw(getContentIcons(p)) %>
 								<p class="author">por <%= p.people.collect { |guy| link_to guy.nick, profile_path(guy.nick) }.join(", ").html_safe %> </p>
-								<small>
-									<p><i class="icon-book muted"></i> <%= link_to p.course.name, projects_path(course: p.course.id), class: "" %></p>
-									<p class="muted"><i class="icon-time"></i> <%= time_ago_in_words(p.created_at) %></p>
-								</small>
+									<p><small><i class="icon-book muted"></i> <%= link_to p.course.name, projects_path(course: p.course.id), class: "" %></small></p>
+									<p class="muted"><small><i class="icon-time"></i> <%= time_ago_in_words(p.created_at) %></small></p>
 							</li>
 						<% end %>
 						<li class="small">
@@ -353,9 +347,7 @@
 						    		<tr>
 										<td style="width: 100%;">
 											<%= render_activity a %>
-											<small>
-												<p class="muted"><i class="icon-time"></i> <%= time_ago_in_words(a.created_at) %></p>
-											</small>
+												<p class="muted"><small><i class="icon-time"></i> <%= time_ago_in_words(a.created_at) %></small></p>
 										</td>
 						    			<td>
 											<% if user_signed_in? and a.owner==current_user %>
