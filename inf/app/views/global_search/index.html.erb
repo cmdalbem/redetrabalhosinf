@@ -17,9 +17,9 @@
 		</div>
 
 		<% if @projects.size < @totalProjects %>
-			<center>
+			<div class="text-center">
 				<%= link_to raw("Ver todos resultados <i class=\"icon-double-angle-right text-error\"></i>"), projects_path(q: @query) %>
-			</center>
+			</div>
 		<% end %>
 
 	<% end %>
@@ -33,9 +33,9 @@
 		</div>
 
 		<% if @people.size < @totalPeople %>
-			<center>
+			<div class="text-center">
 				<%= link_to raw("Ver todos resultados <i class=\"icon-double-angle-right text-error\"></i>"), people_path(q: @query) %>
-			</center>
+			</div>
 		<% end %>
 
 	<% end %>
