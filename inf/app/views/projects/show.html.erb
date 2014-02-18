@@ -36,9 +36,9 @@
   <div class="row-fluid">
     <% if @project.image? %>
       <div class="">
-        <center>
+        <div class="text-center">
           <%= image_tag @project.image.url %>
-        </center>
+        </div>
       </div>
       <br>
     <% end %>
@@ -63,7 +63,7 @@
 
       <div class="row-fluid">
         <div class="offset8 span4">
-          <center>
+          <div class="text-center">
             <!-- Modal window for showing who liked this project -->
             <div id="likesList">
               <%= render 'likes_list' %>
@@ -88,7 +88,7 @@
               <span id="project-like-count-<%= @project.id %>" class="smaller"><%= showLikesText(@project.likeCount) %></span>
 
             </p>
-          </center>
+          </div>
         </div>
       </div>
     </div>
@@ -141,7 +141,7 @@
 
     <div class="block span6">
       <div>
-        <h4><i class="icon-link"></i></i> Links (<%=@project.links.count%>)</h4>
+        <h4><i class="icon-link"></i> Links (<%=@project.links.count%>)</h4>
         <div class="margin-left">
           <% @project.links.each do |l| %>
             <p>

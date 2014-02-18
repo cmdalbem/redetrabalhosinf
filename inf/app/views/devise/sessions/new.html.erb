@@ -4,7 +4,7 @@
 	<br>
 
 	<div class="well row-fluid">
-		<center>
+		<div class="text-center">
 			<%= form_for resource, :as => resource_name, :url => session_path(resource_name), html: {class: "form-inline"} do |f| %>
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-user"></i></span>
@@ -24,6 +24,6 @@
 
 			<%= render "devise/shared/links" %>
 
-		</center>
+		</div>
 	</div>
 </div>
