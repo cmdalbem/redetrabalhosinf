@@ -13,7 +13,7 @@
 	        <% if @notifications.empty? %>
 	          <center class="muted">
 	          Sem atividade a exibir.
-	          </center> 
+	          </div> 
 	        <% else %>
 	          <ul>
 	            <% @notifications.each do |a| %>
@@ -44,7 +44,7 @@
 				    <div class="span5">
 				    	<center class="logo-img">
 				    		<img src="/assets/logo.png">
-				    	</center>
+				    	</div>
 				    </div>
 					
 					<div class="span7">
@@ -61,23 +61,23 @@
 							<div id="featuresList">
 								<table>
 									<tr>
-										<td class="td-left"><center><i class="icon-cogs icon-large"></i></center></td>
+										<td class="td-left text-center"><i class="icon-cogs icon-large"></i></td>
 										<td>Aprenda a usar tecnologias com exemplos que funcionam</td>
 									</tr>
 									<tr>
-										<td class="td-left"><center><i class="icon-ok icon-large"></i></center></td>
+										<td class="td-lef text-center"><i class="icon-ok icon-large"></i></td>
 										<td>Confira os detalhes que não podem faltar no seu relatório</td>
 									</tr>
 									<tr>
-										<td class="td-left"><center><i class="icon-book icon-large"></i></center></td>
+										<td class="td-left text-center"><i class="icon-book icon-large"></i></td>
 										<td>Conheça mais sobre uma disciplina vendo os trabalhos dela</td>
 									</tr>
 									<tr>
-										<td class="td-left"><center><i class="icon-group icon-large"></i></center></td>
+										<td class="td-left text-center"><i class="icon-group icon-large"></i></td>
 										<td>Socialize e compartilhe o conhecimento com seus colegas</td>
 									</tr>
 									<tr>
-										<td class="td-left"><center><i class="icon-lightbulb icon-large"></i></center></td>
+										<td class="td-left text-center"><i class="icon-lightbulb icon-large"></i></td>
 										<td>Descubra e se inspire com alguns dos trabalhos mais criativos do INF</td>
 									</tr>
 								</table>
@@ -99,9 +99,9 @@
 		    <br>
 		
 			<div class="row-fluid">
-				<center>
+				<div class="text-center">
 					<%= render "shared/global_search_form", placeholder: "Buscar em #{@totalProjects} trabalhos, #{@totalCourses} disciplinas, #{@totalUsers} usuários e #{@totalTags} tags", clearable: false %>
-				</center>
+				</div>
 			</div>
 
 
@@ -115,9 +115,9 @@
 				<div class="row-fluid">
 				    
 				    <div class="span2">
-				    	<center>
+				    	<div class="text-center">
 				    		<%= link_to image_tag(@person.avatar.url, class: "img-polaroid", style: "max-height: 100px; width: auto;"), profile_path(current_user.person.nick) %>
-				    	</center>
+				    	</div>
 				    </div>
 					
 					<div class="span7">
@@ -163,19 +163,19 @@
 
 			<div class="row-fluid">
 			<!--<div class="span3">
-					<center>
+					<div class="text-center">
 						<%= link_to image_tag(@person.avatar, class: "img-polaroid"), profile_path(current_user.person.nick) %>
-					</center>
+					</div>
 					
 					<h2 class="username-text"><%= title @person.name %> <small><%=@person.nick%></small></h2>
 					
-					<center>
+					<div class="text-center">
 						<ul class="dotted-horizontal-list">
 							<li><%= link_to nav_icon("Adicionar trabalho",""), new_project_path %></li>
 							<li><%= link_to nav_icon("Editar Perfil", ""), edit_person_path(current_user.person) %></li>
 							<li><%= link_to nav_icon("Sair",""), destroy_user_session_path, :method => :delete %></li>
 						</ul>
-					</center>
+					</div>
 				</div>-->
 
 	 			<div class="span4 block <%= @numSuggestions>0 ? 'block-red' : '' %>">
@@ -187,7 +187,7 @@
 						<% if @numSuggestions==0 %>
 							<center class="muted">
 								Nenhuma recomendação no momento.
-							</center>
+							</div>
 						<% else %>
 							<ul>
 								<% if @recommendedActions[:addProjects] %>
@@ -241,7 +241,7 @@
 						<% if @notifications.empty? %>
 							<center class="muted">
 								Sem notificações a exibir.
-							</center>
+							</div>
 						<% else %>
 							<ul>
 								<% @notifications.each do |a| %>

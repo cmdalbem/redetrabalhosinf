@@ -24,12 +24,12 @@
       <% end %>
       <th> Disciplina </th>
       <th>
-        <center>
+        <div class="text-center">
           Popularidade
           <a href="#" rel="popover" data-original-title="Popularidade?" class="no-decoration"
             data-content="Os trabalhos são ordenados usando a seguinte função:<br><small>10*likes + 3*comments + 1*views</small>"
             > <i class="icon-question-sign"></i></a>
-        </center>
+        </div>
       </th> 
     </tr>
   </thead>
@@ -93,7 +93,7 @@
           <center class="small">
             <% #raw(printProjectPopularityStats(project,"·")) %>
             <%= render "shared/project_popularity_stats", project: project %>
-          </center>
+          </div>
         </td>
         
         <!-- <td style="width: 3%"> <span id="project-like-count-<%= project.id %>"><%= project.likeCount %></span>  </td> -->
