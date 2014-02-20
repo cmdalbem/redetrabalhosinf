@@ -3,6 +3,8 @@
 
 <head>
 	<%= title site: "infHUB" %>
+	
+	<meta charset="utf-8">
 
 	<%= metamagic [:property => "og:image", :content => "http://infhub.herokuapp.com/assets/logo.png"], [:property => "og:site_name", :content => "infHUB"], [:property => "og:type", :content => "website"], [:property => "fb:admins", :content => "1299864678"], description: "A rede social de compartilhamento de trabalhos do INF.", keywords: %w(inf ufrgs social network projects trabalhos disciplinas cadeiras rede social compartilhamento arquivos downloads ciencia da computação cic engenharia da computação ecp) %>
 
@@ -116,9 +118,9 @@
 
 									<%= f.submit "OK", class: "btn btn-primary btn-block", style: "margin-bottom: 10px;"%>
 
-									<center>
+									<div class="text-center">
 										<a href="#resendConfirmationModal" class="small" role="button" data-toggle="modal"><i class="icon-question-sign"></i> Não recebi email de confirmação.</a>
-									</center>
+									</div>
 								<% end %>
 							</div>
 						</li>
@@ -163,10 +165,10 @@
 		<%= yield %>
 
 		<!-- Hidden modals for navbar sign-in dropdown -->
-		<div id="forgotPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div id="forgotPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalResetarSenha" aria-hidden="true">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Resetar senha</h3>
+				<h3 id="ModalResetarSenha">Resetar senha</h3>
 			</div>
 			<div class="modal-body">
 				<%= form_for(:user, :url => password_path(:user), :html => { :method => :post }) do |f| %>
@@ -176,10 +178,10 @@
 				<% end %>
 			</div>
 		</div>
-		<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmacao" aria-hidden="true">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Reenviar email de confirmação</h3>
+				<h3 id="ModalConfirmacao">Reenviar email de confirmação</h3>
 			</div>
 			<div class="modal-body">
 				<%= form_for(:user, :url => confirmation_path(:user), :html => { :method => :post }) do |f| %>
@@ -204,7 +206,7 @@
 				<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhub.inf.br&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;font=tahoma&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width:110px;" allowTransparency="true"></iframe>
 				<br>			
 				<!-- GitHub Star Button -->
-				<iframe src="http://ghbtns.com/github-btn.html?user=cmdalbem&repo=redetrabalhosinf&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85px" height="20px"></iframe>
+				<iframe src="http://ghbtns.com/github-btn.html?user=cmdalbem&repo=redetrabalhosinf&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85" height="20"></iframe>
 			</div>
 
 			<div class="clearfix" style="margin-left:45%;">

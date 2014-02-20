@@ -12,10 +12,10 @@ Não está cadastrado? <%= link_to "Cadastre-se", new_registration_path(:user)  
 	<a href="#forgotPasswordModal" role="button" data-toggle="modal">Esqueceu tua senha?</a>
 	<br>
 </small>
-<div id="forgotPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="forgotPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalResetarSenha" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3 id="myModalLabel">Resetar senha</h3>
+		<h3 id="ModalResetarSenha">Resetar senha</h3>
 	</div>
 	<div class="modal-body">
 		<%= form_for(:user, :url => password_path(:user), :html => { :method => :post }) do |f| %>
@@ -33,10 +33,10 @@ Não está cadastrado? <%= link_to "Cadastre-se", new_registration_path(:user)  
 	<br>
 </small>
 
-<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="resendConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmacao" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3 id="myModalLabel">Reenviar email de confirmação</h3>
+		<h3 id="ModalConfirmacao">Reenviar email de confirmação</h3>
 	</div>
 	<div class="modal-body">
 		<%= form_for(:user, :url => confirmation_path(:user), :html => { :method => :post }) do |f| %>

@@ -78,9 +78,9 @@
 			<div class="span3 person-profile" >
 
 				<div class="row-fluid">
-					<center>
+					<div class="text-center">
 						<%= image_tag @person.avatar, class: "img-polaroid" %>
-					</center>
+					</div>
 				
 					<h2 class="username-text"><%= title @person.name %> <small><%=@person.nick%></small></h2>
 					
@@ -100,31 +100,31 @@
 
 				<div class="person-stats">
 					<div class="row-fluid">
-						<center>
+						<div class="text-center">
 							<header> Estatísticas dos meus trabalhos </header>
-						</center>
+						</div>
 					</div>
 
 					<div class="row-fluid">
 						<div class="span4">
-							<center>
+							<div class="text-center">
 								<div class="bigNumber"><%= @person.projects.count %></div>
 								<span>trabalhos</span>
-							</center>
+							</div>
 						</div>
 						 
 						<div class="span4">
-							<center>
+							<div class="text-center">
 								<div class="bigNumber"><%= @person.getTotalLikes %></div>
 								<span>curtir</span>
-							</center>
+							</div>
 						</div>
 
 						<div class="span4">
-							<center>
+							<div class="text-center">
 								<div class="bigNumber"><%= @person.getTotalViews %></div>
 								<span>visualizações</span>
-							</center>
+							</div>
 						</div>
 					</div>
 				</div>
