@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
 		validates_attachment_size :image, :less_than => MAX_IMAGE_FILE_SIZE_MB.megabytes
 		validates_attachment_content_type :image, :content_type=>['image/jpeg', 'image/png', 'image/gif', 'image/bmp'] 
 
-	has_attached_file :file, :path => attachmentsPath
+	has_attached_file :file, :path => attachmentsPath, :s3_headers => lambda { |attachment| { 'content-disposition' => "attachment; filename=\"#{attachment.file_file_name}\"" } }
 		validates_attachment_size :file, :less_than => MAX_FILE_SIZE_MB.megabytes
 
 	has_many :links, dependent: :destroy
