@@ -160,7 +160,7 @@ class ProjectsController < ApplicationController
 				if params[:commit]=="save_and_add_new"
 					format.html { redirect_to new_project_url, notice: 'Trabalho <b>' + @project.title + '</b> criado com sucesso.' }
 				else
-					format.html { redirect_to project_path(@project), notice: 'Adicionar trabalho criado com sucesso.' }
+					format.html { redirect_to project_path(@project), notice: 'Trabalho criado com sucesso.' }
 				end
 			else
 				format.html { render action: "new" }
