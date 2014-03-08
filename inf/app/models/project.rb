@@ -18,7 +18,7 @@ class Project < ActiveRecord::Base
 	has_and_belongs_to_many :favorites, :foreign_key => 'project_id', :class_name => "Person", :join_table => 'people_projects_favorites'
 
 	# Attachments
-	attachmentsPath = Rails.env.development? ? "dev/projects/:id/:attachment.:extension" : "projects/:id/:attachment.:extension"
+	attachmentsPath = Rails.env.development? ? "dev/projects/:id/:filename" : "projects/:id/:filename"
 
 	has_attached_file :image, :path => attachmentsPath, :styles => { :original => "800x800>" }
 		validates_attachment_size :image, :less_than => MAX_IMAGE_FILE_SIZE_MB.megabytes
