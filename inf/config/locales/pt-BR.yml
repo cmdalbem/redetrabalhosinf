@@ -207,6 +207,9 @@ pt-BR:
     errors:
       <<: *errors
   activerecord:
+    attributes:
+      project:
+        course: "Disciplina"
     errors:
       <<: *errors
 
