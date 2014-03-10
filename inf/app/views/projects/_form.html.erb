@@ -2,7 +2,7 @@
 
 	<% if @project.errors.any? %>
 		<div id="error_explanation">
-			<h2><%= pluralize(@project.errors.count, "erro") %> impediram deste trabalho ser salvo:</h2>
+			<h2><%= pluralize(@project.errors.count, "erro impediu", "erros impediram") %> deste trabalho ser salvo:</h2>
 			<ul>
 				<% @project.errors.full_messages.each do |msg| %>
 					<li><%= msg %></li>
