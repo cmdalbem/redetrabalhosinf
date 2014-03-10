@@ -1,5 +1,5 @@
 <div class="content">
-  <h2>Redefinir senha</h2>
+  <%= title "Redefinir senha" %>
   
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
