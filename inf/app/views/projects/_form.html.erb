@@ -32,7 +32,7 @@
 
 			<div class="field">
 				<%= f.label "Título", class: "required" %><br />
-			<%= f.text_field :title, required: true, style: "width: 80%;", maxlength: PROJECT_TITLE_MAX_LENGTH, placeholder: "Título" %>
+			<%= f.text_field :title, required: true, style: "width: 80%;", maxlength: PROJECT_TITLE_MAX_LENGTH, placeholder: "Título", oninvalid:"setCustomValidity('Não se esqueça do título!')", oninput:"setCustomValidity('')" %>
 			</div>
 
 			<div class="field">
