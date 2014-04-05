@@ -69,6 +69,9 @@ gem 'metamagic'
 # Queries optimizer
 gem "bullet", :group => "development"
 
+# E-mail encoder
+gem 'actionview-encoded_mail_to', '~> 1.0.4'
+
 
 # Gems to be added only when running on Linux
 platforms :ruby do

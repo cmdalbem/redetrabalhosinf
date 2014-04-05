@@ -135,7 +135,7 @@
 					<div class="person-details">
 
 						<span class="muted"><i class="icon-envelope icon-grid"></i></span>
-						<%= mail_to @person.user.email %>
+						<%= mail_to @person.user.email, nil, encode: "javascript" %>
 
 						<br>
 
