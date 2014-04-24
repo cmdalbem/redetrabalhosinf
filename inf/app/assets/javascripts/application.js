@@ -40,6 +40,11 @@ $(function () {
 	$('[rel=popover]').popover({placement:'bottom',html:true});
 });
 
+// Adjust #wrap padding-top when navbar grows vertically (on small screns)
+$(window).resize(function() {
+  $("#wrap").css("padding-top", $("header").height() + 3);
+});
+
 // Function used within forms for deleting uploaded files.
 // Remember to: (1) create a hidden field holding a boolean value
 // 				(2) pass into this function the ID of the field of the previous step
