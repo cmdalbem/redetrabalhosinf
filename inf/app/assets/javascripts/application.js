@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require twitter/bootstrap
+//= require bootstrap
 //= require select2
 //= require jqcloud
 //= require bootstrap-wysihtml5

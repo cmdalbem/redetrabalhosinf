@@ -15,7 +15,9 @@
 *= require bootstrap-wysihtml5
 */
 
-@import "twitter/bootstrap";
+/*@import "bootstrap-sprockets";*/
+@import "bootstrap";
+/*@import "twitter/bootstrap";*/
 /*@import "twitter/bootstrap-responsive";*/
 @import "font-awesome";
 
