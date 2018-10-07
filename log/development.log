@@ -1,1 +1,557 @@
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/robots.txt" for 127.0.0.1 at 2018-10-07 15:19:45 -0300
+
+ActionController::RoutingError (No route matches [GET] "/robots.txt"):
+  actionpack (3.2.22.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.22.5) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.22.5) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.22.5) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.22.5) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.22.5) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.22.5) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.7) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.7) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.22.5) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.7) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.22.5) lib/action_dispatch/middleware/static.rb:83:in `call'
+  railties (3.2.22.5) lib/rails/engine.rb:484:in `call'
+  railties (3.2.22.5) lib/rails/application.rb:231:in `call'
+  rack (1.4.7) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.22.5) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.7) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/Cellar/ruby/2.5.1/lib/ruby/2.5.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/Cellar/ruby/2.5.1/lib/ruby/2.5.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/Cellar/ruby/2.5.1/lib/ruby/2.5.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.5.0/gems/actionpack-3.2.22.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-07 15:19:45 -0300
+Processing by HomeController#show as HTML
+Completed 500 Internal Server Error in 275.0ms
+
+TypeError (Cannot visit Integer):
+  app/controllers/home_controller.rb:61:in `show'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.5.0/gems/actionpack-3.2.22.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.5.0/gems/actionpack-3.2.22.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.5.0/gems/actionpack-3.2.22.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (29.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-07 15:20:06 -0300
+Processing by HomeController#show as HTML
+Completed 500 Internal Server Error in 1.2ms
+
+TypeError (Cannot visit Integer):
+  app/controllers/home_controller.rb:61:in `show'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.5.0/gems/actionpack-3.2.22.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.5.0/gems/actionpack-3.2.22.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.5.0/gems/actionpack-3.2.22.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-07 16:12:30 -0300
+Processing by HomeController#show as HTML
+  [1m[36mUser Load (56.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProject Load (8.2ms)[0m  SELECT "projects".* FROM "projects" ORDER BY created_at DESC LIMIT 10
+  [1m[36mOwnership Load (4.2ms)[0m  [1mSELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)[0m
+  [1m[35mPerson Load (44.0ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" IN (1)
+  [1m[36mCourse Load (60.5ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)[0m
+  [1m[35mPerson Load (0.6ms)[0m  SELECT "people".* FROM "people" ORDER BY created_at DESC LIMIT 12
+  [1m[36mPublicActivity::Activity Load (50.4ms)[0m  [1mSELECT "activities".* FROM "activities" ORDER BY created_at desc LIMIT 13[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (1)
+  [1m[36mProject Load (17.3ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)[0m
+  [1m[35mTag Load (106.9ms)[0m  SELECT "tags".* FROM "tags" 
+  [1m[36m (0.3ms)[0m  [1mSHOW max_identifier_length[0m
+  [1m[35m (48.5ms)[0m  SELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects" [0m
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "tags" [0m
+  [1m[35mPerson Load (0.6ms)[0m  SELECT "people".* FROM "people" WHERE "people"."user_id" = 1 LIMIT 1
+  [1m[36mSQL (218.7ms)[0m  [1mSELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = 1[0m
+  [1m[35mPublicActivity::Activity Load (28.0ms)[0m  SELECT "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1)) ORDER BY created_at desc LIMIT 10 OFFSET 0
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = 1[0m
+  [1m[35mProject Load (1.0ms)[0m  SELECT "projects".* FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = 1
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = 1[0m
+  [1m[35m (15.5ms)[0m  SELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = 1
+  Rendered shared/_pages_nav.html.erb (0.6ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 27[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 16
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 2[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 11
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 32[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 18
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 28[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 19
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 13[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 10
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 30[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 21
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 3[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 23
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 8
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 26[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 17
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 25[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 24
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 7[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 12
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 14[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 31
+  [1m[36m (2.1ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 9[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 6
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 29[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 22
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 4[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 15
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 20[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 5
+  Rendered shared/_tag_cloud.html.erb (56.5ms)
+  [1m[36m (6.4ms)[0m  [1mSELECT COUNT(*) FROM "links" WHERE "links"."project_id" = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "people".* FROM "people" WHERE "people"."user_id" = 1 LIMIT 1
+  Rendered public_activity/project/_create.html.erb (3.0ms)
+  Rendered home/show.html.erb within layouts/application (184.0ms)
+Compiled jquery.js  (6ms)  (pid 24371)
+Compiled jquery_ujs.js  (0ms)  (pid 24371)
+Compiled application.js  (161ms)  (pid 24371)
+  Rendered shared/_global_search_form.html.erb (2.3ms)
+Completed 200 OK in 2031.3ms (Views: 525.8ms | ActiveRecord: 1116.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:32 -0300
+Served asset /application.css - 200 OK (69ms)
+
+
+Started GET "/assets/global_search.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /global_search.css - 200 OK (5ms)
+
+
+Started GET "/assets/bootstrap-docs.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-docs.css - 200 OK (5ms)
+
+
+Started GET "/assets/colortheme.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /colortheme.css - 200 OK (4ms)
+
+
+Started GET "/assets/activities.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /activities.css - 200 OK (4ms)
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /links.css - 200 OK (23ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /people.css - 200 OK (3ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /projects.css - 200 OK (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /scaffolds.css - 200 OK (6ms)
+
+
+Started GET "/assets/search_logs.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /search_logs.css - 200 OK (5ms)
+
+
+Started GET "/assets/swf_uploader.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /swf_uploader.css - 200 OK (3ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /tags.css - 200 OK (3ms)
+
+
+Started GET "/assets/select2.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /select2.css - 200 OK (6ms)
+
+
+Started GET "/assets/jqcloud.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /jqcloud.css - 200 OK (6ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/core.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-wysihtml5/core.css - 200 OK (7ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-wysihtml5/index.css - 200 OK (6ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap.js - 200 OK (18ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /jquery.js - 200 OK (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (12ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.autogrow-textarea.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /jquery.autogrow-textarea.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/s3_upload.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /s3_upload.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap-affix.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-affix.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/select2.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /select2.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-wysihtml5/index.js - 200 OK (10ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/core.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-wysihtml5/core.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /application.js - 304 Not Modified (38ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/pt-BR.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-wysihtml5/locales/pt-BR.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jqcloud.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /jqcloud.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/wysihtml5.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /bootstrap-wysihtml5/wysihtml5.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /logo_txt_mini.png - 200 OK (3ms)
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /logo_carved.png - 200 OK (4ms)
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /patterns/grid.png - 200 OK (6ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2018-10-07 16:12:33 -0300
+Served asset /fontawesome-webfont.woff - 200 OK (9ms)
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2018-10-07 16:12:36 -0300
+Served asset /favicon.ico - 200 OK (3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Processing by HomeController#show as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.6ms)[0m  SELECT "projects".* FROM "projects" ORDER BY created_at DESC LIMIT 10
+  [1m[36mOwnership Load (0.6ms)[0m  [1mSELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)[0m
+  [1m[35mPerson Load (1.3ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" IN (1)
+  [1m[36mCourse Load (0.6ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)[0m
+  [1m[35mPerson Load (0.5ms)[0m  SELECT "people".* FROM "people" ORDER BY created_at DESC LIMIT 12
+  [1m[36mPublicActivity::Activity Load (0.8ms)[0m  [1mSELECT "activities".* FROM "activities" ORDER BY created_at desc LIMIT 13[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (1)
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" 
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" 
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tags" 
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."user_id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = 1
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1)) ORDER BY created_at desc LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = 1
+  [1m[36mProject Load (0.8ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = 1[0m
+  Rendered shared/_pages_nav.html.erb (0.1ms)
+  [1m[35m (7.7ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 14
+  [1m[36m (1.8ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 7[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 4
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 26[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 25
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 23[0m
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 15
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 24[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 12
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 6
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 20[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 3
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 30[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 8
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 18[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 29
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 19[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 2
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 28[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 5
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 16[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 11
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 32[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 27
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 21[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 17
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 22[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 9
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 10[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 13
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = 31[0m
+  Rendered shared/_tag_cloud.html.erb (80.6ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "links" WHERE "links"."project_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."user_id" = 1 LIMIT 1[0m
+  Rendered public_activity/project/_create.html.erb (1.3ms)
+  Rendered home/show.html.erb within layouts/application (102.7ms)
+  Rendered shared/_global_search_form.html.erb (0.4ms)
+Completed 200 OK in 180.5ms (Views: 119.9ms | ActiveRecord: 40.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/activities.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /activities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-docs.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-docs.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/colortheme.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /colortheme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/global_search.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /global_search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /links.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /projects.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_logs.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /search_logs.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/swf_uploader.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /swf_uploader.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /tags.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/select2.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /select2.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jqcloud.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /jqcloud.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/core.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-wysihtml5/core.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.css?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-wysihtml5/index.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.autogrow-textarea.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /jquery.autogrow-textarea.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/s3_upload.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /s3_upload.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-affix.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:38 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /bootstrap.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/select2.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /select2.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jqcloud.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /jqcloud.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/wysihtml5.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /bootstrap-wysihtml5/wysihtml5.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/core.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /bootstrap-wysihtml5/core.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /bootstrap-wysihtml5/index.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/pt-BR.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /bootstrap-wysihtml5/locales/pt-BR.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /application.js - 304 Not Modified (15ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /logo_txt_mini.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /logo_carved.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /patterns/grid.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
+Served asset /fontawesome-webfont.woff - 304 Not Modified (0ms)

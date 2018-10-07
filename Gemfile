@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.5.1'
+ruby '2.3.7'
 
 gem 'rails'
 
@@ -8,7 +8,7 @@ gem 'rails'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # for PostGreSQL databases
-gem 'pg', '~> 0.18'
+gem 'pg'
 
 
 # Gems used only for assets and not required
@@ -72,7 +72,7 @@ gem 'metamagic', "~> 2.0.5"
 # gem "bullet", :group => "development"
 
 # E-mail encoder
-gem 'actionview-encoded_mail_to', '~> 1.0.4'
+# gem 'actionview-encoded_mail_to'
 
 gem 'bootstrap-wysihtml5-rails', "~> 0.3.1.20"
 
