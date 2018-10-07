@@ -2834,3 +2834,5 @@ Served asset /patterns/grid.png - 304 Not Modified (1ms)
 
 Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2018-10-06 21:08:12 -0300
 Served asset /fontawesome-webfont.woff - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml

@@ -184,3 +184,9 @@ DEPENDENCIES
   select2-rails (~> 3.2.1)
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)
+
+RUBY VERSION
+   ruby 2.3.7p456
+
+BUNDLED WITH
+   1.16.1

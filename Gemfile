@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '2.3.7'
+
 gem 'rails'
 
 # Bundle edge Rails instead:
