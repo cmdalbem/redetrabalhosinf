@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.3.7'
+ruby '2.3.3'
 
 gem 'rails'
 
