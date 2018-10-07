@@ -8,7 +8,7 @@ gem 'rails'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # for PostGreSQL databases
-gem 'pg'
+gem 'pg', '~> 0.18'
 
 
 # Gems used only for assets and not required
@@ -69,7 +69,7 @@ gem 'metamagic', "~> 2.0.5"
 # gem 'sitemap_generator'
 
 # Queries optimizer
-gem "bullet", :group => "development"
+# gem "bullet", :group => "development"
 
 # E-mail encoder
 gem 'actionview-encoded_mail_to', '~> 1.0.4'
