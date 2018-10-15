@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
 				plist.sort_by {|p| p.created_at }
 		end
 
-		How is the ordering?
+		# How is the ordering?
 		if @direction == "desc"
 			plist.reverse
 		end

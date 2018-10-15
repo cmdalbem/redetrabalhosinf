@@ -5,17 +5,8 @@
 	<%= title site: "infHUB" %>
 	
 	<meta charset="utf-8">
-
-	<%=
-		metamagic
-		meta og: {
-			image: "http://infhub.herokuapp.com/assets/logo.png",
-			site_name: "infHUB",
-			type: "website"
-		},
-		description: "A rede social de compartilhamento de trabalhos do INF."
-		# [:property => "fb:admins", :content => "1299864678"],
-	%>
+ 
+	<%= metamagic meta og: { image: "http://infhub.herokuapp.com/assets/logo.png", site_name: "infHUB", type: "website" }, description: "A rede social de compartilhamento de trabalhos do INF." %>
 
 	<link rel="shortcut icon" href="<%=image_url 'favicon.ico'%>">
 

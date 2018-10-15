@@ -11,15 +11,15 @@ class GlobalSearchController < ApplicationController
 	    	@hasQuery = true
 	    	@query = params[:gq]
 	    	
-	    	@projects = Project.scoped.includes(:people)
-		    @courses = Course.scoped
-		    @people = Person.scoped
-		    @tags = Tag.scoped
+	    	@projects = Project.all.includes(:people)
+		    @courses = Course.all
+		    @people = Person.all
+		    @tags = Tag.all
 
 			# Projects search
 			@projects = @projects.search(@query)
 			@totalProjects = @projects.size
-			@projects.sort_by!{|p| p.relevance }.reverse!
+			@projects.sort_by{|p| p.relevance }.reverse
 			@projects = @projects[0..MAX_PROJECTS-1]
 
 			# Courses search

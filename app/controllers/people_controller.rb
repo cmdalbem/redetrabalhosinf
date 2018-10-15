@@ -20,29 +20,29 @@ class PeopleController < ApplicationController
     # What to sort by?
     case @column
       when "name"
-        plist.sort_by! {|p| p.name.downcase }
+        plist.sort_by {|p| p.name.downcase }
       when "email"
-        plist.sort_by! {|p| p.user.email.downcase }
+        plist.sort_by {|p| p.user.email.downcase }
       when "nick"
-        plist.sort_by! {|p| p.nick.downcase }
+        plist.sort_by {|p| p.nick.downcase }
       when "projects"
-        plist.sort_by! {|p| p.projects.count }
+        plist.sort_by {|p| p.projects.count }
       when "date"
-        plist.sort_by! {|p| p.created_at }
+        plist.sort_by {|p| p.created_at }
       when "semester"
-        plist.sort_by! {|p| p.semester }
+        plist.sort_by {|p| p.semester }
     end
 
     # How is the ordering?
     if @direction == "desc"
-      plist.reverse!
+      plist.reverse
     end
   end
 
   # GET /people
   def index
     # Handle searchs
-    @people = Person.scoped
+    @people = Person.all
 
     if params[:q] and !params[:q].empty?
       @hasQuery = true
