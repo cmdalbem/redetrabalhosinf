@@ -6,7 +6,16 @@
 	
 	<meta charset="utf-8">
 
-	<%= metamagic [:property => "og:image", :content => "http://infhub.herokuapp.com/assets/logo.png"], [:property => "og:site_name", :content => "infHUB"], [:property => "og:type", :content => "website"], [:property => "fb:admins", :content => "1299864678"], description: "A rede social de compartilhamento de trabalhos do INF.", keywords: %w(inf ufrgs social network projects trabalhos disciplinas cadeiras rede social compartilhamento arquivos downloads ciencia da computação cic engenharia da computação ecp) %>
+	<%=
+		metamagic
+		meta og: {
+			image: "http://infhub.herokuapp.com/assets/logo.png",
+			site_name: "infHUB",
+			type: "website"
+		},
+		description: "A rede social de compartilhamento de trabalhos do INF."
+		# [:property => "fb:admins", :content => "1299864678"],
+	%>
 
 	<link rel="shortcut icon" href="<%=image_url 'favicon.ico'%>">
 

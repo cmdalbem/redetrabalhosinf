@@ -555,3 +555,1591 @@ Served asset /patterns/grid.png - 304 Not Modified (1ms)
 
 Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2018-10-07 16:12:39 -0300
 Served asset /fontawesome-webfont.woff - 304 Not Modified (0ms)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 21:56:30 -0300
+Processing by HomeController#show as HTML
+  [1m[36mUser Load (8.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:23)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:27)
+Completed 500 Internal Server Error in 270ms (ActiveRecord: 134.2ms)
+
+ArgumentError (The provided regular expression is using multiline anchors (^ or $), which may present a security risk. Did you mean to use \A and \z, or forgot to add the :multiline => true option?):
+  app/models/project.rb:33:in `<class:Project>'
+  app/models/project.rb:1:in `<top (required)>'
+  app/controllers/home_controller.rb:65:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (91.4ms)
+
+
+Started GET "/robots.txt" for 127.0.0.1 at 2018-10-14 21:56:31 -0300
+
+ActionController::RoutingError (No route matches [GET] "/robots.txt"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.10) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.10) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.10) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.10) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.10) lib/rack/lock.rb:17:in `call'
+  rack (1.6.10) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.10) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.4ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (24.4ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.1ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (348.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 21:57:44 -0300
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+Processing by HomeController#show as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:23)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:27)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Person> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/person.rb:21)
+  [1m[36mTag Load (88.9ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35m (57.2ms)[0m  SELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects"[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "tags"[0m
+  [1m[35mPerson Load (28.9ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36m (7.5ms)[0m  [1mSELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mPublicActivity::Activity Load (10.2ms)[0m  SELECT  "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1))  ORDER BY created_at desc LIMIT 10 OFFSET 0
+  [1m[36mProject Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1 LIMIT 1[0m  [["person_id", 1]]
+  [1m[35mProject Exists (0.7ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 LIMIT 1  [["person_id", 1]]
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mTag Exists (40.2ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  Rendered shared/_pages_nav.html.erb (1.0ms)
+  [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 15]]
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 6]]
+  [1m[36m (1.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 26]]
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 19]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 17]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 23]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 32]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 16]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 9]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 28]]
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 12]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 7]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 14]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 18]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 24]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 10]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 27]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 30]]
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 8]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 29]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 20]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 21]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 4]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 25]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 31]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 13]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 11]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 22]]
+  Rendered shared/_tag_cloud.html.erb (87.3ms)
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 10[0m
+  [1m[35mOwnership Load (40.7ms)[0m  SELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)
+  [1m[36mPerson Load (24.8ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" IN (1)[0m
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+  [1m[36mLink Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 12
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1mSELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 13[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (1)
+  [1m[36mProject Load (71.9ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (4.6ms)
+  Rendered home/show.html.erb within layouts/application (425.1ms)
+Completed 500 Internal Server Error in 1467ms (ActiveRecord: 499.1ms)
+
+ActionView::Template::Error (wrong number of arguments (5 for 0..1)):
+     6: 	
+     7: 	<meta charset="utf-8">
+     8: 
+     9: 	<%= metamagic [:property => "og:image", :content => "http://infhub.herokuapp.com/assets/logo.png"], [:property => "og:site_name", :content => "infHUB"], [:property => "og:type", :content => "website"], [:property => "fb:admins", :content => "1299864678"], description: "A rede social de compartilhamento de trabalhos do INF.", keywords: %w(inf ufrgs social network projects trabalhos disciplinas cadeiras rede social compartilhamento arquivos downloads ciencia da computação cic engenharia da computação ecp) %>
+    10: 
+    11: 	<link rel="shortcut icon" href="<%=image_url 'favicon.ico'%>">
+    12: 
+  app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb___3630369664839536484_70161765585560'
+  app/controllers/home_controller.rb:95:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (95.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:04:47 -0300
+Processing by HomeController#show as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.9ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36m (9.8ms)[0m  [1mSELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0[0m
+  [1m[35m (2.0ms)[0m  SELECT COUNT(*) FROM "projects"
+  [1m[36m (1.6ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "tags"
+  [1m[36mPerson Load (4.8ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35m (0.9ms)[0m  SELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mPublicActivity::Activity Load (0.7ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1))  ORDER BY created_at desc LIMIT 10 OFFSET 0[0m
+  [1m[35mProject Exists (0.7ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1 LIMIT 1  [["person_id", 1]]
+  [1m[36mProject Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 LIMIT 1[0m  [["person_id", 1]]
+  [1m[35mProject Load (0.6ms)[0m  SELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mTag Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  Rendered shared/_pages_nav.html.erb (0.1ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 22]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 30]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 12]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 20]]
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 7]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 27]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 25]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 6]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 28]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 13]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 19]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 8]]
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 18]]
+  [1m[35m (1.1ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 15]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 24]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 10]]
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 26]]
+  [1m[36m (2.9ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 32]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 16]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 17]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 14]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 11]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 23]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 21]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 9]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 31]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 29]]
+  Rendered shared/_tag_cloud.html.erb (90.3ms)
+  [1m[35mProject Load (1.0ms)[0m  SELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 10
+  [1m[36mOwnership Load (0.5ms)[0m  [1mSELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)[0m
+  [1m[35mPerson Load (0.5ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" IN (1)
+  [1m[36mCourse Load (0.9ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)[0m
+  [1m[35mLink Exists (0.5ms)[0m  SELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 12[0m
+  [1m[35mPublicActivity::Activity Load (1.3ms)[0m  SELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 13
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (1)[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (2.4ms)
+  Rendered home/show.html.erb within layouts/application (149.6ms)
+Completed 500 Internal Server Error in 264ms (ActiveRecord: 46.8ms)
+
+SyntaxError (/Users/cmdalbem/projects/redetrabalhosinf/app/views/layouts/application.html.erb:16: syntax error, unexpected ':', expecting ')'
+		description: "A rede social de compartilh...
+		            ^
+/Users/cmdalbem/projects/redetrabalhosinf/app/views/layouts/application.html.erb:16: syntax error, unexpected ',', expecting ')'
+...lhamento de trabalhos do INF.",
+...                               ^
+/Users/cmdalbem/projects/redetrabalhosinf/app/views/layouts/application.html.erb:237: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/cmdalbem/projects/redetrabalhosinf/app/views/layouts/application.html.erb:239: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/layouts/application.html.erb:16: syntax error, unexpected ':', expecting ')'
+  app/views/layouts/application.html.erb:16: syntax error, unexpected ',', expecting ')'
+  app/views/layouts/application.html.erb:237: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/layouts/application.html.erb:239: syntax error, unexpected keyword_end, expecting ')'
+  app/controllers/home_controller.rb:95:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.7ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (107.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:05:14 -0300
+Processing by HomeController#show as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35m (1.5ms)[0m  SELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects"[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "tags"[0m
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.6ms)[0m  [1mSELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.6ms)[0m  SELECT  "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1))  ORDER BY created_at desc LIMIT 10 OFFSET 0
+  [1m[36mProject Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1 LIMIT 1[0m  [["person_id", 1]]
+  [1m[35mProject Exists (0.5ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 LIMIT 1  [["person_id", 1]]
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mTag Exists (0.4ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  Rendered shared/_pages_nav.html.erb (0.1ms)
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 13]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 19]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 26]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 29]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 14]]
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 28]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 10]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 4]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 20]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 17]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 27]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 11]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 24]]
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 25]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 30]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 21]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 22]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 18]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 23]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 31]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 8]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 7]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 15]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 16]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 6]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 12]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 32]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 9]]
+  Rendered shared/_tag_cloud.html.erb (64.1ms)
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 10[0m
+  [1m[35mOwnership Load (0.4ms)[0m  SELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" IN (1)[0m
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+  [1m[36mLink Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35mPerson Load (0.4ms)[0m  SELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 12
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 13[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (1)
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (1.5ms)
+  Rendered home/show.html.erb within layouts/application (94.0ms)
+Completed 500 Internal Server Error in 132ms (ActiveRecord: 24.5ms)
+
+SyntaxError (/Users/cmdalbem/projects/redetrabalhosinf/app/views/layouts/application.html.erb:16: syntax error, unexpected ':', expecting ')'
+		description: "A rede social de compartilh...
+		            ^):
+  app/views/layouts/application.html.erb:16: syntax error, unexpected ':', expecting ')'
+  app/controllers/home_controller.rb:95:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (86.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:05:33 -0300
+Processing by HomeController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects"
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "tags"
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35m (0.6ms)[0m  SELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1))  ORDER BY created_at desc LIMIT 10 OFFSET 0[0m
+  [1m[35mProject Exists (0.5ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1 LIMIT 1  [["person_id", 1]]
+  [1m[36mProject Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 LIMIT 1[0m  [["person_id", 1]]
+  [1m[35mProject Load (0.6ms)[0m  SELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mTag Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  Rendered shared/_pages_nav.html.erb (0.1ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 23]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 10]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 32]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 13]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 15]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 31]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 21]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 20]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 6]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 7]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 30]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 29]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 27]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 28]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 22]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 19]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 17]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 26]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 9]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 8]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 14]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 18]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 11]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 25]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 24]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 16]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 12]]
+  Rendered shared/_tag_cloud.html.erb (59.2ms)
+  [1m[35mProject Load (0.5ms)[0m  SELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 10
+  [1m[36mOwnership Load (0.5ms)[0m  [1mSELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)[0m
+  [1m[35mPerson Load (0.6ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" IN (1)
+  [1m[36mCourse Load (0.4ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)[0m
+  [1m[35mLink Exists (0.3ms)[0m  SELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 12[0m
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 13
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (1)[0m
+  [1m[35mProject Load (0.5ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (1.3ms)
+  Rendered home/show.html.erb within layouts/application (89.8ms)
+Completed 500 Internal Server Error in 126ms (ActiveRecord: 21.3ms)
+
+SyntaxError (/Users/cmdalbem/projects/redetrabalhosinf/app/views/layouts/application.html.erb:18: syntax error, unexpected ')'
+	);@output_buffer.safe_append='
+	 ^
+/Users/cmdalbem/projects/redetrabalhosinf/app/views/layouts/application.html.erb:237: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/cmdalbem/projects/redetrabalhosinf/app/views/layouts/application.html.erb:239: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/layouts/application.html.erb:18: syntax error, unexpected ')'
+  app/views/layouts/application.html.erb:237: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/layouts/application.html.erb:239: syntax error, unexpected keyword_end, expecting ')'
+  app/controllers/home_controller.rb:95:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.6ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (81.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:05:42 -0300
+Processing by HomeController#show as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35m (1.1ms)[0m  SELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects"[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tags"[0m
+  [1m[35mPerson Load (0.3ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT  "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1))  ORDER BY created_at desc LIMIT 10 OFFSET 0
+  [1m[36mProject Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1 LIMIT 1[0m  [["person_id", 1]]
+  [1m[35mProject Exists (0.4ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 LIMIT 1  [["person_id", 1]]
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mTag Exists (0.5ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  Rendered shared/_pages_nav.html.erb (0.2ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 32]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 14]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 20]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 17]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 24]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 19]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 25]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 30]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 4]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 28]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 16]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 12]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 13]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 15]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 10]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 22]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 29]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 6]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 26]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 11]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 9]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 31]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 18]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 7]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 23]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 8]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 27]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 21]]
+  Rendered shared/_tag_cloud.html.erb (54.2ms)
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 10[0m
+  [1m[35mOwnership Load (0.4ms)[0m  SELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" IN (1)[0m
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+  [1m[36mLink Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35mPerson Load (0.4ms)[0m  SELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 12
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 13[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (1)
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (1.8ms)
+  Rendered home/show.html.erb within layouts/application (83.1ms)
+  Rendered shared/_global_search_form.html.erb (2.5ms)
+Completed 200 OK in 8050ms (Views: 8013.5ms | ActiveRecord: 20.5ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/global_search.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/bootstrap-docs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/colortheme.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/links.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/application.self-df73fcad5e98353e7ee3b9f0f19c1423d3b5e721805b9b55e1357a06f19c6295.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/people.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/projects.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/search_logs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/swf_uploader.self-3af881f8e6c6623f72d75a2b5148d08e67a3ee2a637ab5c0c44ba110d77e2377.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/select2.self-c6ac55e050e3e6db253b3e8c575de97675e07fade527056269d9fffdc88a988b.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/jqcloud.self-0ed0691d92e5e3da5ce97c43b510f0944b50f6280750fef905df2cec74276992.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/bootstrap3-wysihtml5.self-bd96b16c5abeede9e3f30732e24627ca6299b988436861c186ebadb340b6c7e2.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.self-4a4c63b3b379fe307cf83e414c8ae532911fc0a1f3cb82fac49a7c36a8c5b78a.css?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/jquery.autogrow-textarea.self-0df6fedd7ee01de458b783c09106543b77743dacf60c9e7fe6a4efbaf7146454.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/s3_upload.self-79218d0b6466998a6db485666eebe791ee8ac8c87f7806bc4003348846c76460.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/bootstrap.self-b38817c3e3a3049abb1fc08dd6ae448b23330f8453226efdb074710209474f75.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/select2.self-3d0dca634dc5f4aee8c2dddef05674d9a674214500fd7e89959dc9e7251bb717.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/jqcloud.self-386542fe307fd3139322f681559dd115f3e9530533d6aa8fc6ef2bec822e7a7f.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/wysihtml5x-toolbar.self-f835bfe0ef8681a04b930aafeb1f792406f9426924cc7d7bf8d08463415b8120.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:50 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/handlebars.runtime.min.self-5fa4bfc769ba3f6e730c2453d45ab26222e546e884ece044b0781c93c4cfd65d.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/templates.self-3763bc32531aa6eead5161ab352ad4fd9a42814041116e110de42647257fd7fc.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/bootstrap3-wysihtml5.self-afc297bd9a94e1ae19f3084ece7269c7329614dbf0b8573bc8e150a13a903365.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/commands.self-0e434cd483ee027fcbdceb27a1784b62509766f11a510aa400e559e03082f132.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/en-US.self-4c2b45f8023b8a34240c7a73e6f9692b425fd8797c94ed3f7a91cbe649111959.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.self-d088784b7ecb87f1ea17e6f982fa968ffefcc07b79de6ecc548fc00242868da6.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/pt-BR.self-7e4f1d4e0204a29ae297253a1a47101faff95c27c01e741713419b6763e830fc.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/application.self-28c44fe6d3aedf451241367ed856621b86a1992487448443a539aeaf07165b32.js?body=1" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/assets/fontawesome-webfont-a6fb906942932de53852ee244ee3fec27bca0bf63a96421672aa4784851b8d4b.woff" for 127.0.0.1 at 2018-10-14 22:05:51 -0300
+
+
+Started GET "/usuarios/teste" for 127.0.0.1 at 2018-10-14 22:06:08 -0300
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"teste"}
+  [1m[36m (42.8ms)[0m  [1mSELECT COUNT(*) FROM "people" WHERE "people"."nick" = $1[0m  [["nick", "teste"]]
+  [1m[35mPerson Load (0.8ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."nick" = $1  ORDER BY "people"."id" ASC LIMIT 1  [["nick", "teste"]]
+  [1m[36mProject Load (1.1ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mCourse Load (0.7ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 43.6ms)
+
+NoMethodError (undefined method `sort_by!' for #<Project::ActiveRecord_AssociationRelation:0x007f9fa7f74d08>):
+  app/controllers/application_controller.rb:46:in `handleProjectsSorting'
+  app/controllers/people_controller.rb:94:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.9ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2018-10-14 22:06:58 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wxIpY4TtJF5Qwmkn5sIuBCcmAqDLUwDtj1s/6DXVbc31zHL5GnqsiObTkqEDG/8OAPwc6KI54uEmjBLgWh2XAg=="}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (46.4ms)[0m  BEGIN
+  [1m[36m (46.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 107ms (ActiveRecord: 93.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:06:58 -0300
+Processing by HomeController#show as HTML
+  [1m[35mTag Load (3.9ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects"
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "tags"
+  Rendered shared/_global_search_form.html.erb (0.7ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 26]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 19]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 3]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 29]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 17]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 8]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 15]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 20]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 7]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 13]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 28]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 14]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 11]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 23]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 9]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 16]]
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 25]]
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 6]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 18]]
+  [1m[36m (2.0ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 12]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 21]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 24]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 31]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 4]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 10]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 27]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 30]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 22]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 32]]
+  Rendered shared/_tag_cloud.html.erb (67.4ms)
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 5[0m
+  [1m[35mOwnership Load (0.5ms)[0m  SELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)
+  [1m[36mPerson Load (0.7ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" IN (1)[0m
+  [1m[35mCourse Load (0.8ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+  [1m[36mLink Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 7
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 8[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (1)
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)[0m
+  [1m[35mPerson Load (0.6ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (2.4ms)
+  Rendered home/show.html.erb within layouts/application (108.6ms)
+Completed 200 OK in 297ms (Views: 263.9ms | ActiveRecord: 24.4ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:06:59 -0300
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2018-10-14 22:06:59 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:06:59 -0300
+
+
+Started GET "/robots.txt" for 127.0.0.1 at 2018-10-14 22:06:59 -0300
+
+ActionController::RoutingError (No route matches [GET] "/robots.txt"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.10) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.10) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.10) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.10) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.10) lib/rack/lock.rb:17:in `call'
+  rack (1.6.10) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.10) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (12.6ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (686.5ms)
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:07:00 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:07:08 -0300
+Processing by HomeController#show as HTML
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "projects"[0m
+  [1m[35m (1.3ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "tags"[0m
+  Rendered shared/_global_search_form.html.erb (0.6ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 10]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 16]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 17]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 11]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 7]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 12]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 21]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 29]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 9]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 22]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 6]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 4]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 32]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 18]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 28]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 23]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 27]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 15]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 19]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 20]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 26]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 31]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 24]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 30]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 8]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 25]]
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 13]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 14]]
+  Rendered shared/_tag_cloud.html.erb (57.8ms)
+  [1m[35mProject Load (0.5ms)[0m  SELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 5
+  [1m[36mOwnership Load (0.4ms)[0m  [1mSELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)[0m
+  [1m[35mPerson Load (0.7ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" IN (1)
+  [1m[36mCourse Load (0.4ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)[0m
+  [1m[35mLink Exists (0.3ms)[0m  SELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 7[0m
+  [1m[35mPublicActivity::Activity Load (0.6ms)[0m  SELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 8
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (1)[0m
+  [1m[35mProject Load (0.5ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (2.4ms)
+  Rendered home/show.html.erb within layouts/application (90.3ms)
+Completed 200 OK in 253ms (Views: 224.6ms | ActiveRecord: 18.9ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:07:09 -0300
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2018-10-14 22:07:09 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:07:09 -0300
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:07:09 -0300
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:09:30 -0300
+Processing by HomeController#show as HTML
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:23)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:27)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Person> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/person.rb:21)
+  [1m[36mTag Load (1.1ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35m (1.8ms)[0m  SELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects"[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "tags"[0m
+  Rendered shared/_global_search_form.html.erb (3.7ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 25]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 15]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 19]]
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 21]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 26]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 12]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 30]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 5]]
+  [1m[35m (2.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 29]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 32]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 6]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 31]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 20]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 4]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 7]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 27]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 9]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 28]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 16]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 14]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 18]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 23]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 17]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 10]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 24]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 11]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 3]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 22]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 8]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 13]]
+  Rendered shared/_tag_cloud.html.erb (81.2ms)
+  [1m[35mProject Load (0.8ms)[0m  SELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 5
+  [1m[36mOwnership Load (1.2ms)[0m  [1mSELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)[0m
+  [1m[35mPerson Load (0.7ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" IN (1)
+  [1m[36mCourse Load (1.6ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)[0m
+  [1m[35mLink Exists (0.7ms)[0m  SELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 7[0m
+  [1m[35mPublicActivity::Activity Load (1.3ms)[0m  SELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 8
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (1)[0m
+  [1m[35mProject Load (0.5ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (15.0ms)
+  Rendered home/show.html.erb within layouts/application (748.6ms)
+Completed 200 OK in 9674ms (Views: 9460.4ms | ActiveRecord: 47.7ms)
+
+
+Started GET "/assets/application.self-3be1524a0c0756f285f9e76d6d9b129a5c166f653b1f327455e94599f97c24ca.css?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-transition.self-1f404046c677611b4c53fe8c7fa375d263aee3a2e3ffd10b6de609ce1fbb14ba.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-affix.self-fc2adbfd50a5e179d9c5978e92781e874d5629a6e86a14352eca21e8f35bd2c7.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-alert.self-6fd0b0097e1b5d807a9e59c8914e00f1c80d64b6f5f5ad8f5c8f4bd5257d1233.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-button.self-ec411ad9c9efa6f321b7d40f49ded5349beeb3d162fa38da764d243b33256cce.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-carousel.self-a2a874da9eec4567e474650e78025b2557ca25bfe3c9823bf4f8bfadb8d1b870.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-collapse.self-743f780936abb3ae4b4afb385273dd40a091a71f8b869e96427ed340ddc49fb5.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-dropdown.self-1ed8d6c365f72e9d378331aeb03097eea0bf443bb4e18b4bd551e3a04e1bbc82.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-modal.self-31563e9d22c6c441c4bd6d53381d89710560a9b96356df8f2413198633d61b2b.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-scrollspy.self-d7e7f43bd32db50108215b2da1b78229443295e36ed5e560901dac95a9aa0b2d.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-tab.self-14b70f6c51272602f1c58e8b0fd4783c2123d72db8de2b0aa298e7789617130e.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-tooltip.self-4372bd57b77c95c5ae140f68af0454eba315e71e9da19cfad68ba59007280645.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-popover.self-d7bc00218b830918f1d254a9b7a83155f0850728d6eca92ad2cad148136b556c.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap.self-94f59a48294d99f8d9b7632cd5a1742670c7735fe37ec7c555aab939b635fdde.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/bootstrap-typeahead.self-886a9d8ef78798bccff815f846e02a82df9846e3cc3d3383f98705df4e404357.js?body=1" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2018-10-14 22:09:40 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:09:41 -0300
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:09:41 -0300
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:09:41 -0300
+
+
+Started POST "/entrar" for 127.0.0.1 at 2018-10-14 22:10:17 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mke2YSN/laqr+fGyAMjPErNfGwg2B4tFOVCSWdhSFr8KRDNHQbuNGeXSO6PUMJ6mBilk3dHnvM/2RQlz/H49IQ==", "user"=>{"login"=>"teste", "password"=>"[FILTERED]", "remember_me"=>"on"}, "commit"=>"OK"}
+  [1m[35mUser Load (43.9ms)[0m  SELECT  "users".* FROM "users" INNER JOIN "people" ON "people"."user_id" = "users"."id" WHERE (lower(nick) = 'teste' OR lower(email) = 'teste')  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (8.9ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4  [["current_sign_in_at", "2018-10-15 01:10:17.650195"], ["sign_in_count", 2], ["updated_at", "2018-10-15 01:10:17.651791"], ["id", 1]]
+  [1m[36m (4.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 259ms (ActiveRecord: 57.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:10:17 -0300
+Processing by HomeController#show as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "projects"[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "tags"[0m
+  [1m[35mPerson Load (0.3ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.7ms)[0m  SELECT  "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1))  ORDER BY created_at desc LIMIT 10 OFFSET 0
+  [1m[36mProject Exists (1.6ms)[0m  [1mSELECT  1 AS one FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1 LIMIT 1[0m  [["person_id", 1]]
+  [1m[35mProject Exists (0.5ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 LIMIT 1  [["person_id", 1]]
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mTag Exists (0.4ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  Rendered shared/_pages_nav.html.erb (1.0ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 11]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 25]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 18]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 3]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 6]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 4]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 9]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 15]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 12]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 2]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 17]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 13]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 22]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 31]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 7]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 20]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 28]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 19]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 27]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 24]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 10]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 21]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 26]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 30]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 23]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 32]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 14]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 16]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 8]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 29]]
+  Rendered shared/_tag_cloud.html.erb (77.5ms)
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 10[0m
+  [1m[35mOwnership Load (0.5ms)[0m  SELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" IN (1)[0m
+  [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+  [1m[36mLink Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 12
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1mSELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 13[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (1)
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (1.4ms)
+  Rendered home/show.html.erb within layouts/application (115.1ms)
+  Rendered shared/_global_search_form.html.erb (0.8ms)
+Completed 200 OK in 384ms (Views: 315.0ms | ActiveRecord: 23.5ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:10:18 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:10:18 -0300
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:10:18 -0300
+
+
+Started GET "/usuarios/teste" for 127.0.0.1 at 2018-10-14 22:10:20 -0300
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"teste"}
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "people" WHERE "people"."nick" = $1[0m  [["nick", "teste"]]
+  [1m[35mPerson Load (0.7ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."nick" = $1  ORDER BY "people"."id" ASC LIMIT 1  [["nick", "teste"]]
+  [1m[36mProject Load (3.5ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mCourse Load (0.4ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.0ms)
+
+NoMethodError (undefined method `sort_by!' for #<Project::ActiveRecord_AssociationRelation:0x007f965861a350>):
+  app/controllers/application_controller.rb:46:in `handleProjectsSorting'
+  app/controllers/people_controller.rb:94:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (92.4ms)
+
+
+Started GET "/usuarios/teste" for 127.0.0.1 at 2018-10-14 22:10:24 -0300
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"teste"}
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "people" WHERE "people"."nick" = $1[0m  [["nick", "teste"]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."nick" = $1  ORDER BY "people"."id" ASC LIMIT 1  [["nick", "teste"]]
+  [1m[36mProject Load (0.8ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mCourse Load (1.0ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.2ms)
+
+NoMethodError (undefined method `sort_by!' for #<Project::ActiveRecord_AssociationRelation:0x007f9654a52f20>):
+  app/controllers/application_controller.rb:46:in `handleProjectsSorting'
+  app/controllers/people_controller.rb:94:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (80.5ms)
+
+
+Started GET "/usuarios/teste" for 127.0.0.1 at 2018-10-14 22:16:11 -0300
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"teste"}
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Person> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/person.rb:21)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "people" WHERE "people"."nick" = $1[0m  [["nick", "teste"]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."nick" = $1  ORDER BY "people"."id" ASC LIMIT 1  [["nick", "teste"]]
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:23)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:27)
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35mCourse Load (0.6ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 5.4ms)
+
+NoMethodError (undefined method `reverse!' for #<Project::ActiveRecord_AssociationRelation:0x007f9654d2f928>):
+  app/controllers/application_controller.rb:54:in `handleProjectsSorting'
+  app/controllers/people_controller.rb:94:in `show'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (78.3ms)
+
+
+Started GET "/usuarios/teste" for 127.0.0.1 at 2018-10-14 22:16:28 -0300
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"teste"}
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Person> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/person.rb:21)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "people" WHERE "people"."nick" = $1[0m  [["nick", "teste"]]
+  [1m[35mPerson Load (0.4ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."nick" = $1  ORDER BY "people"."id" ASC LIMIT 1  [["nick", "teste"]]
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:23)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:27)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mTag Load (45.9ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "taggings"."tag_id" = "tags"."id" WHERE "taggings"."project_id" = 1 GROUP BY tags.id[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  Rendered shared/_tag_cloud.html.erb (0.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1[0m  [["person_id", 1]]
+  [1m[35m (35.3ms)[0m  SELECT COUNT(*) FROM "activities" WHERE "activities"."owner_id" = $1  [["owner_id", 1]]
+  [1m[36mPublicActivity::Activity Load (1.0ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."owner_id" = $1  ORDER BY created_at desc LIMIT 1[0m  [["owner_id", 1]]
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (1)
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)[0m
+  Rendered shared/_search_form.html.erb (1.1ms)
+  Rendered shared/_combo_sort_by.html.erb (3.1ms)
+  Rendered shared/_viewmodes_buttons.html.erb (2.0ms)
+  Rendered shared/_project_ctrlbar.html.erb (16.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT  "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1 LIMIT 16 OFFSET 0[0m  [["person_id", 1]]
+  [1m[35mCourse Load (0.7ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)
+  [1m[36mLink Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mPerson Exists (37.1ms)[0m  [1mSELECT  1 AS one FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1 AND "people"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mPerson Exists (0.9ms)[0m  SELECT  1 AS one FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1 AND "people"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mTag Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35m (43.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."project_id" = $1  [["project_id", 1]]
+  Rendered shared/_project_popularity_stats.html.erb (111.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered projects/_projects_table.html.erb (286.3ms)
+  Rendered shared/_pages_nav.html.erb (0.1ms)
+  Rendered projects/_projects_dynamic_listing.html.erb (295.0ms)
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."owner_id" = $1  ORDER BY created_at desc  [["owner_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (2.0ms)
+  Rendered people/show.html.erb within layouts/application (407.5ms)
+  Rendered shared/_global_search_form.html.erb (0.5ms)
+Completed 200 OK in 780ms (Views: 450.2ms | ActiveRecord: 240.0ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:16:29 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:16:29 -0300
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:16:29 -0300
+
+
+Started GET "/trabalhos/1" for 127.0.0.1 at 2018-10-14 22:16:53 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.5ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" IN (1)[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (43.1ms)[0m  [1mUPDATE "projects" SET "viewCount" = $1, "updated_at" = $2 WHERE "projects"."id" = $3[0m  [["viewCount", 2], ["updated_at", "2018-10-15 01:16:53.103636"], ["id", 1]]
+  [1m[35m (2.4ms)[0m  COMMIT
+  Rendered projects/show.html.erb within layouts/application (5.8ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 47.0ms)
+
+ActionView::Template::Error (wrong number of arguments (2 for 0..1)):
+    1: <% meta [:property => "og:image", :content => @project.image.url], :description => @project.description %>
+    2: 
+    3: <div class="content">
+    4: 
+  app/views/projects/show.html.erb:1:in `_app_views_projects_show_html_erb___3443126818996172208_70141841317900'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.3ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (87.5ms)
+
+
+Started GET "/trabalhos/1" for 127.0.0.1 at 2018-10-14 22:19:49 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."project_id" IN (1)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (41.7ms)[0m  UPDATE "projects" SET "viewCount" = $1, "updated_at" = $2 WHERE "projects"."id" = $3  [["viewCount", 3], ["updated_at", "2018-10-15 01:19:49.216221"], ["id", 1]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  Rendered projects/show.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 44.6ms)
+
+SyntaxError (/Users/cmdalbem/projects/redetrabalhosinf/app/views/projects/show.html.erb:4: syntax error, unexpected =>, expecting keyword_end
+    :description => @project.description
+                   ^):
+  app/views/projects/show.html.erb:4: syntax error, unexpected =>, expecting keyword_end
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.3ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (83.1ms)
+
+
+Started GET "/trabalhos/1" for 127.0.0.1 at 2018-10-14 22:19:55 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.4ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" IN (1)[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "projects" SET "viewCount" = $1, "updated_at" = $2 WHERE "projects"."id" = $3[0m  [["viewCount", 4], ["updated_at", "2018-10-15 01:19:55.865251"], ["id", 1]]
+  [1m[35m (2.0ms)[0m  COMMIT
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mPerson Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1 AND "people"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mPerson Exists (0.5ms)[0m  SELECT  1 AS one FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1 AND "people"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "people_projects" ON "people"."id" = "people_projects"."person_id" WHERE "people_projects"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered projects/_likes_list.html.erb (9.7ms)
+  [1m[35mProject Exists (44.0ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 AND "projects"."id" = $2 LIMIT 1  [["person_id", 1], ["id", 1]]
+  [1m[36mTag Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1  [["project_id", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1[0m  [["project_id", 1]]
+  [1m[35mCourse Load (0.4ms)[0m  SELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT 1  [["id", 72]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "links" WHERE "links"."project_id" = $1[0m  [["project_id", 1]]
+  [1m[35mLink Load (0.3ms)[0m  SELECT "links".* FROM "links" WHERE "links"."project_id" = $1  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (95.7ms)
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 53.6ms)
+
+ActionView::Template::Error (undefined method `sort_by!' for #<ActiveRecord::Associations::CollectionProxy []>):
+    174:     <div class="block span12">
+    175:       <p>
+    176:         <h3><i class="icon-comments"></i> Comentários (<%= @project.comments.size %>)</h3>
+    177:         <% @project.comments.sort_by! {|x| x.created_at} %>
+    178:         <ul class="comments-list">
+    179:           
+    180:           <!-- Comments list  -->
+  app/views/projects/show.html.erb:177:in `_app_views_projects_show_html_erb___3443126818996172208_70141784654340'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.8ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (90.8ms)
+
+
+Started GET "/trabalhos/1" for 127.0.0.1 at 2018-10-14 22:20:17 -0300
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.5ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."project_id" IN (1)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "projects" SET "viewCount" = $1, "updated_at" = $2 WHERE "projects"."id" = $3  [["viewCount", 5], ["updated_at", "2018-10-15 01:20:17.641545"], ["id", 1]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mPerson Exists (0.5ms)[0m  SELECT  1 AS one FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1 AND "people"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mPerson Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1 AND "people"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mPerson Load (0.4ms)[0m  SELECT "people".* FROM "people" INNER JOIN "people_projects" ON "people"."id" = "people_projects"."person_id" WHERE "people_projects"."project_id" = $1  [["project_id", 1]]
+  Rendered projects/_likes_list.html.erb (1.8ms)
+  [1m[36mProject Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 AND "projects"."id" = $2 LIMIT 1[0m  [["person_id", 1], ["id", 1]]
+  [1m[35mTag Exists (0.5ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1[0m  [["project_id", 1]]
+  [1m[35mPerson Load (0.5ms)[0m  SELECT "people".* FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1  [["project_id", 1]]
+  [1m[36mCourse Load (0.4ms)[0m  [1mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT 1[0m  [["id", 72]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "links" WHERE "links"."project_id" = $1  [["project_id", 1]]
+  [1m[36mLink Load (0.3ms)[0m  [1mSELECT "links".* FROM "links" WHERE "links"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (43.4ms)
+  Rendered shared/_global_search_form.html.erb (0.4ms)
+Completed 200 OK in 258ms (Views: 240.0ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:20:18 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:20:18 -0300
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:20:18 -0300
+
+
+Started GET "/trabalhos/1" for 127.0.0.1 at 2018-10-14 22:20:34 -0300
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/user.rb:6)
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:23)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Project> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/project.rb:27)
+  [1m[35mProject Load (0.4ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" IN (1)[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "projects" SET "viewCount" = $1, "updated_at" = $2 WHERE "projects"."id" = $3[0m  [["viewCount", 6], ["updated_at", "2018-10-15 01:20:34.226329"], ["id", 1]]
+  [1m[35m (41.6ms)[0m  COMMIT
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Person> at /Users/cmdalbem/projects/redetrabalhosinf/app/models/person.rb:21)
+  [1m[35mPerson Load (0.7ms)[0m  SELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mPerson Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1 AND "people"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mPerson Exists (0.3ms)[0m  SELECT  1 AS one FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1 AND "people"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "people_projects" ON "people"."id" = "people_projects"."person_id" WHERE "people_projects"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered projects/_likes_list.html.erb (6.4ms)
+  [1m[35mProject Exists (0.5ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 AND "projects"."id" = $2 LIMIT 1  [["person_id", 1], ["id", 1]]
+  [1m[36mTag Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1  [["project_id", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT "people".* FROM "people" INNER JOIN "ownerships" ON "people"."id" = "ownerships"."person_id" WHERE "ownerships"."project_id" = $1[0m  [["project_id", 1]]
+  [1m[35mCourse Load (0.4ms)[0m  SELECT  "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT 1  [["id", 72]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "links" WHERE "links"."project_id" = $1[0m  [["project_id", 1]]
+  [1m[35mLink Load (0.3ms)[0m  SELECT "links".* FROM "links" WHERE "links"."project_id" = $1  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (120.4ms)
+  Rendered shared/_global_search_form.html.erb (3.5ms)
+Completed 200 OK in 443ms (Views: 332.4ms | ActiveRecord: 63.2ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:20:34 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:20:34 -0300
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:20:35 -0300
+
+
+Started GET "/robots.txt" for 127.0.0.1 at 2018-10-14 22:20:35 -0300
+
+ActionController::RoutingError (No route matches [GET] "/robots.txt"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.10) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.10) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.10) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.10) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.10) lib/rack/lock.rb:17:in `call'
+  rack (1.6.10) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.10) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.8ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.9ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/cmdalbem/.rbenv/versions/2.2.10/lib/ruby/gems/2.2.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (259.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-14 22:38:38 -0300
+Processing by HomeController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) AS count_all, courses.id AS courses_id FROM "courses" INNER JOIN "projects" ON "projects"."course_id" = "courses"."id" GROUP BY courses.id HAVING count(courses.id) > 0[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects"
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tags"
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35m (0.6ms)[0m  SELECT "projects".id FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE (owner_id != 1 AND trackable_id IN (1))  ORDER BY created_at desc LIMIT 10 OFFSET 0[0m
+  [1m[35mProject Exists (0.6ms)[0m  SELECT  1 AS one FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1 LIMIT 1  [["person_id", 1]]
+  [1m[36mProject Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "projects" INNER JOIN "people_projects" ON "projects"."id" = "people_projects"."project_id" WHERE "people_projects"."person_id" = $1 LIMIT 1[0m  [["person_id", 1]]
+  [1m[35mProject Load (0.8ms)[0m  SELECT "projects".* FROM "projects" INNER JOIN "ownerships" ON "projects"."id" = "ownerships"."project_id" WHERE "ownerships"."person_id" = $1  [["person_id", 1]]
+  [1m[36mTag Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."project_id" = $1 LIMIT 1[0m  [["project_id", 1]]
+  Rendered shared/_pages_nav.html.erb (0.2ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 32]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 31]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 8]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 22]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 26]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 4]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 12]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 20]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 14]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 6]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 9]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 18]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 13]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 27]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 7]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 11]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 23]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 16]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 21]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 17]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 15]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 24]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 25]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 30]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 29]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 28]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1  [["tag_id", 10]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "projects" INNER JOIN "taggings" ON "projects"."id" = "taggings"."project_id" WHERE "taggings"."tag_id" = $1[0m  [["tag_id", 19]]
+  Rendered shared/_tag_cloud.html.erb (61.2ms)
+  [1m[35mProject Load (0.6ms)[0m  SELECT  "projects".* FROM "projects"  ORDER BY created_at DESC LIMIT 10
+  [1m[36mOwnership Load (0.4ms)[0m  [1mSELECT "ownerships".* FROM "ownerships" WHERE "ownerships"."project_id" IN (1)[0m
+  [1m[35mPerson Load (0.5ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" IN (1)
+  [1m[36mCourse Load (0.6ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" IN (72)[0m
+  [1m[35mLink Exists (0.4ms)[0m  SELECT  1 AS one FROM "links" WHERE "links"."project_id" = $1 LIMIT 1  [["project_id", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT  "people".* FROM "people"  ORDER BY created_at DESC LIMIT 12[0m
+  [1m[35mPublicActivity::Activity Load (0.6ms)[0m  SELECT  "activities".* FROM "activities"  ORDER BY created_at desc LIMIT 13
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (1)[0m
+  [1m[35mProject Load (0.5ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" IN (1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "people".* FROM "people" WHERE "people"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  Rendered public_activity/project/_create.html.erb (1.4ms)
+  Rendered home/show.html.erb within layouts/application (103.7ms)
+  Rendered shared/_global_search_form.html.erb (0.8ms)
+Completed 200 OK in 371ms (Views: 315.8ms | ActiveRecord: 22.5ms)
+
+
+Started GET "/assets/logo_txt_mini.png" for 127.0.0.1 at 2018-10-14 22:38:39 -0300
+
+
+Started GET "/assets/logo_carved.png" for 127.0.0.1 at 2018-10-14 22:38:39 -0300
+
+
+Started GET "/assets/patterns/grid.png" for 127.0.0.1 at 2018-10-14 22:38:39 -0300

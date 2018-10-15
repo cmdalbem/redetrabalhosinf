@@ -1,27 +1,26 @@
 source 'http://rubygems.org'
 
-ruby '2.3.7'
+# ruby '2.4.4'
+ruby '2.2.10'
 
-gem 'rails'
+gem 'rails', '~> 4.0'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # for PostGreSQL databases
-gem 'pg'
+# gem 'pg'
+gem 'pg', '~> 0.20'
 
-
+ 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  # gem 'coffee-rails', '~> 3.2.1'
+# group :assets do
+  gem 'sass-rails'
 
   # See http://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'  
-end
+  gem 'uglifier'
+# end
 
 
 ##########################
@@ -29,7 +28,7 @@ end
 ##########################
 
 gem 'jquery-rails'
-gem "select2-rails", "~> 3.2.1"
+gem "select2-rails"
 
 # Twitter Bootstrap gem + SASS (CSS extension)
 gem 'bootstrap-sass', "~> 2.3.1.2"
@@ -38,10 +37,10 @@ gem 'bootstrap-sass', "~> 2.3.1.2"
 gem 'font-awesome-sass-rails'
 
 # Module for User's sessions and registrations
-gem 'devise', "~> 2.2.4"
+gem 'devise'
 
 # Amazong S3 File Uploading
-gem 'paperclip', "~> 3.4.2"
+gem 'paperclip'
 gem 'aws-sdk'
 gem 's3_swf_upload'
 
@@ -49,7 +48,7 @@ gem 's3_swf_upload'
 gem 'google-analytics-rails'
 
 # For pagination
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
 # Adds UTF8 encoding to all files
@@ -63,18 +62,18 @@ gem "jqcloud-rails"
 
 # Helpers for HTML meta tags
 gem "headliner"
-gem 'metamagic', "~> 2.0.5"
+gem 'metamagic'
 
 # Sitemap generator (for Google Webmaster Tools)
 # gem 'sitemap_generator'
 
 # Queries optimizer
-# gem "bullet", :group => "development"
+gem "bullet", :group => "development"
 
 # E-mail encoder
-# gem 'actionview-encoded_mail_to'
+gem 'actionview-encoded_mail_to'
 
-gem 'bootstrap-wysihtml5-rails', "~> 0.3.1.20"
+gem 'bootstrap-wysihtml5-rails'
 
 
 # Gems to be added only when running on Linux
@@ -82,6 +81,12 @@ platforms :ruby do
   gem 'execjs'
   # gem 'therubyracer'
 end
+
+
+# Protect attributes from mass-assignment in Active Record models.
+# This plugin adds the class methods attr_accessible and attr_protected to your models to be able to declare white or black lists of attributes.
+# Note: This plugin will be officially supported until the release of Rails 5.0.
+gem 'protected_attributes'
 
 
 ##########################

@@ -1,4 +1,8 @@
-<% meta [:property => "og:image", :content => @project.image.url], :description => @project.description %>
+<% 
+  meta
+    og image: @project.image.url,
+    :description => @project.description
+%>
 
 <div class="content">
 
@@ -170,7 +174,7 @@
     <div class="block span12">
       <p>
         <h3><i class="icon-comments"></i> Comentários (<%= @project.comments.size %>)</h3>
-        <% @project.comments.sort_by! {|x| x.created_at} %>
+        <% @project.comments.sort_by {|x| x.created_at} %>
         <ul class="comments-list">
           
           <!-- Comments list  -->

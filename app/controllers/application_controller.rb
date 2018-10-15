@@ -35,22 +35,22 @@ class ApplicationController < ActionController::Base
 		# What to sort by?
 		case @column
 			when "title"
-				plist.sort_by! {|p| p.title.downcase }
+				plist.sort_by {|p| p.title.downcase }
 			when "barra"
-				plist.sort_by! {|p| p.semester }
+				plist.sort_by {|p| p.semester }
 			# when "course"
-			#   plist.sort_by! {|p| p.course.name.downcase }
+			#   plist.sort_by {|p| p.course.name.downcase }
 			when "likes"
-				plist.sort_by! {|p| p.likeCount }
+				plist.sort_by {|p| p.likeCount }
 			when "relevance"
-				plist.sort_by! {|p| p.relevance }
+				plist.sort_by {|p| p.relevance }
 			when "date"
-				plist.sort_by! {|p| p.created_at }
+				plist.sort_by {|p| p.created_at }
 		end
 
-		# How is the ordering?
+		How is the ordering?
 		if @direction == "desc"
-			plist.reverse!
+			plist.reverse
 		end
 
 		return plist

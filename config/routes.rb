@@ -13,25 +13,25 @@ Inf::Application.routes.draw do
   resources :home, :tags, :comments, :activities
   devise_for :users, :controllers => { :registrations  => "registrations", confirmations: 'confirmations' }, path: "", :path_names => { sign_in: 'entrar', sign_out: 'logout', sign_up: "cadastro"}
 
-  match 'usuarios/:id' => 'People#show', :as => 'profile'
-  # match 'usuarios/:id/trabalhos' => 'Projects#index', :as => 'myProjects'
+  match 'usuarios/:id' => 'people#show', :as => 'profile', via: [:get]
+  # match 'usuarios/:id/trabalhos' => 'projects#index', :as => 'myProjects'
 
   root :to => "home#show"
-  match 'sobre' => 'Home#about', :as => 'about', :via => :get  
+  match 'sobre' => 'home#about', :as => 'about', :via => :get  
 
   
-  # match 'people/:name/deleteAvatar' => 'People#deleteAvatar', :as => 'deleteAvatar'
+  # match 'people/:name/deleteAvatar' => 'people#deleteAvatar', :as => 'deleteAvatar'
 
   # Github style project URL
-  # match 'p/:person/:project' => 'Projects#show', :as => 'person_project', constraints: { :project => /[^\/]+/, :person => /[^\/]+/ }
+  # match 'p/:person/:project' => 'projects#show', :as => 'person_project', constraints: { :project => /[^\/]+/, :person => /[^\/]+/ }
 
-  match 'trabalhos/:id/favorite' => 'Projects#favorite', :as => 'favorite_project'
-  match 'trabalhos/:id/like' => 'Projects#like', :as => 'like_project'
-  match 'trabalhos/:id/unlike' => 'Projects#unlike', :as => 'unlike_project'
-  match 'trabalhos/:id/download' => 'Projects#downloadFile', :as => 'project_download'
-  match 'trabalhos/:id/link' => 'Projects#clickLink', :as => 'project_link'
+  match 'trabalhos/:id/favorite' => 'projects#favorite', :as => 'favorite_project', via: [:get, :post]
+  match 'trabalhos/:id/like' => 'projects#like', :as => 'like_project', via: [:get, :post]
+  match 'trabalhos/:id/unlike' => 'projects#unlike', :as => 'unlike_project', via: [:get, :post]
+  match 'trabalhos/:id/download' => 'projects#downloadFile', :as => 'project_download', via: [:get, :post]
+  match 'trabalhos/:id/link' => 'projects#clickLink', :as => 'project_link', via: [:get, :post]
 
-  # match 'meustrabalhos' => 'Projects#myProjects', :as => 'myProjects', :via => :get  
+  # match 'meustrabalhos' => 'projects#myProjects', :as => 'myProjects', :via => :get  
 
 
   # The priority is based upon order of creation:
