@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   #       		@projects = search.first.projects
   #       	end
   #       else
-			@projects = Project.scoped
+			@projects = Project.all
 		# end
 
 		@projects = @projects.includes(:people)
