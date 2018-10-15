@@ -800,7 +800,7 @@ DEPENDENCIES
   pg (~> 0.20)
   protected_attributes
   public_activity
-  rails (~> 4.1)
+  rails (~> 4.2)
   s3_swf_upload
   sass-rails
   select2-rails
@@ -808,7 +808,7 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
-   ruby 2.3.0p0
+   ruby 2.4.4p296
 
 BUNDLED WITH
    1.16.6
